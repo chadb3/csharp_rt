@@ -29,7 +29,7 @@ namespace csharp_rt
                 {
                     _matrix[x, y] = value;
                 }
-                else { Console.Out.WriteLine("NO :^): matrix \"get set\" OOB"); }
+                else { Console.Out.WriteLine($"Out Of Bounds! X: {x} Xmax: {x_size}\tY: {y} Ymax: {y_size}"); }
             }
         }
         public matrix(int x_size, int y_size)
