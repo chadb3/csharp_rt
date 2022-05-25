@@ -21,6 +21,8 @@ namespace csharp_rt
             Console.Out.WriteLine(mat[3, 90]);
             mat[1, 1] = 0;
             mat[9, 9] = 9;
+            mat[1, 2] = 9;
+            Console.Out.WriteLine($"mat1[1,2]={mat[1, 2]}");
         }
     }
 }
