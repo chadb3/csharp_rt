@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace csharp_rt
 {
-    class Z_MAIN
+    class CSharpRayTracer
     {
         static int Main(string[] args)
         {

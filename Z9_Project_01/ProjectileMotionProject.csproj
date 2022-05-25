@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\csharp_rt\csharp_rt.csproj" />
+    <ProjectReference Include="..\csharp_rt\CSharpRayTracer.csproj" />
   </ItemGroup>
 
 </Project>

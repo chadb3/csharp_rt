@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "csharp_rt", "csharp_rt\csharp_rt.csproj", "{C6064E49-C4D2-4447-B9C4-8076C6E53F58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpRayTracer", "csharp_rt\CSharpRayTracer.csproj", "{C6064E49-C4D2-4447-B9C4-8076C6E53F58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RT_UT", "RT_UT\RT_UT.csproj", "{B4148318-F821-4F38-9CEC-F45F401DC574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracerUnitTest", "RT_UT\RayTracerUnitTest.csproj", "{B4148318-F821-4F38-9CEC-F45F401DC574}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z9_Project_01", "Z9_Project_01\Z9_Project_01.csproj", "{8297BF7E-69D8-4054-A1BB-3E07113197EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectileMotionProject", "Z9_Project_01\ProjectileMotionProject.csproj", "{8297BF7E-69D8-4054-A1BB-3E07113197EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
