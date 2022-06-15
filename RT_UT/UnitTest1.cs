@@ -194,7 +194,7 @@ namespace RT_UT
             tuple a = tuple.vector(1, 2, 3);
             tuple b = tuple.vector(2, 3, 4);
             double ans = 20;
-            Assert.AreEqual(ans,a.dot(b));
+            Assert.AreEqual(ans, a.dot(b));
         }
 
         [TestMethod]
@@ -215,7 +215,7 @@ namespace RT_UT
             float red = -0.5f;
             float green = 0.4f;
             float blue = 1.7f;
-            Assert.AreEqual(red,c.red);
+            Assert.AreEqual(red, c.red);
             Assert.AreEqual(green, c.green);
             Assert.AreEqual(blue, c.blue);
         }
@@ -253,6 +253,22 @@ namespace RT_UT
             color c2 = new color(0.9, 1, 0.1);
             color ans = new color(0.9, 0.2, 0.04);
             Assert.AreEqual(ans, c1 * c2);
+        }
+    }
+    [TestClass]
+    public class testMatrix
+    {
+        [TestMethod]
+        public void Constructing_and_Inspecting_a_4_x_4_Matrix()
+        {
+            matrix M = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5.5, 6.5, 7.5, 8.5 }, { 9, 10, 11, 12 }, { 13.5, 14.5, 15.5, 16.5 } });
+            Assert.AreEqual(1, M[0, 0]);
+            Assert.AreEqual(4, M[0, 3]);
+            Assert.AreEqual(5.5, M[1, 0]);
+            Assert.AreEqual(7.5, M[1, 2]);
+            Assert.AreEqual(11, M[2, 2]);
+            Assert.AreEqual(13.5, M[3, 0]);
+            Assert.AreEqual(15.5,M[3,2]);
         }
     }
 }
