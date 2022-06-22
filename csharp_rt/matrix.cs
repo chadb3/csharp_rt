@@ -73,5 +73,25 @@ namespace csharp_rt
             y_size = _matrix.GetLength(0);
         }
 
+        /// <summary>
+        /// Starting this
+        /// </summary>
+        /// <param name="l"></param>
+        /// <returns></returns>
+        public static bool operator ==(matrix l, matrix r)
+        {
+            //todo:
+            //if matrices not same size return false.
+            //else iterate and find out if equal...
+            return true;
+        }
+
+        /// <summary>
+        /// Not Equals
+        /// </summary>
+        /// <param name="l"></param>
+        /// <returns></returns>
+        public static bool operator !=(matrix l, matrix r) => !(l == r);
+
     }
 }

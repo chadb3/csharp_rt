@@ -270,5 +270,23 @@ namespace RT_UT
             Assert.AreEqual(13.5, M[3, 0]);
             Assert.AreEqual(15.5,M[3,2]);
         }
+
+        [TestMethod]
+        public void A_2_x_2_Matrix_Ought_To_Be_Repreentable()
+        {
+            matrix M = new matrix(new double[,] { { -3, 5 }, { 1, -2 } });
+            Assert.AreEqual(-3, M[0, 0]);
+            Assert.AreEqual(5, M[0, 1]);
+            Assert.AreEqual(1, M[1, 0]);
+            Assert.AreEqual(-2, M[1, 1]);
+        }
+        [TestMethod]
+        public void A_3x3_Matrix_Representation()
+        {
+            matrix M = new matrix(new double[,] { { -3, 5, 0 }, { 1, -2, -7 }, { 0, 1, 1 } });
+            Assert.AreEqual(M[0, 0], -3);
+            Assert.AreEqual(M[1, 1], -2);
+            Assert.AreEqual(M[2, 2], 1);
+        }
     }
 }
