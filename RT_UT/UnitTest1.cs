@@ -288,5 +288,13 @@ namespace RT_UT
             Assert.AreEqual(M[1, 1], -2);
             Assert.AreEqual(M[2, 2], 1);
         }
+        [TestMethod]
+        public void Matrix_equality_with_identical_matrices()
+        {
+            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            matrix B = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            //Assert.AreEqual(A, B);
+            Assert.IsTrue(A == B);
+        }
     }
 }
