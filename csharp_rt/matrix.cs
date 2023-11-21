@@ -83,6 +83,7 @@ namespace csharp_rt
             //todo:
             //if matrices not same size return false.
             //else iterate and find out if equal...
+            // need to work on this. working on getting git setup in vs. 
             return true;
         }
 
