@@ -83,8 +83,27 @@ namespace csharp_rt
             //todo:
             //if matrices not same size return false.
             //else iterate and find out if equal...
-            // need to work on this. working on getting git setup in vs. 
-            return true;
+            // need to work on this. working on getting git setup in vs.
+            bool returnValue = false;
+            if (l.x_size == r.x_size && l.y_size == r.y_size)
+            {
+                for(int i = 0; i < l.x_size; i++)
+                {
+                    for (int j = 0; j < l.y_size; j++)
+                    {
+                        if (l[i,j] != r[i,j])
+                        {
+                            return returnValue;
+                        }
+                    }
+                }
+                returnValue = true;
+                return returnValue;
+            }
+            else
+            {
+                return returnValue;
+            }
         }
 
         /// <summary>

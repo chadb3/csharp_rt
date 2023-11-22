@@ -293,8 +293,20 @@ namespace RT_UT
         {
             matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
             matrix B = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            //Note: I think I remember "Assert.AreEqual" uses "object.equals" and is not the same as "==" with default behavior. perhaps I can pass it to the .equals method.
+            // and I may need to write code for that in matrix.
             //Assert.AreEqual(A, B);
             Assert.IsTrue(A == B);
+        }
+        [TestMethod]
+        public void Matrix_inequality_with_identical_matrices()
+        {
+            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            matrix B = new matrix(new double[,] { { 2, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            //Note: I think I remember "Assert.AreEqual" uses "object.equals" and is not the same as "==" with default behavior. perhaps I can pass it to the .equals method.
+            // and I may need to write code for that in matrix.
+            //Assert.AreEqual(A, B);
+            Assert.IsFalse(A == B);
         }
     }
 }
