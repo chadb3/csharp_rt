@@ -48,7 +48,15 @@ namespace csharp_rt
                 }
             }
         }
-
+        /// <summary>
+        /// I think this is so I can make a "square matrix"
+        /// so if a user inputs 2. it will make a matrix like
+        /// [0,0]
+        /// [0,0]
+        /// currently has 0 references. and I may delete later. 
+        /// I think I made this as a "helper" to generate an easy blank square matrix.
+        /// </summary>
+        /// <param name="square_size"></param>
         public matrix(int square_size)
         {
             x_size = square_size;
@@ -65,7 +73,10 @@ namespace csharp_rt
                 }
             }
         }
-
+        /// <summary>
+        /// this allows the setting of the _matrix, size_x,size_y values. 
+        /// </summary>
+        /// <param name="matrix_in"></param>
         public matrix(double[,] matrix_in)
         {
             _matrix = matrix_in;
@@ -74,7 +85,8 @@ namespace csharp_rt
         }
 
         /// <summary>
-        /// Starting this
+        /// ==
+        /// note: different than "object.equals" which c# is strongly suggesting I address...
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
@@ -98,12 +110,8 @@ namespace csharp_rt
                     }
                 }
                 returnValue = true;
-                return returnValue;
             }
-            else
-            {
                 return returnValue;
-            }
         }
 
         /// <summary>
