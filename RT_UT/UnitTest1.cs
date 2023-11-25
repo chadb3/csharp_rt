@@ -324,5 +324,12 @@ namespace RT_UT
             matrix answer = new matrix(new double[,] { { 20, 22, 50, 48 }, { 44, 54, 114, 108 }, { 40, 58, 110, 102 }, { 16, 26, 46, 42 } });
             Assert.IsTrue((A * B) == answer);
         }
+
+        [TestMethod]
+        public void test_square_zero_matrix()
+        {
+            matrix A = new matrix(4);
+            Assert.AreEqual(A[0, 0], 0);
+        }
     }
 }

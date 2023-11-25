@@ -121,5 +121,22 @@ namespace csharp_rt
         /// <returns></returns>
         public static bool operator !=(matrix l, matrix r) => !(l == r);
 
+        /// <summary>
+        /// matrix multiplication
+        /// note: only 4x4 matrices (for now?) 
+        /// </summary>
+        /// <param name="l">the left matrix</param>
+        /// <param name="r">the right matrix</param>
+        /// <returns>if 4x4 matrix the multiplied matrix.</returns>
+        public static matrix operator *(matrix l, matrix r)
+        {
+            matrix ret=new matrix(4);
+            if (l.x_size == r.x_size && r.y_size == l.y_size &&l.x_size==4)
+            {
+
+            }
+            return ret;
+        }
+
     }
 }
