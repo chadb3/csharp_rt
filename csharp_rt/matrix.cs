@@ -138,7 +138,7 @@ namespace csharp_rt
 
                     for (int j = 0; j < 4; j++)
                     {
-
+                        ret[i, j] = l[i,0] * r[0,j] + l[i, 1] * r[1, j] + l[i, 2] * r[2, j] + l[i, 3] * r[3, j];
                     }
                 }
             }
