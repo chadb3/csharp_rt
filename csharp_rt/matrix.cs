@@ -133,7 +133,14 @@ namespace csharp_rt
             matrix ret=new matrix(4);
             if (l.x_size == r.x_size && r.y_size == l.y_size &&l.x_size==4)
             {
+                for(int i = 0; i < 4; i++)
+                {
 
+                    for (int j = 0; j < 4; j++)
+                    {
+
+                    }
+                }
             }
             return ret;
         }
