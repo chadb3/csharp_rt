@@ -331,5 +331,14 @@ namespace RT_UT
             matrix A = new matrix(4);
             Assert.AreEqual(A[0, 0], 0);
         }
+
+        [TestMethod]
+        public void A_matrix_multiplied_by_a_tuple()
+        {
+            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 2, 4, 4, 2 }, { 8, 6, 4, 1 }, { 0, 0, 0, 1 } });
+            tuple B = new tuple(1, 2, 3, 4);
+            tuple answer = new tuple(18, 24, 33, 1);
+            Assert.IsTrue(A * B == answer);
+        }
     }
 }

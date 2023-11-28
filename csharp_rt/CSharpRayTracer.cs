@@ -31,7 +31,7 @@ namespace csharp_rt
         {
             matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
             matrix B = new matrix(new double[,] { { -2, 3, 2, 3 }, { 3, 2, 1, -1 }, { 4, 3, 6, 5 }, { 1, 2, 7, 8 } });
-            matrix c = A * B;
+            var c = A * B;
         }
     }
 }
