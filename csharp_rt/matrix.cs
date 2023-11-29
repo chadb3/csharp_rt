@@ -144,6 +144,21 @@ namespace csharp_rt
             }
             return ret;
         }
+        public static tuple operator *(matrix l, tuple r)
+        {
+            tuple ret = new tuple(0, 0, 0, 0);
+            if(l.x_size==4&&l.y_size==4)
+            {
+                for(int i =0;i< 4; i++)
+                {
+                    for(int j =0;j< 4; j++)
+                    {
+
+                    }
+                }
+            }
+            return ret;
+        }
 
     }
 }
