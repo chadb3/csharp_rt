@@ -10,7 +10,6 @@ namespace csharp_rt
         {
             
             Console.WriteLine("Hello World!");
-            tuple t = new tuple(1, 2, 3, 4);
             matrix_tests();
             Console.Out.WriteLine("ENDING APPLICATION");
             test_mult();

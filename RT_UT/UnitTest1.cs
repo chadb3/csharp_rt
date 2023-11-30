@@ -340,5 +340,13 @@ namespace RT_UT
             tuple answer = new tuple(18, 24, 33, 1);
             Assert.IsTrue(A * B == answer);
         }
+        [TestMethod]
+        public void multiplying_a_matrix_b_the_identity_matrix()
+        {
+            matrix A = new matrix(new double[,] { { 0, 1, 2, 4 }, { 1, 2, 4, 8 }, { 2, 4, 8, 16 }, { 4, 8, 16, 32 } });
+            //note: need to make a static one that I can use as needed I think?
+            matrix identity = new matrix(new double[,] { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
+            Assert.IsTrue(A * identity == A);
+        }
     }
 }
