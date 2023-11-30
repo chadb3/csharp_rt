@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace csharp_rt
 {
-    public class matrix
+    public class Matrix
     {
         public int x_size, y_size;
         public double[,] _matrix;
@@ -33,7 +33,7 @@ namespace csharp_rt
                 else { Console.Out.WriteLine($"Out Of Bounds! X: {x} Xmax: {x_size}\tY: {y} Ymax: {y_size}"); }
             }
         }
-        public matrix(int x_size, int y_size)
+        public Matrix(int x_size, int y_size)
         {
             this.x_size = x_size;
             this.y_size = y_size;
@@ -58,7 +58,7 @@ namespace csharp_rt
         /// I think I made this as a "helper" to generate an easy blank square matrix.
         /// </summary>
         /// <param name="square_size"></param>
-        public matrix(int square_size)
+        public Matrix(int square_size)
         {
             x_size = square_size;
             y_size = square_size;
@@ -78,7 +78,7 @@ namespace csharp_rt
         /// this allows the setting of the _matrix, size_x,size_y values. 
         /// </summary>
         /// <param name="matrix_in"></param>
-        public matrix(double[,] matrix_in)
+        public Matrix(double[,] matrix_in)
         {
             _matrix = matrix_in;
             x_size = _matrix.GetLength(1);
@@ -91,7 +91,7 @@ namespace csharp_rt
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
-        public static bool operator ==(matrix l, matrix r)
+        public static bool operator ==(Matrix l, Matrix r)
         {
             //todo:
             //if matrices not same size return false.
@@ -120,7 +120,7 @@ namespace csharp_rt
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
-        public static bool operator !=(matrix l, matrix r) => !(l == r);
+        public static bool operator !=(Matrix l, Matrix r) => !(l == r);
 
         /// <summary>
         /// matrix multiplication
@@ -129,9 +129,9 @@ namespace csharp_rt
         /// <param name="l">the left matrix</param>
         /// <param name="r">the right matrix</param>
         /// <returns>if 4x4 matrix the multiplied matrix.</returns>
-        public static matrix operator *(matrix l, matrix r)
+        public static Matrix operator *(Matrix l, Matrix r)
         {
-            matrix ret=new matrix(4);
+            Matrix ret=new Matrix(4);
             if (l.x_size == r.x_size && r.y_size == l.y_size &&l.x_size==4)
             {
                 for(int i = 0; i < 4; i++)
@@ -145,7 +145,7 @@ namespace csharp_rt
             }
             return ret;
         }
-        public static Tuple operator *(matrix l, Tuple r)
+        public static Tuple operator *(Matrix l, Tuple r)
         {
             // note to self find way to use loops to make this easier to read
             // may need to make tuples iterable to do that though...

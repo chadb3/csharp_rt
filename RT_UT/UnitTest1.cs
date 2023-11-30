@@ -261,7 +261,7 @@ namespace RT_UT
         [TestMethod]
         public void Constructing_and_Inspecting_a_4_x_4_Matrix()
         {
-            matrix M = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5.5, 6.5, 7.5, 8.5 }, { 9, 10, 11, 12 }, { 13.5, 14.5, 15.5, 16.5 } });
+            Matrix M = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5.5, 6.5, 7.5, 8.5 }, { 9, 10, 11, 12 }, { 13.5, 14.5, 15.5, 16.5 } });
             Assert.AreEqual(1, M[0, 0]);
             Assert.AreEqual(4, M[0, 3]);
             Assert.AreEqual(5.5, M[1, 0]);
@@ -274,7 +274,7 @@ namespace RT_UT
         [TestMethod]
         public void A_2_x_2_Matrix_Ought_To_Be_Repreentable()
         {
-            matrix M = new matrix(new double[,] { { -3, 5 }, { 1, -2 } });
+            Matrix M = new Matrix(new double[,] { { -3, 5 }, { 1, -2 } });
             Assert.AreEqual(-3, M[0, 0]);
             Assert.AreEqual(5, M[0, 1]);
             Assert.AreEqual(1, M[1, 0]);
@@ -283,7 +283,7 @@ namespace RT_UT
         [TestMethod]
         public void A_3x3_Matrix_Representation()
         {
-            matrix M = new matrix(new double[,] { { -3, 5, 0 }, { 1, -2, -7 }, { 0, 1, 1 } });
+            Matrix M = new Matrix(new double[,] { { -3, 5, 0 }, { 1, -2, -7 }, { 0, 1, 1 } });
             Assert.AreEqual(M[0, 0], -3);
             Assert.AreEqual(M[1, 1], -2);
             Assert.AreEqual(M[2, 2], 1);
@@ -291,8 +291,8 @@ namespace RT_UT
         [TestMethod]
         public void Matrix_equality_with_identical_matrices()
         {
-            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
-            matrix B = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            Matrix A = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            Matrix B = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
             //Note: I think I remember "Assert.AreEqual" uses "object.equals" and is not the same as "==" with default behavior. perhaps I can pass it to the .equals method.
             // and I may need to write code for that in matrix.
             //Assert.AreEqual(A, B);
@@ -301,8 +301,8 @@ namespace RT_UT
         [TestMethod]
         public void Matrix_inequality_with_identical_matrices()
         {
-            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
-            matrix B = new matrix(new double[,] { { 2, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            Matrix A = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            Matrix B = new Matrix(new double[,] { { 2, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
             //Note: I think I remember "Assert.AreEqual" uses "object.equals" and is not the same as "==" with default behavior. perhaps I can pass it to the .equals method.
             // and I may need to write code for that in matrix.
             //Assert.AreEqual(A, B);
@@ -311,31 +311,31 @@ namespace RT_UT
         [TestMethod]
         public void Matrix_equality_with_different_matrices()
         {
-            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5,6,7, 8 }, { 9,8, 7, 6 }, { 5,4, 3, 2 } });
-            matrix B = new matrix(new double[,] { { 2, 3, 4, 5 }, { 6, 7, 8, 9 }, { 8, 7, 6, 5 }, { 4, 3, 2, 1 } });
+            Matrix A = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5,6,7, 8 }, { 9,8, 7, 6 }, { 5,4, 3, 2 } });
+            Matrix B = new Matrix(new double[,] { { 2, 3, 4, 5 }, { 6, 7, 8, 9 }, { 8, 7, 6, 5 }, { 4, 3, 2, 1 } });
             Assert.IsTrue(A!= B);
         }
 
         [TestMethod]
         public void Multiplying_Two_matrices()
         {
-            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
-            matrix B = new matrix(new double[,] { { -2, 1, 2, 3 }, { 3, 2, 1, -1 }, { 4, 3, 6, 5 }, { 1, 2, 7, 8 } });
-            matrix answer = new matrix(new double[,] { { 20, 22, 50, 48 }, { 44, 54, 114, 108 }, { 40, 58, 110, 102 }, { 16, 26, 46, 42 } });
+            Matrix A = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            Matrix B = new Matrix(new double[,] { { -2, 1, 2, 3 }, { 3, 2, 1, -1 }, { 4, 3, 6, 5 }, { 1, 2, 7, 8 } });
+            Matrix answer = new Matrix(new double[,] { { 20, 22, 50, 48 }, { 44, 54, 114, 108 }, { 40, 58, 110, 102 }, { 16, 26, 46, 42 } });
             Assert.IsTrue((A * B) == answer);
         }
 
         [TestMethod]
         public void test_square_zero_matrix()
         {
-            matrix A = new matrix(4);
+            Matrix A = new Matrix(4);
             Assert.AreEqual(A[0, 0], 0);
         }
 
         [TestMethod]
         public void A_matrix_multiplied_by_a_tuple()
         {
-            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 2, 4, 4, 2 }, { 8, 6, 4, 1 }, { 0, 0, 0, 1 } });
+            Matrix A = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 2, 4, 4, 2 }, { 8, 6, 4, 1 }, { 0, 0, 0, 1 } });
             csharp_rt.Tuple B = new csharp_rt.Tuple(1, 2, 3, 1);
             csharp_rt.Tuple answer = new csharp_rt.Tuple(18, 24, 33, 1);
             Assert.IsTrue(A * B == answer);
@@ -343,9 +343,9 @@ namespace RT_UT
         [TestMethod]
         public void multiplying_a_matrix_b_the_identity_matrix()
         {
-            matrix A = new matrix(new double[,] { { 0, 1, 2, 4 }, { 1, 2, 4, 8 }, { 2, 4, 8, 16 }, { 4, 8, 16, 32 } });
+            Matrix A = new Matrix(new double[,] { { 0, 1, 2, 4 }, { 1, 2, 4, 8 }, { 2, 4, 8, 16 }, { 4, 8, 16, 32 } });
             //note: need to make a static one that I can use as needed I think?
-            matrix identity = new matrix(new double[,] { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
+            Matrix identity = new Matrix(new double[,] { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
             Assert.IsTrue(A * identity == A);
         }
     }

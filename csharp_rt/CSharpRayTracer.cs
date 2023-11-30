@@ -18,7 +18,7 @@ namespace csharp_rt
 
         static void matrix_tests()
         {
-            matrix mat = new matrix(5, 5);
+            Matrix mat = new Matrix(5, 5);
             Console.Out.WriteLine(mat[3, 90]);
             mat[1, 1] = 0;
             mat[9, 9] = 9;
@@ -29,8 +29,8 @@ namespace csharp_rt
 
         static void test_mult()
         {
-            matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
-            matrix B = new matrix(new double[,] { { -2, 3, 2, 3 }, { 3, 2, 1, -1 }, { 4, 3, 6, 5 }, { 1, 2, 7, 8 } });
+            Matrix A = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
+            Matrix B = new Matrix(new double[,] { { -2, 3, 2, 3 }, { 3, 2, 1, -1 }, { 4, 3, 6, 5 }, { 1, 2, 7, 8 } });
             var c = A * B;
         }
     }
