@@ -145,14 +145,14 @@ namespace csharp_rt
             }
             return ret;
         }
-        public static tuple operator *(matrix l, tuple r)
+        public static Tuple operator *(matrix l, Tuple r)
         {
             // note to self find way to use loops to make this easier to read
             // may need to make tuples iterable to do that though...
-            tuple ret = new tuple(0, 0, 0, 0);
+            Tuple ret = new Tuple(0, 0, 0, 0);
             if(l.x_size==4&&l.y_size==4)
             {
-                ret = new tuple(l[0, 0] * r.x + l[0, 1] * r.y + l[0, 2] * r.z + l[0, 3] * r.w, l[1, 0] * r.x + l[1, 1] * r.y + l[1, 2] * r.z + l[1, 3] * r.w, l[2, 0] * r.x + l[2, 1] * r.y + l[2, 2] * r.z + l[2, 3] * r.w, l[3, 0] * r.x + l[3, 1] * r.y + l[3, 2] * r.z + l[3, 3] * r.w);
+                ret = new Tuple(l[0, 0] * r.x + l[0, 1] * r.y + l[0, 2] * r.z + l[0, 3] * r.w, l[1, 0] * r.x + l[1, 1] * r.y + l[1, 2] * r.z + l[1, 3] * r.w, l[2, 0] * r.x + l[2, 1] * r.y + l[2, 2] * r.z + l[2, 3] * r.w, l[3, 0] * r.x + l[3, 1] * r.y + l[3, 2] * r.z + l[3, 3] * r.w);
                 
             }
             return ret;

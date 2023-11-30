@@ -6,8 +6,8 @@ namespace Z9_Project_01
 {
     class Projectile
     {
-        public tuple position, velocity;
-        public Projectile(tuple position, tuple velocity)
+        public csharp_rt.Tuple position, velocity;
+        public Projectile(csharp_rt.Tuple position, csharp_rt.Tuple velocity)
         {
             this.position = position;
             this.velocity = velocity;
@@ -16,8 +16,8 @@ namespace Z9_Project_01
 
     class Environment
     {
-        public tuple gravity, wind;
-        public Environment(tuple gravity, tuple wind)
+        public csharp_rt.Tuple gravity, wind;
+        public Environment(csharp_rt.Tuple gravity, csharp_rt.Tuple wind)
         {
             this.gravity = gravity;
             this.wind = wind;
@@ -25,8 +25,8 @@ namespace Z9_Project_01
 
         public Projectile tick(Projectile proj)
         {
-            tuple new_position = proj.position + proj.velocity;
-            tuple updated_velocity = proj.velocity + gravity + wind;
+            csharp_rt.Tuple new_position = proj.position + proj.velocity;
+            csharp_rt.Tuple updated_velocity = proj.velocity + gravity + wind;
             return new Projectile(new_position,updated_velocity);
         }
 
@@ -40,9 +40,9 @@ namespace Z9_Project_01
             canvas c = new canvas(900, 500);
             c.set_file_name("PROJECTILE");
             //Projectile proj = new Projectile(tuple.point(0, 1, 0), tuple.vector(1, 1, 0));
-            Environment env = new Environment(tuple.vector(0, -0.1, 0), tuple.vector(-0.01, 0, 0));
-            tuple start = tuple.point(0, 1, 0);
-            tuple velocity = tuple.vector(1, 1.8, 0).normalize() * 12.25;
+            Environment env = new Environment(csharp_rt.Tuple.vector(0, -0.1, 0), csharp_rt.Tuple.vector(-0.01, 0, 0));
+            csharp_rt.Tuple start = csharp_rt.Tuple.point(0, 1, 0);
+            csharp_rt.Tuple velocity = csharp_rt.Tuple.vector(1, 1.8, 0).normalize() * 12.25;
             Projectile proj = new Projectile(start, velocity);
             while(proj.position.y>=0)
             {

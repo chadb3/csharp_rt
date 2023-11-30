@@ -10,15 +10,15 @@ namespace RT_UT
         [TestMethod]
         public void tupleTest1()
         {
-            tuple a = new tuple(1, 2, 3, 4);
-            Assert.AreEqual(new tuple(1, 2, 3, 4), a);
+            csharp_rt.Tuple a = new csharp_rt.Tuple(1, 2, 3, 4);
+            Assert.AreEqual(new csharp_rt.Tuple(1, 2, 3, 4), a);
             //tuple b = tuple.pt(1, 2, 3);
         }
 
         [TestMethod]
         public void TupleWithwis1_0isapoint()
         {
-            tuple a = new tuple(4.3, -4.2, 3.1, 1.0);
+            csharp_rt.Tuple a = new csharp_rt.Tuple(4.3, -4.2, 3.1, 1.0);
             Assert.AreEqual(4.3, a.x);
             Assert.AreEqual(-4.2, a.y);
             Assert.AreEqual(3.1, a.z);
@@ -28,7 +28,7 @@ namespace RT_UT
         [TestMethod]
         public void ATupleWithwisZeroIsAVector()
         {
-            tuple a = new tuple(4.3, -4.2, 3.1, 0.0);
+            csharp_rt.Tuple a = new csharp_rt.Tuple(4.3, -4.2, 3.1, 0.0);
             Assert.AreEqual(4.3, a.x);
             Assert.AreEqual(-4.2, a.y);
             Assert.AreEqual(3.1, a.z);
@@ -38,96 +38,96 @@ namespace RT_UT
         [TestMethod]
         public void CreatingAPoint()
         {
-            tuple p = tuple.point(4, -4, 3);
-            Assert.AreEqual(new tuple(4, -4, 3, 1), p);
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(4, -4, 3);
+            Assert.AreEqual(new csharp_rt.Tuple(4, -4, 3, 1), p);
         }
 
         [TestMethod]
         public void CreatingAVector()
         {
-            tuple v = tuple.vector(4, -4, 3);
-            Assert.AreEqual(new tuple(4, -4, 3, 0), v);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(4, -4, 3);
+            Assert.AreEqual(new csharp_rt.Tuple(4, -4, 3, 0), v);
         }
 
         [TestMethod]
         public void AddingTwoTuples()
         {
-            tuple a1 = new tuple(3, -2, 5, 1);
-            tuple a2 = new tuple(-2, 3, 1, 0);
-            tuple ans = new tuple(1, 1, 6, 1);
+            csharp_rt.Tuple a1 = new csharp_rt.Tuple(3, -2, 5, 1);
+            csharp_rt.Tuple a2 = new csharp_rt.Tuple(-2, 3, 1, 0);
+            csharp_rt.Tuple ans = new csharp_rt.Tuple(1, 1, 6, 1);
             Assert.AreEqual(ans, a1 + a2);
         }
 
         [TestMethod]
         public void SubtractingTwoPoints()
         {
-            tuple p1 = tuple.point(3, 2, 1);
-            tuple p2 = tuple.point(5, 6, 7);
-            tuple ans = tuple.vector(-2, -4, -6);
+            csharp_rt.Tuple p1 = csharp_rt.Tuple.point(3, 2, 1);
+            csharp_rt.Tuple p2 = csharp_rt.Tuple.point(5, 6, 7);
+            csharp_rt.Tuple ans = csharp_rt.Tuple.vector(-2, -4, -6);
             Assert.AreEqual(ans, p1 - p2);
         }
 
         [TestMethod]
         public void SubtractingAVectorFromAPoint()
         {
-            tuple p = tuple.point(3, 2, 1);
-            tuple v = tuple.vector(5, 6, 7);
-            tuple ans = tuple.point(-2, -4, -6);
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(3, 2, 1);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(5, 6, 7);
+            csharp_rt.Tuple ans = csharp_rt.Tuple.point(-2, -4, -6);
             Assert.AreEqual(ans, p - v);
         }
 
         [TestMethod]
         public void SubtractingTwoVectors()
         {
-            tuple v1 = tuple.vector(2, 1, 1);
-            tuple v2 = tuple.vector(5, 6, 7);
-            tuple ans = tuple.vector(-2, -4, -6);
+            csharp_rt.Tuple v1 = csharp_rt.Tuple.vector(2, 1, 1);
+            csharp_rt.Tuple v2 = csharp_rt.Tuple.vector(5, 6, 7);
+            csharp_rt.Tuple ans = csharp_rt.Tuple.vector(-2, -4, -6);
         }
 
         [TestMethod]
         public void SubtractingAVectorFromTheZeroVector()
         {
-            tuple zero = tuple.vector(0, 0, 0);
-            tuple v = tuple.vector(1, -2, 3);
-            tuple ans = tuple.vector(-1, 2, -3);
+            csharp_rt.Tuple zero = csharp_rt.Tuple.vector(0, 0, 0);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(1, -2, 3);
+            csharp_rt.Tuple ans = csharp_rt.Tuple.vector(-1, 2, -3);
             Assert.AreEqual(ans, zero - v);
         }
 
         [TestMethod]
         public void NegatingATuple()
         {
-            tuple a = new tuple(1, -2, 3, -4);
-            tuple ans = new tuple(-1, 2, -3, 4);
+            csharp_rt.Tuple a = new csharp_rt.Tuple(1, -2, 3, -4);
+            csharp_rt.Tuple ans = new csharp_rt.Tuple(-1, 2, -3, 4);
             Assert.AreEqual(ans, -a);
         }
         [TestMethod]
         public void MultiplyingATupelByAScalar()
         {
-            tuple a = new tuple(1, -2, 3, -4);
-            tuple ans = new tuple(3.5, -7, 10.5, -14);
+            csharp_rt.Tuple a = new csharp_rt.Tuple(1, -2, 3, -4);
+            csharp_rt.Tuple ans = new csharp_rt.Tuple(3.5, -7, 10.5, -14);
             Assert.AreEqual(ans, a * 3.5);
         }
 
         [TestMethod]
         public void MultiplyingATupleByAFraction()
         {
-            tuple a = new tuple(1, -2, 3, -4);
-            tuple ans = new tuple(0.5, -1, 1.5, -2);
+            csharp_rt.Tuple a = new csharp_rt.Tuple(1, -2, 3, -4);
+            csharp_rt.Tuple ans = new csharp_rt.Tuple(0.5, -1, 1.5, -2);
             Assert.AreEqual(ans, a * 0.5);
         }
 
         [TestMethod]
         public void DividingATupleByAScalar()
         {
-            tuple a = new tuple(1, -2, 3, -4);
-            tuple ans = new tuple(0.5, -1, 1.5, -2);
+            csharp_rt.Tuple a = new csharp_rt.Tuple(1, -2, 3, -4);
+            csharp_rt.Tuple ans = new csharp_rt.Tuple(0.5, -1, 1.5, -2);
             Assert.AreEqual(ans, a / 2);
         }
 
         [TestMethod]
         public void Computing_The_Magnitude_of_vector_1_0_0()
         {
-            tuple v = tuple.vector(1, 0, 0);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(1, 0, 0);
             double ans = 1;
             Assert.AreEqual(ans, v.magnitude());
         }
@@ -135,7 +135,7 @@ namespace RT_UT
         [TestMethod]
         public void Computing_The_Magnitude_of_Vector_0_1_0()
         {
-            tuple v = tuple.vector(0, 1, 0);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(0, 1, 0);
             double ans = 1;
             Assert.AreEqual(ans, v.magnitude());
         }
@@ -143,7 +143,7 @@ namespace RT_UT
         [TestMethod]
         public void Computing_The_Magnitude_of_Vector_0_0_1()
         {
-            tuple v = tuple.vector(0, 0, 1);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(0, 0, 1);
             double ans = 1;
             Assert.AreEqual(ans, v.magnitude());
         }
@@ -151,7 +151,7 @@ namespace RT_UT
         [TestMethod]
         public void Computing_THe_Magnitude_of_Vector_1_2_3()
         {
-            tuple v = tuple.vector(1, 2, 3);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(1, 2, 3);
             double ans = Math.Sqrt(14);
             Assert.AreEqual(ans, v.magnitude());
         }
@@ -159,7 +159,7 @@ namespace RT_UT
         [TestMethod]
         public void Computing_The_Magnitude_Of_Vector_neg1_neg2_neg3()
         {
-            tuple v = tuple.vector(-1, -2, -3);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(-1, -2, -3);
             double ans = Math.Sqrt(14);
             Assert.AreEqual(ans, v.magnitude());
         }
@@ -167,23 +167,23 @@ namespace RT_UT
         [TestMethod]
         public void Normalizing_vector_4_0_0_Gives_1_0_0()
         {
-            tuple v = tuple.vector(4, 0, 0);
-            tuple ans = tuple.vector(1, 0, 0);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(4, 0, 0);
+            csharp_rt.Tuple ans = csharp_rt.Tuple.vector(1, 0, 0);
             Assert.AreEqual(ans, v.normalize());
         }
 
         [TestMethod]
         public void Normalizing_Vector_1_2_3()
         {
-            tuple v = tuple.vector(1, 2, 3);
-            tuple ans = tuple.vector(1 / Math.Sqrt(14), 2 / Math.Sqrt(14), 3 / Math.Sqrt(14));
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(1, 2, 3);
+            csharp_rt.Tuple ans = csharp_rt.Tuple.vector(1 / Math.Sqrt(14), 2 / Math.Sqrt(14), 3 / Math.Sqrt(14));
             Assert.AreEqual(ans, v.normalize());
         }
 
         [TestMethod]
         public void The_Magnitude_Of_A_Normalized_Vector()
         {
-            tuple v = tuple.vector(1, 2, 3);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(1, 2, 3);
             double ans = 1;
             Assert.AreEqual(ans, v.normalize().magnitude());
         }
@@ -191,8 +191,8 @@ namespace RT_UT
         [TestMethod]
         public void The_Dot_Product_Of_Two_Tuples()
         {
-            tuple a = tuple.vector(1, 2, 3);
-            tuple b = tuple.vector(2, 3, 4);
+            csharp_rt.Tuple a = csharp_rt.Tuple.vector(1, 2, 3);
+            csharp_rt.Tuple b = csharp_rt.Tuple.vector(2, 3, 4);
             double ans = 20;
             Assert.AreEqual(ans, a.dot(b));
         }
@@ -200,10 +200,10 @@ namespace RT_UT
         [TestMethod]
         public void TheCrossProductOfTwoVectors()
         {
-            tuple a = tuple.vector(1, 2, 3);
-            tuple b = tuple.vector(2, 3, 4);
-            tuple ans1 = tuple.vector(-1, 2, -1);
-            tuple ans2 = tuple.vector(1, -2, 1);
+            csharp_rt.Tuple a = csharp_rt.Tuple.vector(1, 2, 3);
+            csharp_rt.Tuple b = csharp_rt.Tuple.vector(2, 3, 4);
+            csharp_rt.Tuple ans1 = csharp_rt.Tuple.vector(-1, 2, -1);
+            csharp_rt.Tuple ans2 = csharp_rt.Tuple.vector(1, -2, 1);
             Assert.AreEqual(ans1, a.cross(b));
             Assert.AreEqual(ans2, b.cross(a));
         }
@@ -336,8 +336,8 @@ namespace RT_UT
         public void A_matrix_multiplied_by_a_tuple()
         {
             matrix A = new matrix(new double[,] { { 1, 2, 3, 4 }, { 2, 4, 4, 2 }, { 8, 6, 4, 1 }, { 0, 0, 0, 1 } });
-            tuple B = new tuple(1, 2, 3, 1);
-            tuple answer = new tuple(18, 24, 33, 1);
+            csharp_rt.Tuple B = new csharp_rt.Tuple(1, 2, 3, 1);
+            csharp_rt.Tuple answer = new csharp_rt.Tuple(18, 24, 33, 1);
             Assert.IsTrue(A * B == answer);
         }
         [TestMethod]
