@@ -348,5 +348,25 @@ namespace RT_UT
             Matrix identity = new Matrix(new double[,] { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
             Assert.IsTrue(A * identity == A);
         }
+        /// <summary>
+        /// Testing new identity matrix static val I can call upon.
+        /// still investigating a global way to store a identity matrix so I don't have to do "Matrix.Identity()"
+        /// </summary>
+        [TestMethod]
+        public void multiplying_a_matrix_b_the_identity_matrix2()
+        {
+            Matrix A = new Matrix(new double[,] { { 0, 1, 2, 4 }, { 1, 2, 4, 8 }, { 2, 4, 8, 16 }, { 4, 8, 16, 32 } });
+            //note: need to make a static one that I can use as needed I think?
+            Matrix identity = Matrix.identity();
+            Assert.IsTrue(A * identity == A);
+        }
+
+        [TestMethod]
+        public void Calculating_the_determinate_of_a_2_x_2_matrix()
+        {
+            Matrix A = new Matrix(new double[,] {{ 1, 5 },{ -3, 2 }});
+            int answer = 17;
+            Assert.AreEqual(17, A.determinate());
+        }
     }
 }

@@ -158,5 +158,10 @@ namespace csharp_rt
             return ret;
         }
 
+        public static Matrix identity()
+        {
+            return new Matrix(new double[,] { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
+        }
+
     }
 }
