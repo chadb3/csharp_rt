@@ -162,6 +162,19 @@ namespace csharp_rt
         {
             return new Matrix(new double[,] { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
         }
-
+        /// <summary>
+        /// determinate
+        /// made it det to save space. 
+        /// </summary>
+        /// <returns>[0,0]*[1,1]-[0,1]*[1,0]</returns>
+        public double det()
+        {
+            double ans = 0.0f;
+            if (this.x_size == 2 && this.y_size == 2)
+            {
+                ans = this._matrix[0, 0] * this._matrix[1, 1] - this._matrix[0, 1] * this._matrix[1, 0];
+            }
+            return ans;
+        }
     }
 }

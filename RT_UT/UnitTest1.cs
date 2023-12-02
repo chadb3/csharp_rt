@@ -366,7 +366,7 @@ namespace RT_UT
         {
             Matrix A = new Matrix(new double[,] {{ 1, 5 },{ -3, 2 }});
             int answer = 17;
-            Assert.AreEqual(17, A.determinate());
+            Assert.AreEqual(answer, A.det());
         }
     }
 }
