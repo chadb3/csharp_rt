@@ -368,5 +368,18 @@ namespace RT_UT
             int answer = 17;
             Assert.AreEqual(answer, A.det());
         }
+        [TestMethod]
+        public void A_Submatrix_of_a_3x3_matrix_is_a_2x2_matrix()
+        {
+            Matrix A = new Matrix(new double[,] { { 1, 5, 0 }, { -3, 2, 7 }, { 0, 6, -3 } });
+            Matrix SUBMAT_A = new Matrix(new double[,] { { -3, 2 }, { 0, 6 } });
+            Assert.IsTrue(A.submat()== SUBMAT_A);
+        }
+        [TestMethod]
+        public void A_Submatrix_of_a_4x4_matrix_is_a_3x3_matrix()
+        {
+            Matrix A = new Matrix(new double[,] { { -6, 1, 1, 6 }, { -8, 5, 8, 6 }, { -1, 0, 8, 2 }, { -7, 1, -1, 1 } });
+            Matrix SUBMAT_A = new Matrix(new double[,] { { -6, 1, 6 }, { -8, 8, 6 }, { -7, -1, 1 } });
+            Assert.IsTrue(A.submat()==SUBMAT_A);
     }
 }
