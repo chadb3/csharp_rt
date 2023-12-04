@@ -373,13 +373,13 @@ namespace RT_UT
         {
             Matrix A = new Matrix(new double[,] { { 1, 5, 0 }, { -3, 2, 7 }, { 0, 6, -3 } });
             Matrix SUBMAT_A = new Matrix(new double[,] { { -3, 2 }, { 0, 6 } });
-            Assert.IsTrue(A.submat()== SUBMAT_A);
+            Assert.IsTrue(A.subMat(0,2)== SUBMAT_A);
         }
         [TestMethod]
         public void A_Submatrix_of_a_4x4_matrix_is_a_3x3_matrix()
         {
             Matrix A = new Matrix(new double[,] { { -6, 1, 1, 6 }, { -8, 5, 8, 6 }, { -1, 0, 8, 2 }, { -7, 1, -1, 1 } });
             Matrix SUBMAT_A = new Matrix(new double[,] { { -6, 1, 6 }, { -8, 8, 6 }, { -7, -1, 1 } });
-            Assert.IsTrue(A.submat()==SUBMAT_A);
+            Assert.IsTrue(A.subMat(2,1)==SUBMAT_A);
     }
 }

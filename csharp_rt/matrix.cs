@@ -176,5 +176,12 @@ namespace csharp_rt
             }
             return ans;
         }
+
+        public Matrix subMat(int r, int c)
+        {
+            Matrix ret = new Matrix(new double[this.x_size-1,this.y_size-1]) ;
+
+            return ret;
+        }
     }
 }
