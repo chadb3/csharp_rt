@@ -176,11 +176,27 @@ namespace csharp_rt
             }
             return ans;
         }
-
-        public Matrix subMat(int r, int c)
+        /// <summary>
+        /// Submatrix
+        /// </summary>
+        /// <param name="row">Row to ignore in new matrix</param>
+        /// <param name="col">Col to ignore in new matrix</param>
+        /// <returns></returns>
+        public Matrix subMat(int row, int col)
         {
-            Matrix ret = new Matrix(new double[this.x_size-1,this.y_size-1]) ;
+            var new_x = this.x_size - 1;
+            var new_y = this.y_size - 1;
+            Matrix ret = new Matrix(new double[new_x,new_y]) ;
+            for (int i = 0;i<this.x_size;i++)
+            {
+                for (int j = 0; j < this.y_size; j++)
+                {
+                    if(i!=row||j!=col)
+                    {
 
+                    }
+                }
+            }
             return ret;
         }
     }
