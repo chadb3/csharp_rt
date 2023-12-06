@@ -193,7 +193,6 @@ namespace csharp_rt
             Console.WriteLine(ret.x_size);
             for (int i = 0;i<this.x_size;i++)
             {
-               
                 for (int j = 0; j < this.y_size; j++)
                 {
                     if (i != row && j != col)
@@ -201,7 +200,12 @@ namespace csharp_rt
                         Console.WriteLine($"i:{i} j:{j}\n");
                         ret[new_i, new_j] = this._matrix[i, j];
                         new_j++; 
+                        
                     }
+                }
+                if(i!=row)
+                {
+                    new_i++;
                 }
                 new_j = 0;
             }
