@@ -186,16 +186,19 @@ namespace csharp_rt
         {
             var new_x = this.x_size - 1;
             var new_y = this.y_size - 1;
+            var new_i = 0;
+            var new_j=0;
             Matrix ret = new Matrix(new double[new_x,new_y]) ;
+            Console.WriteLine(this.x_size);
+            Console.WriteLine(ret.x_size);
             for (int i = 0;i<this.x_size;i++)
             {
+               
                 for (int j = 0; j < this.y_size; j++)
                 {
-                    if(i!=row||j!=col)
-                    {
-
-                    }
+                  
                 }
+
             }
             return ret;
         }
