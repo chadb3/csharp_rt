@@ -196,9 +196,14 @@ namespace csharp_rt
                
                 for (int j = 0; j < this.y_size; j++)
                 {
-                  
+                    if (i != row && j != col)
+                    {
+                        Console.WriteLine($"i:{i} j:{j}\n");
+                        ret[new_i, new_j] = this._matrix[i, j];
+                        new_j++; 
+                    }
                 }
-
+                new_j = 0;
             }
             return ret;
         }
