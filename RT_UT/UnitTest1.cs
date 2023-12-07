@@ -382,5 +382,14 @@ namespace RT_UT
             Matrix SUBMAT_A = new Matrix(new double[,] { { -6, 1, 6 }, { -8, 8, 6 }, { -7, -1, 1 } });
             Assert.IsTrue(A.subMat(2, 1) == SUBMAT_A);
         }
+        [TestMethod]
+        public void Calculating_a_minor_of_a_3x2_matrix()
+        {
+            Matrix A = new Matrix(new double[,] { { 3, 5, 0 }, { 2, -1, 7 }, { 6, -1, 5 } });
+            Matrix B = A.subMat(1, 0);
+            var det_b = B.det();
+            var minor_a = A.minor(1, 0);
+            Assert.AreEqual(det_b, minor_a);
+        }
     }
 }
