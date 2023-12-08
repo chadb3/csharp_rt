@@ -169,7 +169,7 @@ namespace csharp_rt
         /// <returns>[0,0]*[1,1]-[0,1]*[1,0]</returns>
         public double det()
         {
-            double ans = 0.0f;
+            double ans = 0.0d;
             if (this.x_size == 2 && this.y_size == 2)
             {
                 ans = this._matrix[0, 0] * this._matrix[1, 1] - this._matrix[0, 1] * this._matrix[1, 0];
@@ -209,6 +209,13 @@ namespace csharp_rt
                 }
                 new_j = 0;
             }
+            return ret;
+        }
+
+        public double minor(int row,int col)
+        {
+            double ret = 0.0d;
+            ret = this.subMat(1, 0).det();
             return ret;
         }
     }
