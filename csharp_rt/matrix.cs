@@ -157,6 +157,14 @@ namespace csharp_rt
             }
             return ret;
         }
+        public override bool Equals(object obj)
+        {
+            return this==(Matrix)obj;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
         public static Matrix identity()
         {
