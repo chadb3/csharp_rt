@@ -14,6 +14,7 @@ namespace csharp_rt
             Console.Out.WriteLine("ENDING APPLICATION");
             test_mult();
             testSubMat();
+            testSubMat2();
             return 2989;
         }
 
@@ -40,6 +41,15 @@ namespace csharp_rt
             Matrix A = new Matrix(new double[,] { { -6, 1, 1, 6 }, { -8, 5, 8, 6 }, { -1, 0, 8, 2 }, { -7, 1, -1, 1 } });
             Matrix B = A.subMat(2, 1);
             Console.WriteLine("done");
+        }
+
+        static void testSubMat2()
+        {
+            Matrix A = new Matrix(new double[,] { { 3, 5, 0 }, { 2, -1, -7 }, { 6, -1, 5 } });
+            Matrix subA = A.subMat(0, 0);
+            Console.WriteLine(subA.det());
+            Matrix subA2=A.subMat(1, 0);
+            Console.WriteLine("cheese");
         }
     }
 }

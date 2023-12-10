@@ -381,6 +381,7 @@ namespace RT_UT
             Matrix A = new Matrix(new double[,] { { -6, 1, 1, 6 }, { -8, 5, 8, 6 }, { -1, 0, 8, 2 }, { -7, 1, -1, 1 } });
             Matrix SUBMAT_A = new Matrix(new double[,] { { -6, 1, 6 }, { -8, 8, 6 }, { -7, -1, 1 } });
             Assert.IsTrue(A.subMat(2, 1) == SUBMAT_A);
+            Assert.AreEqual(A.subMat(2, 1), SUBMAT_A);
         }
         [TestMethod]
         public void Calculating_a_minor_of_a_3x2_matrix()
@@ -390,6 +391,23 @@ namespace RT_UT
             var det_b = B.det();
             var minor_a = A.minor(1, 0);
             Assert.AreEqual(det_b, minor_a);
+        }
+        [TestMethod]
+        public void Calculating_a_cofactor_of_a_3x3_matrix()
+        {
+            Matrix A =new Matrix(new double[,] { { 3, 5, 0 }, { 2, -1, -7 }, { 6, -1, 5 } });
+            var minorA = A.minor(0, 0);
+            var cofactorA = A.cofactor(0, 0);
+
+            Assert.AreEqual(-12,minorA);
+            Assert.AreEqual(cofactorA, -12);
+            Assert.AreEqual(minorA, cofactorA);
+            var minorA1 = A.minor(1, 0);
+            var cofactorA1 = A.cofactor(1, 0);
+
+            Assert.AreEqual(minorA1, 25);
+            Assert.AreEqual(cofactorA1, -25);
+
         }
     }
 }

@@ -192,6 +192,8 @@ namespace csharp_rt
         /// <returns></returns>
         public Matrix subMat(int row, int col)
         {
+           
+                
             var new_x = this.x_size - 1;
             var new_y = this.y_size - 1;
             var new_i = 0;
@@ -205,7 +207,7 @@ namespace csharp_rt
                 {
                     if (i != row && j != col)
                     {
-                        Console.WriteLine($"i:{i} j:{j}\n");
+                        //Console.WriteLine($"i:{i} j:{j}\n");
                         ret[new_i, new_j] = this._matrix[i, j];
                         new_j++; 
                         
@@ -223,7 +225,21 @@ namespace csharp_rt
         public double minor(int row,int col)
         {
             double ret = 0.0d;
-            ret = this.subMat(1, 0).det();
+            ret = this.subMat(row,col).det();
+            return ret;
+        }
+
+        public double cofactor(int row,int col)
+        {
+            double ret = 0.0d;
+            if (row + col % 2 == 0)
+            {
+                ret = minor(row, col);
+            }
+            else
+            {
+                ret = -minor(row, col);
+            }
             return ret;
         }
     }
