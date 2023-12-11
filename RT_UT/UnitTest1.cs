@@ -400,14 +400,33 @@ namespace RT_UT
             var cofactorA = A.cofactor(0, 0);
 
             Assert.AreEqual(-12,minorA);
-            Assert.AreEqual(cofactorA, -12);
+            Assert.AreEqual(-12,cofactorA);
             Assert.AreEqual(minorA, cofactorA);
             var minorA1 = A.minor(1, 0);
             var cofactorA1 = A.cofactor(1, 0);
+            Assert.AreEqual(25, minorA1);
+            Assert.AreEqual(-25, cofactorA1);
 
-            Assert.AreEqual(minorA1, 25);
-            Assert.AreEqual(cofactorA1, -25);
+        }
+        [TestMethod]
+        public void Calculating_the_determinant_of_a_3x3_matrix()
+        {
+            Matrix A = new Matrix(new double[,] { { 1, 2, 6 }, { -5, 8, -4 }, { 2, 6, 4 } });
+            Assert.AreEqual(56, A.cofactor(0, 0));
+            Assert.AreEqual(12, A.cofactor(0, 1));
+            Assert.AreEqual(-46, A.cofactor(0, 2));
+            Assert.AreEqual(-196, A.det());
+        }
 
+        [TestMethod]
+        public void Calculating_the_determinant_of_a_4x4_matrix()
+        {
+            Matrix A = new Matrix(new double[,] { { -2, -8, 3, 5 }, { -3, 1, 7, 3 }, { 1, 2, -9, 6 }, { -6, 7, 7, -9 } });
+            Assert.AreEqual(690, A.cofactor(0, 0));
+            Assert.AreEqual(447, A.cofactor(0, 1));
+            Assert.AreEqual(210, A.cofactor(0, 2));
+            Assert.AreEqual(51, A.cofactor(0, 3));
+            Assert.AreEqual(-4071, A.det());
         }
     }
 }

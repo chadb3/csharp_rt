@@ -35,14 +35,20 @@ namespace csharp_rt
             Matrix B = new Matrix(new double[,] { { -2, 3, 2, 3 }, { 3, 2, 1, -1 }, { 4, 3, 6, 5 }, { 1, 2, 7, 8 } });
             var c = A * B;
         }
-
+        /// <summary>
+        /// my test to examine the submat function
+        /// </summary>
         static void testSubMat()
         {
             Matrix A = new Matrix(new double[,] { { -6, 1, 1, 6 }, { -8, 5, 8, 6 }, { -1, 0, 8, 2 }, { -7, 1, -1, 1 } });
             Matrix B = A.subMat(2, 1);
             Console.WriteLine("done");
         }
-
+        /// <summary>
+        /// This was to test the oddities I was getting with cofactor.
+        /// I found that I had accidently hard coded my minor to get the determinant of submatrix(1,0). I changed it to (row,col) from (1,0) resolving the issue.
+        /// This was becuase I only had one unit test to test for minor that was the (1,0) value. 
+        /// </summary>
         static void testSubMat2()
         {
             Matrix A = new Matrix(new double[,] { { 3, 5, 0 }, { 2, -1, -7 }, { 6, -1, 5 } });

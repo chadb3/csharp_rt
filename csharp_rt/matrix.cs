@@ -157,6 +157,12 @@ namespace csharp_rt
             }
             return ret;
         }
+        /// <summary>
+        /// .equals should work now.
+        /// This will allow AreEqual to work in unit testing
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             return this==(Matrix)obj;
@@ -192,8 +198,6 @@ namespace csharp_rt
         /// <returns></returns>
         public Matrix subMat(int row, int col)
         {
-           
-                
             var new_x = this.x_size - 1;
             var new_y = this.y_size - 1;
             var new_i = 0;
@@ -207,6 +211,7 @@ namespace csharp_rt
                 {
                     if (i != row && j != col)
                     {
+                        // Debug print: note for permanent removal 
                         //Console.WriteLine($"i:{i} j:{j}\n");
                         ret[new_i, new_j] = this._matrix[i, j];
                         new_j++; 
