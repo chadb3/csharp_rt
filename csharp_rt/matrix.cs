@@ -188,6 +188,13 @@ namespace csharp_rt
             {
                 ans = this._matrix[0, 0] * this._matrix[1, 1] - this._matrix[0, 1] * this._matrix[1, 0];
             }
+            else
+            {
+                for(int i=0;i<this.x_size;i++)
+                {
+                    ans += this._matrix[0, i] * cofactor(0, i);
+                }
+            }
             return ans;
         }
         /// <summary>
