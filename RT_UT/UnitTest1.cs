@@ -428,5 +428,20 @@ namespace RT_UT
             Assert.AreEqual(51, A.cofactor(0, 3));
             Assert.AreEqual(-4071, A.det());
         }
+
+        [TestMethod]
+        public void Testing_an_invertible_matrix_for_invertibility()
+        {
+            Matrix A = new Matrix(new double[,] { { 6, 4, 4, 4 }, { 5, 5, 7, 6 }, { 4, -9, 3, -7 }, { 9, 1, 7, -6 } });
+            Assert.AreEqual(-2120, A.det());
+            Assert.IsTrue(A.isInvertible());
+        }
+        [TestMethod]
+        public void Testing_a_noninvertible_matrix_for_invertibility()
+        {
+            Matrix A = new Matrix(new double[,] { { -4, 2, -2, 3 }, { 9, 6, 2, 6 }, { 0, 5, 1, -5 }, { 0, 0, 0, 0 } });
+            Assert.AreEqual(0, A.det());
+            Assert.IsFalse(A.isInvertible());
+        }
     }
 }

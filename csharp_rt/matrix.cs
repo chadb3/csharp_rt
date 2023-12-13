@@ -254,5 +254,27 @@ namespace csharp_rt
             }
             return ret;
         }
+        /// <summary>
+        /// Not sure if this is used outside of the unit tests
+        /// returns true if det !=0
+        /// if true then the matrix is invertible
+        /// </summary>
+        /// <returns></returns>
+        public bool isInvertible()
+        {
+            bool ret = false;
+            if(det()!=0)
+            {
+                ret = true;
+            }
+            return ret;
+        }
+
+        public Matrix inverse()
+        {
+            Matrix ret = new Matrix(this.x_size);
+
+            return ret;
+        }
     }
 }
