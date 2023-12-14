@@ -273,6 +273,10 @@ namespace csharp_rt
         public Matrix inverse()
         {
             Matrix ret = new Matrix(this.x_size);
+            if (isInvertible())
+            {
+
+            }
 
             return ret;
         }
