@@ -275,7 +275,13 @@ namespace csharp_rt
             Matrix ret = new Matrix(this.x_size);
             if (isInvertible())
             {
+                for(int row = 0; row < this.x_size; row++)
+                {
+                    for(int col = 0; col < this.y_size; col++)
+                    {
 
+                    }
+                }
             }
 
             return ret;
