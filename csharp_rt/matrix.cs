@@ -97,6 +97,8 @@ namespace csharp_rt
             //if matrices not same size return false.
             //else iterate and find out if equal...
             // need to work on this. working on getting git setup in vs.
+
+            //also need to compare values as a range.
             bool returnValue = false;
             if (l.x_size == r.x_size && l.y_size == r.y_size)
             {
@@ -210,8 +212,9 @@ namespace csharp_rt
             var new_i = 0;
             var new_j=0;
             Matrix ret = new Matrix(new double[new_x,new_y]) ;
-            Console.WriteLine(this.x_size);
-            Console.WriteLine(ret.x_size);
+            /*Debug Prints*/
+            //Console.WriteLine(this.x_size);
+            //Console.WriteLine(ret.x_size);
             for (int i = 0;i<this.x_size;i++)
             {
                 for (int j = 0; j < this.y_size; j++)
@@ -244,14 +247,19 @@ namespace csharp_rt
         public double cofactor(int row,int col)
         {
             double ret = 0.0d;
-            if (row + col % 2 == 0)
+            //string debug="init";
+            if ((row + col) % 2 == 0)
             {
                 ret = minor(row, col);
+                //debug = "even";
             }
             else
             {
                 ret = -minor(row, col);
+                //debug = "odd";
             }
+            /* Debug Print */
+            //Console.WriteLine($"cofactor{row}-{col}: {debug } ~~ {minor(row,col)}");
             return ret;
         }
         /// <summary>
@@ -281,7 +289,7 @@ namespace csharp_rt
                     for(int col = 0; col < this.y_size; col++)
                     {
                         var c = this.cofactor(row, col);
-                        ret[row,col] = c/det();
+                        ret[col,row] = c/this.det();
                     }
                 }
             }

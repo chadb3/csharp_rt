@@ -443,5 +443,23 @@ namespace RT_UT
             Assert.AreEqual(0, A.det());
             Assert.IsFalse(A.isInvertible());
         }
+
+        [TestMethod]
+        public void Calculating_the_inverse_of_a_matrix()
+        {
+            Matrix A = new Matrix(new double[,] { { -5, 2, 6, -8 }, { 1, -5, 1, 8 }, { 7, 7, -6, -7 }, { 1, -3, 7, 4 } });
+            Matrix B = A.inverse();
+            Matrix bShould = new Matrix(new double[,] { { 0.21805, 0.45113, 0.24060, -0.04511 }, { -0.80827, -1.45677, -0.44361, 0.52068 }, { -0.07895, -0.22368, -0.05263, 0.19737 }, { -0.52256, -0.81391, -0.30075, 0.30639 } });
+
+            var det_a = A.det();
+            Assert.AreEqual(532, det_a);
+            var a_cofactor = A.cofactor(2, 3);
+            Assert.AreEqual(-160, a_cofactor);
+            var a_cofactor2= A.cofactor(3, 2);
+            Assert.AreEqual(105, a_cofactor2);
+            Assert.AreEqual(-160/532d, B[3, 2]);
+            Assert.AreEqual(105/532d, B[2, 3]);
+            Assert.AreEqual(bShould, B);
+        }
     }
 }
