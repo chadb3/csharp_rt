@@ -248,6 +248,7 @@ namespace csharp_rt
         {
             double ret = 0.0d;
             //string debug="init";
+            // PEMDAS
             if ((row + col) % 2 == 0)
             {
                 ret = minor(row, col);
