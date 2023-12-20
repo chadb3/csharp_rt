@@ -268,7 +268,7 @@ namespace RT_UT
             Assert.AreEqual(7.5, M[1, 2]);
             Assert.AreEqual(11, M[2, 2]);
             Assert.AreEqual(13.5, M[3, 0]);
-            Assert.AreEqual(15.5,M[3,2]);
+            Assert.AreEqual(15.5, M[3, 2]);
         }
 
         [TestMethod]
@@ -311,9 +311,9 @@ namespace RT_UT
         [TestMethod]
         public void Matrix_equality_with_different_matrices()
         {
-            Matrix A = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5,6,7, 8 }, { 9,8, 7, 6 }, { 5,4, 3, 2 } });
+            Matrix A = new Matrix(new double[,] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 8, 7, 6 }, { 5, 4, 3, 2 } });
             Matrix B = new Matrix(new double[,] { { 2, 3, 4, 5 }, { 6, 7, 8, 9 }, { 8, 7, 6, 5 }, { 4, 3, 2, 1 } });
-            Assert.IsTrue(A!= B);
+            Assert.IsTrue(A != B);
         }
 
         [TestMethod]
@@ -364,7 +364,7 @@ namespace RT_UT
         [TestMethod]
         public void Calculating_the_determinate_of_a_2_x_2_matrix()
         {
-            Matrix A = new Matrix(new double[,] {{ 1, 5 },{ -3, 2 }});
+            Matrix A = new Matrix(new double[,] { { 1, 5 }, { -3, 2 } });
             int answer = 17;
             Assert.AreEqual(answer, A.det());
         }
@@ -373,7 +373,7 @@ namespace RT_UT
         {
             Matrix A = new Matrix(new double[,] { { 1, 5, 0 }, { -3, 2, 7 }, { 0, 6, -3 } });
             Matrix SUBMAT_A = new Matrix(new double[,] { { -3, 2 }, { 0, 6 } });
-            Assert.IsTrue(A.subMat(0,2)== SUBMAT_A);
+            Assert.IsTrue(A.subMat(0, 2) == SUBMAT_A);
         }
         [TestMethod]
         public void A_Submatrix_of_a_4x4_matrix_is_a_3x3_matrix()
@@ -395,12 +395,12 @@ namespace RT_UT
         [TestMethod]
         public void Calculating_a_cofactor_of_a_3x3_matrix()
         {
-            Matrix A =new Matrix(new double[,] { { 3, 5, 0 }, { 2, -1, -7 }, { 6, -1, 5 } });
+            Matrix A = new Matrix(new double[,] { { 3, 5, 0 }, { 2, -1, -7 }, { 6, -1, 5 } });
             var minorA = A.minor(0, 0);
             var cofactorA = A.cofactor(0, 0);
 
-            Assert.AreEqual(-12,minorA);
-            Assert.AreEqual(-12,cofactorA);
+            Assert.AreEqual(-12, minorA);
+            Assert.AreEqual(-12, cofactorA);
             Assert.AreEqual(minorA, cofactorA);
             var minorA1 = A.minor(1, 0);
             var cofactorA1 = A.cofactor(1, 0);
@@ -455,11 +455,30 @@ namespace RT_UT
             Assert.AreEqual(532, det_a);
             var a_cofactor = A.cofactor(2, 3);
             Assert.AreEqual(-160, a_cofactor);
-            var a_cofactor2= A.cofactor(3, 2);
+            var a_cofactor2 = A.cofactor(3, 2);
             Assert.AreEqual(105, a_cofactor2);
-            Assert.AreEqual(-160/532d, B[3, 2]);
-            Assert.AreEqual(105/532d, B[2, 3]);
+            Assert.AreEqual(-160 / 532d, B[3, 2]);
+            Assert.AreEqual(105 / 532d, B[2, 3]);
             Assert.AreEqual(bShould, B);
+        }
+
+        [TestMethod]
+        public void calculating_the_inverse_of_another_matrix()
+        {
+            Matrix A = new Matrix(new double[,] { { 8, -5, 9, 2 }, { 7, 5, 6, 1 }, { -6, 0, 9, 6 }, { -3, 0, -9, -4 } });
+            Matrix ret = A.inverse();
+            Matrix invA = new Matrix(new double[,] { { -0.15385, -.15385, -.28205, -0.53846 }, { -0.07692, 0.12308, 0.02564, 0.03077 }, { 0.35897, 0.35897, .43590, 0.92308 }, { -0.69231, -0.69231, -0.76923, -1.92308 } });
+            Assert.AreEqual(ret, invA);
+        }
+        [TestMethod]
+        public void calculating_thie_inverse_of_a_third_matrix()
+        {
+            Matrix A = new Matrix(new double[,] { { 9, 3, 0, 9 }, { -5, -2, -6, -3 },  { -4, 9, 6, 4 }, { -7, 6, 6, 2 } });
+            Matrix ans = A.inverse();
+            // used GNU Octave to help generate the below.
+            // most of my failed tests come from mistyping something. 
+            Matrix B = new Matrix(new double[,] { { -0.040741, -0.077778, 0.144444, -0.222222 }, { -0.077778, 0.033333, 0.366667, -0.333333 }, { -0.029012, -0.146296, -0.109259, 0.129630 }, { 0.177778, 0.066667, -0.266667, 0.333333 } });
+            Assert.AreEqual(ans, B);
         }
     }
 }
