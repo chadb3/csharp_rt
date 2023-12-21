@@ -299,5 +299,15 @@ namespace csharp_rt
 
             return ret;
         }
+
+        public static Matrix translation(double x, double y, double z)
+        {
+            Matrix returnMat = Matrix.identity();
+            returnMat[0, 3] = x;
+            returnMat[1, 3] = y;
+            returnMat[2,3] = z; 
+            //x,y,z are stacked in the last col from 0-2
+            return returnMat;
+        }
     }
 }

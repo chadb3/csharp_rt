@@ -480,5 +480,33 @@ namespace RT_UT
             Matrix B = new Matrix(new double[,] { { -0.040741, -0.077778, 0.144444, -0.222222 }, { -0.077778, 0.033333, 0.366667, -0.333333 }, { -0.029012, -0.146296, -0.109259, 0.129630 }, { 0.177778, 0.066667, -0.266667, 0.333333 } });
             Assert.AreEqual(ans, B);
         }
+        [TestMethod]
+        public void Multiplying_a_product_by_its_inverse()
+        {
+            Matrix A = new Matrix(new double[,] { { 3, -9, 7, 3 }, { 3, -8, 2, -9 },  { -4, 4, 4, 1 }, { 6, 5, -1, 1 } });
+            Matrix B = new Matrix(new double[,] { { 8, 2, 2, 2 }, { 3, -1, 7, 0 }, { 7, 0, 5, 4 }, { 6, -2, 0, 5 } });
+            Matrix C = A * B;
+            Assert.AreEqual(A, C * B.inverse());
+        }
+    }
+    [TestClass]
+    public class testMatrixTransformations
+    {
+        [TestMethod]
+        public void Multiplying_by_a_transformaiton_matrix()
+        {
+            Matrix transform = Matrix.translation(5, -3, 2);
+            csharp_rt.Tuple point= csharp_rt.Tuple.point(-3,4,5);
+            Assert.AreEqual(csharp_rt.Tuple.point(2, 1, 7), transform * point);
+        }
+
+        [TestMethod]
+        public void Multiplying_by_the_inverse_of_a_translation_matrix()
+        {
+            Matrix transform = Matrix.translation(5, -3, 2);
+            Matrix inv = transform.inverse();
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(-3, 4, 5);
+            Assert.AreEqual(csharp_rt.Tuple.point(-8,7,3), inv * p);
+        }
     }
 }
