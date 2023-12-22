@@ -7,16 +7,16 @@ using System.IO;
 
 namespace csharp_rt
 {
-    public class canvas
+    public class Canvas
     {
         public int Y_AXIS_SIZE, X_AXIS_SIZE;
-        public color[,] _IMG;
+        public Color[,] _IMG;
         //counts out of bounds write attempts
         private int OOB_count;
         //counts out of bounds get attempts. 
         private int OOB2_count;
         private string filename;
-        public canvas(int X_AXIS_SIZE_IN,int Y_AXIS_SIZE_IN)
+        public Canvas(int X_AXIS_SIZE_IN,int Y_AXIS_SIZE_IN)
         {
             if(X_AXIS_SIZE_IN<0||Y_AXIS_SIZE_IN<0)
             {
@@ -24,12 +24,12 @@ namespace csharp_rt
             }
             Y_AXIS_SIZE = Math.Abs(Y_AXIS_SIZE_IN);
             X_AXIS_SIZE = Math.Abs(X_AXIS_SIZE_IN);
-            _IMG = new color[Y_AXIS_SIZE, X_AXIS_SIZE];
+            _IMG = new Color[Y_AXIS_SIZE, X_AXIS_SIZE];
             for(int i=0;i<Y_AXIS_SIZE;i++)
             {
                 for(int j =0;j<X_AXIS_SIZE;j++)
                 {
-                    _IMG[i, j] = color.BLACK();
+                    _IMG[i, j] = Color.BLACK();
                 }
                 
             }
@@ -42,7 +42,7 @@ namespace csharp_rt
             filename = filename_in + ".ppm";
         }
 
-        public void write_pixel(int x_in, int y_in, color color_in)
+        public void write_pixel(int x_in, int y_in, Color color_in)
         {
             
             if(x_in<X_AXIS_SIZE&&y_in<Y_AXIS_SIZE && x_in >= 0 && y_in >= 0)
@@ -58,7 +58,7 @@ namespace csharp_rt
 
         }
 
-        public void write_pixel(double x,double y, color color_in)
+        public void write_pixel(double x,double y, Color color_in)
         {
             if ((int)x >= 0 && (int)y >= 0 && (int)x < X_AXIS_SIZE && (int)y < Y_AXIS_SIZE)
             {
@@ -67,7 +67,7 @@ namespace csharp_rt
             else { OOB_count++; }
         }
 
-        public color pixel_at(int x_in, int y_in)
+        public Color pixel_at(int x_in, int y_in)
         {
             if (x_in < X_AXIS_SIZE && y_in < Y_AXIS_SIZE && x_in >= 0 && y_in >= 0)
             {
@@ -76,7 +76,7 @@ namespace csharp_rt
             else
             {
                 OOB2_count++;
-                return color.BLACK();
+                return Color.BLACK();
             }
         }
 

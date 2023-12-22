@@ -100,5 +100,11 @@ namespace csharp_rt
 
             return ret;
         }
+
+        static void tupleTest()
+        {
+            Tuple A = new Tuple(1, 2, 3, 4);
+            Tuple B = Tuple.point(1, 2, 3);
+        }
     }
 }

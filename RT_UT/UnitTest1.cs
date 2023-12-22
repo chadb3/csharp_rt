@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using csharp_rt;
 using System;
+using csharp_rt;
 
 namespace RT_UT
 {
@@ -10,6 +10,7 @@ namespace RT_UT
         [TestMethod]
         public void tupleTest1()
         {
+            // looking for ways so I don't need to type csharp_rt. maybe use the namespace?
             csharp_rt.Tuple a = new csharp_rt.Tuple(1, 2, 3, 4);
             Assert.AreEqual(new csharp_rt.Tuple(1, 2, 3, 4), a);
             //tuple b = tuple.pt(1, 2, 3);
@@ -211,7 +212,7 @@ namespace RT_UT
         [TestMethod]
         public void rgb_are_tuples()
         {
-            color c = new color(-0.5f, 0.4f, 1.7f);
+            Color c = new Color(-0.5f, 0.4f, 1.7f);
             float red = -0.5f;
             float green = 0.4f;
             float blue = 1.7f;
@@ -223,35 +224,35 @@ namespace RT_UT
         [TestMethod]
         public void Adding_Colors()
         {
-            color c1 = new color(0.9f, 0.6f, 0.75f);
-            color c2 = new color(0.7, 0.1, 0.25);
-            color ans = new color(1.6, 0.7, 1.0);
+            Color c1 = new Color(0.9f, 0.6f, 0.75f);
+            Color c2 = new Color(0.7, 0.1, 0.25);
+            Color ans = new Color(1.6, 0.7, 1.0);
             Assert.AreEqual(ans, c1 + c2);
         }
 
         [TestMethod]
         public void Subtracting_Colors()
         {
-            color c1 = new color(0.9f, 0.6f, 0.75f);
-            color c2 = new color(0.7, 0.1, 0.25);
-            color ans = new color(0.2, 0.5, 0.5);
+            Color c1 = new Color(0.9f, 0.6f, 0.75f);
+            Color c2 = new Color(0.7, 0.1, 0.25);
+            Color ans = new Color(0.2, 0.5, 0.5);
             Assert.AreEqual(ans, c1 - c2);
         }
 
         [TestMethod]
         public void Multiplying_Colors_By_A_Scalar()
         {
-            color c = new color(0.2, 0.3, 0.4);
-            color ans = new color(0.4, 0.6, 0.8);
+            Color c = new Color(0.2, 0.3, 0.4);
+            Color ans = new Color(0.4, 0.6, 0.8);
             Assert.AreEqual(ans, c * 2); ;
         }
 
         [TestMethod]
         public void Multiplying_Colors()
         {
-            color c1 = new color(1, 0.2, 0.4);
-            color c2 = new color(0.9, 1, 0.1);
-            color ans = new color(0.9, 0.2, 0.04);
+            Color c1 = new Color(1, 0.2, 0.4);
+            Color c2 = new Color(0.9, 1, 0.1);
+            Color ans = new Color(0.9, 0.2, 0.04);
             Assert.AreEqual(ans, c1 * c2);
         }
     }

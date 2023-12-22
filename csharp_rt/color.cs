@@ -10,17 +10,17 @@ namespace csharp_rt
     /// made this separate to use floats.
     /// probably could use my Touple class.
     /// </summary>
-    public class color
+    public class Color
     {
         public float red, green, blue;
         const float EPSILON = 0.0001f;
-        public color()
+        public Color()
         {
             red = 0;
             green = 0;
             blue = 0;
         }
-        public color(double red, double green, double blue)
+        public Color(double red, double green, double blue)
         {
             this.red = (float)red;
             this.green = (float)green;
@@ -28,29 +28,29 @@ namespace csharp_rt
         }
 
 
-        public static color operator +(color left, color right)
+        public static Color operator +(Color left, Color right)
         {
-            return new color(left.red + right.red, left.green + right.green, left.blue + right.blue);
+            return new Color(left.red + right.red, left.green + right.green, left.blue + right.blue);
         }
 
-        public static color operator -(color left, color right)
+        public static Color operator -(Color left, Color right)
         {
-            return new color(left.red - right.red, left.green - right.green, left.blue - right.blue);
+            return new Color(left.red - right.red, left.green - right.green, left.blue - right.blue);
         }
 
-        public static color operator *(color left, double right)
+        public static Color operator *(Color left, double right)
         {
             float mult = (float)right;
-            return new color(left.red * mult, left.green * mult, left.blue * mult);
+            return new Color(left.red * mult, left.green * mult, left.blue * mult);
         }
 
-        public static color operator *(color left, color right)
+        public static Color operator *(Color left, Color right)
         {
-            return new color(left.red * right.red, left.green * right.green, left.blue * right.blue);
+            return new Color(left.red * right.red, left.green * right.green, left.blue * right.blue);
         }
 
 
-        public static bool operator ==(color left, color right)
+        public static bool operator ==(Color left, Color right)
         {
             bool result = false;
             if (Math.Abs(left.red - right.red) < EPSILON)
@@ -65,10 +65,10 @@ namespace csharp_rt
             }
             return result;
         }
-        public static bool operator !=(color left, color right) => !(left == right);
+        public static bool operator !=(Color left, Color right) => !(left == right);
         public override bool Equals(object obj)
         {
-            return this == (color)obj;
+            return this == (Color)obj;
         }
         public override string ToString()
         {
@@ -81,22 +81,22 @@ namespace csharp_rt
             return this.ToString().GetHashCode();
         }
 
-        public static color RED()
+        public static Color RED()
         {
-            return new color(1, 0, 0);
+            return new Color(1, 0, 0);
         }
-        public static color Green()
+        public static Color Green()
         {
-            return new color(0, 1, 0);
+            return new Color(0, 1, 0);
         }
-        public static color BLUE()
+        public static Color BLUE()
         {
-            return new color(0, 0, 1);
+            return new Color(0, 0, 1);
         }
 
-        public static color BLACK()
+        public static Color BLACK()
         {
-            return new color(0, 0, 0);
+            return new Color(0, 0, 0);
         }
 
         public string get_red_ppm()

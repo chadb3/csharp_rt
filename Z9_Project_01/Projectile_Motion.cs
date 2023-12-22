@@ -37,7 +37,7 @@ namespace Z9_Project_01
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            canvas c = new canvas(900, 500);
+            Canvas c = new Canvas(900, 500);
             c.set_file_name("PROJECTILE");
             //Projectile proj = new Projectile(tuple.point(0, 1, 0), tuple.vector(1, 1, 0));
             Environment env = new Environment(csharp_rt.Tuple.vector(0, -0.1, 0), csharp_rt.Tuple.vector(-0.01, 0, 0));
@@ -47,7 +47,7 @@ namespace Z9_Project_01
             while(proj.position.y>=0)
             {
                 Console.Out.WriteLine(proj.position);
-                c.write_pixel(proj.position.x, 500-proj.position.y, color.RED());
+                c.write_pixel(proj.position.x, 500-proj.position.y, Color.RED());
                 proj=env.tick(proj);
             }
             Console.Out.WriteLine(proj.position);
