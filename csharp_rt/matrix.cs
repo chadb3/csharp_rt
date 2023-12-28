@@ -312,7 +312,9 @@ namespace csharp_rt
         public static Matrix scaling(double x, double y, double z)
         {
             Matrix returnMat = Matrix.identity();
-
+            returnMat[0, 0] = x;
+            returnMat[1, 1] = y;
+            returnMat[2,2] = z;
             return returnMat;
         }
     }
