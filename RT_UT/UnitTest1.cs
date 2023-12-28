@@ -510,4 +510,33 @@ namespace RT_UT
             Assert.AreEqual(csharp_rt.Tuple.point(-8,7,3), inv * p);
         }
     }
+
+    [TestClass]
+    public class TestMatrixScaling
+    {
+        [TestMethod]
+        public void a_scaling_matrix_applied_to_a_point()
+        {
+            Matrix transform = Matrix.scaling(2, 3, 4);
+            csharp_rt.Tuple point = csharp_rt.Tuple.point(-4, 6, 8);
+            Assert.AreEqual(csharp_rt.Tuple.point(-8, 18, 32), transform * point); 
+        }
+        [TestMethod]
+        public void A_scaling_matrix_appied_to_a_vector()
+        {
+            Matrix transform = Matrix.scaling(2, 3, 4);
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(-4, 6, 8);
+            Assert.AreEqual(csharp_rt.Tuple.vector(-8, 18, 32), transform * v);
+        }
+        [TestMethod]
+        public void Multiplying_by_the_inverse_of_a_scaling_matrix()
+        {
+            Matrix transform = Matrix.scaling(2, 3, 4);
+            Matrix inv = transform.inverse();
+            csharp_rt.Tuple v= csharp_rt.Tuple.vector(-4,6, 8);
+            Assert.AreEqual(csharp_rt.Tuple.vector(-2,2,2), inv * v);
+        
+        }
+
+    }
 }

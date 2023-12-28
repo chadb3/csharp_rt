@@ -309,5 +309,11 @@ namespace csharp_rt
             //x,y,z are stacked in the last col from 0-2
             return returnMat;
         }
+        public static Matrix scaling(double x, double y, double z)
+        {
+            Matrix returnMat = Matrix.identity();
+
+            return returnMat;
+        }
     }
 }
