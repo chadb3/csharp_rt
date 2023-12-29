@@ -538,5 +538,13 @@ namespace RT_UT
         
         }
 
+        [TestMethod]
+        public void Reflection_is_scaling_by_a_negative_value()
+        {
+            Matrix transform = Matrix.scaling(-1, 1, 1);
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(2, 3, 4);
+            Assert.AreEqual(csharp_rt.Tuple.point(-2,3,4), transform * p);
+        }
+
     }
 }
