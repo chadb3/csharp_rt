@@ -547,4 +547,14 @@ namespace RT_UT
         }
 
     }
+    [TestClass]
+    public class RotationTesting()
+    {
+        [TestMethod]
+        public void test()
+        {
+
+        }
+    }
+
 }

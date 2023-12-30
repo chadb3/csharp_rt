@@ -307,6 +307,7 @@ namespace csharp_rt
             returnMat[1, 3] = y;
             returnMat[2,3] = z; 
             //x,y,z are stacked in the last col from 0-2
+            // with 3 3 being 1 from the identity matrix.
             return returnMat;
         }
         public static Matrix scaling(double x, double y, double z)
@@ -316,6 +317,13 @@ namespace csharp_rt
             returnMat[1, 1] = y;
             returnMat[2,2] = z;
             return returnMat;
+        }
+
+        public static Matrix rotation_x(double valIn)
+        {
+            Matrix retVal=Matrix.identity();
+
+            return retVal;
         }
     }
 }
