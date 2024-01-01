@@ -89,13 +89,17 @@ namespace csharp_rt
         public static bool operator ==(Tuple left, Tuple right)
         {
             bool result = false;
-            if(left.x==right.x)
+            //Math.abs(l-r)>0.00001
+            //left.x==right.x
+            if (Math.Abs(left.x-right.x)<0.00001)
             {
-                if(left.y==right.y)
+                //left.y==right.y
+                if (Math.Abs(left.y - right.y) < 0.00001)
                 {
-                    if(left.z==right.z)
+                    if(Math.Abs(left.z - right.z) < 0.00001)
                     {
-                        if (left.w == right.w)
+                        //left.w == right.w
+                        if (Math.Abs(left.w-right.w)<0.00001)
                         {
                             result = true;
                         }

@@ -17,6 +17,7 @@ namespace csharp_rt
             testSubMat2();
             testInverse();
             testInverseEquality();
+            tupleTest2Equality();
             return 2989;
         }
 
@@ -105,6 +106,20 @@ namespace csharp_rt
         {
             Tuple A = new Tuple(1, 2, 3, 4);
             Tuple B = Tuple.point(1, 2, 3);
+        }
+
+        static void tupleTest2Equality()
+        {
+            Tuple A = new Tuple(1, 2, 3, 4);
+            Tuple B = new Tuple(1, 2, 3, 4);
+            if(A == B)
+            {
+                Console.WriteLine("Equals");
+            }
+            else
+            {
+                Console.WriteLine("Wrong!");
+            }
         }
     }
 }

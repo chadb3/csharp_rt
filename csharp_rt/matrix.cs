@@ -322,14 +322,22 @@ namespace csharp_rt
         public static Matrix rotation_x(double valIn)
         {
             Matrix retVal=Matrix.identity();
-
+            retVal[1, 1] = Math.Cos(valIn);
+            retVal[1, 2] = -Math.Sin(valIn);
+            retVal[2, 1] = Math.Sin(valIn);
+            retVal[2, 2] = Math.Cos(valIn);
             return retVal;
         }
         public static Matrix rotation_y(double valIn)
         {
             Matrix retVal = Matrix.identity();
-
+            retVal[0, 0] = Math.Cos(valIn);
+            retVal[0, 2] = Math.Sin(valIn);
+            retVal[2, 0] = -Math.Sin(valIn);
+            retVal[2, 2] = Math.Cos(valIn);
             return retVal;
         }
+
+        
     }
 }
