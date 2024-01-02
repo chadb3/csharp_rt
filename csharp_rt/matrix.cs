@@ -108,6 +108,7 @@ namespace csharp_rt
                         //if (l[i,j] != r[i,j])
                         // note: while this is in more in line with floats ( I might convert it to floats later (I don't know why I picked doubles))
                         // I used this level of precision as the calculated value is more precise than the values I test for in unit tests (which expect float level of precision)
+                        // if this is hit then false is returned (are not equal)
                         if (Math.Abs(l[i,j] - r[i,j])>0.00001)
                         {
                             return returnValue;
