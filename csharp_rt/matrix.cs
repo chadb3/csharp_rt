@@ -339,6 +339,12 @@ namespace csharp_rt
             return retVal;
         }
 
+        public static Matrix rotation_z(double valIn)
+        {
+            Matrix retVal=Matrix.identity();
+
+            return retVal;
+        }
         
     }
 }
