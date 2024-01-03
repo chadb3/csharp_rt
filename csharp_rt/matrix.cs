@@ -342,7 +342,10 @@ namespace csharp_rt
         public static Matrix rotation_z(double valIn)
         {
             Matrix retVal=Matrix.identity();
-
+            retVal[0,0] = Math.Cos(valIn);
+            retVal[0,1] = -Math.Sin(valIn);
+            retVal[1,0] = Math.Sin(valIn);
+            retVal[1,1] = Math.Cos(valIn);
             return retVal;
         }
         

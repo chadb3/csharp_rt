@@ -575,7 +575,7 @@ namespace RT_UT
         {
             csharp_rt.Tuple p = csharp_rt.Tuple.point(0, 1, 0);
             Matrix half_quarter=Matrix.rotation_z(Math.PI /4);
-            Matrix full_quarter = Matrix.rotation_z(Math.PI);
+            Matrix full_quarter = Matrix.rotation_z(Math.PI/2);
             Assert.AreEqual(csharp_rt.Tuple.point(-Math.Sqrt(2) / 2, Math.Sqrt(2) / 2, 0),half_quarter * p);
             Assert.AreEqual(csharp_rt.Tuple.point(-1, 0, 0), full_quarter * p);
         }
