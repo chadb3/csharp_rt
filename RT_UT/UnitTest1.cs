@@ -579,6 +579,34 @@ namespace RT_UT
             Assert.AreEqual(csharp_rt.Tuple.point(-Math.Sqrt(2) / 2, Math.Sqrt(2) / 2, 0),half_quarter * p);
             Assert.AreEqual(csharp_rt.Tuple.point(-1, 0, 0), full_quarter * p);
         }
+        [TestMethod]
+        public void A_shearing_transformation_moves_x_in_proporiton_to_y()
+        {
+            Matrix transform = Matrix.shearing(1, 0, 0, 0, 0, 0);
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(2, 3, 4);
+            Assert.AreEqual(csharp_rt.Tuple.point(5, 3, 4), transform * p);
+        }
+        [TestMethod]
+        public void A_shearing_transformation_moves_y_in_proportion_to_x()
+        {
+            Matrix transform = Matrix.shearing(0, 0, 1, 0, 0, 0);
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(2, 3, 4);
+            Assert.AreEqual(csharp_rt.Tuple.point(2,5,4), transform * p);
+        }
+        [TestMethod]
+        public void A_shearing_transformation_moves_y_inproportion_to_z()
+        {
+            Matrix transform = Matrix.shearing(0, 0, 0, 1, 0, 0);
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(2, 3, 4);
+            Assert.AreEqual(csharp_rt.Tuple.point(2,7,4), transform * p);
+        }
+        [TestMethod]
+        public void A_shearing_transformation_moves_z_in_proportion_to_y()
+        {
+            Matrix transform = Matrix.shearing(0, 0, 0, 0, 0, 1);
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(2, 3, 4);
+            Assert.AreEqual(csharp_rt.Tuple.point(2,3,7), transform * p);
+        }
     }
 
 }

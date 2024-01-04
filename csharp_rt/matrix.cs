@@ -348,6 +348,17 @@ namespace csharp_rt
             retVal[1,1] = Math.Cos(valIn);
             return retVal;
         }
+        public static Matrix shearing(double xy, double xz, double yx, double yz, double zx, double zy)
+        {
+            Matrix retVal = Matrix.identity();
+            retVal[0, 1] = xy;
+            retVal[0,2] = xz;
+            retVal[1,0]= yx;
+            retVal[1,2] = yz;
+            retVal[2,0]= zx;
+            retVal[2,1] = zy;
+            return retVal;
+        }
         
     }
 }
