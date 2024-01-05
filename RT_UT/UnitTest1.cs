@@ -607,6 +607,14 @@ namespace RT_UT
             csharp_rt.Tuple p = csharp_rt.Tuple.point(2, 3, 4);
             Assert.AreEqual(csharp_rt.Tuple.point(2,3,7), transform * p);
         }
+        [TestMethod]
+      public void individual_transformaions_are_applied_in_sequence()
+        {
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(1, 0, 1);
+            Matrix A = Matrix.rotation_x(Math.PI / 2);
+            Matrix scaling = Matrix.scaling(5, 5, 5);
+            Matrix C = Matrix.translation(10, 5, 7);
+        }
     }
 
 }
