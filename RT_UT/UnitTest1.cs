@@ -614,6 +614,8 @@ namespace RT_UT
             Matrix A = Matrix.rotation_x(Math.PI / 2);
             Matrix scaling = Matrix.scaling(5, 5, 5);
             Matrix C = Matrix.translation(10, 5, 7);
+            csharp_rt.Tuple p2 = A * p;
+            Assert.AreEqual(csharp_rt.Tuple.point(1, -1, 0), p2);
         }
     }
 
