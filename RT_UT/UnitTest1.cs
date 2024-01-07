@@ -612,10 +612,25 @@ namespace RT_UT
         {
             csharp_rt.Tuple p = csharp_rt.Tuple.point(1, 0, 1);
             Matrix A = Matrix.rotation_x(Math.PI / 2);
-            Matrix scaling = Matrix.scaling(5, 5, 5);
+            Matrix B = Matrix.scaling(5, 5, 5);
+            
             Matrix C = Matrix.translation(10, 5, 7);
             csharp_rt.Tuple p2 = A * p;
             Assert.AreEqual(csharp_rt.Tuple.point(1, -1, 0), p2);
+            csharp_rt.Tuple p3 = B * p2;
+            Assert.AreEqual(csharp_rt.Tuple.point(5, -5, 0), p3);
+            csharp_rt.Tuple p4 = C * p3; 
+            Assert.AreEqual(csharp_rt.Tuple.point(15,0,7), p4); 
+        }
+        [TestMethod]
+        public void Chained_transformations_must_be_applied_in_reverse_order()
+        {
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(1, 0, 1);
+            Matrix A = Matrix.rotation_x(Math.PI/2);
+            Matrix B = Matrix.scaling(5, 5, 5);
+            Matrix C = Matrix.translation(10, 5, 7);
+            Matrix T = C * B * A;
+            Assert.AreEqual(csharp_rt.Tuple.point(15, 0, 7), T * p);
         }
     }
 
