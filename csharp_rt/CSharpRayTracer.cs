@@ -121,5 +121,11 @@ namespace csharp_rt
                 Console.WriteLine("Wrong!");
             }
         }
+
+        static void matrixChaining()
+        {
+            Tuple p = Tuple.point(1, 0, 1);
+            Matrix T = Matrix.identity().rotation_x_ns(Math.PI / 2).scaling_ns(5, 5, 5).translation_ns(10, 5, 7);
+        }
     }
 }

@@ -632,6 +632,14 @@ namespace RT_UT
             Matrix T = C * B * A;
             Assert.AreEqual(csharp_rt.Tuple.point(15, 0, 7), T * p);
         }
+
+        [TestMethod]
+        public void Testing_non_static_chaned_transformations()
+        {
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(1, 0, 1);
+            Matrix T = Matrix.identity().rotation_x_ns(Math.PI / 2).scaling_ns(5, 5, 5).translation_ns(10, 5, 7);
+            Assert.AreEqual(csharp_rt.Tuple.point(15,0, 7), T * p);
+        }
     }
 
 }

@@ -310,6 +310,16 @@ namespace csharp_rt
             //x,y,z are stacked in the last col from 0-2
             // with 3 3 being 1 from the identity matrix.
             return returnMat;
+            // non-static: translation_ns
+            // non-static is for chaining as it is not possible with static.
+        }
+        public Matrix translation_ns(double x, double y, double z)
+        {
+            Matrix retVal = Matrix.identity();
+            retVal[0, 3] = x;
+            retVal[1, 3] = y;
+            retVal[2, 3] = z;
+            return retVal * this;
         }
         public static Matrix scaling(double x, double y, double z)
         {
@@ -318,6 +328,16 @@ namespace csharp_rt
             returnMat[1, 1] = y;
             returnMat[2,2] = z;
             return returnMat;
+            // non-static: scaling_ns
+            // non-static is for chaining as it is not possible with static.
+        }
+        public Matrix scaling_ns(double x, double y, double z)
+        {
+            Matrix retVal = Matrix.identity();
+            retVal[0, 0] = x;
+            retVal[1, 1] = y;
+            retVal[2, 2] = z;
+            return retVal * this;
         }
 
         public static Matrix rotation_x(double valIn)
@@ -328,6 +348,17 @@ namespace csharp_rt
             retVal[2, 1] = Math.Sin(valIn);
             retVal[2, 2] = Math.Cos(valIn);
             return retVal;
+            // non-static: rotation_x_ns
+            // non-static is for chaining as it is not possible with static.
+        }
+        public Matrix rotation_x_ns(double valIn)
+        {
+            Matrix retVal=Matrix.identity();
+            retVal[1, 1] = Math.Cos(valIn);
+            retVal[1, 2] = -Math.Sin(valIn);
+            retVal[2, 1] = Math.Sin(valIn);
+            retVal[2, 2] = Math.Cos(valIn);
+            return retVal*this;
         }
         public static Matrix rotation_y(double valIn)
         {
@@ -337,6 +368,17 @@ namespace csharp_rt
             retVal[2, 0] = -Math.Sin(valIn);
             retVal[2, 2] = Math.Cos(valIn);
             return retVal;
+            // non-static:rotation_y_ns
+            // non-static is for chaining as it is not possible with static.
+        }
+        public Matrix rotation_y_ns(double valIn)
+        {
+            Matrix retVal = Matrix.identity();
+            retVal[0, 0] = Math.Cos(valIn);
+            retVal[0, 2] = Math.Sin(valIn);
+            retVal[2, 0] = -Math.Sin(valIn);
+            retVal[2, 2] = Math.Cos(valIn);
+            return retVal*this;
         }
 
         public static Matrix rotation_z(double valIn)
@@ -347,6 +389,17 @@ namespace csharp_rt
             retVal[1,0] = Math.Sin(valIn);
             retVal[1,1] = Math.Cos(valIn);
             return retVal;
+            // non-static: rotation_z_ns
+            //non-static is for chaining as it is not possible with static.
+        }
+        public Matrix rotation_z_ns(double valIn)
+        {
+            Matrix retVal = Matrix.identity();
+            retVal[0, 0] = Math.Cos(valIn);
+            retVal[0, 1] = -Math.Sin(valIn);
+            retVal[1, 0] = Math.Sin(valIn);
+            retVal[1, 1] = Math.Cos(valIn);
+            return retVal*this;
         }
         public static Matrix shearing(double xy, double xz, double yx, double yz, double zx, double zy)
         {
@@ -358,7 +411,23 @@ namespace csharp_rt
             retVal[2,0]= zx;
             retVal[2,1] = zy;
             return retVal;
+            //non-static: shearing_ns
+            //non-static is for chaining as it is not possible with static.
         }
-        
+        public Matrix shearing_ns(double xy, double xz, double yx, double yz, double zx, double zy)
+        {
+            Matrix retVal= Matrix.identity();
+            retVal[0, 1] = xy;
+            retVal[0, 2] = xz;
+            retVal[1, 0] = yx;
+            retVal[1, 2] = yz;
+            retVal[2, 0] = zx;
+            retVal[2, 1] = zy;
+            return retVal*this;
+        }
+
+       
+
+
     }
 }
