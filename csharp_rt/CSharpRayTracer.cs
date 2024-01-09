@@ -127,5 +127,12 @@ namespace csharp_rt
             Tuple p = Tuple.point(1, 0, 1);
             Matrix T = Matrix.identity().rotation_x_ns(Math.PI / 2).scaling_ns(5, 5, 5).translation_ns(10, 5, 7);
         }
+
+        static void putting_it_together()
+        {
+            Console.WriteLine("This should print a cirle with dots using Matrix");
+            Tuple center = Tuple.point(0, 0, 0);
+            Canvas c = new Canvas(320, 320);
+        }
     }
 }
