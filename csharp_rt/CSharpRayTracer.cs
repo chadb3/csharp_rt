@@ -18,6 +18,7 @@ namespace csharp_rt
             testInverse();
             testInverseEquality();
             tupleTest2Equality();
+            putting_it_together();
             return 2989;
         }
 
@@ -130,9 +131,21 @@ namespace csharp_rt
 
         static void putting_it_together()
         {
+            //for each point
+            // compute, multiply the x anx z components by this radius;
+            //and then move them to the center of the canvas by adding the cords of the center point.
+            // let x be x cords of the pixel and z be the y coordinate. 
             Console.WriteLine("This should print a cirle with dots using Matrix");
             Tuple center = Tuple.point(0, 0, 0);
-            Canvas c = new Canvas(320, 320);
+            Tuple twelve = Tuple.point(0, 0, 1);
+            int height = 200;
+            int width = 200;
+            Matrix r = Matrix.rotation_z(3 * Math.PI / 6);
+            Canvas c = new Canvas(height, width);
+            Tuple a = r * twelve;
+            c.write_pixel(height / 2, width / 2, Color.Green());
+            c.write_pixel(twelve.x,twelve.y, Color.RED());
+            c.canvas_to_P3_ppm();
         }
     }
 }
