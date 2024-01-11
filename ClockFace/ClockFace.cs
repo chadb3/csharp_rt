@@ -99,7 +99,7 @@ class ClockFace
         k = k + add;
         //Console.WriteLine(k);
         C.write_pixel(k.x, k.y, csharp_rt.Color.Green());
-        //twelve= twelve * radius;
+        //twelve = (rotation * twelve);
         //twelve = twelve + csharp_rt.Tuple.vector(100, 100, 0);
         //this spawns the pixle at the bottom (6 o'clock). If I remember, everything on canvas is filpped. 
        // C.write_pixel(twelve.x, twelve.y, new Color(.34, .56,.82));
@@ -118,17 +118,22 @@ class ClockFace
             {
                 Console.WriteLine("{0}", i);
                 //Console.WriteLine(twelve);
-                C.write_pixel(k.x, 200-k.y, Color.Green());
+                C.write_pixel(200-k.x, 200-k.y, Color.Green());
             }
             else if(i==0)
             {
-                C.write_pixel(k.x, 200 - k.y, new Color(164,50,168));
+                C.write_pixel(200-k.x, 200 - k.y, new Color(164,50,168));
             }
+            /*else if(i==1)
+            { //used this one to test which way it was rotating.
+              // I found that it was rotating counterclockwise until I added 200-x to the x value too.
+                C.write_pixel(200-k.x, 200 - k.y, new Color(255, 255, 0));
+            }*/
             else
             {
                 Console.WriteLine("else: {0}", i);
                 //Console.WriteLine(twelve);
-                C.write_pixel(k.x, 200-k.y, Color.RED());
+                C.write_pixel(200-k.x, 200-k.y, Color.RED());
             }
         }
         C.canvas_to_P3_ppm();
