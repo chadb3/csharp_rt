@@ -105,12 +105,9 @@ class ClockFace
        // C.write_pixel(twelve.x, twelve.y, new Color(.34, .56,.82));
         for (int i = 0; i < 12; i++)
         {
+
             //Console.WriteLine(twelve);
-            k = rotation * twelve;
-            //int a = i <= 0 ? 1 : i;
-            //Console.WriteLine("a: {0}",a);
-           // k=Matrix.rotation_z(a*Math.PI/6)*twelve;
-            twelve = k;
+
             //Console.WriteLine(twelve);
             k = k * radius;
             k = k + add;
@@ -135,6 +132,11 @@ class ClockFace
                 //Console.WriteLine(twelve);
                 C.write_pixel(200-k.x, 200-k.y, Color.RED());
             }
+            k = rotation * twelve;
+            //int a = i <= 0 ? 1 : i;
+            //Console.WriteLine("a: {0}",a);
+            // k=Matrix.rotation_z(a*Math.PI/6)*twelve;
+            twelve = k;
         }
         C.canvas_to_P3_ppm();
     }
