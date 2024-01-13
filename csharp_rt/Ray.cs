@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace csharp_rt
+{
+    public class Ray
+    {
+         public Ray(Tuple origin, Tuple vec) 
+        { 
+
+        }
+    }
+}

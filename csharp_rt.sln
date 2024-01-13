@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracerUnitTest", "RT_UT\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectileMotionProject", "Z9_Project_01\ProjectileMotionProject.csproj", "{8297BF7E-69D8-4054-A1BB-3E07113197EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClockFace", "ClockFace\ClockFace.csproj", "{A100C736-67D2-4FA6-8A02-8D9128CF2A95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z_ClockFace", "ClockFace\Z_ClockFace.csproj", "{A100C736-67D2-4FA6-8A02-8D9128CF2A95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
