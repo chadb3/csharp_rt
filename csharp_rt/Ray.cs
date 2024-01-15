@@ -9,8 +9,8 @@ namespace csharp_rt
 {
     public class Ray
     {
-        Tuple origin;
-        Tuple vec;
+        public Tuple origin;
+        public Tuple direction;
         /// <summary>
         /// 
         /// </summary>
@@ -19,12 +19,12 @@ namespace csharp_rt
          public Ray(Tuple origin, Tuple vec) 
         {
             this.origin = origin;
-            this.vec = vec;
-            if(origin.w!=0)
+            this.direction = vec;
+            if(origin.w!=1)
             {
-                Console.WriteLine("Warning: Origin Point w != 0");
+                Console.WriteLine("Warning: Origin Point w != 1");
             }
-            if(vec.w!=1)
+            if(vec.w!=0)
             {
                 Console.WriteLine("Warning Ray Vector w != 0");
             }

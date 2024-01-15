@@ -641,5 +641,18 @@ namespace RT_UT
             Assert.AreEqual(csharp_rt.Tuple.point(15,0, 7), T * p);
         }
     }
+    [TestClass]
+    public class testingRay()
+    {
+        [TestMethod]
+        public void testOne()
+        {
+            csharp_rt.Tuple origin = csharp_rt.Tuple.point(1, 2, 3);
+            csharp_rt.Tuple direction = csharp_rt.Tuple.vector(4, 5, 6);
+            Ray r=new Ray(origin, direction);
+            Assert.AreEqual(origin, r.origin);
+            Assert.AreEqual(direction, r.direction);
+        }
+    }
 
 }
