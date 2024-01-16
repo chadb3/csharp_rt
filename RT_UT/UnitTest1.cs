@@ -645,13 +645,22 @@ namespace RT_UT
     public class testingRay()
     {
         [TestMethod]
-        public void testOne()
+        public void Creating_and_quering_a_ray()
         {
             csharp_rt.Tuple origin = csharp_rt.Tuple.point(1, 2, 3);
             csharp_rt.Tuple direction = csharp_rt.Tuple.vector(4, 5, 6);
             Ray r=new Ray(origin, direction);
             Assert.AreEqual(origin, r.origin);
             Assert.AreEqual(direction, r.direction);
+        }
+        [TestMethod]
+        public void Computing_a_point_from_a_distance()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(2, 3, 4), csharp_rt.Tuple.vector(1, 0, 0));
+            Assert.AreEqual(csharp_rt.Tuple.point(2, 3, 4), r.position(0));
+            Assert.AreEqual(csharp_rt.Tuple.point(3, 3, 4), r.position(1));
+            Assert.AreEqual(csharp_rt.Tuple.point(1,3,4), r.position(-1));
+            Assert.AreEqual(csharp_rt.Tuple.point(4.5, 3, 4), r.position(2.5));
         }
     }
 

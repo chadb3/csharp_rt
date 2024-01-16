@@ -29,5 +29,9 @@ namespace csharp_rt
                 Console.WriteLine("Warning Ray Vector w != 0");
             }
         }
+        public Tuple position(double t)
+        {
+            return this.origin + (this.direction * t);
+        }
     }
 }
