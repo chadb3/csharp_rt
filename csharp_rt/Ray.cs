@@ -33,5 +33,7 @@ namespace csharp_rt
         {
             return this.origin + (this.direction * t);
         }
+
+        
     }
 }

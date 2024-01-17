@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using csharp_rt;
+using System.Linq;
 
 namespace RT_UT
 {
@@ -661,6 +662,43 @@ namespace RT_UT
             Assert.AreEqual(csharp_rt.Tuple.point(3, 3, 4), r.position(1));
             Assert.AreEqual(csharp_rt.Tuple.point(1,3,4), r.position(-1));
             Assert.AreEqual(csharp_rt.Tuple.point(4.5, 3, 4), r.position(2.5));
+        }
+        [TestMethod]
+        public void A_ray_intersects_a_sephere_at_two_points()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere s = new Sphere();
+            var xs = s.intersect(r);
+            Assert.AreEqual(4.0d, xs[0]);
+            Assert.AreEqual(6.0d, xs[1]);
+        }
+        [TestMethod]
+        public void a_ray_intersects_a_sphere_at_a_tangent()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 1, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere s = new Sphere();
+            double[] xs= s.intersect(r);
+            Assert.AreEqual(2, xs.Count());
+            Assert.AreEqual(5.0d, xs[0]);
+            Assert.AreEqual(5.0d, xs[1]);
+        }
+        [TestMethod]
+        public void a_ray_misses_a_sphere()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 2, 5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere s = new Sphere();
+            double[] xs= s.intersect(r);
+            Assert.AreEqual(0, xs.Count());
+        }
+        [TestMethod]
+        public void A_ray_originates_inside_a_sphere()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere s = new Sphere();
+            double[] xs= s.intersect(r);
+            Assert.AreEqual(2, xs.Count());
+            Assert.AreEqual(-1.0d, xs[0]);
+            Assert.AreEqual(1.0d, xs[1]);
         }
     }
 
