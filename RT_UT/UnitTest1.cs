@@ -700,6 +700,16 @@ namespace RT_UT
             Assert.AreEqual(-1.0d, xs[0]);
             Assert.AreEqual(1.0d, xs[1]);
         }
+        [TestMethod]
+        public void A_sphere_is_behind_a_ray()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere s = new Sphere();
+            double[] xs= s.intersect(r);
+            Assert.AreEqual(2, xs.Count());
+            Assert.AreEqual(-6.0d, xs[0]);
+            Assert.AreEqual(-4.0d, xs[1]);
+        }
     }
 
 }

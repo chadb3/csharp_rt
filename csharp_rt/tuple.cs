@@ -69,6 +69,12 @@ namespace csharp_rt
             return x * right.x + y * right.y + z * right.z + w * right.w;
         }
 
+        //static dot for use in Ray
+        public static double dot(Tuple left, Tuple right)
+        {
+            return left.x * right.x + left.y * right.y + left.z * right.z + left.w * right.w;
+        }
+
         public Tuple cross(Tuple right)
         {
             return vector(y * right.z - z * right.y, z * right.x - x * right.z, x * right.y - y * right.x);

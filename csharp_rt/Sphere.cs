@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,23 @@ namespace csharp_rt
 
         public double[] intersect(Ray rayIn)
         {
+            Tuple sphere_to_ray = rayIn.origin - Tuple.point(0, 0, 0);
             double[] ret = [0.0d,0.0d];
-            return ret;
+            double a = Tuple.dot(rayIn.direction, rayIn.direction);
+            double b = 2 * Tuple.dot(rayIn.direction, sphere_to_ray);
+            double c = sphere_to_ray.dot(sphere_to_ray) - 1;
+            double descriminate = Math.Pow(b,2) - 4 * a * c;
+            if (descriminate < 0)
+            {
+                //return [double.NaN, double.NaN,double.NaN];
+                return [];
+            }
+            else
+            {
+                double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
+                double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
+                return [t1, t2];
+            }
         }
     }
 }
