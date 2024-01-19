@@ -69,7 +69,7 @@ namespace csharp_rt
             return x * right.x + y * right.y + z * right.z + w * right.w;
         }
 
-        //static dot for use in Ray
+        //static dot for use in Sphere
         public static double dot(Tuple left, Tuple right)
         {
             return left.x * right.x + left.y * right.y + left.z * right.z + left.w * right.w;

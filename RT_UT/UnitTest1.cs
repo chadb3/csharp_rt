@@ -710,6 +710,11 @@ namespace RT_UT
             Assert.AreEqual(-6.0d, xs[0]);
             Assert.AreEqual(-4.0d, xs[1]);
         }
+        [TestMethod]
+        public void An_intersection_encapsulates_t_and_object()
+        {
+            Sphere s=new Sphere();
+        }
     }
 
 }
