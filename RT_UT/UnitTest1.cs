@@ -714,6 +714,9 @@ namespace RT_UT
         public void An_intersection_encapsulates_t_and_object()
         {
             Sphere s=new Sphere();
+            Intersection i = new Intersection(3.5d, s);
+            Assert.AreEqual(3.5d, i.t);
+            Assert.AreEqual(s, i.obj);
         }
     }
 

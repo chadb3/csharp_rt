@@ -8,12 +8,18 @@ namespace csharp_rt
 {
     public class Intersection
     {
-        public Sphere shape;
-        public double[,] intersect;
-        public Intersection(double[,] intersect_in,Sphere shape_in ) 
+        public Sphere obj;// shape;
+        //public double[,] t;// intersect;
+        public double t;
+       /* public Intersection(double[,] intersect_in,Sphere shape_in ) 
         { 
-            this.shape = shape_in; 
-            this.intersect = intersect_in;
+            this.obj = shape_in; 
+            this.t = intersect_in;
+        }*/
+        public Intersection(double intersect_in, Sphere shape_in)
+        {
+            this.obj = shape_in;
+            this.t = intersect_in;
         }
     }
 }
