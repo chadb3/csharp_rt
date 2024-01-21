@@ -718,6 +718,12 @@ namespace RT_UT
             Assert.AreEqual(3.5d, i.t);
             Assert.AreEqual(s, i.obj);
         }
+        [TestMethod]
+        public void Aggregating_intersections()
+        {
+            Sphere sphere = new Sphere();
+            double
+        }
     }
 
 }
