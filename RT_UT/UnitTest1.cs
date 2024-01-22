@@ -721,8 +721,13 @@ namespace RT_UT
         [TestMethod]
         public void Aggregating_intersections()
         {
-            Sphere sphere = new Sphere();
-            double
+            Sphere s = new Sphere();
+            Intersection i1 = new Intersection(1, s);
+            Intersection i2 = new Intersection(2, s);
+            Intersections xs=new Intersections(i1, i2);
+            Assert.AreEqual(2, xs.count());
+            Assert.AreEqual(1, xs.t[0].t);
+            Assert.AreEqual(2, xs.t[1].t);
         }
     }
 

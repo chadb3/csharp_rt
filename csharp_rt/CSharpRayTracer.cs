@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Encodings.Web;
 
 namespace csharp_rt
@@ -19,6 +20,8 @@ namespace csharp_rt
             testInverseEquality();
             tupleTest2Equality();
             putting_it_together();
+            testing_intersections();
+            //array_test();
             return 2989;
         }
 
@@ -147,5 +150,26 @@ namespace csharp_rt
             c.write_pixel(twelve.x,twelve.y, Color.RED());
             c.canvas_to_P3_ppm();
         }
+        static void testing_intersections()
+        {
+            Console.WriteLine("Testing Intersectionsdfdfdfdfdfdfdfdfdfdfdfdfdfd:");
+            Sphere s = new Sphere();
+            Intersection i1 = new Intersection(1, s);
+            Intersection i2 = new Intersection(2, s);
+            Intersections xs = new Intersections(i1, i2);
+            Console.WriteLine("Testing Intersectionsdfdfdfdfdfdfdfdfdfdfdfdfdfd:");
+            Console.WriteLine(xs.t[0]);
+            Console.WriteLine("Count:{0}", xs.count());
+            //Console.WriteLine(xs[0]);
+        }
+        static void array_test()
+        {
+            int[] a = new int[0];
+            a.Append(4);
+            a.Append(5);
+            Console.WriteLine(a.Length);
+            
+        }
+
     }
 }
