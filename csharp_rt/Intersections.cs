@@ -12,10 +12,10 @@ namespace csharp_rt
     /// </summary>
     public class Intersections
     {
-        public List <Intersection> t;
-        public Intersections() 
+        public List<Intersection> t;
+        public Intersections()
         {
-           t = new List<Intersection>();
+            t = new List<Intersection>();
         }
         /// <summary>
         /// For use for unit tests. I am not sure how it is going to be used down the line. 
@@ -25,16 +25,26 @@ namespace csharp_rt
         /// </summary>
         /// <param name="one">the left value in the unit tests</param>
         /// <param name="two">the right value in the unit tests</param>
-        public Intersections(Intersection one, Intersection two) 
+        public Intersections(Intersection one, Intersection two)
         {
             t = new List<Intersection>();
-            t.Add(one); 
+            t.Add(one);
             t.Add(two);
         }
 
-        public  int count()
+        public int count()
         {
             return t.Count();
         }
+        /// <summary>
+        /// This allows you to get an individual intersection from t for the index input.
+        /// </summary>
+        /// <param name="intIn"></param>
+        /// <returns></returns>
+        public  Intersection this[int intIn]
+        {
+            get { return t[intIn]; }
+        }
+
     }
 }

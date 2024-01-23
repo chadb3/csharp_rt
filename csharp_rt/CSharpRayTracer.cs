@@ -160,6 +160,8 @@ namespace csharp_rt
             Console.WriteLine("Testing Intersectionsdfdfdfdfdfdfdfdfdfdfdfdfdfd:");
             Console.WriteLine(xs.t[0]);
             Console.WriteLine("Count:{0}", xs.count());
+            Console.WriteLine("xs[0] using new array notation: {0}",xs[0].t);
+            Console.WriteLine("xs[1] using new array notation: {0}", xs[1].t);
             //Console.WriteLine(xs[0]);
         }
         static void array_test()
