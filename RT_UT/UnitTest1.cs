@@ -743,6 +743,39 @@ namespace RT_UT
             Assert.AreEqual(1, xs[0].t);
             Assert.AreEqual(2, xs[1].t);
         }
+
+        [TestMethod]
+        public void The_hit_when_all_intersections_have_positive_t()
+        {
+            Sphere s=new Sphere();
+            Intersection i1=new Intersection(1, s);
+            Intersection i2=new Intersection(2, s);
+            Intersections xs =new Intersections(i1, i2);
+            Intersection i = xs.hit();
+            Assert.AreEqual(i1, i);
+        }
+
+        [TestMethod]
+        public void The_hit_when_some_intersections_have_negative_t()
+        {
+            Sphere s = new Sphere();
+            Intersection i1=new Intersection(-1, s);
+            Intersection i2=new Intersection(1, s);
+            Intersections xs = new Intersections(i2, i1);
+            Intersection i=xs.hit();
+            Assert.AreEqual(i2, i);
+        }
+
+        [TestMethod]
+        public void The_hit_when_all_intersections_have_negative_t()
+        {
+            Sphere s=new Sphere();
+            Intersection i1= new Intersection(-2, s);
+            Intersection i2 = new Intersection(-1, s);
+            Intersections xs=new Intersections(i2, i1);
+            Intersection i = xs.hit();
+            Assert.IsNull(i);
+        }
     }
 
 }

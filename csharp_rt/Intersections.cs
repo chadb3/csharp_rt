@@ -46,5 +46,12 @@ namespace csharp_rt
             get { return t[intIn]; }
         }
 
+        public Intersection hit()
+        {
+            //Place holder so unit tests don't complain and auto complete the wrong thing...
+            Intersection ret=this[0];
+            return ret;
+        }
+
     }
 }
