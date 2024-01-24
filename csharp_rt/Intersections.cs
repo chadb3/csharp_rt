@@ -31,6 +31,14 @@ namespace csharp_rt
             t.Add(one);
             t.Add(two);
         }
+        public Intersections(Intersection one, Intersection two,Intersection three,Intersection four)
+        {
+            t = new List<Intersection>();
+            t.Add(one);
+            t.Add(two);
+            t.Add(three);
+            t.Add(four);
+        }
 
         public int count()
         {

@@ -776,6 +776,19 @@ namespace RT_UT
             Intersection i = xs.hit();
             Assert.IsNull(i);
         }
+
+        [TestMethod]
+        public void The_hit_is_always_the_lowest_nonnegative_intersection()
+        {
+            Sphere s = new Sphere();
+            Intersection i1= new Intersection(5, s);
+            Intersection i2 = new Intersection(7, s);
+            Intersection i3 = new Intersection(-3, s);
+            Intersection i4 = new Intersection(2, s);
+            Intersections xs = new Intersections(i1, i2, i3, i4);
+            Intersection i = xs.hit();
+            Assert.AreEqual(i4, i);
+        }
     }
 
 }
