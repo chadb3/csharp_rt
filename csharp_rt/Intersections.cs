@@ -58,6 +58,11 @@ namespace csharp_rt
         {
             //Place holder so unit tests don't complain and auto complete the wrong thing...
             Intersection ret=this[0];
+            List<Intersection> tmp = t;
+            tmp.Sort();
+            //debug print
+            Console.WriteLine("DEBUG PRINT");
+            foreach (Intersection item in tmp) { Console.WriteLine(item); }
             return ret;
         }
 

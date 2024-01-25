@@ -22,6 +22,7 @@ namespace csharp_rt
             putting_it_together();
             testing_intersections();
             //array_test();
+            hit_test1();
             return 2989;
         }
 
@@ -170,6 +171,16 @@ namespace csharp_rt
             a.Append(4);
             a.Append(5);
             Console.WriteLine(a.Length);
+            
+        }
+
+        static void hit_test1()
+        {
+            Sphere s = new Sphere();
+            Intersection i1 = new Intersection(1, s);
+            Intersection i2 = new Intersection(2, s);
+            Intersections xs = new Intersections(i1, i2);
+            Intersection i = xs.hit();
             
         }
 
