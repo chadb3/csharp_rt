@@ -22,7 +22,9 @@ namespace csharp_rt
             putting_it_together();
             testing_intersections();
             //array_test();
-            hit_test1();
+            //hit_test1();
+            test_intersection_equality();
+            test_intersection_greater_than();
             return 2989;
         }
 
@@ -182,6 +184,22 @@ namespace csharp_rt
             Intersections xs = new Intersections(i1, i2);
             Intersection i = xs.hit();
             
+        }
+        static void test_intersection_equality()
+        {
+            Sphere s = new Sphere();
+            Intersection i1 = new Intersection(1.01d, s);
+            Intersection i2 = new Intersection(1.01d, s);
+            //Intersections xs = new Intersections(i1, i2);
+            Console.WriteLine(i1 == i2);
+        }
+
+        static void test_intersection_greater_than()
+        {
+            Sphere s = new Sphere();
+            Intersection i1 = new Intersection(1.01d, s);
+            Intersection i2 = new Intersection(1.02d, s);
+            Console.WriteLine(i2>i1);
         }
 
     }

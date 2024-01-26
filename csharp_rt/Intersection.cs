@@ -24,7 +24,14 @@ namespace csharp_rt
         //need these to sort....
         //not sure if I need to compare values.
         //but I know I can compare t values...
-        public static bool operator ==(Intersection left, Intersection right) {  return left.Equals(right); }
+        public static bool operator ==(Intersection left, Intersection right) 
+        {  
+            if(Math.Abs(left.t - right.t)<0.0001)
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool operator !=(Intersection left, Intersection right) { return !left.Equals(right); }
         public static bool operator>=(Intersection left, Intersection right) { return left.Equals(right); }
         public static bool operator <=(Intersection left, Intersection right) { return left.Equals(right); }
@@ -49,6 +56,11 @@ namespace csharp_rt
         public override int GetHashCode()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return "Object: "+obj.ToString()+"Hit value: "+t.ToString();
         }
     }
 }
