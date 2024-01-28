@@ -36,20 +36,52 @@ namespace csharp_rt
         //todo
         public static bool operator >(Intersection left, Intersection right) 
         { 
-            return left.Equals(right); 
+            if(left.t> right.t)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            //return left.Equals(right); 
         }
         //todo
         public static bool operator <(Intersection left, Intersection right) 
         { 
-            return left.Equals(right);
+            if(left.t<right.t)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            //return left.Equals(right);
         }
         public static bool operator>=(Intersection left, Intersection right) 
-        { 
-            return left.t>=right.t; 
+        {
+            if (left.t > right.t || left.t == right.t)
+            {
+                return true;
+            }
+            else
+            { 
+                return false; 
+            }
+            //return left.t>=right.t; 
         }
         public static bool operator <=(Intersection left, Intersection right) 
         { 
-            return left.t<=right.t; 
+            if(left.t<right.t||left.t==right.t)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            //return left.t<=right.t; 
         }
 
 
