@@ -36,7 +36,7 @@ namespace csharp_rt
         //todo
         public static bool operator >(Intersection left, Intersection right) 
         { 
-            if(left.t> right.t)
+            if(left.t!=right.t&&left.t> right.t)
             {
                 return true;
             }
@@ -49,7 +49,7 @@ namespace csharp_rt
         //todo
         public static bool operator <(Intersection left, Intersection right) 
         { 
-            if(left.t<right.t)
+            if(left.t!=right.t&&left.t<right.t)
             {
                 return true;
             }
