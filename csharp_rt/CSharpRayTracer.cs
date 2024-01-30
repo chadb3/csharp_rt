@@ -218,6 +218,7 @@ namespace csharp_rt
             Intersection i4 = new Intersection(2, s);
             Intersections xs = new Intersections(i1, i2, i3, i4);
             Intersection i = xs.hit();
+            Console.WriteLine("Intersection: {0}", i);
             Console.WriteLine("IntersectionSortCheck End!");
         }
 

@@ -63,12 +63,20 @@ namespace csharp_rt
             this.t=this.t.OrderBy(o => o.t).ToList();
             //this.sort();
             //debug print
-            Console.WriteLine("DEBUG PRINT");
+            //Console.WriteLine("DEBUG PRINT");
             //foreach (Intersection item in tmp) { Console.WriteLine(item); }
-            Console.WriteLine("DEBUG PRINT 2");
-            foreach (Intersection item in this.t) { Console.WriteLine(item); }
+            //Console.WriteLine("DEBUG PRINT 2");
+            //foreach (Intersection item in this.t) { Console.WriteLine(item); }
             //end debug print
-            return ret;
+            for (int i = 0;i<t.Count;i++)
+            {
+                Console.WriteLine("i: {0}", i);
+                if (t[i].t >= 0)
+                {
+                    return t[i];
+                }
+            }
+            return null;
         }
 
 
