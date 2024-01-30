@@ -113,7 +113,7 @@ namespace csharp_rt
 
         public override string ToString()
         {
-            return "Object: "+obj.ToString()+"Hit value: "+t.ToString();
+            return "Object: "+obj.ToString()+"\tHit value: "+t.ToString();
         }
     }
 }
