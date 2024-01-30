@@ -25,6 +25,7 @@ namespace csharp_rt
             //hit_test1();
             test_intersection_equality();
             test_intersection_greater_than();
+            IntersectionsSortCheck();
             return 2989;
         }
 
@@ -178,20 +179,25 @@ namespace csharp_rt
 
         static void hit_test1()
         {
+            Console.WriteLine("hit_test1() start");
             Sphere s = new Sphere();
             Intersection i1 = new Intersection(1, s);
             Intersection i2 = new Intersection(2, s);
             Intersections xs = new Intersections(i1, i2);
             Intersection i = xs.hit();
-            
+            Console.WriteLine("hit_test1() end");
+
         }
         static void test_intersection_equality()
         {
+            Console.WriteLine("test_intersection_equality() Start");
             Sphere s = new Sphere();
             Intersection i1 = new Intersection(1.01d, s);
             Intersection i2 = new Intersection(1.01d, s);
             //Intersections xs = new Intersections(i1, i2);
-            Console.WriteLine(i1 == i2);
+            bool ee = i1 == i2;
+            Console.WriteLine(ee);
+            Console.WriteLine("test_intersection_equality() End");
         }
 
         static void test_intersection_greater_than()
@@ -200,6 +206,19 @@ namespace csharp_rt
             Intersection i1 = new Intersection(1.01d, s);
             Intersection i2 = new Intersection(1.02d, s);
             Console.WriteLine(i2>i1);
+        }
+
+        static void IntersectionsSortCheck()
+        {
+            Console.WriteLine("IntersectionSortCheck Start!");
+            Sphere s = new Sphere();
+            Intersection i1 = new Intersection(5, s);
+            Intersection i2 = new Intersection(7, s);
+            Intersection i3 = new Intersection(-3, s);
+            Intersection i4 = new Intersection(2, s);
+            Intersections xs = new Intersections(i1, i2, i3, i4);
+            Intersection i = xs.hit();
+            Console.WriteLine("IntersectionSortCheck End!");
         }
 
     }

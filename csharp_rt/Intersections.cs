@@ -59,11 +59,38 @@ namespace csharp_rt
             //Place holder so unit tests don't complain and auto complete the wrong thing...
             Intersection ret=this[0];
             List<Intersection> tmp = t;
-            tmp.Sort();
+            tmp=tmp.OrderBy(o=>o.t).ToList();
+            this.sort();
             //debug print
             Console.WriteLine("DEBUG PRINT");
             foreach (Intersection item in tmp) { Console.WriteLine(item); }
+            //end debug print
             return ret;
+        }
+        private void sort()
+        {
+            qsort(0, t.Count - 1);
+        }
+
+        private void qsort(int low, int high)
+        {
+            int a = 0;
+            if(low > high)
+            {
+                a = partition(low, high);
+                qsort(low, a - 1);
+                qsort(a+1,high);
+            }
+        }
+        private int partition(int low, int high)
+        {
+            Intersection pivot = this[high];
+            for(int i=low; i < high; i++)
+            {
+                Intersection tmp = this[i];
+                //this[i] = this[high];
+            }
+            return 1;
         }
 
     }

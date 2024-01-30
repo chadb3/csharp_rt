@@ -21,18 +21,24 @@ namespace csharp_rt
             this.obj = shape_in;
             this.t = intersect_in;
         }
+
+ 
         //need these to sort....
         //not sure if I need to compare values.
         //but I know I can compare t values...
         public static bool operator ==(Intersection left, Intersection right) 
-        {  
-            if(Math.Abs(left.t - right.t)<0.0001)
+        {
+
+            if (Math.Abs(left.t - right.t) < 0.0001)
             {
                 return true;
             }
             return false;
         }
-        public static bool operator !=(Intersection left, Intersection right) { return !left.Equals(right); }
+        public static bool operator !=(Intersection left, Intersection right) 
+        { 
+            return !left.Equals(right); 
+        }
         //todo
         public static bool operator >(Intersection left, Intersection right) 
         { 
