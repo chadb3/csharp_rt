@@ -76,6 +76,7 @@ namespace csharp_rt
                     return t[i];
                 }
             }
+            Console.WriteLine("Warning: returning null for HIT");
             return null;
         }
 
