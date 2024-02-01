@@ -34,6 +34,11 @@ namespace csharp_rt
             return this.origin + (this.direction * t);
         }
 
-        
+        public Ray transform(Matrix m)
+        {
+            Ray result;// = new Ray(origin, direction);
+            Tuple newOrigin = m * origin;
+            return result= new Ray(newOrigin, direction);
+        }
     }
 }
