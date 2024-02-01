@@ -798,7 +798,9 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(1, 2, 3), csharp_rt.Tuple.vector(0, 1, 0));
             Matrix m = Matrix.translation(3, 4, 5);
-            Ray r2 = //transform(r,m);
+            Ray r2 = r.transform(m);
+            Assert.AreEqual(csharp_rt.Tuple.point(4, 6, 8), r2.origin);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0,1,0), r2.direction);
         }
     }
 
