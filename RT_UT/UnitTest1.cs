@@ -790,5 +790,16 @@ namespace RT_UT
             Assert.AreEqual(i4, i);
         }
     }
+    [TestClass]
+    public class Transforming_Rays_and_Spheres()
+    {
+        [TestMethod]
+        public void Translating_a_ray()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(1, 2, 3), csharp_rt.Tuple.vector(0, 1, 0));
+            Matrix m = Matrix.translation(3, 4, 5);
+            Ray r2 = //transform(r,m);
+        }
+    }
 
 }
