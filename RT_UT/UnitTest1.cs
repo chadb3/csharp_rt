@@ -802,6 +802,15 @@ namespace RT_UT
             Assert.AreEqual(csharp_rt.Tuple.point(4, 6, 8), r2.origin);
             Assert.AreEqual(csharp_rt.Tuple.vector(0,1,0), r2.direction);
         }
+        [TestMethod]
+        public void scaling_a_ray()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(1, 2, 3), csharp_rt.Tuple.vector(0, 1, 0));
+            Matrix m = Matrix.scaling(2, 3, 4);
+            Ray r2 = r.transform(m);
+            Assert.AreEqual(csharp_rt.Tuple.point(2,6,12), r2.origin);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 3, 0), r2.direction);
+        }
     }
 
 }

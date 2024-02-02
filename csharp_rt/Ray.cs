@@ -38,7 +38,10 @@ namespace csharp_rt
         {
             Ray result;// = new Ray(origin, direction);
             Tuple newOrigin = m * origin;
-            return result= new Ray(newOrigin, direction);
+            Tuple newDirection= m * direction;
+            return result= new Ray(newOrigin, newDirection);
         }
+        
+        
     }
 }
