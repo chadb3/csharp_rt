@@ -10,10 +10,12 @@ namespace csharp_rt
     {
         public double radaii;
         public Tuple origin;
+        public Matrix transform;
         public Sphere()
         {
             this.radaii = 1;
             this.origin = Tuple.point(0, 0, 0);
+            transform = Matrix.identity();
         }
 
         public double[] intersect(Ray rayIn)
@@ -33,6 +35,10 @@ namespace csharp_rt
                 double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
                 return [t1, t2];
             }
+        }
+        public void set_transform(Matrix transform)
+        {
+            this.transform = transform;
         }
     }
 }

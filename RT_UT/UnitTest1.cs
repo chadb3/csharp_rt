@@ -811,6 +811,12 @@ namespace RT_UT
             Assert.AreEqual(csharp_rt.Tuple.point(2,6,12), r2.origin);
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 3, 0), r2.direction);
         }
+        [TestMethod]
+        public void A_Spheres_default_transformation()
+        {
+            Sphere s = new Sphere();
+            Assert.AreEqual(Matrix.identity(), s.transform);
+        }
     }
 
 }
