@@ -817,6 +817,14 @@ namespace RT_UT
             Sphere s = new Sphere();
             Assert.AreEqual(Matrix.identity(), s.transform);
         }
+        [TestMethod]
+        public void Changing_a_spheres_transformation()
+        {
+            Sphere s = new Sphere();
+            Matrix m = Matrix.translation(2, 3, 4);
+            s.set_transform(m);
+            Assert.AreEqual(m, s.transform);
+        }
     }
 
 }
