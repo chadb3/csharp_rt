@@ -825,6 +825,15 @@ namespace RT_UT
             s.set_transform(m);
             Assert.AreEqual(m, s.transform);
         }
+
+        [TestMethod]
+        public void Intersecting_a_scaled_sphere_with_a_ray()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere sphere = new Sphere();
+            sphere.set_transform(Matrix.scaling(2, 2, 2));
+            Intersection xs = sphere.intersect(r);
+        }
     }
 
 }

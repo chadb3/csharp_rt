@@ -17,6 +17,11 @@ namespace csharp_rt
         {
             t = new List<Intersection>();
         }
+
+        public Intersections(double[] dubIn)
+        {
+
+        }
         /// <summary>
         /// For use for unit tests. I am not sure how it is going to be used down the line. 
         /// I hope it is used for something and isn't forgotten.
