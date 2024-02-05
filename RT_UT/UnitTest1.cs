@@ -832,7 +832,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere sphere = new Sphere();
             sphere.set_transform(Matrix.scaling(2, 2, 2));
-            Intersection xs = sphere.intersect(r);
+            Intersections xs = new Intersections(sphere.intersect(r));
         }
     }
 
