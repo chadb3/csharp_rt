@@ -26,6 +26,7 @@ namespace csharp_rt
             test_intersection_equality();
             test_intersection_greater_than();
             IntersectionsSortCheck();
+            testingNewIntersect();
             return 2989;
         }
 
@@ -220,6 +221,15 @@ namespace csharp_rt
             Intersection i = xs.hit();
             Console.WriteLine("Intersection: {0}", i);
             Console.WriteLine("IntersectionSortCheck End!");
+        }
+
+        static void testingNewIntersect()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere sphere = new Sphere();
+            sphere.set_transform(Matrix.scaling(2, 2, 2));
+            var x = sphere.intersect(r);
+            Console.WriteLine("trying to get x into intersections with it's obj");
         }
 
     }

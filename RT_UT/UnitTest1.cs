@@ -743,6 +743,21 @@ namespace RT_UT
             Assert.AreEqual(1, xs[0].t);
             Assert.AreEqual(2, xs[1].t);
         }
+        /// <summary>
+        /// Note: I accidentally skipped this test when working on the above.
+        /// This is important for later test "Intersecting a scaled sphere with a ray"
+        /// as it uses the change set in this function that I missed.
+        /// I will try to have a new intersect method instead of breaking this one.
+        /// </summary>
+        public void Interset_sets_the_object_on_the_intersection()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere s = new Sphere();
+            Intersections xs = new Intersections(/*s.intersect(r);*/);
+            Assert.AreEqual(2, xs.count());
+            Assert.AreEqual(s, xs[0].obj);
+            Assert.AreEqual(s, xs[1].obj);
+        }
 
         [TestMethod]
         public void The_hit_when_all_intersections_have_positive_t()
@@ -832,7 +847,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere sphere = new Sphere();
             sphere.set_transform(Matrix.scaling(2, 2, 2));
-            Intersections xs = new Intersections(sphere.intersect(r));
+            //Intersections xs = new Intersections(sphere.intersect(r));
         }
     }
 

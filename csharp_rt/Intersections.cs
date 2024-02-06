@@ -18,10 +18,11 @@ namespace csharp_rt
             t = new List<Intersection>();
         }
 
-        public Intersections(double[] dubIn)
+        /*public Intersections(Sphere s,Ray r)
         {
-
-        }
+            t=new List<Intersection>();
+            Intersection i = new Intersection(dubIn);
+        }*/
         /// <summary>
         /// For use for unit tests. I am not sure how it is going to be used down the line. 
         /// I hope it is used for something and isn't forgotten.
