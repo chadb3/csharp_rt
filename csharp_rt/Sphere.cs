@@ -18,7 +18,7 @@ namespace csharp_rt
             transform = Matrix.identity();
         }
 
-        public double[] intersect(Ray rayIn)
+        public double[] old_intersect(Ray rayIn)
         {
             Tuple sphere_to_ray = rayIn.origin - Tuple.point(0, 0, 0);
             double a = Tuple.dot(rayIn.direction, rayIn.direction);
@@ -35,6 +35,34 @@ namespace csharp_rt
                 double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
                 return [t1, t2];
             }
+        }
+
+        public List<Intersection> intersection(Ray rayIn)
+        {
+            //Ray ray2=
+            List <Intersection> ret=new List<Intersection>();
+            //Intersection one;
+            //Intersection two;
+            double[] ins;
+            Tuple sphere_to_ray = rayIn.origin - Tuple.point(0, 0, 0);
+            double a = Tuple.dot(rayIn.direction, rayIn.direction);
+            double b = 2 * Tuple.dot(rayIn.direction, sphere_to_ray);
+            double c = sphere_to_ray.dot(sphere_to_ray) - 1;
+            double descriminate = Math.Pow(b, 2) - 4 * a * c;
+            if (descriminate < 0)
+            {
+                ins= [];
+                ret.Append(new Intersection(ins[0], this));
+            }
+            else
+            {
+                double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
+                double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
+                ins= [t1, t2];
+                ret.Append(new Intersection(ins[0], this));
+                ret.Append(new Intersection(ins[0], this));
+            }
+            return ret;
         }
         public void set_transform(Matrix transform)
         {

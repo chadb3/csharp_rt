@@ -17,12 +17,15 @@ namespace csharp_rt
         {
             t = new List<Intersection>();
         }
-
-        /*public Intersections(Sphere s,Ray r)
+        /// <summary>
+        /// Setting this up in
+        /// Interset sets the object on the intersection
+        /// </summary>
+        /// <param name="t_in"></param>
+        public Intersections(List<Intersection> t_in)
         {
-            t=new List<Intersection>();
-            Intersection i = new Intersection(dubIn);
-        }*/
+            t = t_in;
+        }
         /// <summary>
         /// For use for unit tests. I am not sure how it is going to be used down the line. 
         /// I hope it is used for something and isn't forgotten.

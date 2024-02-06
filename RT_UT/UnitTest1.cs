@@ -668,7 +668,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
-            var xs = s.intersect(r);
+            var xs = s.old_intersect(r);
             Assert.AreEqual(4.0d, xs[0]);
             Assert.AreEqual(6.0d, xs[1]);
         }
@@ -677,7 +677,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 1, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
-            double[] xs= s.intersect(r);
+            double[] xs= s.old_intersect(r);
             Assert.AreEqual(2, xs.Count());
             Assert.AreEqual(5.0d, xs[0]);
             Assert.AreEqual(5.0d, xs[1]);
@@ -687,7 +687,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 2, 5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
-            double[] xs= s.intersect(r);
+            double[] xs= s.old_intersect(r);
             Assert.AreEqual(0, xs.Count());
         }
         [TestMethod]
@@ -695,7 +695,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
-            double[] xs= s.intersect(r);
+            double[] xs= s.old_intersect(r);
             Assert.AreEqual(2, xs.Count());
             Assert.AreEqual(-1.0d, xs[0]);
             Assert.AreEqual(1.0d, xs[1]);
@@ -705,7 +705,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
-            double[] xs= s.intersect(r);
+            double[] xs= s.old_intersect(r);
             Assert.AreEqual(2, xs.Count());
             Assert.AreEqual(-6.0d, xs[0]);
             Assert.AreEqual(-4.0d, xs[1]);
