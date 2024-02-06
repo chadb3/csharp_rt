@@ -24,6 +24,7 @@ namespace csharp_rt
         /// <param name="t_in"></param>
         public Intersections(List<Intersection> t_in)
         {
+            t = new List<Intersection>();
             t = t_in;
         }
         /// <summary>

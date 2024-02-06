@@ -228,8 +228,16 @@ namespace csharp_rt
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere sphere = new Sphere();
             sphere.set_transform(Matrix.scaling(2, 2, 2));
-            var x = sphere.old_intersect(r);
+            var x = sphere.intersect(r);
             Console.WriteLine("trying to get x into intersections with it's obj");
+            if (x[0].obj == sphere)
+            {
+                Console.WriteLine("OBJ==SPHERE!");
+            }
+            else
+            {
+                Console.WriteLine("Still work to do :^((((((((");
+            }
         }
 
     }

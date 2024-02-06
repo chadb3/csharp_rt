@@ -37,11 +37,11 @@ namespace csharp_rt
             }
         }
 
-        public List<Intersection> intersection(Ray rayIn)
+        public List<Intersection> intersect(Ray rayIn)
         {
             //Ray ray2=
             List <Intersection> ret=new List<Intersection>();
-            //Intersection one;
+            Intersection one;
             //Intersection two;
             double[] ins;
             Tuple sphere_to_ray = rayIn.origin - Tuple.point(0, 0, 0);
@@ -52,15 +52,16 @@ namespace csharp_rt
             if (descriminate < 0)
             {
                 ins= [];
-                ret.Append(new Intersection(ins[0], this));
+                ret.Add(new Intersection(ins[0], this));
             }
             else
             {
                 double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
                 double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
-                ins= [t1, t2];
-                ret.Append(new Intersection(ins[0], this));
-                ret.Append(new Intersection(ins[0], this));
+                //ins= [t1, t2];
+                //one = 
+                ret.Add(new Intersection(/*ins[0]*/t1, this));
+                ret.Add(new Intersection(/*ins[1]*/t2, this));
             }
             return ret;
         }
