@@ -17,7 +17,13 @@ namespace csharp_rt
             this.origin = Tuple.point(0, 0, 0);
             transform = Matrix.identity();
         }
-
+        /// <summary>
+        /// Old intersect.
+        /// book had us do the old switcheroo on an established function
+		/// instead of following the book. I just kept the old function while I worked on the new one.
+        /// </summary>
+        /// <param name="rayIn"></param>
+        /// <returns></returns>
         public double[] old_intersect(Ray rayIn)
         {
             Tuple sphere_to_ray = rayIn.origin - Tuple.point(0, 0, 0);
@@ -41,7 +47,7 @@ namespace csharp_rt
         {
             //Ray ray2=
             List <Intersection> ret=new List<Intersection>();
-            Intersection one;
+            //Intersection one;
             //Intersection two;
             double[] ins;
             Tuple sphere_to_ray = rayIn.origin - Tuple.point(0, 0, 0);

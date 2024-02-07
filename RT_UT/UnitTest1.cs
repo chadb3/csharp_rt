@@ -711,6 +711,16 @@ namespace RT_UT
             Assert.AreEqual(-4.0d, xs[1]);
         }
         [TestMethod]
+        public void A_sphere_is_behind_a_ray_with_new_intersect()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere s = new Sphere();
+            Intersections xs = new Intersections(s.intersect(r));
+            Assert.AreEqual(2, xs.count());
+            Assert.AreEqual(-6.0d, xs[0].t);
+            Assert.AreEqual(-4.0d, xs[1].t);
+        }
+        [TestMethod]
         public void An_intersection_encapsulates_t_and_object()
         {
             Sphere s=new Sphere();
@@ -749,7 +759,7 @@ namespace RT_UT
         /// as it uses the change set in this function that I missed.
         /// I will try to have a new intersect method instead of breaking this one.
         /// </summary>
-        public void Interset_sets_the_object_on_the_intersection()
+        public void Intersect_sets_the_object_on_the_intersection()
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
