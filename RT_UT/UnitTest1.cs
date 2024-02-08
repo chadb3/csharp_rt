@@ -857,7 +857,19 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere sphere = new Sphere();
             sphere.set_transform(Matrix.scaling(2, 2, 2));
-            //Intersections xs = new Intersections(sphere.intersect(r));
+            Intersections xs = new Intersections(sphere.intersect(r));
+            Assert.AreEqual(2, xs.count());
+            Assert.AreEqual(3, xs[0].t);
+            Assert.AreEqual(7, xs[1].t);
+        }
+        [TestMethod]
+        public void Intersecting_a_translated_sphere_with_a_ray()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.point(0, 0, 1));
+            Sphere s = new Sphere();
+            s.set_transform(Matrix.translation(5, 0, 0));
+            Intersections xs=new Intersections(s.intersect(r));
+            Assert.AreEqual(0,xs.count());
         }
     }
 
