@@ -45,20 +45,20 @@ namespace csharp_rt
 
         public List<Intersection> intersect(Ray rayIn)
         {
-            //Ray ray2=
+            Ray ray2 = rayIn.transform(this.transform.inverse());
             List <Intersection> ret=new List<Intersection>();
             //Intersection one;
             //Intersection two;
             double[] ins;
-            Tuple sphere_to_ray = rayIn.origin - Tuple.point(0, 0, 0);
-            double a = Tuple.dot(rayIn.direction, rayIn.direction);
-            double b = 2 * Tuple.dot(rayIn.direction, sphere_to_ray);
+            Tuple sphere_to_ray = ray2.origin - Tuple.point(0, 0, 0);
+            double a = Tuple.dot(ray2.direction, ray2.direction);
+            double b = 2 * Tuple.dot(ray2.direction, sphere_to_ray);
             double c = sphere_to_ray.dot(sphere_to_ray) - 1;
             double descriminate = Math.Pow(b, 2) - 4 * a * c;
             if (descriminate < 0)
             {
                 ins= [];
-                ret.Add(new Intersection(ins[0], this));
+                ret.Add(new Intersection(double.NaN, this));
             }
             else
             {
