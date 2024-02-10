@@ -46,26 +46,33 @@ namespace csharp_rt
         public List<Intersection> intersect(Ray rayIn)
         {
             Ray ray2 = rayIn.transform(this.transform.inverse());
-            List <Intersection> ret=new List<Intersection>();
+            List<Intersection> ret = new List<Intersection>();
             //Intersection one;
             //Intersection two;
-            double[] ins;
+            //double[] ins;
             Tuple sphere_to_ray = ray2.origin - Tuple.point(0, 0, 0);
             double a = Tuple.dot(ray2.direction, ray2.direction);
             double b = 2 * Tuple.dot(ray2.direction, sphere_to_ray);
             double c = sphere_to_ray.dot(sphere_to_ray) - 1;
             double descriminate = Math.Pow(b, 2) - 4 * a * c;
-            if (descriminate < 0)
-            {
-                ins= [];
-                ret.Add(new Intersection(double.NaN, this));
-            }
-            else
+            //if (descriminate < 0)
+            //{
+            //ins= [];
+            //ret.Add(new Intersection(double.NaN, this));
+            //}
+            //else
+            //{
+            //double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
+            //double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
+            //ins= [t1, t2];
+            //one = 
+            //ret.Add(new Intersection(/*ins[0]*/t1, this));
+            //ret.Add(new Intersection(/*ins[1]*/t2, this));
+            //}
+            if (descriminate >= 0)
             {
                 double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
                 double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
-                //ins= [t1, t2];
-                //one = 
                 ret.Add(new Intersection(/*ins[0]*/t1, this));
                 ret.Add(new Intersection(/*ins[1]*/t2, this));
             }

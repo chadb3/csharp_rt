@@ -27,6 +27,7 @@ namespace csharp_rt
             test_intersection_greater_than();
             IntersectionsSortCheck();
             testingNewIntersect();
+            testIntersectingATranslatedSphere();
             return 2989;
         }
 
@@ -238,6 +239,15 @@ namespace csharp_rt
             {
                 Console.WriteLine("Still work to do :^((((((((");
             }
+        }
+        static void testIntersectingATranslatedSphere()
+        {
+            Console.WriteLine("\n\ntestIntersectingATranslatedSphere()");
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.point(0, 0, 1));
+            Sphere s = new Sphere();
+            s.set_transform(Matrix.translation(5, 0, 0));
+            Intersections xs = new Intersections(s.intersect(r));
+            Console.WriteLine("xs: {0}", xs.count());
         }
 
     }

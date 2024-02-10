@@ -862,6 +862,12 @@ namespace RT_UT
             Assert.AreEqual(3, xs[0].t);
             Assert.AreEqual(7, xs[1].t);
         }
+
+        /// <summary>
+        /// so this looks like this is failing due to the new way 
+        /// I handle a case where it would be zero such that the 
+        /// descriminate < 0
+        /// </summary>
         [TestMethod]
         public void Intersecting_a_translated_sphere_with_a_ray()
         {
