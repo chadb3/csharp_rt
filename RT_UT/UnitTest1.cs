@@ -701,14 +701,26 @@ namespace RT_UT
             Assert.AreEqual(1.0d, xs[1]);
         }
         [TestMethod]
+        public void new_A_ray_originates_inside_a_sphere()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere s = new Sphere();
+            Intersections xs = new Intersections(s.intersect(r));
+            Assert.AreEqual(2, xs.count());
+            Assert.AreEqual(-1.0d, xs[0].t);
+            Assert.AreEqual(1.0d, xs[1].t);
+        }
+            [TestMethod]
         public void A_sphere_is_behind_a_ray()
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
-            double[] xs= s.old_intersect(r);
-            Assert.AreEqual(2, xs.Count());
-            Assert.AreEqual(-6.0d, xs[0]);
-            Assert.AreEqual(-4.0d, xs[1]);
+            //double[] xs= s.old_intersect(r);
+            Intersections xs= new Intersections(s.intersect(r));
+            //Assert.AreEqual(2, xs.Count());
+            Assert.AreEqual(2, xs.count());
+            Assert.AreEqual(-6.0d, xs[0].t);
+            Assert.AreEqual(-4.0d, xs[1].t);
         }
         [TestMethod]
         public void A_sphere_is_behind_a_ray_with_new_intersect()
