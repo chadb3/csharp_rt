@@ -27,6 +27,7 @@ namespace z_ray_cast_sphere
             // adding sphere shape
             Sphere shape= new Sphere();
             //ray casting loop.
+            Console.WriteLine("starting loop");
             for(int y=0;y< canvas_pixels-1;y++)
             {
 
@@ -34,12 +35,18 @@ namespace z_ray_cast_sphere
                 double world_y = half - pixel_size * y;
                 for(int x=0;x< canvas_pixels - 1; x++)
                 {
+                    Console.WriteLine("{0}:{1}", x, y);
                     //x coord
                     double world_x=-half+pixel_size * x;
                     csharp_rt.Tuple position= csharp_rt.Tuple.point(world_x, world_y, wall_z);
                     Ray r = new Ray(ray_origin, (position-ray_origin).normalize());
                     //try to get the intersect method to return a new intersections. 
                     Intersections xs = new Intersections(shape.intersect(r));
+                    Console.WriteLine("if:");
+                    if (xs.hit()!=null)
+                    {
+                        Console.Write("asdf");
+                    }
                 }
             }
         }
