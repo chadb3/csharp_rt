@@ -37,6 +37,9 @@ namespace z_ray_cast_sphere
                     //x coord
                     double world_x=-half+pixel_size * x;
                     csharp_rt.Tuple position= csharp_rt.Tuple.point(world_x, world_y, wall_z);
+                    Ray r = new Ray(ray_origin, (position-ray_origin).normalize());
+                    //try to get the intersect method to return a new intersections. 
+                    Intersections xs = new Intersections(shape.intersect(r));
                 }
             }
         }
