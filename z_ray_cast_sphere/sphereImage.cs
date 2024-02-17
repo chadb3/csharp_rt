@@ -22,6 +22,7 @@ namespace z_ray_cast_sphere
             double half = wall_size / 2;
             //creating the canvas
             Canvas canvas = new Canvas(canvas_pixels, canvas_pixels);
+            canvas.set_file_name("circle");
             // adding color red
             Color color = new Color(1, 0, 0);
             // adding sphere shape
@@ -43,12 +44,17 @@ namespace z_ray_cast_sphere
                     //try to get the intersect method to return a new intersections. 
                     Intersections xs = new Intersections(shape.intersect(r));
                     Console.WriteLine("if:");
-                    if (xs.hit()!=null)
+                    if (xs.canHit())
                     {
-                        Console.Write("asdf");
+                        // don't think hit is really used.
+                        //Intersection i = xs.hit();
+                        canvas.write_pixel(x, y, color);
+                        //Console.WriteLine(i);
+                        //Console.Write("asdf");
                     }
                 }
             }
+            canvas.canvas_to_P3_ppm();
         }
     }
 }

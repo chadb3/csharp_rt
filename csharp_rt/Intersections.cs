@@ -90,6 +90,11 @@ namespace csharp_rt
             return null;
         }
 
+        public bool canHit()
+        {
+            return count() > 0;
+        }
+
 
     }
 }
