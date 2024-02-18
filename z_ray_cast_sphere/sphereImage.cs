@@ -27,6 +27,8 @@ namespace z_ray_cast_sphere
             Color color = new Color(1, 0, 0);
             // adding sphere shape
             Sphere shape= new Sphere();
+            shape.set_transform(Matrix.scaling(1,0.5,1));
+            shape.set_transform(Matrix.scaling(0.5, 1, 1));
             //ray casting loop.
             Console.WriteLine("starting loop");
             for(int y=0;y< canvas_pixels-1;y++)
