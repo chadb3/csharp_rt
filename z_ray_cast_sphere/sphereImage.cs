@@ -29,6 +29,8 @@ namespace z_ray_cast_sphere
             Sphere shape= new Sphere();
             shape.set_transform(Matrix.scaling(1,0.5,1));
             shape.set_transform(Matrix.scaling(0.5, 1, 1));
+            shape.set_transform(Matrix.scaling(0.4, 1, 1).rotation_z_ns(Math.PI / 2));
+            shape.set_transform(Matrix.scaling(0.5, 1, 1).shearing_ns(1, 0, 0, 0, 0, 0));
             //ray casting loop.
             Console.WriteLine("starting loop");
             for(int y=0;y< canvas_pixels-1;y++)
