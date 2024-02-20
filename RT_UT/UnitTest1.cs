@@ -894,5 +894,29 @@ namespace RT_UT
             Assert.AreEqual(0,xs.count());
         }
     }
+    [TestClass]
+    public class Light_and_Shading()
+    {
+        [TestMethod]
+        public void The_normal_on_a_sphere_at_a_point_on_the_x_axis()
+        {
+
+        }
+        [TestMethod]
+        public void The_Normal_on_a_sphere_at_a_point_on_the_y_axis()
+        {
+
+        }
+        [TestMethod]
+        public void The_Normal_on_a_sphere_at_a_point_on_the_z_axis()
+        {
+
+        }
+        [TestMethod]
+        public void The_Normal_on_a_sphere_at_a_nonaxial_point()
+        {
+
+        }
+    }
 
 }
