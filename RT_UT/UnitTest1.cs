@@ -902,31 +902,31 @@ namespace RT_UT
         {
             //starting using place holders to prevent errors
             Sphere s=new Sphere();
-            //csharp_rt.Tuple n=s.normal_at(csharp_rt.Tuple.point(1,0,0));
-            //Assert.AreEqual(csharp_rt.Tuple.vector(1,0,0),n);
+            csharp_rt.Tuple n=s.normal_at(csharp_rt.Tuple.point(1,0,0));
+            Assert.AreEqual(csharp_rt.Tuple.vector(1,0,0),n);
 
         }
         [TestMethod]
         public void The_Normal_on_a_sphere_at_a_point_on_the_y_axis()
         {
             Sphere s = new Sphere();
-            //csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0,1,0));
-            //Assert.AreEqual(csharp_rt.Tuple.vector(0,1,0),n);
+            csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0,1,0));
+            Assert.AreEqual(csharp_rt.Tuple.vector(0,1,0),n);
         }
         [TestMethod]
         public void The_Normal_on_a_sphere_at_a_point_on_the_z_axis()
         {
             Sphere s = new Sphere();
-            //csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.vector(0,0,1));
-            //Assert.AreEqual(csharp_rt.Tuple.vector(0,0,1),n);
+            csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0,0,1));
+            Assert.AreEqual(csharp_rt.Tuple.vector(0,0,1),n);
         }
         [TestMethod]
         public void The_Normal_on_a_sphere_at_a_nonaxial_point()
         {
             Sphere s = new Sphere();
-            //int a= Math.sqrt
-            //csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(Math.sqrt(3)/3,Math.sqrt(3)/3,Math.sqrt(3)/3));
-            //Assert.AreEqual(csharp_rt.Tuple.vector(Math.sqrt(3)/3,Math.sqrt(3)/3,Math.sqrt(3)/3),n);
+            //int a= Math.Sqrt
+            csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(Math.Sqrt(3)/3,Math.Sqrt(3)/3,Math.Sqrt(3)/3));
+            Assert.AreEqual(csharp_rt.Tuple.vector(Math.Sqrt(3)/3,Math.Sqrt(3)/3,Math.Sqrt(3)/3),n);
         }
     }
 

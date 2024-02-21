@@ -82,5 +82,10 @@ namespace csharp_rt
         {
             this.transform = transform;
         }
+
+        public csharp_rt.Tuple normal_at(csharp_rt.Tuple pointIn)
+        {
+            return (pointIn - csharp_rt.Tuple.point(0, 0, 0).normalize());
+        }
     }
 }
