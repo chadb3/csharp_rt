@@ -928,6 +928,24 @@ namespace RT_UT
             csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(Math.Sqrt(3)/3,Math.Sqrt(3)/3,Math.Sqrt(3)/3));
             Assert.AreEqual(csharp_rt.Tuple.vector(Math.Sqrt(3)/3,Math.Sqrt(3)/3,Math.Sqrt(3)/3),n);
         }
+
+        [TestMethod]
+        public void Compuuting_the_normal_on_a_translated_sphere()
+        {
+            Sphere s = new Sphere();
+            s.set_transform(Matrix.translation(0, 1, 0));
+            csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0, 1.70711, -0.70711));
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0.70711, -0.70711),n);
+        }
+        [TestMethod]
+        public void Computing_the_normal_on_a_transformed_sphere()
+        {
+            Sphere s = new Sphere();
+            Matrix m = Matrix.scaling(1, 0.5, 1) * Matrix.rotation_z(Math.PI / 5);
+            s.set_transform(m);
+            csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0, Math.Sqrt(2) / 2, -Math.Sqrt(2) / 2));
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0.97014, -0.24254), n);
+        }
     }
 
 }
