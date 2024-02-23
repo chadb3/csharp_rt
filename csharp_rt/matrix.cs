@@ -426,6 +426,20 @@ namespace csharp_rt
             return retVal*this;
         }
 
+        public Matrix transpose()
+        {
+            Matrix ret = new Matrix(x_size, y_size);
+            for (int i = 0; i < x_size; i++)
+            {
+                for (int j = 0; j < y_size; j++)
+                {
+                    ret[i, j] = this[j, i];
+                }
+            }
+
+            return ret;
+        }
+
        
 
 

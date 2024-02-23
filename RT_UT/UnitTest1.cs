@@ -372,7 +372,10 @@ namespace RT_UT
         [TestMethod]
         public void Transposing_a_matrix()
         {
-            Assert.IsTrue(2 == 5);
+            Matrix A = new Matrix(new double[,] { { 0, 9, 3, 0 }, { 9, 8, 0, 8 }, { 1, 8, 5, 3 }, { 0, 0, 5, 8 } });
+            Matrix A_Transpose = new Matrix(new double[,] { { 0, 9, 1, 0 }, { 9, 8, 8, 0 }, { 3, 0, 5, 5 }, { 0, 8, 3, 8 } });
+            Assert.AreEqual(A.transpose(),A_Transpose);
+            //Assert.IsTrue(2 == 5);
         }
 
         [TestMethod]
