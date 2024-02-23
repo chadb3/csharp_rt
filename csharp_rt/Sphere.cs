@@ -83,9 +83,12 @@ namespace csharp_rt
             this.transform = transform;
         }
 
-        public csharp_rt.Tuple normal_at(csharp_rt.Tuple pointIn)
+        public csharp_rt.Tuple normal_at(csharp_rt.Tuple world_point)
         {
-            return (pointIn - csharp_rt.Tuple.point(0, 0, 0).normalize());
+            csharp_rt.Tuple object_point = this.transform.inverse()*world_point;
+            csharp_rt.Tuple object_normal = object_point - csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple world_normal = this.transform.inverse().tr
+            //return (pointIn - csharp_rt.Tuple.point(0, 0, 0).normalize());
         }
     }
 }
