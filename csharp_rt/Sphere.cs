@@ -87,7 +87,9 @@ namespace csharp_rt
         {
             csharp_rt.Tuple object_point = this.transform.inverse()*world_point;
             csharp_rt.Tuple object_normal = object_point - csharp_rt.Tuple.point(0, 0, 0);
-            csharp_rt.Tuple world_normal = this.transform.inverse().tr
+            //looks like I skipped transpose in the matrix section on page 33 by accident.
+            // and luck would have it that it was only mentioned once and not used again until now... ..
+            csharp_rt.Tuple world_normal = this.transform.inverse()
             //return (pointIn - csharp_rt.Tuple.point(0, 0, 0).normalize());
         }
     }

@@ -362,6 +362,18 @@ namespace RT_UT
             Matrix identity = Matrix.identity();
             Assert.IsTrue(A * identity == A);
         }
+        /// <summary>
+        /// 2/23/2024
+        /// accidently missed this one.
+        /// this is funny in that this is not used again until Page 82. (this was on page 33).
+        /// the 2==5 is so the test fails so I know where to start (page 33) if I am still stuck here.
+        /// looks to be easy to implement.
+        /// </summary>
+        [TestMethod]
+        public void Transposing_a_matrix()
+        {
+            Assert.IsTrue(2 == 5);
+        }
 
         [TestMethod]
         public void Calculating_the_determinate_of_a_2_x_2_matrix()
