@@ -130,7 +130,10 @@ namespace csharp_rt
             //see color() for explanation.
             return this.ToString().GetHashCode();
         }
-
+        public Tuple reflect(Tuple normal)
+        {
+            return this - normal * 2 * this.dot(normal);
+        }
     }
     
 }

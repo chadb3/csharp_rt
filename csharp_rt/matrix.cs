@@ -425,7 +425,11 @@ namespace csharp_rt
             retVal[2, 1] = zy;
             return retVal*this;
         }
-
+        /// <summary>
+        /// Note: this was on page 37
+        /// I missed this, and was not needed again until page 82.
+        /// </summary>
+        /// <returns></returns>
         public Matrix transpose()
         {
             Matrix ret = new Matrix(x_size, y_size);

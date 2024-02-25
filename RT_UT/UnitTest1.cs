@@ -961,6 +961,23 @@ namespace RT_UT
             csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0, Math.Sqrt(2) / 2, -Math.Sqrt(2) / 2));
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0.97014, -0.24254), n);
         }
+
+        [TestMethod]
+        public void Reflecting_a_vector_approaching_at_45_degrees()
+        {
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(1, -1, 0);
+            csharp_rt.Tuple n = csharp_rt.Tuple.vector(0, 1, 0);
+            csharp_rt.Tuple r = csharp_rt.Tuple.vector(1, 1, 0);
+            Assert.AreEqual(v.reflect(n),r);
+        }
+        [TestMethod]
+        public void Reflecting_a_vector_off_a_slanted_surface()
+        {
+            csharp_rt.Tuple v = csharp_rt.Tuple.vector(0, -1, 0);
+            csharp_rt.Tuple n = csharp_rt.Tuple.vector(Math.Sqrt(2) / 2, Math.Sqrt(2) / 2, 0);
+            csharp_rt.Tuple r = csharp_rt.Tuple.vector(1, 0, 0);
+            Assert.AreEqual(v.reflect(n),r);
+        }
     }
 
 }
