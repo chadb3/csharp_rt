@@ -983,9 +983,19 @@ namespace RT_UT
         {
             Color intensity = new Color(1, 1, 1);
             csharp_rt.Tuple position = csharp_rt.Tuple.point(0, 0, 0);
-            //LightPoint light=new LightPoint(position,intensity);
+            //Light light=Light.PointLight(position,intensity);
             //Assert.AreEqual(position,light.position);
             //Assert.AreEqual(intensity,light.intensity);
+        }
+        [TestMethod]
+        public void The_default_material()
+        {
+            //Material m = new material();
+            //Assert.AreEqual(Color(1,1,1),m.color);
+            //Assert.AreEqual(0.1,m.ambient);
+            //Assert.AreEqual(0.9,m.diffuse);
+            //Assert.AreEqual(0.9,m.specular);
+            //Assert.AreEqual(200.0,m.shininess);
         }
     }
 
