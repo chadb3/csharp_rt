@@ -978,6 +978,15 @@ namespace RT_UT
             csharp_rt.Tuple r = csharp_rt.Tuple.vector(1, 0, 0);
             Assert.AreEqual(v.reflect(n),r);
         }
+        [TestMethod]
+        public void A_point_of_light_has_a_position_and_intensity()
+        {
+            Color intensity = new Color(1, 1, 1);
+            csharp_rt.Tuple position = csharp_rt.Tuple.point(0, 0, 0);
+            //LightPoint light=new LightPoint(position,intensity);
+            //Assert.AreEqual(position,light.position);
+            //Assert.AreEqual(intensity,light.intensity);
+        }
     }
 
 }
