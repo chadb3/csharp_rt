@@ -997,6 +997,22 @@ namespace RT_UT
             //Assert.AreEqual(0.9,m.specular);
             //Assert.AreEqual(200.0,m.shininess);
         }
+        [TestMethod]
+        public void A_sphere_has_a_default_material()
+        {
+            Sphere s = new Sphere();
+            //Material m = s.material
+            //Assert.AreEqual(material(),m);
+        }
+        [TestMethod]
+        public void A_sphere_may_be_assigned_a_material()
+        {
+            Sphere s = new Sphere();
+            //Material m = new Material();
+            //m.ambient=1;
+            //s.material=m;
+            //Assert.AreEqual(m,s.material);
+        }
     }
 
 }
