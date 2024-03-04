@@ -21,5 +21,30 @@ namespace csharp_rt
             specular = 0.9d;
             shininess = 200.0d;
         }
+        public static bool operator ==(Material lhs, Material rhs)
+        {
+            if(lhs.color== rhs.color )
+            {
+                if (lhs.ambient== rhs.ambient )
+                {
+                    if( lhs.diffuse== rhs.diffuse)
+                    {
+                        if(lhs.specular== rhs.specular )
+                        {
+                            if(lhs.shininess== rhs.shininess )
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        public static bool operator !=(Material lhs, Material rhs) {  return !(lhs == rhs); }
+        public override bool Equals(Object obj)
+        {
+            return this == (Material)obj;
+        }
     }
 }

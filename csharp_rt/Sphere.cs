@@ -11,11 +11,13 @@ namespace csharp_rt
         public double radaii;
         public Tuple origin;
         public Matrix transform;
+        public Material material;
         public Sphere()
         {
             this.radaii = 1;
             this.origin = Tuple.point(0, 0, 0);
             transform = Matrix.identity();
+            this.material = new Material();
         }
         /// <summary>
         /// Old intersect.

@@ -990,28 +990,29 @@ namespace RT_UT
         [TestMethod]
         public void The_default_material()
         {
-            //Material m = new material();
-            //Assert.AreEqual(Color(1,1,1),m.color);
-            //Assert.AreEqual(0.1,m.ambient);
-            //Assert.AreEqual(0.9,m.diffuse);
-            //Assert.AreEqual(0.9,m.specular);
-            //Assert.AreEqual(200.0,m.shininess);
+            Material m = new Material();
+            Assert.AreEqual(new Color(1,1,1),m.color);
+            Assert.AreEqual(0.1,m.ambient);
+            Assert.AreEqual(0.9,m.diffuse);
+            Assert.AreEqual(0.9,m.specular);
+            Assert.AreEqual(200.0,m.shininess);
         }
         [TestMethod]
         public void A_sphere_has_a_default_material()
         {
             Sphere s = new Sphere();
-            //Material m = s.material
-            //Assert.AreEqual(material(),m);
+            Material m = new Material();
+            Material ms = s.material;
+            Assert.AreEqual(m,ms);
         }
         [TestMethod]
         public void A_sphere_may_be_assigned_a_material()
         {
             Sphere s = new Sphere();
-            //Material m = new Material();
-            //m.ambient=1;
-            //s.material=m;
-            //Assert.AreEqual(m,s.material);
+            Material m = new Material();
+            m.ambient=1;
+            s.material=m;
+            Assert.AreEqual(m,s.material);
         }
         [TestMethod]
         public void Lighting_with_the_eye_between_the_light_and_the_surface()
