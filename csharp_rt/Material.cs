@@ -46,5 +46,9 @@ namespace csharp_rt
         {
             return this == (Material)obj;
         }
+        public void lighting(Light light,csharp_rt.Tuple point,csharp_rt.Tuple eyev,csharp_rt.Tuple normalv)
+        {
+
+        }
     }
 }
