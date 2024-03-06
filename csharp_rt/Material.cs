@@ -48,7 +48,9 @@ namespace csharp_rt
         }
         public void lighting(Light light,csharp_rt.Tuple point,csharp_rt.Tuple eyev,csharp_rt.Tuple normalv)
         {
-
+            Color effective_color = this.color * light.intensity;
+            csharp_rt.Tuple lightv = (light.position - point).normalize();
+            Color ambient = effective_color * this.ambient;
         }
     }
 }
