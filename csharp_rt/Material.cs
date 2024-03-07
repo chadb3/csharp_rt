@@ -46,11 +46,30 @@ namespace csharp_rt
         {
             return this == (Material)obj;
         }
+        /// <summary>
+        /// not clear if this should go to light or material.
+        /// I went with material as the material gets the lighting and it was the first var used in the book
+        /// so it made since to me to use it like material.lighting
+        /// </summary>
+        /// <param name="light"></param>
+        /// <param name="point"></param>
+        /// <param name="eyev"></param>
+        /// <param name="normalv"></param>
         public void lighting(Light light,csharp_rt.Tuple point,csharp_rt.Tuple eyev,csharp_rt.Tuple normalv)
         {
             Color effective_color = this.color * light.intensity;
             csharp_rt.Tuple lightv = (light.position - point).normalize();
             Color ambient = effective_color * this.ambient;
+            double light_dot_normal = lightv.dot(normalv);
+            if(light_dot_normal < 0 )
+            {
+                csharp_rt.Color color_diffuse = Color.BLACK();
+                csharp_rt.Color color_specular=Color.BLACK(); 
+            }
+            else
+            {
+
+            }
         }
     }
 }
