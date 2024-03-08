@@ -55,8 +55,9 @@ namespace csharp_rt
         /// <param name="point"></param>
         /// <param name="eyev"></param>
         /// <param name="normalv"></param>
-        public void lighting(Light light,csharp_rt.Tuple point,csharp_rt.Tuple eyev,csharp_rt.Tuple normalv)
+        public Color lighting(Light light,csharp_rt.Tuple point,csharp_rt.Tuple eyev,csharp_rt.Tuple normalv)
         {
+            Color ret = Color.RED();
             Color effective_color = this.color * light.intensity;
             csharp_rt.Tuple lightv = (light.position - point).normalize();
             Color ambient = effective_color * this.ambient;
@@ -70,6 +71,8 @@ namespace csharp_rt
             {
 
             }
+
+            return ret;
         }
     }
 }

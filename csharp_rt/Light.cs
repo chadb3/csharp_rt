@@ -30,5 +30,21 @@ namespace csharp_rt
             pl.position = position;
             return pl;
         }
+        /// <summary>
+        /// Making this in lighting as it deals with lighting...
+        /// will still keep and maybe even finish the one in materials just in case...
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="point"></param>
+        /// <param name="eyev"></param>
+        /// <param name="normalv"></param>
+        /// <returns></returns>
+        public Color lighting(Material m, csharp_rt.Tuple point, csharp_rt.Tuple eyev, csharp_rt.Tuple normalv)
+        {
+            Color ret = Color.BLACK();
+            Color effective_color = m.color * intensity;
+            csharp_rt.Tuple lightv = (position - point).normalize();
+            return ret;
+        }
     }
 }
