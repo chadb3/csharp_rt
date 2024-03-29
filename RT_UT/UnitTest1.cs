@@ -1020,7 +1020,7 @@ namespace RT_UT
             //Light <(())> surface
             csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0, 0, -1);
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
-            //Light light = Light.point_light(csharp_rt.Tuple.point(0,0,-10),Color(1,1,1));
+            Light light = Light.point_light(csharp_rt.Tuple.point(0,0,-10),new Color(1,1,1));
             //Material result=newLighting(light,position,eyev,normalv);
             //Assert.AreEqual(Color(1.9,1.9,1.9),result);
         }
