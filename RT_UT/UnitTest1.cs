@@ -1024,9 +1024,9 @@ namespace RT_UT
             csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0, 0, -1);
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
             Light light = Light.point_light(csharp_rt.Tuple.point(0,0,-10),new Color(1,1,1));
-            //Material result=newLighting(light,position,eyev,normalv);
-            Material result = light.lighting(m,);
-            //Assert.AreEqual(Color(1.9,1.9,1.9),result);
+            //Material result=newLighting(light,position,eyev,normalv); mark for delete
+            Color result = light.lighting(m,position,eyev,normalv);
+            Assert.AreEqual(new Color(1.9,1.9,1.9),result);
         }
         [TestMethod]
         public void Lighting_with_the_eye_between_light_and_surface_eye_offset_45_degrees()
@@ -1037,9 +1037,10 @@ namespace RT_UT
             //assume all the tests have the 2 above
             csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0,Math.Sqrt(2)/2,-Math.Sqrt(2)/2);
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, 1);
-            //Light light=Light.point_light(csharp_rt.Tuple.point(0,0,-10),Color(1,1,1));
-            //Material m = lighting(light,position,eyev,normalv);
-            //Assert.AreEqual(Color(1.0,1.0,1.0),result);
+            Light light=Light.point_light(csharp_rt.Tuple.point(0,0,-10),new Color(1,1,1));
+            Color result = light.lighting(m, position, eyev, normalv);
+            //Material m = lighting(light,position,eyev,normalv); mark for delete
+            Assert.AreEqual(new Color(1.0,1.0,1.0),result);
         }
         [TestMethod]
         public void Lighting_with_eye_opposite_surface_light_offset()
@@ -1050,9 +1051,9 @@ namespace RT_UT
             //assume all the tests have the 2 above
             csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0, 0, -1);
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
-            //Light light=point_light(csharp_rt.Tuple.point(0,10,-10),color(1,1,1));
-            //Material result=Lighting(light,postion,eyev,normalv);
-            //Assert.AreEqual(Color(0.7364,0.7364,0.7364),result);
+            Light light=Light.point_light(csharp_rt.Tuple.point(0,10,-10),new Color(1,1,1));
+            Color result=light.lighting(m,position,eyev,normalv);
+            Assert.AreEqual(new Color(0.7364,0.7364,0.7364),result);
         }
         [TestMethod]
         public void Lighting_with_eye_in_the_path_of_teh_reflection_vector()
@@ -1063,9 +1064,9 @@ namespace RT_UT
             //assume all the tests have the 2 above
             csharp_rt.Tuple eyev=csharp_rt.Tuple.vector(0,-Math.Sqrt(2)/2,-Math.Sqrt(2)/2);
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
-            //Light light=point_light(csharp_rt.Tuple(0,10,-10),Color(1,1,1));
-            //Material result=lighting(light,postion,eyev,normalv);
-            //Assert.AreEqual(Color(1.6364,1.6364,1.6364),result);
+            Light light=Light.point_light(csharp_rt.Tuple.point(0,10,-10),new Color(1,1,1));
+            Color result=light.lighting(m,position,eyev,normalv);
+            Assert.AreEqual(new Color(1.6364,1.6364,1.6364),result);
         }
         [TestMethod]
         public void Lighting_with_the_light_behind_the_surface()
@@ -1076,9 +1077,9 @@ namespace RT_UT
             //assume all the tests have the 2 above
             csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0,0,-1);
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
-            //Light light=point_light(csharp_rt_Tuple(0,0,10),Color(1,1,1));
-            //Material result=lighting(light,position,eyev,normalv);
-            //Assert.AreEqual(result,Color(0.1,0.1,0.1));
+            Light light=Light.point_light(csharp_rt.Tuple.point(0,0,10),new Color(1,1,1));
+            Color result=light.lighting(m,position,eyev,normalv);
+            Assert.AreEqual(new Color(0.1,0.1,0.1),result);
         }
     }
 
