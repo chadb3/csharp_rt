@@ -44,6 +44,8 @@ namespace csharp_rt
             Color ret = Color.BLACK();
             Color effective_color = m.color * intensity;
             csharp_rt.Tuple lightv = (position - point).normalize();
+            Color ambient = effective_color * m.ambient;
+            double light_dot_normal=lightv.dot(normalv);
             return ret;
         }
     }
