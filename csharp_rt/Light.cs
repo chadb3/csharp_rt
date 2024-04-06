@@ -46,6 +46,15 @@ namespace csharp_rt
             csharp_rt.Tuple lightv = (position - point).normalize();
             Color ambient = effective_color * m.ambient;
             double light_dot_normal=lightv.dot(normalv);
+            if(light_dot_normal<0)
+            {
+                csharp_rt.Color color_diffuse = Color.BLACK();
+                csharp_rt.Color color_specular = Color.BLACK();
+            }
+            else 
+            {
+                csharp_rt.Color color_diffuse = effective_color * m.diffuse * light_dot_normal;
+            }
             return ret;
         }
     }

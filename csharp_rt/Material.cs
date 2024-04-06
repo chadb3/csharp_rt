@@ -69,7 +69,7 @@ namespace csharp_rt
             }
             else
             {
-
+                //csharp_rt.Color color_diffuse=effective_color
             }
 
             return ret;
