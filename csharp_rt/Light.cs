@@ -54,6 +54,8 @@ namespace csharp_rt
             else 
             {
                 csharp_rt.Color color_diffuse = effective_color * m.diffuse * light_dot_normal;
+                csharp_rt.Tuple reflectV = -normalv.reflect(eyev);
+                double reflect_dot_eye=reflectV.dot(eyev);
             }
             return ret;
         }
