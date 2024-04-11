@@ -46,23 +46,36 @@ namespace csharp_rt
             csharp_rt.Tuple lightv = (position - point).normalize();
             Color ambient = effective_color * m.ambient;
             double light_dot_normal=lightv.dot(normalv);
-            if(light_dot_normal<0)
+            csharp_rt.Color color_specular = new Color();
+            csharp_rt.Color color_diffuse = new Color();
+            double factor = 0.0d;
+            if (light_dot_normal<0)
             {
-                csharp_rt.Color color_diffuse = Color.BLACK();
-                csharp_rt.Color color_specular = Color.BLACK();
+                //csharp_rt.Color color_diffuse = Color.BLACK();
+                //csharp_rt.Color color_specular = Color.BLACK();
+                color_diffuse = Color.BLACK();
+                color_specular = Color.BLACK();
             }
             else 
             {
-                csharp_rt.Color color_diffuse = effective_color * m.diffuse * light_dot_normal;
+                //csharp_rt.Color color_diffuse = effective_color * m.diffuse * light_dot_normal;
+                color_diffuse = effective_color * m.diffuse * light_dot_normal;
                 csharp_rt.Tuple reflectV = -normalv.reflect(eyev);
                 double reflect_dot_eye=reflectV.dot(eyev);
                 if (reflect_dot_eye <= 0)
                 {
-                    
+                    //csharp_rt.Color color_specular = Color.BLACK();
+                    color_specular = Color.BLACK();
+                }
+                else
+                {
+                    factor = Math.Pow(reflect_dot_eye, m.shininess);
+                    color_specular = this.intensity * m.specular * factor;
                 }
             }
-            
-            return ret;
+
+            //return ret;
+            return ambient + color_diffuse + color_specular;
         }
     }
 }
