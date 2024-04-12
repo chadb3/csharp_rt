@@ -70,7 +70,7 @@ namespace csharp_rt
                 else
                 {
                     factor = Math.Pow(reflect_dot_eye, m.shininess);
-                    color_specular = this.intensity * m.specular * factor;
+                    color_specular = intensity * m.specular * factor;
                 }
             }
 

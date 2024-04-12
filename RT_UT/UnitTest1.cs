@@ -1036,7 +1036,7 @@ namespace RT_UT
             csharp_rt.Tuple position = csharp_rt.Tuple.point(0, 0, 0);
             //assume all the tests have the 2 above
             csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0,Math.Sqrt(2)/2,-Math.Sqrt(2)/2);
-            csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, 1);
+            csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
             Light light=Light.point_light(csharp_rt.Tuple.point(0,0,-10),new Color(1,1,1));
             Color result = light.lighting(m, position, eyev, normalv);
             //Material m = lighting(light,position,eyev,normalv); mark for delete
