@@ -1056,7 +1056,7 @@ namespace RT_UT
             Assert.AreEqual(new Color(0.7364,0.7364,0.7364),result);
         }
         [TestMethod]
-        public void Lighting_with_eye_in_the_path_of_teh_reflection_vector()
+        public void Lighting_with_eye_in_the_path_of_the_reflection_vector()
         {
             //assume all the tests have the 2 following
             Material m = new Material();
