@@ -28,6 +28,7 @@ namespace csharp_rt
             IntersectionsSortCheck();
             testingNewIntersect();
             testIntersectingATranslatedSphere();
+            testa_Lighting_with_eye_in_the_path_of_the_reflection_vector();
             return 2989;
         }
 
@@ -248,6 +249,19 @@ namespace csharp_rt
             s.set_transform(Matrix.translation(5, 0, 0));
             Intersections xs = new Intersections(s.intersect(r));
             Console.WriteLine("xs: {0}", xs.count());
+        }
+
+        static void testa_Lighting_with_eye_in_the_path_of_the_reflection_vector()
+        {
+            Console.WriteLine("testa_Lighting_with_eye_in_the_path_of_the_reflection_vector()");
+            Material m = new Material();
+            csharp_rt.Tuple position = csharp_rt.Tuple.point(0, 0, 0);
+            //assume all the tests have the 2 above
+            csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0, -Math.Sqrt(2) / 2, -Math.Sqrt(2) / 2);
+            csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
+            Light light = Light.point_light(csharp_rt.Tuple.point(0, 10, -10), new Color(1, 1, 1));
+            Color result = light.lighting(m, position, eyev, normalv);
+            Console.WriteLine("color: {0}", result);
         }
 
     }

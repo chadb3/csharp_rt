@@ -1043,7 +1043,7 @@ namespace RT_UT
             Assert.AreEqual(new Color(1.0,1.0,1.0),result);
         }
         [TestMethod]
-        public void Lighting_with_eye_opposite_surface_light_offset()
+        public void Lighting_with_eye_opposite_surface_light_offset_45_degrees()
         {
             //assume all the tests have the 2 following
             Material m = new Material();
@@ -1062,7 +1062,7 @@ namespace RT_UT
             Material m = new Material();
             csharp_rt.Tuple position = csharp_rt.Tuple.point(0, 0, 0);
             //assume all the tests have the 2 above
-            csharp_rt.Tuple eyev=csharp_rt.Tuple.vector(0,-Math.Sqrt(2)/2,-Math.Sqrt(2)/2);
+            csharp_rt.Tuple eyev=csharp_rt.Tuple.vector(0,-(Math.Sqrt(2)/2),-(Math.Sqrt(2)/2));
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
             Light light=Light.point_light(csharp_rt.Tuple.point(0,10,-10),new Color(1,1,1));
             Color result=light.lighting(m,position,eyev,normalv);
