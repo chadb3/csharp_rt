@@ -32,11 +32,8 @@ namespace Z_Lighting_Putting_It_Together
             csharp_rt.Tuple light_position = csharp_rt.Tuple.point(-10, 10, -10);
             csharp_rt.Color light_color = new csharp_rt.Color(1, 1, 1);
             Light light =new Light(light_position, light_color);
-            shape.set_transform(Matrix.scaling(1, 0.5, 1));
-            shape.set_transform(Matrix.scaling(0.5, 1, 1));
-            shape.set_transform(Matrix.scaling(0.4, 1, 1).rotation_z_ns(Math.PI / 2));
-            shape.set_transform(Matrix.scaling(0.5, 1, 1).shearing_ns(1, 0, 0, 0, 0, 0));
-            //ray casting loop.
+
+            //ray loop.
             Console.WriteLine("starting loop");
             for (int y = 0; y < canvas_pixels - 1; y++)
             {
@@ -56,15 +53,16 @@ namespace Z_Lighting_Putting_It_Together
                     Console.WriteLine("if:");
                     if (xs.canHit())
                     {
+                        //New for chap 6 project
                         csharp_rt.Tuple point = r.position(xs.hit().t);
                         csharp_rt.Tuple normal = xs.hit().obj.normal_at(point);
                         csharp_rt.Tuple eye = -r.direction;
                         color = light.lighting(xs.hit().obj.material, point, eye, normal);
-                        // don't think hit is really used.
-                        //Intersection i = xs.hit();
+                        //New for chap 6 project
+
+                        //reused from earlier chapter. no changes
                         canvas.write_pixel(x, y, color);
-                        //Console.WriteLine(i);
-                        //Console.Write("asdf");
+
                     }
                 }
             }
