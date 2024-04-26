@@ -1,4 +1,5 @@
 ﻿using csharp_rt;
+using System.Runtime.InteropServices;
 namespace Z_Lighting_Putting_It_Together
 {
     internal class Program
@@ -49,11 +50,16 @@ namespace Z_Lighting_Putting_It_Together
                     double world_x = -half + pixel_size * x;
                     csharp_rt.Tuple position = csharp_rt.Tuple.point(world_x, world_y, wall_z);
                     Ray r = new Ray(ray_origin, (position - ray_origin).normalize());
+                    
                     //try to get the intersect method to return a new intersections. 
                     Intersections xs = new Intersections(shape.intersect(r));
                     Console.WriteLine("if:");
                     if (xs.canHit())
                     {
+                        csharp_rt.Tuple point = r.position(xs.hit().t);
+                        csharp_rt.Tuple normal = xs.hit().obj.normal_at(point);
+                        csharp_rt.Tuple eye = -r.direction;
+                        color = light.lighting(xs.hit().obj.material, point, eye, normal);
                         // don't think hit is really used.
                         //Intersection i = xs.hit();
                         canvas.write_pixel(x, y, color);
