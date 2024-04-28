@@ -16,7 +16,7 @@ namespace Z_Lighting_Putting_It_Together
             // we set it to 7 here. 
             double wall_size = 7.0d;
             //size of the image 100x100
-            int canvas_pixels = 100;
+            int canvas_pixels = 3000;
             // our pixle size based off of the size of the wall and
             double pixel_size = wall_size / canvas_pixels;
             //half the wall size. this assumes you are looking at the center of the circle. 
@@ -42,7 +42,7 @@ namespace Z_Lighting_Putting_It_Together
                 double world_y = half - pixel_size * y;
                 for (int x = 0; x < canvas_pixels - 1; x++)
                 {
-                    Console.WriteLine("{0}:{1}", x, y);
+                    //Console.WriteLine("{0}:{1}", x, y);
                     //x coord
                     double world_x = -half + pixel_size * x;
                     csharp_rt.Tuple position = csharp_rt.Tuple.point(world_x, world_y, wall_z);
@@ -50,9 +50,10 @@ namespace Z_Lighting_Putting_It_Together
                     
                     //try to get the intersect method to return a new intersections. 
                     Intersections xs = new Intersections(shape.intersect(r));
-                    Console.WriteLine("if:");
+                    //Console.WriteLine("if:");
                     if (xs.canHit())
                     {
+                        //Console.WriteLine("{0}:{1}", x, y);
                         //New for chap 6 project
                         csharp_rt.Tuple point = r.position(xs.hit().t);
                         csharp_rt.Tuple normal = xs.hit().obj.normal_at(point);
@@ -65,7 +66,9 @@ namespace Z_Lighting_Putting_It_Together
 
                     }
                 }
+                Console.WriteLine("y: {0}", y);
             }
+            Console.WriteLine("END! Check out the FILE!");
             canvas.canvas_to_P3_ppm();
         }
     }

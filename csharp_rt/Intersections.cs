@@ -80,7 +80,8 @@ namespace csharp_rt
             //end debug print
             for (int i = 0;i<t.Count;i++)
             {
-                Console.WriteLine("i: {0}", i);
+                //commented out for now to prevent unnecessary prints
+                //Console.WriteLine("i: {0}", i);
                 if (t[i].t >= 0)
                 {
                     return t[i];
