@@ -12,7 +12,7 @@ namespace CSharpRayTracer
         //Object - not yet implimented 
         //Sphere
         List<Sphere> sphereList;
-        List<Light> lightList;
+        Light light;
         //Light
         public World() 
         { 
@@ -28,6 +28,10 @@ namespace CSharpRayTracer
             s1.material.specular = 0.2;
             Sphere s2=new Sphere();
             s2.transform.scaling_ns(0.5, 0.5, 0.5);
+            sphereList.Add(s1);
+            sphereList.Add(s2);
+            this.light = light;
+            return this;
         }
     }
 }
