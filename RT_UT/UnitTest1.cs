@@ -3,6 +3,7 @@ using System;
 using csharp_rt;
 using System.Linq;
 using CSharpRayTracer;
+using System.Diagnostics;
 
 namespace RT_UT
 {
@@ -1084,7 +1085,7 @@ namespace RT_UT
         }
     }
     [TestClass]
-    public class BuldingAWorld()
+    public class Bulding_A_World()
     {
         [TestMethod]
         public void creating_a_world()
@@ -1095,8 +1096,22 @@ namespace RT_UT
         [TestMethod]
         public void the_default_world()
         {
-            //place holder
-            Assert.IsFalse(true); 
+            Light light = Light.point_light(csharp_rt.Tuple.point(-10,10,-10),new Color(1,1,1));
+            Sphere s1 = new Sphere();
+            s1.material.color = new Color(0.8, 1.0, 0.6);
+            s1.material.diffuse = 0.7;
+            s1.material.specular = 0.2;
+            Sphere s2 =new Sphere();
+            /*Matrix m = Matrix.scaling(1, 0.5, 1) * Matrix.rotation_z(Math.PI / 5);
+            s.set_transform(m);*/
+            s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
+            World w = new World();
+            w=w.default_world();
+            //get to pass
+            Assert.AreEqual(w.light, light);
+            //Assert.AreSame(w.light, light);
+            //test s1
+            //test s2
         }
     }
 
