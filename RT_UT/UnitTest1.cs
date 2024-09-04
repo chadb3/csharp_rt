@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using csharp_rt;
 using System.Linq;
+using CSharpRayTracer;
 
 namespace RT_UT
 {
@@ -1080,6 +1081,22 @@ namespace RT_UT
             Light light=Light.point_light(csharp_rt.Tuple.point(0,0,10),new Color(1,1,1));
             Color result=light.lighting(m,position,eyev,normalv);
             Assert.AreEqual(new Color(0.1,0.1,0.1),result);
+        }
+    }
+    [TestClass]
+    public class BuldingAWorld()
+    {
+        [TestMethod]
+        public void creating_a_world()
+        {
+            World w = new World();
+            Assert.AreEqual(0, w.sphereList.Count);
+        }
+        [TestMethod]
+        public void the_default_world()
+        {
+            //place holder
+            Assert.IsFalse(true); 
         }
     }
 

@@ -11,12 +11,13 @@ namespace CSharpRayTracer
     {
         //Object - not yet implimented 
         //Sphere
-        List<Sphere> sphereList;
-        Light light;
+        public List<Sphere> sphereList;
+        public Light light;
         //Light
         public World() 
         { 
-
+            light= new Light();
+            sphereList = new List<Sphere>();
         }
 
         public World default_world()
