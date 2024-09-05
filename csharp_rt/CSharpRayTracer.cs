@@ -262,6 +262,7 @@ namespace csharp_rt
             Light light = Light.point_light(csharp_rt.Tuple.point(0, 10, -10), new Color(1, 1, 1));
             Color result = light.lighting(m, position, eyev, normalv);
             Console.WriteLine("color: {0}", result);
+            Console.WriteLine("light string: {0}", light.ToString());
         }
 
     }

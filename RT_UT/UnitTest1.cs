@@ -1091,6 +1091,7 @@ namespace RT_UT
         public void creating_a_world()
         {
             World w = new World();
+            Debug.Write("test write");
             Assert.AreEqual(0, w.sphereList.Count);
         }
         [TestMethod]
