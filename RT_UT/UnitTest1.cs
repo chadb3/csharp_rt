@@ -1103,16 +1103,15 @@ namespace RT_UT
             s1.material.diffuse = 0.7;
             s1.material.specular = 0.2;
             Sphere s2 =new Sphere();
-            /*Matrix m = Matrix.scaling(1, 0.5, 1) * Matrix.rotation_z(Math.PI / 5);
+            /* this is here so I can remember how to set scaling...
+             * Matrix m = Matrix.scaling(1, 0.5, 1) * Matrix.rotation_z(Math.PI / 5);
             s.set_transform(m);*/
             s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
             World w = new World();
             w=w.default_world();
-            //get to pass
+            //Assert.IsTrue(w.light== light);
             Assert.AreEqual(w.light, light);
-            //Assert.AreSame(w.light, light);
-            //test s1
-            //test s2
+
         }
     }
 

@@ -82,13 +82,21 @@ namespace csharp_rt
         public static bool operator ==(Light l, Light r)
         {
             bool result = false;
-
+            if(l.intensity==r.intensity&&l.position==r.position)
+            {
+                result = true;
+            }
             return result;
         }
 
         public static bool operator !=(Light l, Light r)
         {
             return !(l == r);
+        }
+
+        public override bool Equals(object r)
+        {
+            return this == (Light)r;
         }
     }
 }
