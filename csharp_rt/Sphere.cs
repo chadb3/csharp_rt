@@ -98,5 +98,36 @@ namespace csharp_rt
             //return (pointIn - csharp_rt.Tuple.point(0, 0, 0).normalize());
             //return (world_point - csharp_rt.Tuple.point(0, 0, 0).normalize());
         }
+        public static bool operator ==(Sphere l, Sphere r)
+        {
+            bool result = false;
+            if(l.radaii==r.radaii)
+            {   
+                //radaii are equal
+                if(l.origin==r.origin)
+                {
+                    //result = true;
+                    //need to get this one to pass
+                    if (r.transform == l.transform)
+                    {
+                        //result = true;
+                        if(l.material==r.material)
+                        {
+                            result = true;
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+        public static bool operator !=(Sphere l, Sphere r)
+        {
+            return !(l == r);
+        }
+
+        public override bool Equals(object r)
+        {
+            return this==(Sphere)r;
+        }
     }
 }

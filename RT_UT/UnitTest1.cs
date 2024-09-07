@@ -1106,12 +1106,17 @@ namespace RT_UT
             /* this is here so I can remember how to set scaling...
              * Matrix m = Matrix.scaling(1, 0.5, 1) * Matrix.rotation_z(Math.PI / 5);
             s.set_transform(m);*/
-            s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
+            //not correct
+            //s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
+            //correct way to set scaling... need to investigate to be sure...
+            s2.transform.scaling_ns(0.5, 0.5, 0.5);
             World w = new World();
             w=w.default_world();
             //Assert.IsTrue(w.light== light);
             Assert.AreEqual(w.light, light);
-
+            Assert.AreEqual(s1, w.sphereList[0]);
+            //seems it doesn't like this one. the only one with a transform set...
+            Assert.AreEqual(s2, w.sphereList[1]);
         }
     }
 
