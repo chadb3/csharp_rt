@@ -4,6 +4,7 @@ using csharp_rt;
 using System.Linq;
 using CSharpRayTracer;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace RT_UT
 {
@@ -1117,6 +1118,14 @@ namespace RT_UT
             Assert.AreEqual(s1, w.sphereList[0]);
             //seems it doesn't like this one. the only one with a transform set...
             Assert.AreEqual(s2, w.sphereList[1]);
+        }
+        [TestMethod]
+        public void Intersect_a_world_with_a_ray()
+        {
+            World w = new World();
+            w = w.default_world();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            
         }
     }
 

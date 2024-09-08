@@ -12,11 +12,15 @@ namespace csharp_rt
         public Tuple origin;
         public Tuple direction;
         /// <summary>
-        /// 
+        /// How to initilize a new Ray
+        /// Ray r = new Ray(csharp_rt.Tuple.point(x, y, z), csharp_rt.Tuple.vector(x, y, z))
+        /// original text in origin and vec
+        /// Point w=0
+        /// Vector w=1
         /// </summary>
-        /// <param name="origin">Point w=0</param>
-        /// <param name="vec">Vector w=1</param>
-         public Ray(Tuple origin, Tuple vec) 
+        /// <param name="origin">csharp_rt.Tuple.point(x,y,z)</param>
+        /// <param name="vec">csharp_rt.Tuple.vector(x,y,z)</param>
+        public Ray(Tuple origin, Tuple vec) 
         {
             this.origin = origin;
             this.direction = vec;
