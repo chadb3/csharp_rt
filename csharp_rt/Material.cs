@@ -74,5 +74,15 @@ namespace csharp_rt
 
             return ret;
         }
+
+        /// <summary>
+        /// to do. 
+        /// added to clear warnings.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

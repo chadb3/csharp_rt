@@ -98,5 +98,15 @@ namespace csharp_rt
         {
             return this == (Light)r;
         }
+
+        /// <summary>
+        /// to do
+        /// added to clear warnings.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

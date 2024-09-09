@@ -1125,7 +1125,12 @@ namespace RT_UT
             World w = new World();
             w = w.default_world();
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
-            
+            Intersections xs = new Intersections(w.intersect_world(r));
+            Assert.AreEqual(4, xs.count());
+            Assert.AreEqual(4, xs[0].t);
+            Assert.AreEqual(4.5, xs[1].t);
+            Assert.AreEqual(5.5, xs[2].t);
+            Assert.AreEqual(6, xs[3].t);
         }
     }
 

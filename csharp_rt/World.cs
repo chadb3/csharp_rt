@@ -34,5 +34,12 @@ namespace CSharpRayTracer
             this.light = light;
             return this;
         }
+
+        public List<Intersection> intersect_world(Ray ray_in)
+        {
+            List<Intersection> results = new List<Intersection>();
+
+            return results;
+        }
     }
 }
