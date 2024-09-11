@@ -34,11 +34,19 @@ namespace CSharpRayTracer
             this.light = light;
             return this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ray_in"></param>
+        /// <returns>a list of Intersection: results</returns>
         public List<Intersection> intersect_world(Ray ray_in)
         {
             List<Intersection> results = new List<Intersection>();
-
+            //test
+            foreach(Sphere i in sphereList)
+            {
+                Console.WriteLine(i);
+            }
             return results;
         }
     }
