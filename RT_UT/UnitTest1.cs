@@ -1126,6 +1126,16 @@ namespace RT_UT
             w = w.default_world();
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Intersections xs = new Intersections(w.intersect_world(r));
+            
+            /*  
+             * Trying to remember how intersections worked for sphere. 
+             * Intersections xs = new Intersections(s.intersect(r));
+             * Assert.AreEqual(4.0d, xs[0].t);
+             * Assert.AreEqual(6.0d, xs[1].t);*/
+
+            // need to figure this out.
+            // it seems to be returning an int value.
+            // xs[1].t is returning 5 (so is xs[2].t)
             Assert.AreEqual(4, xs.count());
             Assert.AreEqual(4, xs[0].t);
             Assert.AreEqual(4.5, xs[1].t);

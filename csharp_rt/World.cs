@@ -43,9 +43,18 @@ namespace CSharpRayTracer
         {
             List<Intersection> results = new List<Intersection>();
             //test
-            foreach(Sphere i in sphereList)
+            foreach (Sphere i in sphereList)
             {
                 Console.WriteLine(i);
+                // test print notifications
+                Console.WriteLine("Test Print - Please remove when done testing - in World.cs");
+                foreach (Intersection ix in i.intersect(ray_in))
+                {
+                    // Test Print                    
+                    Console.WriteLine(ix.t);
+                    results.Add(ix);
+                }
+                //results.Add(i.intersect(ray_in));
             }
             return results;
         }

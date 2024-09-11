@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpRayTracer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
@@ -11,7 +12,8 @@ namespace csharp_rt
         {
             
             Console.WriteLine("Hello World!");
-            matrix_tests();
+            world_test();
+            /*matrix_tests();
             Console.Out.WriteLine("ENDING APPLICATION");
             test_mult();
             testSubMat();
@@ -28,7 +30,7 @@ namespace csharp_rt
             IntersectionsSortCheck();
             testingNewIntersect();
             testIntersectingATranslatedSphere();
-            testa_Lighting_with_eye_in_the_path_of_the_reflection_vector();
+            testa_Lighting_with_eye_in_the_path_of_the_reflection_vector();*/
             return 2989;
         }
 
@@ -263,6 +265,14 @@ namespace csharp_rt
             Color result = light.lighting(m, position, eyev, normalv);
             Console.WriteLine("color: {0}", result);
             Console.WriteLine("light string: {0}", light.ToString());
+        }
+
+        static void world_test()
+        {
+            World w = new World();
+            w = w.default_world();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Intersections xs = new Intersections(w.intersect_world(r));
         }
 
     }
