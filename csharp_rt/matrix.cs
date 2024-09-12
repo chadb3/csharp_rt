@@ -331,6 +331,14 @@ namespace csharp_rt
             // non-static: scaling_ns
             // non-static is for chaining as it is not possible with static.
         }
+        /// <summary>
+        /// Non-Static Matrix scaling Method.
+        /// This is mainly used for chaining functions together. 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
         public Matrix scaling_ns(double x, double y, double z)
         {
             Matrix retVal = Matrix.identity();

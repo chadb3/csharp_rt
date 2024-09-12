@@ -68,7 +68,8 @@ namespace csharp_rt
         {
             //Place holder so unit tests don't complain and auto complete the wrong thing...
             Intersection ret=this[0];
-            List<Intersection> tmp = t;
+            // mark below for deletion
+            //List<Intersection> tmp = t;
             //tmp=tmp.OrderBy(o=>o.t).ToList();
             this.t=this.t.OrderBy(o => o.t).ToList();
             //this.sort();

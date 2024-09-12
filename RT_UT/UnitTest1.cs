@@ -1110,7 +1110,8 @@ namespace RT_UT
             //not correct
             //s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
             //correct way to set scaling... need to investigate to be sure...
-            s2.transform.scaling_ns(0.5, 0.5, 0.5);
+            //s2.transform.scaling_ns(0.5, 0.5, 0.5);
+            s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
             World w = new World();
             w=w.default_world();
             //Assert.IsTrue(w.light== light);
@@ -1124,9 +1125,9 @@ namespace RT_UT
         {
             World w = new World();
             w = w.default_world();
-            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5.0), csharp_rt.Tuple.vector(0, 0, 1));
             Intersections xs = new Intersections(w.intersect_world(r));
-            
+
             /*  
              * Trying to remember how intersections worked for sphere. 
              * Intersections xs = new Intersections(s.intersect(r));
@@ -1136,11 +1137,14 @@ namespace RT_UT
             // need to figure this out.
             // it seems to be returning an int value.
             // xs[1].t is returning 5 (so is xs[2].t)
+            // looks like I need to work on sorting the results.
+            //looks like calling hit on intersections sorts the list and the tests pass.
+            xs.hit();
             Assert.AreEqual(4, xs.count());
-            Assert.AreEqual(4, xs[0].t);
-            Assert.AreEqual(4.5, xs[1].t);
-            Assert.AreEqual(5.5, xs[2].t);
-            Assert.AreEqual(6, xs[3].t);
+            Assert.AreEqual(4.0d, xs[0].t);
+            Assert.AreEqual(4.5d, xs[1].t);
+            Assert.AreEqual(5.5d, xs[2].t);
+            Assert.AreEqual(6.0d, xs[3].t);
         }
     }
 

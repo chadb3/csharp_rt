@@ -271,8 +271,14 @@ namespace csharp_rt
         {
             World w = new World();
             w = w.default_world();
-            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5.0d), csharp_rt.Tuple.vector(0, 0, 1.0d));
             Intersections xs = new Intersections(w.intersect_world(r));
+            xs.hit();
+            for(int i=0;i<4;i++)
+            {
+                Console.WriteLine(xs[i].t);
+            }
+            
         }
 
     }

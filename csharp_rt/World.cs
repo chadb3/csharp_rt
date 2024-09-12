@@ -28,7 +28,12 @@ namespace CSharpRayTracer
             s1.material.diffuse = 0.7;
             s1.material.specular = 0.2;
             Sphere s2=new Sphere();
-            s2.transform.scaling_ns(0.5, 0.5, 0.5);
+            //Console.WriteLine($"transform before {s2.transform[0, 2]}");
+            //s2.transform.scaling_ns(0.5, 0.5, 0.5);
+            //s2.set_transform
+            s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
+            //Console.WriteLine($"transform after {s2.transform[0, 2]}");
+            //Console.WriteLine(s2.transform);
             sphereList.Add(s1);
             sphereList.Add(s2);
             this.light = light;
@@ -45,17 +50,18 @@ namespace CSharpRayTracer
             //test
             foreach (Sphere i in sphereList)
             {
-                Console.WriteLine(i);
+                //Console.WriteLine(i);
                 // test print notifications
-                Console.WriteLine("Test Print - Please remove when done testing - in World.cs");
+                //Console.WriteLine("Test Print - Please remove when done testing - in World.cs");
                 foreach (Intersection ix in i.intersect(ray_in))
                 {
                     // Test Print                    
-                    Console.WriteLine(ix.t);
+                    //Console.WriteLine(ix.t);
                     results.Add(ix);
                 }
                 //results.Add(i.intersect(ray_in));
             }
+            
             return results;
         }
     }
