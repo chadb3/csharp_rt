@@ -1134,17 +1134,29 @@ namespace RT_UT
              * Assert.AreEqual(4.0d, xs[0].t);
              * Assert.AreEqual(6.0d, xs[1].t);*/
 
+
             // need to figure this out.
             // it seems to be returning an int value.
             // xs[1].t is returning 5 (so is xs[2].t)
             // looks like I need to work on sorting the results.
             //looks like calling hit on intersections sorts the list and the tests pass.
-            xs.hit();
+            //xs.hit();
+            /* Marked for deletion */
+
+            xs.sort();
             Assert.AreEqual(4, xs.count());
             Assert.AreEqual(4.0d, xs[0].t);
             Assert.AreEqual(4.5d, xs[1].t);
             Assert.AreEqual(5.5d, xs[2].t);
             Assert.AreEqual(6.0d, xs[3].t);
+        }
+
+        [TestMethod]
+        public void Precomputing_the_state_of_an_intersect()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere shape = new Sphere();
+            Intersection i = new Intersection(4, shape);
         }
     }
 

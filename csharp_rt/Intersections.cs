@@ -97,6 +97,11 @@ namespace csharp_rt
             return count() > 0;
         }
 
+        public void sort()
+        {
+            this.t = this.t.OrderBy(o => o.t).ToList();
+        }
+
 
     }
 }
