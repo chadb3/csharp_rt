@@ -1157,6 +1157,13 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere shape = new Sphere();
             Intersection i = new Intersection(4, shape);
+            var comps = i.prepare_computations(r);
+            Assert.AreEqual(i.t, comps.t);
+            Assert.AreEqual(i.obj, comps.obj);
+            Assert.AreEqual(csharp_rt.Tuple.point(0, 0, -1), comps.point);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.eyev);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.normalv);
+
         }
     }
 
