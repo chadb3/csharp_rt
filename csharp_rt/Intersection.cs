@@ -105,7 +105,12 @@ namespace csharp_rt
 
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// added to clear warnings/errors
+        /// "intersection" overrides Object.equals(object o) but does not override Object.GetHashCode();
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public override int GetHashCode()
         {
             throw new NotImplementedException();
@@ -114,6 +119,17 @@ namespace csharp_rt
         public override string ToString()
         {
             return "Object: "+obj.ToString()+"\tHit value: "+t.ToString();
+        }
+        /// <summary>
+        /// Called like:
+        /// Intersection i ....
+        /// i.prepare_computations(rayIn);
+        /// </summary>
+        /// <param name="rayIn"></param>
+        /// <returns>new Computations object/datastructore</returns>
+        public computations prepare_computations(Ray rayIn)
+        {
+            
         }
     }
 }
