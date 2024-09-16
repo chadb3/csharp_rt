@@ -19,7 +19,7 @@ namespace CSharpRayTracer
             this.t = t_in;
             this.obj = obj_in;
             this.point = point_in;
-            this.eyev = eyev_in;
+            this.eyev = -eyev_in;
             this.normalv = this.obj.normal_at(this.point);
         }
     }

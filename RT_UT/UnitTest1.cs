@@ -1164,7 +1164,7 @@ namespace RT_UT
             //eyev is the on currently failing
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.eyev);
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.normalv);
-            Assert.IsFalse(true == true);
+            //Assert.IsFalse(true == true);
 
         }
     }
