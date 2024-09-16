@@ -1161,8 +1161,10 @@ namespace RT_UT
             Assert.AreEqual(i.t, comps.t);
             Assert.AreEqual(i.obj, comps.obj);
             Assert.AreEqual(csharp_rt.Tuple.point(0, 0, -1), comps.point);
+            //eyev is the on currently failing
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.eyev);
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.normalv);
+            Assert.IsFalse(true == true);
 
         }
     }
