@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpRayTracer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -127,9 +128,10 @@ namespace csharp_rt
         /// </summary>
         /// <param name="rayIn"></param>
         /// <returns>new Computations object/datastructore</returns>
-        public computations prepare_computations(Ray rayIn)
+        public Computations prepare_computations(Ray rayIn)
         {
-            
+            Computations ret = new Computations(this.t, this.obj, rayIn.position(this.t), rayIn.direction);
+            return ret;
         }
     }
 }
