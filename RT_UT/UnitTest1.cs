@@ -1176,7 +1176,20 @@ namespace RT_UT
             Sphere shape = new Sphere();
             Intersection i = new Intersection(4.0d, shape);
             Computations comps = i.prepare_computations(r);
-            Assert.IsFalse(comps.inside));
+            Assert.IsFalse(comps.inside);
+        }
+
+        [TestMethod]
+        public void The_hit_when_an_intersection_occurs_on_the_inside()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere shape = new Sphere();
+            Intersection i = new Intersection(1, shape);
+            Computations comps = i.prepare_computations(r);
+            Assert.AreEqual(csharp_rt.Tuple.point(0, 0, 1), comps.point);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.eyev);
+            Assert.IsTrue(comps.inside);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.normalv);
         }
     }
 

@@ -14,6 +14,7 @@ namespace CSharpRayTracer
         public csharp_rt.Tuple point { get; set; }
         public csharp_rt.Tuple eyev { get; set; }
         public csharp_rt.Tuple normalv { get; set; }
+        public bool inside { get; set; }
         public Computations(double t_in, Sphere obj_in , csharp_rt.Tuple point_in, csharp_rt.Tuple eyev_in)
         { 
             this.t = t_in;
