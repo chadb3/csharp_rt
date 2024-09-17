@@ -22,6 +22,15 @@ namespace CSharpRayTracer
             this.point = point_in;
             this.eyev = -eyev_in;
             this.normalv = this.obj.normal_at(this.point);
+            if (this.normalv.dot(this.eyev) < 0)
+            {
+                this.inside = true;
+                this.normalv = -this.normalv;
+            }
+            else
+            {
+                this.inside = false;
+            }
         }
 
         
