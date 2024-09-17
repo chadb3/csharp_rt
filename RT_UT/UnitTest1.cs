@@ -5,6 +5,7 @@ using System.Linq;
 using CSharpRayTracer;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Reflection.Metadata;
 
 namespace RT_UT
 {
@@ -1166,6 +1167,16 @@ namespace RT_UT
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.normalv);
             //Assert.IsFalse(true == true);
 
+        }
+
+        [TestMethod]
+        public void The_hit_when_an_intersection_occurs_on_the_outside()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere shape = new Sphere();
+            Intersection i = new Intersection(4.0d, shape);
+            Computations comps = i.prepare_computations(r);
+            Assert.IsFalse(comps.inside));
         }
     }
 
