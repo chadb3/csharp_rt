@@ -1191,6 +1191,33 @@ namespace RT_UT
             Assert.IsTrue(comps.inside);
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.normalv);
         }
+
+        [TestMethod]
+        public void Shading_an_intersection()
+        {
+            World w = new World();
+            w=w.default_world();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere shape = w.sphereList[0];
+            Intersection i = new Intersection(1, shape);
+            Computations comps = i.prepare_computations(r);
+            Color c = w.shade_hit(comps);
+            Assert.AreEqual(new Color(0.38066, 0.47583, 0.2855),c);
+        }
+
+        [TestMethod]
+        public void Shading_an_intersection_from_the_inside()
+        {
+            World w = new World();
+            w=w.default_world();
+            w.light = Light.point_light(csharp_rt.Tuple.point(0, 0.25, 0), new Color(1, 1, 1));
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere shape = w.sphereList[1];
+            Intersection i = new Intersection(0.5d, shape);
+            Computations comps = i.prepare_computations(r);
+            Color c = w.shade_hit(comps);
+            Assert.AreEqual(new Color(0.90498, 0.90498, 0.90498), c);
+        }
     }
 
 }

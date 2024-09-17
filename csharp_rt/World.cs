@@ -64,5 +64,12 @@ namespace CSharpRayTracer
             
             return results;
         }
+
+        public Color shade_hit(Computations comps_in)
+        {
+            Color ret = new Color();
+
+            return ret;
+        }
     }
 }
