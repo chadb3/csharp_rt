@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -68,7 +69,8 @@ namespace CSharpRayTracer
         public Color shade_hit(Computations comps_in)
         {
             Color ret = new Color();
-
+            //Light light_to_call_lighting = new Light();
+            ret = light.lighting(comps_in.obj.material, comps_in.point, comps_in.eyev, comps_in.normalv);
             return ret;
         }
     }

@@ -1199,7 +1199,7 @@ namespace RT_UT
             w=w.default_world();
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere shape = w.sphereList[0];
-            Intersection i = new Intersection(1, shape);
+            Intersection i = new Intersection(4, shape);
             Computations comps = i.prepare_computations(r);
             Color c = w.shade_hit(comps);
             Assert.AreEqual(new Color(0.38066, 0.47583, 0.2855),c);
