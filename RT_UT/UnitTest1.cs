@@ -6,6 +6,8 @@ using CSharpRayTracer;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Reflection.Metadata;
+// when did System.Drawing get added? it broke all my tests using my Color.
+//using System.Drawing;
 
 namespace RT_UT
 {
@@ -1217,6 +1219,28 @@ namespace RT_UT
             Computations comps = i.prepare_computations(r);
             Color c = w.shade_hit(comps);
             Assert.AreEqual(new Color(0.90498, 0.90498, 0.90498), c);
+        }
+
+        [TestMethod]
+        public void The_color_when_a_ray_misses()
+        {
+            World w=new World();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 1, 0));
+            Color c = w.color_at(r);
+            Assert.AreEqual(new Color(0,0,0), c);
+        }
+
+        [TestMethod]
+        public void The_color_when_a_ray_hits()
+        {
+
+        }
+        
+        [TestMethod]
+        public void The_color_whith_an_intersection_behind_the_ray()
+
+        {
+            
         }
     }
 

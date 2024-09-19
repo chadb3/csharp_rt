@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// added the below due to system.drawing somehow got added UnitTest1.cs might not be needed anymore. 
+using Color = csharp_rt.Color;
 
 namespace csharp_rt
 {
