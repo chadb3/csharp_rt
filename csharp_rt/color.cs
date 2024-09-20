@@ -28,6 +28,18 @@ namespace csharp_rt
             this.green = (float)green;
             this.blue = (float)blue;
         }
+        /// <summary>
+        /// Trying this so I don't have to do something like
+        /// new Color(1,0,0)==Color.red
+        /// </summary>
+        /// <param name="red"></param>
+        /// <param name="green"></param>
+        /// <param name="blue"></param>
+        /// <returns></returns>
+        public static Color color(double red, double green, double blue)
+        {
+            return new Color(red, green, blue);
+        }
 
 
         public static Color operator +(Color left, Color right)

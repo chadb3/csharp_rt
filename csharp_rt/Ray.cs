@@ -45,7 +45,7 @@ namespace csharp_rt
             Tuple newDirection= m * direction;
             return result= new Ray(newOrigin, newDirection);
         }
-        
-        
+
+      
     }
 }

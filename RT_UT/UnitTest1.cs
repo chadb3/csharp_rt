@@ -1218,7 +1218,7 @@ namespace RT_UT
             Intersection i = new Intersection(0.5d, shape);
             Computations comps = i.prepare_computations(r);
             Color c = w.shade_hit(comps);
-            Assert.AreEqual(new Color(0.90498, 0.90498, 0.90498), c);
+            Assert.AreEqual(Color.color(0.90498, 0.90498, 0.90498), c);
         }
 
         [TestMethod]
@@ -1233,7 +1233,11 @@ namespace RT_UT
         [TestMethod]
         public void The_color_when_a_ray_hits()
         {
-
+            World w = new World();
+            w = w.default_world();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Color c = w.color_at(r);
+            Assert.AreEqual(new Color(0.38066, 0.47538, 0.2855), c);
         }
         
         [TestMethod]

@@ -73,5 +73,12 @@ namespace CSharpRayTracer
             ret = light.lighting(comps_in.obj.material, comps_in.point, comps_in.eyev, comps_in.normalv);
             return ret;
         }
+
+        public Color color_at(Ray ray_in)
+        {
+            Color ret = new Color();
+
+            return ret;
+        }
     }
 }
