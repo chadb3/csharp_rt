@@ -6,6 +6,7 @@ using CSharpRayTracer;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Reflection.Metadata;
+using System.Net.Http.Headers;
 // when did System.Drawing get added? it broke all my tests using my Color.
 //using System.Drawing;
 
@@ -1244,7 +1245,17 @@ namespace RT_UT
         public void The_color_whith_an_intersection_behind_the_ray()
 
         {
-            
+            World w = new World();
+            w=w.default_world();
+            //book calls this one outer
+            //book does something like the below (commented out) I will test, and if it works I will use it. I am pretty sure it should work (passed by ref).
+            //Sphere outer = w.sphereList[0];
+            //outer.material.ambient = 1;
+            w.sphereList[0].material.ambient = 1;
+            //book calls this one inner
+            w.sphereList[1].material.ambient = 1;
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0.75), csharp_rt.Tuple.vector(0, 0, -1));
+            Color c = w.color_at(r);
         }
     }
 
