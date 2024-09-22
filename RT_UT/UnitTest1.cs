@@ -1247,15 +1247,14 @@ namespace RT_UT
         {
             World w = new World();
             w=w.default_world();
-            //book calls this one outer
-            //book does something like the below (commented out) I will test, and if it works I will use it. I am pretty sure it should work (passed by ref).
-            //Sphere outer = w.sphereList[0];
-            //outer.material.ambient = 1;
-            w.sphereList[0].material.ambient = 1;
-            //book calls this one inner
-            w.sphereList[1].material.ambient = 1;
+            Sphere outer = w.sphereList[0];
+            outer.material.ambient = 1;
+            Sphere inner = w.sphereList[1];
+            inner.material.ambient = 1;
+            //Assert.AreEqual(inner.material.ambient, 1);
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0.75), csharp_rt.Tuple.vector(0, 0, -1));
             Color c = w.color_at(r);
+            Assert.AreEqual(inner.material.color, c);
         }
     }
 
