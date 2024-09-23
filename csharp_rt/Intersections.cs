@@ -101,6 +101,24 @@ namespace csharp_rt
         {
             this.t = this.t.OrderBy(o => o.t).ToList();
         }
+        /// <summary>
+        /// returns first positive index.
+        /// a negative number may occupy lower results in a sorted list.
+        /// negative numbers mean not intersected.
+        /// </summary>
+        /// <returns></returns>
+        public int first_positive_index()
+        {
+            int ret = -1;
+            for (int i = 0;i<t.Count();i++)
+            {
+                if (t[i].t>0)
+                {
+                    return i;
+                }
+            }
+            return ret;
+        }
 
 
     }

@@ -12,6 +12,11 @@ namespace csharp_rt
         {
             
             Console.WriteLine("Hello World!");
+            test_color_at();
+            //quick list refresher.
+            /*List<int> testList = new List<int>();
+            Console.WriteLine("testList count: {0}", testList.Count());*/
+            //works
             world_test();
             /*matrix_tests();
             Console.Out.WriteLine("ENDING APPLICATION");
@@ -281,5 +286,34 @@ namespace csharp_rt
             
         }
 
-    }
+        static void test_color_at()
+        {
+            // used this to see what was wrong.
+            // looks like the outer occupies both the the 0 and 1 index. maybe I am not sorting right, or maybe missing something with how I know there is a hit.
+            World w = new World();
+            w = w.default_world();
+            Sphere outer = w.sphereList[0];
+            outer.material.ambient = 1;
+
+            Sphere inner = w.sphereList[1];
+            inner.material.ambient = 1;
+
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0.75), csharp_rt.Tuple.vector(0, 0, -1));
+            Color c = w.color_at(r);
+            /*color: red: 0.8 green: 1 blue: 0.6
+              color: red: 0.8 green: 1 blue: 0.6
+              color: red: 1 green: 1 blue: 1
+              color: red: 1 green: 1 blue: 1*/
+// Note: we want what is in the 2 and 3 to get the test to pass.
+/* - Including t values in my test print helps to show the issue.
+ * need to get first positive result for this.
+ * color: red: 0.8 green: 1 blue: 0.6    t:Object: csharp_rt.Sphere        Hit value: -0.25
+ * color: red: 1 green: 1 blue: 1    t:Object: csharp_rt.Sphere    Hit value: 0.25
+ * color: red: 1 green: 1 blue: 1    t:Object: csharp_rt.Sphere    Hit value: 1.25
+ * color: red: 0.8 green: 1 blue: 0.6    t:Object: csharp_rt.Sphere        Hit value: 1.75
+ * Note: "Hit value" is the "intersection" t value
+ */
+}
+
+}
 }

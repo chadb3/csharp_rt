@@ -11,6 +11,8 @@ namespace csharp_rt
     {
         public Sphere obj;// shape;
         //public double[,] t;// intersect;
+        // negative t means obj is behind ray
+        // positive t means intersected
         public double t;
        /* public Intersection(double[,] intersect_in,Sphere shape_in ) 
         { 

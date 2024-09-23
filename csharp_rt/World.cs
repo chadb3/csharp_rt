@@ -73,11 +73,24 @@ namespace CSharpRayTracer
             ret = light.lighting(comps_in.obj.material, comps_in.point, comps_in.eyev, comps_in.normalv);
             return ret;
         }
-
+        
         public Color color_at(Ray ray_in)
         {
             Color ret = new Color();
-            List<Intersection> hits = this.intersect_world(ray_in);
+            Intersections hits = new Intersections(this.intersect_world(ray_in));
+            hits.sort();
+            if (hits.count() != 0)
+            {
+                Computations comp = hits[hits.first_positive_index()].prepare_computations(ray_in);
+                //foreach (Intersection ix in hits)
+                //{
+                Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[0].prepare_computations(ray_in)), hits[0]);
+                Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[1].prepare_computations(ray_in)), hits[1]);
+                Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[2].prepare_computations(ray_in)), hits[2]);
+                Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[3].prepare_computations(ray_in)), hits[3]);
+                //}
+                ret = this.shade_hit(comp);
+            }
             return ret;
         }
     }

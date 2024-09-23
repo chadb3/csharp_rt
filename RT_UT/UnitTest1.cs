@@ -1161,6 +1161,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere shape = new Sphere();
             Intersection i = new Intersection(4, shape);
+            //var = Computations struct
             var comps = i.prepare_computations(r);
             Assert.AreEqual(i.t, comps.t);
             Assert.AreEqual(i.obj, comps.obj);
@@ -1238,7 +1239,7 @@ namespace RT_UT
             w = w.default_world();
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Color c = w.color_at(r);
-            Assert.AreEqual(new Color(0.38066, 0.47538, 0.2855), c);
+            Assert.AreEqual(new Color(0.38066, 0.47583, 0.2855), c);
         }
         
         [TestMethod]
@@ -1248,12 +1249,18 @@ namespace RT_UT
             w=w.default_world();
             Sphere outer = w.sphereList[0];
             outer.material.ambient = 1;
+            //test
+            //outer.material.ambient = 12;
             Sphere inner = w.sphereList[1];
             inner.material.ambient = 1;
             //Assert.AreEqual(inner.material.ambient, 1);
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0.75), csharp_rt.Tuple.vector(0, 0, -1));
             Color c = w.color_at(r);
+            //Assert.AreEqual(12.0d, w.sphereList[0].material.ambient);
+            //Assert.AreEqual(1.0d, w.sphereList[0].material.ambient);
+            //Assert.AreEqual(1.0d, w.sphereList[1].material.ambient);
             Assert.AreEqual(inner.material.color, c);
+            //Assert.AreEqual(w.sphereList[1].material.color, c);
         }
     }
 
