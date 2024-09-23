@@ -1243,7 +1243,6 @@ namespace RT_UT
         
         [TestMethod]
         public void The_color_whith_an_intersection_behind_the_ray()
-
         {
             World w = new World();
             w=w.default_world();

@@ -77,7 +77,7 @@ namespace CSharpRayTracer
         public Color color_at(Ray ray_in)
         {
             Color ret = new Color();
-
+            List<Intersection> hits = this.intersect_world(ray_in);
             return ret;
         }
     }
