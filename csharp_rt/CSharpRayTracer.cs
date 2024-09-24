@@ -13,6 +13,7 @@ namespace csharp_rt
             
             Console.WriteLine("Hello World!");
             test_color_at();
+            test_ray_way_out_of_bounds();
             //quick list refresher.
             /*List<int> testList = new List<int>();
             Console.WriteLine("testList count: {0}", testList.Count());*/
@@ -315,5 +316,19 @@ namespace csharp_rt
  */
 }
 
-}
+        static void test_ray_way_out_of_bounds()
+        {
+            World w = new World();
+            w = w.default_world();
+            Ray r = new Ray(csharp_rt.Tuple.point(5, 5, 11), csharp_rt.Tuple.vector(-24, 567, -53));
+            Color c = w.color_at(r);
+            Console.WriteLine("test_oob: {0}", c);
+            //color is 0,0,0 ... expected.
+            // I am more interested how this interacts with color_at
+            // to make sure a negative index is not returned for my method that checks for first positive index.
+            // testing shows hits.count==0. and therefore it never enteres the function that checks hits.
+            // so we are good for now. leaveing these notes here for review if needed.
+        }
+
+    }
 }

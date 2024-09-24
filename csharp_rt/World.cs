@@ -79,15 +79,17 @@ namespace CSharpRayTracer
             Color ret = new Color();
             Intersections hits = new Intersections(this.intersect_world(ray_in));
             hits.sort();
+            //Console.WriteLine("Hits Count: {0}", hits.count());
             if (hits.count() != 0)
             {
                 Computations comp = hits[hits.first_positive_index()].prepare_computations(ray_in);
                 //foreach (Intersection ix in hits)
                 //{
-                Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[0].prepare_computations(ray_in)), hits[0]);
+                // Test Prints
+                /*Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[0].prepare_computations(ray_in)), hits[0]);
                 Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[1].prepare_computations(ray_in)), hits[1]);
                 Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[2].prepare_computations(ray_in)), hits[2]);
-                Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[3].prepare_computations(ray_in)), hits[3]);
+                Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[3].prepare_computations(ray_in)), hits[3]);*/
                 //}
                 ret = this.shade_hit(comp);
             }

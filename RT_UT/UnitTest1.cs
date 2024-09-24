@@ -1262,6 +1262,14 @@ namespace RT_UT
             Assert.AreEqual(inner.material.color, c);
             //Assert.AreEqual(w.sphereList[1].material.color, c);
         }
+        [TestMethod]
+        public void test_ray_way_out_of_bounds()
+        {
+            World w = new World();
+            w=w.default_world();
+            Ray r = new Ray(csharp_rt.Tuple.point(5, 5, 11), csharp_rt.Tuple.vector(-24, 567, -53));
+            Color c = w.color_at(r);
+        }
     }
 
 }

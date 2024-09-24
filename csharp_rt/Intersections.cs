@@ -109,6 +109,7 @@ namespace csharp_rt
         /// <returns></returns>
         public int first_positive_index()
         {
+            // need to test
             int ret = -1;
             for (int i = 0;i<t.Count();i++)
             {
