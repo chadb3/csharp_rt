@@ -452,6 +452,13 @@ namespace csharp_rt
             return ret;
         }
 
+        public static Matrix view_transform(csharp_rt.Tuple from_in, csharp_rt.Tuple to_in, csharp_rt.Tuple up_in)
+        {
+            Matrix ret= Matrix.identity();
+
+            return ret;
+        }
+
        
 
 

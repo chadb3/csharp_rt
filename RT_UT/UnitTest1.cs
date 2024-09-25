@@ -1269,7 +1269,47 @@ namespace RT_UT
             w=w.default_world();
             Ray r = new Ray(csharp_rt.Tuple.point(5, 5, 11), csharp_rt.Tuple.vector(-24, 567, -53));
             Color c = w.color_at(r);
+            Assert.AreEqual(Color.color(0, 0, 0), c);
         }
+        [TestMethod]
+        public void The_transformation_matrix_for_the_default_orientation()
+        {
+            csharp_rt.Tuple from = csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple to = csharp_rt.Tuple.point(0, 0, -1);
+            csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
+            Matrix t = Matrix.view_transform(from, to, up);
+            Assert.AreEqual(Matrix.identity(), t);
+        }
+        [TestMethod]
+        public void A_view_transformation_matrix_looking_in_positive_z_direction()
+        {
+            csharp_rt.Tuple from = csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple to = csharp_rt.Tuple.point(0, 0, 1);
+            csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
+            Matrix t = Matrix.view_transform(from, to, up);
+            Assert.AreEqual(Matrix.scaling(-1,1,-1), t);
+        }
+        [TestMethod]
+        public void The_view_transformation_moves_the_world()
+        {
+            csharp_rt.Tuple from = csharp_rt.Tuple.point(0, 0, 8);
+            csharp_rt.Tuple to = csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
+            Matrix t = Matrix.view_transform(from, to, up);
+            Assert.AreEqual(Matrix.translation(0, 0, -8), t);
+        }
+
+        [TestMethod]
+        public void An_arbitrary_view_transformation()
+        {
+            csharp_rt.Tuple from = csharp_rt.Tuple.point(0, 0, 8);
+            csharp_rt.Tuple to = csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
+            Matrix t = Matrix.view_transform(from, to, up);
+            Matrix res = new Matrix(new double[,] { { -0.50709, .50709, .67612, -2.36643 }, { 0.76772, 0.60609, .12122, -2.82843 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } });
+            Assert.AreEqual(res, t);
+        }
+
     }
 
 }
