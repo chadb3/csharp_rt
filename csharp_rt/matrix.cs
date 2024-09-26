@@ -455,7 +455,9 @@ namespace csharp_rt
         public static Matrix view_transform(csharp_rt.Tuple from_in, csharp_rt.Tuple to_in, csharp_rt.Tuple up_in)
         {
             Matrix ret= Matrix.identity();
-
+            csharp_rt.Tuple forward_vector = from_in - to_in;
+            csharp_rt.Tuple left_vector = forward_vector.cross(to_in.normalize());
+            csharp_rt.Tuple true_up = left_vector.cross(forward_vector);
             return ret;
         }
 
