@@ -91,6 +91,7 @@ namespace RT_UT
             csharp_rt.Tuple v1 = csharp_rt.Tuple.vector(2, 1, 1);
             csharp_rt.Tuple v2 = csharp_rt.Tuple.vector(5, 6, 7);
             csharp_rt.Tuple ans = csharp_rt.Tuple.vector(-2, -4, -6);
+            Assert.AreEqual(ans, v1-v2);
         }
 
         [TestMethod]

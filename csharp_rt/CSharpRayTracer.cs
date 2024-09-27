@@ -14,6 +14,7 @@ namespace csharp_rt
             Console.WriteLine("Hello World!");
             test_color_at();
             test_ray_way_out_of_bounds();
+            An_arbitrary_view_transformation();
             //quick list refresher.
             /*List<int> testList = new List<int>();
             Console.WriteLine("testList count: {0}", testList.Count());*/
@@ -328,6 +329,20 @@ namespace csharp_rt
             // to make sure a negative index is not returned for my method that checks for first positive index.
             // testing shows hits.count==0. and therefore it never enteres the function that checks hits.
             // so we are good for now. leaveing these notes here for review if needed.
+        }
+
+        static void An_arbitrary_view_transformation()
+        {
+            csharp_rt.Tuple from = csharp_rt.Tuple.point(0, 0, 8);
+            csharp_rt.Tuple to = csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
+            Matrix t = Matrix.view_transform(from, to, up);
+            Matrix res = new Matrix(new double[,] { { -0.50709, .50709, .67612, -2.36643 }, { 0.76772, 0.60609, .12122, -2.82843 }, { -0.35857, 0.59761, -0.71714, 0 }, { 0, 0, 0, 1 } });
+            Console.WriteLine("mat:\n{0}  {1}  {2}  {3}\n{4}  {5}  {6}  {7}\n{8}  {9}  {10}  {11}\n{12}  {13}  {14}  {15}", 
+                t[0,0], t[0, 1], t[0, 2], t[0, 3], 
+                t[1, 0], t[1, 1], t[1, 2], t[1, 3], 
+                t[2, 0], t[2, 1], t[2, 2], t[2, 3], 
+                t[3, 0], t[3, 1], t[3, 2], t[3, 3]);
         }
 
     }

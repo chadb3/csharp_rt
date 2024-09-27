@@ -455,10 +455,26 @@ namespace csharp_rt
         public static Matrix view_transform(csharp_rt.Tuple from_in, csharp_rt.Tuple to_in, csharp_rt.Tuple up_in)
         {
             Matrix ret= Matrix.identity();
-            csharp_rt.Tuple forward_vector = from_in - to_in;
-            csharp_rt.Tuple left_vector = forward_vector.cross(to_in.normalize());
+            //test print
+            Console.WriteLine("to:{0}\nfrom:{1}", to_in, from_in);
+
+            csharp_rt.Tuple forward_vector = (to_in - from_in).normalize();
+            //test print
+            Console.WriteLine(forward_vector);
+
+            csharp_rt.Tuple left_vector = forward_vector.cross(up_in.normalize());
+
+            //test print
+            Console.WriteLine("left vec: {0}", left_vector);
+
             csharp_rt.Tuple true_up = left_vector.cross(forward_vector);
-            return ret;
+
+
+            Matrix orientation = new Matrix(new double[,] { { left_vector.x, left_vector.y, left_vector.z, 0 }, 
+                                                            { true_up.x, true_up.y, true_up.z, 0 }, 
+                                                            { -forward_vector.x, -forward_vector.y, -forward_vector.z, 0 }, 
+                                                            { 0, 0, 0, 1 } });
+            return orientation*Matrix.translation(-from_in.x,-from_in.y,-from_in.z);
         }
 
        
