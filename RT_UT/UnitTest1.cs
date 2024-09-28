@@ -1303,11 +1303,11 @@ namespace RT_UT
         [TestMethod]
         public void An_arbitrary_view_transformation()
         {
-            csharp_rt.Tuple from = csharp_rt.Tuple.point(0, 0, 8);
-            csharp_rt.Tuple to = csharp_rt.Tuple.point(0, 0, 0);
-            csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
+            csharp_rt.Tuple from = csharp_rt.Tuple.point(1, 3, 2);
+            csharp_rt.Tuple to = csharp_rt.Tuple.point(4, -2, 8);
+            csharp_rt.Tuple up = csharp_rt.Tuple.vector(1, 1, 0);
             Matrix t = Matrix.view_transform(from, to, up);
-            Matrix res = new Matrix(new double[,] { { -0.50709, .50709, .67612, -2.36643 }, { 0.76772, 0.60609, .12122, -2.82843 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } });
+            Matrix res = new Matrix(new double[,] { { -0.50709, .50709, .67612, -2.36643 }, { 0.76772, 0.60609, .12122, -2.82843 }, { -0.35857, 0.59761, -0.71714, 0 }, { 0, 0, 0, 1 } });
             Assert.AreEqual(res, t);
         }
 
