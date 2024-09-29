@@ -1311,6 +1311,34 @@ namespace RT_UT
             Assert.AreEqual(res, t);
         }
 
+        [TestMethod]
+        public void Construct_a_camera()
+        {
+            int hsize = 160;
+            int vsize = 120;
+            double field_of_view = Math.PI / 2;
+            //Camera c = new Camera(hsize,vsize,field_of_view);
+            var c = 234;
+            //Assert.AreEqual(c.hsize,160);
+            //Assert.AreEqual(c.vsize,120);
+            //Assert.AreEqual(c.field_of_view,Math.PI/2);
+            //Assert.AreEqual(c.transform,Matrix.identity()
+        }
+
+        [TestMethod]
+        public void The_pixel_size_for_a_horizontal_canvas()
+        {
+            //Camera c = new Camera(200,125,Math.PI/2);
+            //Assert.AreEqual(0.01,c.pixel_size);
+        }
+
+        [TestMethod]
+        public void The_pixel_size_for_a_vertical_canvas()
+        {
+            //Camera c = new Camera(125,200, Math.PI/2);
+            //Assert.AreEqual(0.01,c.pixel_size);
+        }
+
     }
 
 }

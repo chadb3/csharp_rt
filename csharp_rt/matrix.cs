@@ -456,16 +456,18 @@ namespace csharp_rt
         {
             Matrix ret= Matrix.identity();
             //test print
-            Console.WriteLine("to:{0}\nfrom:{1}", to_in, from_in);
+            //Console.WriteLine("to:{0}\nfrom:{1}", to_in, from_in);
 
             csharp_rt.Tuple forward_vector = (to_in - from_in).normalize();
             //test print
-            Console.WriteLine(forward_vector);
+            // can delete after next (push/when noticed)
+            //Console.WriteLine(forward_vector);
 
             csharp_rt.Tuple left_vector = forward_vector.cross(up_in.normalize());
 
             //test print
-            Console.WriteLine("left vec: {0}", left_vector);
+            // can delete after next (push/when noticed)
+            //Console.WriteLine("left vec: {0}", left_vector);
 
             csharp_rt.Tuple true_up = left_vector.cross(forward_vector);
 
