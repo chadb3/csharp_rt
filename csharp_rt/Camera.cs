@@ -57,7 +57,7 @@ namespace CSharpRayTracer
             else
             {
                 Console.WriteLine("hsize <= 0 or vsize <= 0\nInspect: This was hit to prevent a divide by zero\ncheck: Camera.cs - computeCamera()\ncheck: Check camera inputs");
-                half_view = Int32.MinValue;
+                half_view = double.MaxValue;
                 aspect = double.MaxValue;
                 half_width = half_view;
                 half_height = half_view / aspect;

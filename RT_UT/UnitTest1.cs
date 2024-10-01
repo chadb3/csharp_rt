@@ -1339,6 +1339,32 @@ namespace RT_UT
             Assert.AreEqual(0.01,c.pixel_size);
         }
 
+        [TestMethod]
+        public void Constructing_a_ray_through_the_center_of_the_canvas()
+        {
+            Camera c = new Camera(201,101,Math.PI/2);
+            //Ray r = c.ray_for_pixel(100,50);
+            //Assert.areEqual(r.origin,csharp_rt.Tuple.point(0, 0,0);
+            //Assert.areEqual(r.direction,csharp_rt.Tuple.vector(0,0,-1);
+        }
+        [TestMethod]
+        public void Constructing_a_ray_through_the_corner_of_the_canvas()
+        {
+            Camera c = new Camera(201, 101, Math.PI / 2);
+            //Ray r = c.ray_for_pixel(0,0);
+            //Assert.areEqual(r.origin,csharp_rt.Tuple.point(0, 0,0);
+            //Assert.areEqual(r.direction,csharp_rt.Tuple.vector(0.66519,0.33259,-0.66851);
+        }
+        [TestMethod]
+        public void Constructing_a_ray_when_the_camera_is_transformed()
+        {
+            Camera c = new Camera(201, 101, Math.PI / 2);
+            c.transform = Matrix.rotation_y(Math.PI / 4) * Matrix.translation(0, -2, 5);
+            //Ray r = c.ray_for_pixel(100,50);
+            //Assert.areEqual(r.origin,csharp_rt.Tuple.point(0, 2,-5);
+            //Assert.areEqual(r.direction,csharp_rt.Tuple.vector(Math.Sqrt(2) / 2,0,-Math.Sqrt(2) / 2);
+        }
+
     }
 
 }
