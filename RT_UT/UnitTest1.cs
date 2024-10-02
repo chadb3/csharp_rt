@@ -88,7 +88,9 @@ namespace RT_UT
         [TestMethod]
         public void SubtractingTwoVectors()
         {
-            csharp_rt.Tuple v1 = csharp_rt.Tuple.vector(2, 1, 1);
+            //3 2 1 = act v1
+            //2 1 1 = typed in error. original. I think this was the test I forgot the "test".
+            csharp_rt.Tuple v1 = csharp_rt.Tuple.vector(3, 2, 1);
             csharp_rt.Tuple v2 = csharp_rt.Tuple.vector(5, 6, 7);
             csharp_rt.Tuple ans = csharp_rt.Tuple.vector(-2, -4, -6);
             Assert.AreEqual(ans, v1-v2);
@@ -1343,26 +1345,26 @@ namespace RT_UT
         public void Constructing_a_ray_through_the_center_of_the_canvas()
         {
             Camera c = new Camera(201,101,Math.PI/2);
-            //Ray r = c.ray_for_pixel(100,50);
-            //Assert.areEqual(r.origin,csharp_rt.Tuple.point(0, 0,0);
-            //Assert.areEqual(r.direction,csharp_rt.Tuple.vector(0,0,-1);
+            Ray r = c.ray_for_pixel(100,50);
+            Assert.AreEqual(r.origin,csharp_rt.Tuple.point(0, 0,0));
+            Assert.AreEqual(r.direction,csharp_rt.Tuple.vector(0,0,-1));
         }
         [TestMethod]
         public void Constructing_a_ray_through_the_corner_of_the_canvas()
         {
             Camera c = new Camera(201, 101, Math.PI / 2);
-            //Ray r = c.ray_for_pixel(0,0);
-            //Assert.areEqual(r.origin,csharp_rt.Tuple.point(0, 0,0);
-            //Assert.areEqual(r.direction,csharp_rt.Tuple.vector(0.66519,0.33259,-0.66851);
+            Ray r = c.ray_for_pixel(0,0);
+            Assert.AreEqual(r.origin,csharp_rt.Tuple.point(0, 0,0));
+            Assert.AreEqual(r.direction,csharp_rt.Tuple.vector(0.66519,0.33259,-0.66851));
         }
         [TestMethod]
         public void Constructing_a_ray_when_the_camera_is_transformed()
         {
             Camera c = new Camera(201, 101, Math.PI / 2);
             c.transform = Matrix.rotation_y(Math.PI / 4) * Matrix.translation(0, -2, 5);
-            //Ray r = c.ray_for_pixel(100,50);
-            //Assert.areEqual(r.origin,csharp_rt.Tuple.point(0, 2,-5);
-            //Assert.areEqual(r.direction,csharp_rt.Tuple.vector(Math.Sqrt(2) / 2,0,-Math.Sqrt(2) / 2);
+            Ray r = c.ray_for_pixel(100,50);
+            Assert.AreEqual(r.origin,csharp_rt.Tuple.point(0, 2,-5));
+            Assert.AreEqual(r.direction,csharp_rt.Tuple.vector(Math.Sqrt(2) / 2,0,-Math.Sqrt(2) / 2));
         }
 
     }

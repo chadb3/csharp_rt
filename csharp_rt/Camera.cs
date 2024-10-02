@@ -64,5 +64,24 @@ namespace CSharpRayTracer
             }
             pixel_size = (half_width * 2) / hsize;
         }
+
+        public Ray ray_for_pixel(int x_in, int y_in)
+        {
+
+            //computing offsets
+            double xoffset = (x_in + 0.5d) * this.pixel_size;
+            double yoffset = (y_in + 0.5d) * this.pixel_size;
+
+            // untransformed corrdinates of the pixel in world space.
+            double world_x = this.half_width - xoffset;
+            double world_y=this.half_height - yoffset;
+
+            //notes
+            csharp_rt.Tuple pixle = this.transform.inverse() * csharp_rt.Tuple.point(world_x, world_y, -1);
+            csharp_rt.Tuple origin =this.transform.inverse() * csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple direction =(pixle - origin).normalize();
+
+            return new Ray(origin,direction);
+        }
     }
 }
