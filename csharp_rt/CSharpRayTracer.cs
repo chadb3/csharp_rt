@@ -13,8 +13,9 @@ namespace csharp_rt
             
             Console.WriteLine("Hello World!");
             test_color_at();
-            test_ray_way_out_of_bounds();
-            An_arbitrary_view_transformation();
+            /*test_ray_way_out_of_bounds();
+            An_arbitrary_view_transformation();*/
+            testingCamera();
             //quick list refresher.
             /*List<int> testList = new List<int>();
             Console.WriteLine("testList count: {0}", testList.Count());*/
@@ -343,6 +344,12 @@ namespace csharp_rt
                 t[1, 0], t[1, 1], t[1, 2], t[1, 3], 
                 t[2, 0], t[2, 1], t[2, 2], t[2, 3], 
                 t[3, 0], t[3, 1], t[3, 2], t[3, 3]);
+        }
+
+        static void testingCamera()
+        {
+            Camera c = new Camera(125, 200, Math.PI / 2);
+            Console.WriteLine("Pixel_size: {0}",c.pixel_size);
         }
 
     }

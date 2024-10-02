@@ -32,8 +32,8 @@ namespace CSharpRayTracer
             this.hsize = hsize;
             this.vsize = vsize;
             this.fov = fov;
-            this.transform = Matrix.identity();
-            this.computeCamera();
+            transform = Matrix.identity();
+            computeCamera();
         }
 
         private void computeCamera()
@@ -41,7 +41,7 @@ namespace CSharpRayTracer
             if (hsize > 0 && vsize > 0)
             {
                 half_view = Math.Tan(fov / 2);
-                aspect = hsize / vsize;
+                aspect = (double)hsize / (double)vsize;
                 if (aspect >= 1)
                 {
                     half_width = half_view;
@@ -69,16 +69,16 @@ namespace CSharpRayTracer
         {
 
             //computing offsets
-            double xoffset = (x_in + 0.5d) * this.pixel_size;
-            double yoffset = (y_in + 0.5d) * this.pixel_size;
+            double xoffset = (x_in + 0.5d) * pixel_size;
+            double yoffset = (y_in + 0.5d) * pixel_size;
 
             // untransformed corrdinates of the pixel in world space.
-            double world_x = this.half_width - xoffset;
-            double world_y=this.half_height - yoffset;
+            double world_x = half_width - xoffset;
+            double world_y=half_height - yoffset;
 
             //notes
-            csharp_rt.Tuple pixle = this.transform.inverse() * csharp_rt.Tuple.point(world_x, world_y, -1);
-            csharp_rt.Tuple origin =this.transform.inverse() * csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple pixle = transform.inverse() * csharp_rt.Tuple.point(world_x, world_y, -1);
+            csharp_rt.Tuple origin =transform.inverse() * csharp_rt.Tuple.point(0, 0, 0);
             csharp_rt.Tuple direction =(pixle - origin).normalize();
 
             return new Ray(origin,direction);

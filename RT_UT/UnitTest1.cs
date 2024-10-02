@@ -1331,14 +1331,16 @@ namespace RT_UT
         public void The_pixel_size_for_a_horizontal_canvas()
         {
             Camera c = new Camera(200,125,Math.PI/2);
-            Assert.AreEqual(0.01,c.pixel_size);
+            //Assert.AreEqual(0.01d,c.pixel_size);
+            Assert.IsTrue(Math.Abs(0.01d - c.pixel_size) < 0.00001);
         }
 
         [TestMethod]
         public void The_pixel_size_for_a_vertical_canvas()
         {
             Camera c = new Camera(125,200, Math.PI/2);
-            Assert.AreEqual(0.01,c.pixel_size);
+            //Assert.AreEqual(0.01d,c.pixel_size);
+            Assert.IsTrue(Math.Abs(0.01d - c.pixel_size) < 0.00001);
         }
 
         [TestMethod]
@@ -1346,8 +1348,8 @@ namespace RT_UT
         {
             Camera c = new Camera(201,101,Math.PI/2);
             Ray r = c.ray_for_pixel(100,50);
-            Assert.AreEqual(r.origin,csharp_rt.Tuple.point(0, 0,0));
-            Assert.AreEqual(r.direction,csharp_rt.Tuple.vector(0,0,-1));
+            Assert.AreEqual(csharp_rt.Tuple.point(0, 0,0),r.origin);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0,0,-1), r.direction);
         }
         [TestMethod]
         public void Constructing_a_ray_through_the_corner_of_the_canvas()
@@ -1365,6 +1367,20 @@ namespace RT_UT
             Ray r = c.ray_for_pixel(100,50);
             Assert.AreEqual(r.origin,csharp_rt.Tuple.point(0, 2,-5));
             Assert.AreEqual(r.direction,csharp_rt.Tuple.vector(Math.Sqrt(2) / 2,0,-Math.Sqrt(2) / 2));
+        }
+
+        [TestMethod]
+        public void Rendering_a_world_with_a_camera()
+        {
+            World w = new World();
+            w = w.default_world();
+            Camera c = new Camera(11,11,Math.PI / 2);
+            csharp_rt.Tuple from = csharp_rt.Tuple.point(0, 0, -5);
+            csharp_rt.Tuple to = csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
+            c.transform = Matrix.view_transform(from, to, up);
+            //rest of test
+            Assert.IsTrue(false);
         }
 
     }
