@@ -83,5 +83,12 @@ namespace CSharpRayTracer
 
             return new Ray(origin,direction);
         }
+
+        public Canvas render(World world_in)
+        {
+            Canvas image = new Canvas(hsize, vsize);
+
+            return image;
+        }
     }
 }
