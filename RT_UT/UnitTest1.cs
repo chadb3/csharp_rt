@@ -1380,7 +1380,8 @@ namespace RT_UT
             csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
             c.transform = Matrix.view_transform(from, to, up);
             //rest of test
-            Assert.IsTrue(false);
+            Canvas image = c.render(w);
+            Assert.AreEqual(Color.color(0.38066, 0.47583, 0.2855), image.pixel_at(5, 5));
         }
 
     }
