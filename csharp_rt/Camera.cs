@@ -87,7 +87,15 @@ namespace CSharpRayTracer
         public Canvas render(World world_in)
         {
             Canvas image = new Canvas(hsize, vsize);
-
+            for(int y=0;y<vsize;y++)
+            {
+                for (int x = 0; x < hsize; x++)
+                {
+                    Ray ray=ray_for_pixel(x,y);
+                    Color color = world_in.color_at(ray);
+                    image.write_pixel(x,y,color);
+                }
+            }
             return image;
         }
     }
