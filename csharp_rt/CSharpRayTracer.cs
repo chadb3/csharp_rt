@@ -21,6 +21,7 @@ namespace csharp_rt
             Console.WriteLine("testList count: {0}", testList.Count());*/
             //works
             world_test();
+            imageTest();
             /*matrix_tests();
             Console.Out.WriteLine("ENDING APPLICATION");
             test_mult();
@@ -350,6 +351,22 @@ namespace csharp_rt
         {
             Camera c = new Camera(125, 200, Math.PI / 2);
             Console.WriteLine("Pixel_size: {0}",c.pixel_size);
+        }
+
+        static void imageTest()
+        {
+            Console.WriteLine("starting imageTest()");
+            World world = new World();
+            world = world.default_world();
+            Camera c = new Camera(1920, 1080, Math.PI / 2);
+            csharp_rt.Tuple from = csharp_rt.Tuple.point(0, 0, -5);
+            csharp_rt.Tuple to = csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple up = csharp_rt.Tuple.vector(0, 1, 0);
+            c.transform = Matrix.view_transform(from, to, up);
+            //rest of test
+            Canvas image = c.render(world);
+            image.canvas_to_P3_ppm();
+            Console.WriteLine("ending imageTest()");
         }
 
     }
