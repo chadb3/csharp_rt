@@ -273,7 +273,7 @@ namespace csharp_rt
             csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0, -Math.Sqrt(2) / 2, -Math.Sqrt(2) / 2);
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
             Light light = Light.point_light(csharp_rt.Tuple.point(0, 10, -10), new Color(1, 1, 1));
-            Color result = light.lighting(m, position, eyev, normalv);
+            Color result = light.old_lighting_old(m, position, eyev, normalv);
             Console.WriteLine("color: {0}", result);
             Console.WriteLine("light string: {0}", light.ToString());
         }

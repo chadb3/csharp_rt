@@ -39,7 +39,7 @@ namespace csharp_rt
         /// <param name="eyev"></param>
         /// <param name="normalv"></param>
         /// <returns></returns>
-        public Color lighting(Material m, csharp_rt.Tuple point, csharp_rt.Tuple eyev, csharp_rt.Tuple normalv)
+        public Color lighting(Material m, csharp_rt.Tuple point, csharp_rt.Tuple eyev, csharp_rt.Tuple normalv, bool in_shadow_in)
         {
             Color ret = Color.BLACK();
             Color effective_color = m.color * intensity;
@@ -107,6 +107,55 @@ namespace csharp_rt
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        /// <summary>
+        /// For compatibility with old unit tests.
+        /// lacks the in_shadow bool component that wasn't originally tested for up to implementing the updated lighting function. 
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="point"></param>
+        /// <param name="eyev"></param>
+        /// <param name="normalv"></param>
+        /// <returns></returns>
+        public Color old_lighting_old(Material m, csharp_rt.Tuple point, csharp_rt.Tuple eyev, csharp_rt.Tuple normalv)
+        {
+            Color ret = Color.BLACK();
+            Color effective_color = m.color * intensity;
+            csharp_rt.Tuple lightv = (position - point).normalize();
+            Color ambient = effective_color * m.ambient;
+            double light_dot_normal = lightv.dot(normalv);
+            csharp_rt.Color color_specular = new Color();
+            csharp_rt.Color color_diffuse = new Color();
+            double factor = 0.0d;
+            if (light_dot_normal < 0)
+            {
+                //csharp_rt.Color color_diffuse = Color.BLACK();
+                //csharp_rt.Color color_specular = Color.BLACK();
+                color_diffuse = Color.BLACK();
+                color_specular = Color.BLACK();
+            }
+            else
+            {
+                //csharp_rt.Color color_diffuse = effective_color * m.diffuse * light_dot_normal;
+                color_diffuse = effective_color * m.diffuse * light_dot_normal;
+                //csharp_rt.Tuple reflectV = -normalv.reflect(eyev);
+                csharp_rt.Tuple reflectV = -lightv.reflect(normalv);
+                double reflect_dot_eye = reflectV.dot(eyev);
+                if (reflect_dot_eye <= 0)
+                {
+                    //csharp_rt.Color color_specular = Color.BLACK();
+                    color_specular = Color.BLACK();
+                }
+                else
+                {
+                    factor = Math.Pow(reflect_dot_eye, m.shininess);
+                    color_specular = intensity * m.specular * factor;
+                }
+            }
+
+            //return ret;
+            return ambient + color_diffuse + color_specular;
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Z_Lighting_Putting_It_Together
                         csharp_rt.Tuple point = r.position(xs.hit().t);
                         csharp_rt.Tuple normal = xs.hit().obj.normal_at(point);
                         csharp_rt.Tuple eye = -r.direction;
-                        color = light.lighting(xs.hit().obj.material, point, eye, normal);
+                        color = light.old_lighting_old(xs.hit().obj.material, point, eye, normal);
                         //New for chap 6 project
 
                         //reused from earlier chapter. no changes
