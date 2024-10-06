@@ -406,7 +406,7 @@ namespace csharp_rt
             right_wall.material = floor.material;
 
             Sphere middle = new Sphere();
-            middle.transform = Matrix.translation(-0.5, 1, -0.5);
+            middle.transform = Matrix.translation(-0.5, 1, 0.5);
             middle.material = new Material();
             middle.material.color = new Color(0.1, 1, 0.5);
             middle.material.diffuse = 0.7;
@@ -429,7 +429,7 @@ namespace csharp_rt
             World world = new World();
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             world.sphereList = [left_wall, left, right_wall, right, middle, floor];
-            Camera c = new Camera(255, 255, Math.PI / 3);
+            Camera c = new Camera(1000, 1000, Math.PI / 3);
             c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             Canvas image = c.render(world);
             image.set_file_name("book_image");
