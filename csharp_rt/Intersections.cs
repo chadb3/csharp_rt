@@ -26,6 +26,7 @@ namespace csharp_rt
         {
             t = new List<Intersection>();
             t = t_in;
+       
         }
         /// <summary>
         /// For use for unit tests. I am not sure how it is going to be used down the line. 
@@ -67,11 +68,11 @@ namespace csharp_rt
         public Intersection hit()
         {
             //Place holder so unit tests don't complain and auto complete the wrong thing...
-            Intersection ret=this[0];
+            //Intersection ret=this[0];
             // mark below for deletion
             //List<Intersection> tmp = t;
             //tmp=tmp.OrderBy(o=>o.t).ToList();
-            this.t=this.t.OrderBy(o => o.t).ToList();
+            //this.t=this.t.OrderBy(o => o.t).ToList();
             /*this.sort();
             debug print
             Console.WriteLine("DEBUG PRINT");
@@ -90,11 +91,14 @@ namespace csharp_rt
             }*/
             if (first_positive_index() != -1)
             {
+                Intersection ret = this[0];
+                this.t = this.t.OrderBy(o => o.t).ToList();
                 return t[first_positive_index()];
             }
             else
             {
-                return null;
+                //return null;
+                return new Intersection();
             }
             /*Console.WriteLine("Warning: returning null for HIT");
             return null;*/

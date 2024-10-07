@@ -95,5 +95,24 @@ namespace CSharpRayTracer
             }
             return ret;
         }
+
+        public bool is_shadowed(csharp_rt.Tuple point_in)
+        {
+            csharp_rt.Tuple v = light.position-point_in;
+            double distance = v.magnitude();
+            csharp_rt.Tuple direction = v.normalize();
+            Ray r = new Ray(point_in, direction);
+            Intersections intersections = new Intersections(intersect_world(r));
+            Intersection h = intersections.hit();
+            if (h.nothing==false &&h.t<distance)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+            
+        }
     }
 }

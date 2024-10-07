@@ -14,6 +14,7 @@ namespace csharp_rt
         // negative t means obj is behind ray
         // positive t means intersected
         public double t;
+        public bool nothing = false;
        /* public Intersection(double[,] intersect_in,Sphere shape_in ) 
         { 
             this.obj = shape_in; 
@@ -23,6 +24,13 @@ namespace csharp_rt
         {
             this.obj = shape_in;
             this.t = intersect_in;
+        }
+
+        public Intersection()
+        {
+            this.t = Double.MinValue;
+            obj = null;
+            nothing = true;
         }
 
  
@@ -39,8 +47,8 @@ namespace csharp_rt
             return false;
         }
         public static bool operator !=(Intersection left, Intersection right) 
-        { 
-            return !left.Equals(right); 
+        {
+                return !left.Equals(right);
         }
         //todo
         public static bool operator >(Intersection left, Intersection right) 

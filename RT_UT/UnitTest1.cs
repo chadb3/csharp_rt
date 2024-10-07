@@ -840,7 +840,8 @@ namespace RT_UT
             Intersection i2 = new Intersection(-1, s);
             Intersections xs=new Intersections(i2, i1);
             Intersection i = xs.hit();
-            Assert.IsNull(i);
+            //Assert.IsNull(i);
+            Assert.IsTrue(i.nothing);
         }
 
         [TestMethod]
@@ -1415,7 +1416,32 @@ namespace RT_UT
             World w = new World();
             w = w.default_world();
             csharp_rt.Tuple p = csharp_rt.Tuple.point(0, 10, 0);
+            Assert.IsFalse(w.is_shadowed(p));
+        }
+        [TestMethod]
+        public void The_shadow_when_an_object_is_between_the_point_and_the_light()
+        {
+            World w = new World();
+            w = w.default_world();
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(10, -10, 10);
+            Assert.IsTrue(w.is_shadowed(p));
+        }
+        [TestMethod]
+        public void There_is_no_shadow_when_an_object_is_behind_the_light()
+        {
+            World w = new World();
+            w = w.default_world();
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(-20, 20, -20);
+            Assert.IsFalse(w.is_shadowed(p));
+        }
 
+        [TestMethod]
+        public void There_is_no_shadow_when_an_object_is_behind_the_point()
+        {
+            World w = new World();
+            w = w.default_world();
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(-2, 2, -2);
+            Assert.IsFalse(w.is_shadowed(p));
         }
     }
 

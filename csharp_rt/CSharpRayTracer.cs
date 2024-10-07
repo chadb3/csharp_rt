@@ -20,10 +20,12 @@ namespace csharp_rt
             /*List<int> testList = new List<int>();
             Console.WriteLine("testList count: {0}", testList.Count());*/
             //works
+            shadowTestPassesExample();
             world_test();
-            imageTest();
-            imageTest2();
-            testImageBook();
+            shadowTest();
+            ///////////////////////////imageTest();
+            //////////////////////////imageTest2();
+            //////////////////////////testImageBook();
             /*matrix_tests();
             Console.Out.WriteLine("ENDING APPLICATION");
             test_mult();
@@ -437,6 +439,22 @@ namespace csharp_rt
             Console.WriteLine("finished book image pg107");
         }
 
+        static void shadowTest()
+        {
+            Console.WriteLine("fails test null");
+            World w = new World();
+            w = w.default_world();
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(0, 10, 0);
+            Console.WriteLine(w.is_shadowed(p));
+        }
+        static void shadowTestPassesExample()
+        {
+            Console.WriteLine("passes test (is false)");
+            World w = new World();
+            w = w.default_world();
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(-20, 20, -20);
+            Console.WriteLine(w.is_shadowed(p));
+        }
 
     }
 }
