@@ -74,9 +74,15 @@ namespace csharp_rt
                     color_specular = intensity * m.specular * factor;
                 }
             }
-
-            //return ret;
-            return ambient + color_diffuse + color_specular;
+            if (in_shadow_in)
+            {
+                return ambient;
+            }
+            else
+            {
+                //return ret;
+                return ambient + color_diffuse + color_specular;
+            }
         }
 
         public static bool operator ==(Light l, Light r)

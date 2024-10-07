@@ -13,7 +13,6 @@ namespace csharp_rt
     public class Intersections
     {
         public List<Intersection> t;
-        public bool nothing=false;
         public Intersections()
         {
             t = new List<Intersection>();
@@ -95,7 +94,6 @@ namespace csharp_rt
             }
             else
             {
-                nothing = true;
                 return null;
             }
             /*Console.WriteLine("Warning: returning null for HIT");

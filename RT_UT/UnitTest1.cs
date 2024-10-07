@@ -1408,6 +1408,15 @@ namespace RT_UT
             Color result = light.lighting(m, position, eyev, normalv, in_shadow);
             Assert.AreEqual(Color.color(0.1, 0.1, 0.1), result);
         }
+
+        [TestMethod]
+        public void There_is_no_shadow_when_nothing_is_collinear_with_point_and_light()
+        {
+            World w = new World();
+            w = w.default_world();
+            csharp_rt.Tuple p = csharp_rt.Tuple.point(0, 10, 0);
+
+        }
     }
 
 }
