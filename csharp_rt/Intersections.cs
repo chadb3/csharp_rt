@@ -13,6 +13,7 @@ namespace csharp_rt
     public class Intersections
     {
         public List<Intersection> t;
+        public bool nothing=false;
         public Intersections()
         {
             t = new List<Intersection>();
@@ -72,24 +73,33 @@ namespace csharp_rt
             //List<Intersection> tmp = t;
             //tmp=tmp.OrderBy(o=>o.t).ToList();
             this.t=this.t.OrderBy(o => o.t).ToList();
-            //this.sort();
-            //debug print
-            //Console.WriteLine("DEBUG PRINT");
-            //foreach (Intersection item in tmp) { Console.WriteLine(item); }
-            //Console.WriteLine("DEBUG PRINT 2");
-            //foreach (Intersection item in this.t) { Console.WriteLine(item); }
-            //end debug print
+            /*this.sort();
+            debug print
+            Console.WriteLine("DEBUG PRINT");
+            foreach (Intersection item in tmp) { Console.WriteLine(item); }
+            Console.WriteLine("DEBUG PRINT 2");
+            foreach (Intersection item in this.t) { Console.WriteLine(item); }
+            end debug print
             for (int i = 0;i<t.Count;i++)
             {
-                //commented out for now to prevent unnecessary prints
-                //Console.WriteLine("i: {0}", i);
-                if (t[i].t >= 0)
-                {
-                    return t[i];
-                }
+            commented out for now to prevent unnecessary prints
+            Console.WriteLine("i: {0}", i);
+
+
+            return t[i];
+
+            }*/
+            if (first_positive_index() != -1)
+            {
+                return t[first_positive_index()];
             }
-            Console.WriteLine("Warning: returning null for HIT");
-            return null;
+            else
+            {
+                nothing = true;
+                return null;
+            }
+            /*Console.WriteLine("Warning: returning null for HIT");
+            return null;*/
         }
 
         public bool canHit()
