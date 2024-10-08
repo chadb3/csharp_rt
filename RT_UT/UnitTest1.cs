@@ -1443,6 +1443,33 @@ namespace RT_UT
             csharp_rt.Tuple p = csharp_rt.Tuple.point(-2, 2, -2);
             Assert.IsFalse(w.is_shadowed(p));
         }
+        [TestMethod]
+        public void shade_hit_is_given_an_intersection_in_shadow()
+        {
+            World w = new World();
+            w.light = Light.point_light(csharp_rt.Tuple.point(0, 0, -10), Color.color(1, 1, 1));
+            Sphere s1 = new Sphere();
+            Sphere s2 = new Sphere();
+            s2.set_transform(Matrix.translation(0, 0, 10));
+            w.sphereList = [s2, s1];
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 5), csharp_rt.Tuple.vector(0, 0, 1));
+            Intersection i = new Intersection(4, s2);
+            Computations comps = i.prepare_computations(r);
+            Color c = w.shade_hit(comps);
+            Assert.AreEqual(Color.color(.1, .1, .1), c);
+        }
+
+        [TestMethod]
+        public void The_hit_should_offset_the_point()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere shape = new Sphere();
+            shape.set_transform(Matrix.translation(0, 0, 1));
+            Intersection i = new Intersection(5, shape);
+            Computations comps = i.prepare_computations(r);
+            Assert.IsTrue(comps.over_point.z < -0.00001 / 2);
+            Assert.IsTrue(comps.point.z > comps.over_point.z);
+        }
     }
 
 }

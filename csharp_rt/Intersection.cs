@@ -141,6 +141,7 @@ namespace csharp_rt
         public Computations prepare_computations(Ray rayIn)
         {
             Computations ret = new Computations(this.t, this.obj, rayIn.position(this.t), rayIn.direction);
+            ret.over_point = ret.point + ret.normalv * 0.00001;
             return ret;
         }
     }

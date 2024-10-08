@@ -20,12 +20,12 @@ namespace csharp_rt
             /*List<int> testList = new List<int>();
             Console.WriteLine("testList count: {0}", testList.Count());*/
             //works
-            shadowTestPassesExample();
-            world_test();
-            shadowTest();
+            //shadowTestPassesExample();
+            //world_test();
+            //shadowTest();
             ///////////////////////////imageTest();
             //////////////////////////imageTest2();
-            //////////////////////////testImageBook();
+            testImageBook();
             /*matrix_tests();
             Console.Out.WriteLine("ENDING APPLICATION");
             test_mult();
@@ -431,7 +431,7 @@ namespace csharp_rt
             World world = new World();
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             world.sphereList = [left_wall, left, right_wall, right, middle, floor];
-            Camera c = new Camera(1000, 1000, Math.PI / 3);
+            Camera c = new Camera(2050, 2050, Math.PI / 3);
             c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             Canvas image = c.render(world);
             image.set_file_name("book_image");
