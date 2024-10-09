@@ -1472,4 +1472,21 @@ namespace RT_UT
         }
     }
 
+    [TestClass]
+    public class chapter_9_refactoring
+    {
+        [TestMethod]
+        public void chap_9_intro_test()
+        {
+            Assert.IsTrue(1 == 1);
+        }
+
+        [TestMethod]
+        public void The_shapes_default_transform()
+        {
+            Shape s = new Test_shape();
+            Assert.AreEqual(Matrix.identity(), s.Transform);
+        }
+    }
+
 }

@@ -26,6 +26,12 @@ namespace csharp_rt
             this.t = intersect_in;
         }
 
+        // comment out for now.
+        /*public Intersection(double intersect_in, Shape shape_in)
+        {
+            this.obj = shape_in;
+           */
+
         public Intersection()
         {
             this.t = Double.MinValue;
