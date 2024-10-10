@@ -1487,6 +1487,22 @@ namespace RT_UT
             Shape s = new Test_shape();
             Assert.AreEqual(Matrix.identity(), s.Transform);
         }
+        [TestMethod]
+        public void The_default_material()
+        {
+            Shape s = new Test_shape();
+            Material m = s.Material;
+            Assert.AreEqual(m, new Material());
+        }
+        [TestMethod]
+        public void Assiging_a_material()
+        {
+            Shape s = new Test_shape();
+            Material m = new Material();
+            m.ambient = 1;
+            s.Material = m;
+            Assert.AreEqual(m, s.Material);
+        }
     }
 
 }

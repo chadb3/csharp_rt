@@ -16,25 +16,35 @@ namespace CSharpRayTracer
         {
             Ray ray2 = RayIn.transform(this.Transform.inverse());
             List<Intersection> ret = new List<Intersection>();
+           
+            // Below marked for deletion 
             //Intersection one;
             //Intersection two;
             //double[] ins;
-            csharp_rt.Tuple sphere_to_ray = ray2.origin - csharp_rt.Tuple.point(0, 0, 0);
-            double a = csharp_rt.Tuple.dot(ray2.direction, ray2.direction);
-            double b = 2 * csharp_rt.Tuple.dot(ray2.direction, sphere_to_ray);
-            double c = sphere_to_ray.dot(sphere_to_ray) - 1;
-            double descriminate = Math.Pow(b, 2) - 4 * a * c;
+            //csharp_rt.Tuple sphere_to_ray = ray2.origin - csharp_rt.Tuple.point(0, 0, 0);
+            //double a = csharp_rt.Tuple.dot(ray2.direction, ray2.direction);
+            //double b = 2 * csharp_rt.Tuple.dot(ray2.direction, sphere_to_ray);
+            //double c = sphere_to_ray.dot(sphere_to_ray) - 1;
+            //double descriminate = Math.Pow(b, 2) - 4 * a * c;
 
-            if (descriminate >= 0)
-            {
-                double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
-                double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
+            //if (descriminate >= 0)
+            //{
+                //double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
+                //double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
                 //comment out for now.
                 //ret.Add(new Intersection(/*ins[0]*/t1, this));
                 //ret.Add(new Intersection(/*ins[1]*/t2, this));
-            }
+            //}
             return ret;
         }
+        /// <summary>
+        /// abstract method.
+        /// called by Intersect.
+        /// should call specific shape's local_intersect.
+        /// </summary>
+        /// <param name="local_ray"></param>
+        /// <returns></returns>
+        protected abstract List<Intersection> Local_Intersect(Ray local_ray);
 
     }
 
@@ -45,6 +55,12 @@ namespace CSharpRayTracer
         {
             Material = new Material();
             Transform = Matrix.identity();
+        }
+        protected override List<Intersection> Local_Intersect(Ray ray)
+        {
+            List<Intersection> temp_for_error_removal = new List<Intersection>();
+
+            return temp_for_error_removal;
         }
     }
 }
