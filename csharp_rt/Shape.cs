@@ -51,6 +51,7 @@ namespace CSharpRayTracer
     public class Test_shape:Shape
     {
         //use abstract for shape.
+        Ray saved_ray;
         public Test_shape()
         {
             Material = new Material();
@@ -59,7 +60,7 @@ namespace CSharpRayTracer
         protected override List<Intersection> Local_Intersect(Ray ray)
         {
             List<Intersection> temp_for_error_removal = new List<Intersection>();
-
+            saved_ray= ray;
             return temp_for_error_removal;
         }
     }

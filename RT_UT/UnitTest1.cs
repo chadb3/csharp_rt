@@ -1503,6 +1503,14 @@ namespace RT_UT
             s.Material = m;
             Assert.AreEqual(m, s.Material);
         }
+        [TestMethod]
+        public void Intersecting_a_scaled_shape_with_a_ray()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Shape s = new Test_shape();
+            s.Transform = Matrix.scaling(2, 2, 2);
+            Intersections xs = new Intersections(s.Intersect(r));
+        }
     }
 
 }
