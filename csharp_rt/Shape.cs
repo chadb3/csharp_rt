@@ -15,8 +15,8 @@ namespace CSharpRayTracer
         public List<Intersection> Intersect(Ray RayIn)
         {
             Ray ray2 = RayIn.transform(this.Transform.inverse());
-            List<Intersection> ret = new List<Intersection>();
-           
+            //List<Intersection> ret = new List<Intersection>();
+           List<Intersection> ret=Local_Intersect(ray2);
             // Below marked for deletion 
             //Intersection one;
             //Intersection two;
@@ -46,21 +46,33 @@ namespace CSharpRayTracer
         /// <returns></returns>
         protected abstract List<Intersection> Local_Intersect(Ray local_ray);
 
-    }
-
-    public class Test_shape:Shape
-    {
-        //use abstract for shape.
-        Ray saved_ray;
-        public Test_shape()
+        protected Shape()
         {
             Material = new Material();
             Transform = Matrix.identity();
         }
-        protected override List<Intersection> Local_Intersect(Ray ray)
+
+    }
+
+    public class Test_shape:Shape
+    {
+        // marked (below) for deletion
+        //use abstract for shape.
+        public Ray saved_ray;
+        public int testx;
+        public Test_shape():base()
+        {
+            // marked commened out for deletion.
+            // left over values are used for testing/unit tests
+            // Material = new Material();
+            // Transform = Matrix.identity();
+            saved_ray = new Ray(csharp_rt.Tuple.point(0,0,0),csharp_rt.Tuple.vector(0,0,0));
+            testx = 5;
+        }
+        protected override List<Intersection> Local_Intersect(Ray ray_in)
         {
             List<Intersection> temp_for_error_removal = new List<Intersection>();
-            saved_ray= ray;
+            saved_ray = ray_in;
             return temp_for_error_removal;
         }
     }
