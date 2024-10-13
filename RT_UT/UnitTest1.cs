@@ -1513,14 +1513,18 @@ namespace RT_UT
             s.Transform = Matrix.scaling(2, 2, 2);
             Intersections xs = new Intersections(s.Intersect(r));
             Assert.AreEqual(csharp_rt.Tuple.point(0, 0, -2.5), s.saved_ray.origin);
-            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, .5), s.saved_ray.direction);
-            // below I used to test what I was supposed to get.
-            // I then realized that I had never setup Intersect to call Local_Intersect
-            // After I setup that up, it worked.
-            // Ray r2 = r.transform(s.Transform.inverse());//pg 70
-            // Assert.AreEqual(csharp_rt.Tuple.point(0, 0, -2.5), r2.origin);
-            // Assert.AreEqual(csharp_rt.Tuple.point(0, 0, -2.5), r2.direction);
-            
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, .5), s.saved_ray.direction);            
+        }
+
+        [TestMethod]
+        public void Intersecting_a_translated_shape_with_a_ray()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Test_shape s = new Test_shape();
+            s.Transform = Matrix.translation(5, 0, 0);
+            Intersections xs = new Intersections(s.Intersect(r));
+            Assert.AreEqual(csharp_rt.Tuple.point(-5,0,-5), s.saved_ray.origin);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0,0,1), s.saved_ray.direction);
         }
     }
 
