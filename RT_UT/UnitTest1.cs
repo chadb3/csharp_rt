@@ -1526,6 +1526,24 @@ namespace RT_UT
             Assert.AreEqual(csharp_rt.Tuple.point(-5,0,-5), s.saved_ray.origin);
             Assert.AreEqual(csharp_rt.Tuple.vector(0,0,1), s.saved_ray.direction);
         }
+
+        [TestMethod]
+        public void Computing_the_normal_on_a_translated_shape()
+        {
+            Test_shape s = new Test_shape();
+            s.Transform = Matrix.translation(0, 1, 0);
+            csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0, 1.70711, -0.70711));
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0.70711, -0.70711), n);
+        }
+
+        [TestMethod]
+        public void Computing_the_normal_on_a_transformed_shape()
+        {
+            Test_shape s = new Test_shape();
+            s.Transform = Matrix.scaling(1, .5, 1) * Matrix.rotation_z(Math.PI / 5);
+            csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0, Math.Sqrt(2) / 2, -Math.Sqrt(2)/ 2));
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, 0.97014, -0.24254), n);
+        }
     }
 
 }
