@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpRayTracer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -137,6 +138,19 @@ namespace csharp_rt
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+    }
+    // Temp new Sphere class to build this while not breaking my old tests.
+    public class New_Sphere:Shape
+    {
+        // original sphere had the following public variables
+        // public double radaii; // not sure if this was used. I think I added it because the book mentioned it. I think the book mentioned needing a way to track unique spheres.
+        // public Tuple origin; // not sure if this was used. I think I added it because the book mentioned it. I think the book mentioned needing a way to track unique spheres.
+        // public Matrix transform; // can be accessed through the base(). needed
+        // public Material material; // can be accessed through the base() needed.
+        public New_Sphere():base()
+        {
+
         }
     }
 }

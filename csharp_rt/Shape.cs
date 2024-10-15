@@ -13,6 +13,17 @@ namespace CSharpRayTracer
         public Matrix Transform { get; set; }
         public Material Material { get; set; }
 
+        /// <summary>
+        /// Set Transform function.
+        /// might be redundant due to Transform's get/set. 
+        /// added for consistency with book.
+        /// </summary>
+        /// <param name="m"></param>
+        public void Set_Transform(Matrix m)
+        {
+            Transform = m;
+        }
+
         public csharp_rt.Tuple normal_at(csharp_rt.Tuple point_in)
         {
             csharp_rt.Tuple local_point = Transform.inverse() * point_in;
@@ -56,8 +67,6 @@ namespace CSharpRayTracer
 
     public class Test_shape : Shape
     {
-        // marked (below) for deletion
-        //use abstract for shape.
         public Ray saved_ray;
         public int testx;
         public Test_shape() : base()
