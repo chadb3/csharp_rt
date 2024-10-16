@@ -9,17 +9,18 @@ namespace csharp_rt
 {
     public class Intersection
     {
+        public Shape tnObj;
         public Sphere obj;// shape;
         //public double[,] t;// intersect;
         // negative t means obj is behind ray
         // positive t means intersected
         public double t;
         public bool nothing = false;
-       /* public Intersection(double[,] intersect_in,Sphere shape_in ) 
-        { 
-            this.obj = shape_in; 
-            this.t = intersect_in;
-        }*/
+        /* public Intersection(double[,] intersect_in,Sphere shape_in ) 
+         { 
+             this.obj = shape_in; 
+             this.t = intersect_in;
+         }*/
         public Intersection(double intersect_in, Sphere shape_in)
         {
             this.obj = shape_in;
@@ -27,10 +28,11 @@ namespace csharp_rt
         }
 
         // comment out for now.
-        /*public Intersection(double intersect_in, Shape shape_in)
+        public Intersection(double intersect_in, Shape shape_in)
         {
-            this.obj = shape_in;
-           */
+            this.t=intersect_in;
+            this.tnObj = shape_in;
+        } 
 
         public Intersection()
         {

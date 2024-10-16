@@ -152,5 +152,34 @@ namespace csharp_rt
         {
 
         }
+
+        protected override List<Intersection> Local_Intersect(Ray ray_in)
+        {
+            // ray_in is already transformed, and inversed
+            List<Intersection> result = new List<Intersection>();
+            Tuple sphere_to_ray = ray_in.origin - Tuple.point(0, 0, 0);
+            double a = Tuple.dot(ray_in.direction, ray_in.direction);
+            double b = 2 * Tuple.dot(ray_in.direction, sphere_to_ray);
+            double c = sphere_to_ray.dot(sphere_to_ray) - 1;
+            double descriminate = Math.Pow(b, 2) - 4 * a * c;
+            if (descriminate >= 0)
+            {
+                double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
+                double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
+                result.Add(new Intersection(/*ins[0]*/t1, Shape));
+                //need to fix Intsection lol
+                result.Add(new Intersection(/*ins[1]*/t2, this));
+            }
+            return result;
+        }
+
+        protected override csharp_rt.Tuple Local_Normal_At(csharp_rt.Tuple point_in)
+        {
+            csharp_rt.Tuple object_point = Transform.inverse() * point_in;
+            csharp_rt.Tuple object_normal = object_point - csharp_rt.Tuple.point(0, 0, 0);
+            csharp_rt.Tuple world_normal = Transform.inverse().transpose() * object_normal;
+            world_normal.w = 0;
+            return world_normal.normalize();
+        }
     }
 }
