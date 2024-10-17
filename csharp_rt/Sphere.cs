@@ -141,6 +141,7 @@ namespace csharp_rt
         }
     }
     // Temp new Sphere class to build this while not breaking my old tests.
+    // I will swap them out when eventually. and make the current Sphere Old_Sphere and New_Sphere Sphere.
     public class New_Sphere:Shape
     {
         // original sphere had the following public variables
@@ -166,7 +167,7 @@ namespace csharp_rt
             {
                 double t1 = (-b - Math.Sqrt(descriminate)) / (2 * a);
                 double t2 = (-b + Math.Sqrt(descriminate)) / (2 * a);
-                result.Add(new Intersection(/*ins[0]*/t1, Shape));
+                result.Add(new Intersection(/*ins[0]*/t1, this));
                 //need to fix Intsection lol
                 result.Add(new Intersection(/*ins[1]*/t2, this));
             }

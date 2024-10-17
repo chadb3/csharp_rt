@@ -1546,6 +1546,24 @@ namespace RT_UT
             csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0, Math.Sqrt(2) / 2, -Math.Sqrt(2)/ 2));
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0.97014, -0.24254), n);
         }
+
+        [TestMethod]
+        public void Testing_New_Sphere_Before_changing_Sphere()
+        {
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            New_Sphere s = new New_Sphere();
+            //var xs = s.old_intersect(r);
+            Intersections xs = new Intersections(s.Intersect(r));
+            Assert.AreEqual(4.0d, xs[0].t);
+            Assert.AreEqual(6.0d, xs[1].t);
+        }
+        [TestMethod]
+        public void Testing_New_Sphere_normal_at()
+        {
+            New_Sphere s = new New_Sphere();
+            csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(1, 0, 0));
+            Assert.AreEqual(csharp_rt.Tuple.vector(1, 0, 0), n);
+        }
     }
 
 }
