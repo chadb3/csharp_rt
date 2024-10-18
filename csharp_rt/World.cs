@@ -12,31 +12,33 @@ namespace CSharpRayTracer
     {
         //Object - not yet implimented 
         //Sphere
-        public List<Sphere> sphereList;
+        public List<Shape> shapeList;// = new List<Shape>();
+        public List<Sphere> oldSphereList;
         public Light light;
         //Light
         public World() 
         { 
             light= new Light();
-            sphereList = new List<Sphere>();
+            oldSphereList = new List<Sphere>();
+            shapeList= new List<Shape>();
         }
 
         public World default_world()
         {
             Light light = new Light(csharp_rt.Tuple.point(-10,10,-10),new csharp_rt.Color(1,1,1));
             Sphere s1 = new Sphere();
-            s1.material.color = new csharp_rt.Color(0.8, 1.0,0.6);
-            s1.material.diffuse = 0.7;
-            s1.material.specular = 0.2;
+            s1.Material.color = new csharp_rt.Color(0.8, 1.0,0.6);
+            s1.Material.diffuse = 0.7;
+            s1.Material.specular = 0.2;
             Sphere s2=new Sphere();
             //Console.WriteLine($"transform before {s2.transform[0, 2]}");
             //s2.transform.scaling_ns(0.5, 0.5, 0.5);
             //s2.set_transform
-            s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
+            s2.Set_Transform(Matrix.scaling(0.5, 0.5, 0.5));
             //Console.WriteLine($"transform after {s2.transform[0, 2]}");
             //Console.WriteLine(s2.transform);
-            sphereList.Add(s1);
-            sphereList.Add(s2);
+            shapeList.Add(s1);
+            shapeList.Add(s2);
             this.light = light;
             return this;
         }
@@ -49,12 +51,12 @@ namespace CSharpRayTracer
         {
             List<Intersection> results = new List<Intersection>();
             //test
-            foreach (Sphere i in sphereList)
+            foreach (Shape i in shapeList)
             {
                 //Console.WriteLine(i);
                 // test print notifications
                 //Console.WriteLine("Test Print - Please remove when done testing - in World.cs");
-                foreach (Intersection ix in i.intersect(ray_in))
+                foreach (Intersection ix in i.Intersect(ray_in))
                 {
                     // Test Print                    
                     //Console.WriteLine(ix.t);
@@ -71,7 +73,8 @@ namespace CSharpRayTracer
             Color ret = new Color();
             //Light light_to_call_lighting = new Light();
             //ret = light.old_lighting_old(comps_in.obj.material, comps_in.point, comps_in.eyev, comps_in.normalv);
-            ret = light.lighting(comps_in.obj.material, comps_in.point, comps_in.eyev, comps_in.normalv,is_shadowed(comps_in.over_point));
+            //ret = light.lighting(comps_in.old_obj.Material, comps_in.point, comps_in.eyev, comps_in.normalv,is_shadowed(comps_in.over_point));
+            ret = light.lighting(comps_in.shapeObj.Material, comps_in.point, comps_in.eyev, comps_in.normalv, is_shadowed(comps_in.over_point));
             return ret;
         }
         

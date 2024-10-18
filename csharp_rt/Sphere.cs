@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace csharp_rt
 {
-    public class Sphere
+    public class Old_Sphere
     {
         public double radaii;
         public Tuple origin;
         public Matrix transform;
-        public Material material;
-        public Sphere()
+        public Material Material;
+        public Old_Sphere()
         {
             this.radaii = 1;
             this.origin = Tuple.point(0, 0, 0);
             transform = Matrix.identity();
-            this.material = new Material();
+            this.Material = new Material();
         }
         /// <summary>
         /// Old intersect.
@@ -99,7 +99,7 @@ namespace csharp_rt
             //return (pointIn - csharp_rt.Tuple.point(0, 0, 0).normalize());
             //return (world_point - csharp_rt.Tuple.point(0, 0, 0).normalize());
         }
-        public static bool operator ==(Sphere l, Sphere r)
+        public static bool operator ==(Old_Sphere l, Old_Sphere r)
         {
             bool result = false;
             if(l.radaii==r.radaii)
@@ -112,7 +112,7 @@ namespace csharp_rt
                     if (r.transform == l.transform)
                     {
                         //result = true;
-                        if(l.material==r.material)
+                        if(l.Material==r.Material)
                         {
                             result = true;
                         }
@@ -121,14 +121,14 @@ namespace csharp_rt
             }
             return result;
         }
-        public static bool operator !=(Sphere l, Sphere r)
+        public static bool operator !=(Old_Sphere l, Old_Sphere r)
         {
             return !(l == r);
         }
 
         public override bool Equals(object r)
         {
-            return this==(Sphere)r;
+            return this==(Old_Sphere)r;
         }
         /// <summary>
         /// to do.
@@ -142,14 +142,14 @@ namespace csharp_rt
     }
     // Temp new Sphere class to build this while not breaking my old tests.
     // I will swap them out when eventually. and make the current Sphere Old_Sphere and New_Sphere Sphere.
-    public class New_Sphere:Shape
+    public class Sphere:Shape
     {
         // original sphere had the following public variables
         // public double radaii; // not sure if this was used. I think I added it because the book mentioned it. I think the book mentioned needing a way to track unique spheres.
         // public Tuple origin; // not sure if this was used. I think I added it because the book mentioned it. I think the book mentioned needing a way to track unique spheres.
         // public Matrix transform; // can be accessed through the base(). needed
         // public Material material; // can be accessed through the base() needed.
-        public New_Sphere():base()
+        public Sphere():base()
         {
 
         }

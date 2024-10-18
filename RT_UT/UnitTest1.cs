@@ -694,7 +694,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
             //var xs = s.old_intersect(r);
-            Intersections xs = new Intersections(s.intersect(r));
+            Intersections xs = new Intersections(s.Intersect(r));
             Assert.AreEqual(4.0d, xs[0].t);
             Assert.AreEqual(6.0d, xs[1].t);
         }
@@ -704,7 +704,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 1, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
             //double[] xs= s.old_intersect(r);
-            Intersections xs = new Intersections(s.intersect(r));
+            Intersections xs = new Intersections(s.Intersect(r));
             Assert.AreEqual(2, xs.count());
             Assert.AreEqual(5.0d, xs[0].t);
             Assert.AreEqual(5.0d, xs[1].t);
@@ -715,7 +715,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 2, 5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
             //double[] xs= s.old_intersect(r);
-            Intersections xs = new Intersections(s.intersect(r));
+            Intersections xs = new Intersections(s.Intersect(r));
             Assert.AreEqual(0, xs.count());
         }
         [TestMethod]
@@ -724,7 +724,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
             //double[] xs= s.old_intersect(r);
-            Intersections xs = new Intersections(s.intersect(r));
+            Intersections xs = new Intersections(s.Intersect(r));
             Assert.AreEqual(2, xs.count());
             Assert.AreEqual(-1.0d, xs[0].t);
             Assert.AreEqual(1.0d, xs[1].t);
@@ -734,7 +734,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
-            Intersections xs = new Intersections(s.intersect(r));
+            Intersections xs = new Intersections(s.Intersect(r));
             Assert.AreEqual(2, xs.count());
             Assert.AreEqual(-1.0d, xs[0].t);
             Assert.AreEqual(1.0d, xs[1].t);
@@ -745,7 +745,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
             //double[] xs= s.old_intersect(r);
-            Intersections xs= new Intersections(s.intersect(r));
+            Intersections xs= new Intersections(s.Intersect(r));
             //Assert.AreEqual(2, xs.Count());
             Assert.AreEqual(2, xs.count());
             Assert.AreEqual(-6.0d, xs[0].t);
@@ -756,7 +756,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
-            Intersections xs = new Intersections(s.intersect(r));
+            Intersections xs = new Intersections(s.Intersect(r));
             Assert.AreEqual(2, xs.count());
             Assert.AreEqual(-6.0d, xs[0].t);
             Assert.AreEqual(-4.0d, xs[1].t);
@@ -767,7 +767,7 @@ namespace RT_UT
             Sphere s=new Sphere();
             Intersection i = new Intersection(3.5d, s);
             Assert.AreEqual(3.5d, i.t);
-            Assert.AreEqual(s, i.obj);
+            Assert.AreEqual(s, i.tnObj);
         }
         [TestMethod]
         public void Aggregating_intersections()
@@ -806,8 +806,8 @@ namespace RT_UT
             Sphere s = new Sphere();
             Intersections xs = new Intersections(/*s.intersect(r);*/);
             Assert.AreEqual(2, xs.count());
-            Assert.AreEqual(s, xs[0].obj);
-            Assert.AreEqual(s, xs[1].obj);
+            Assert.AreEqual(s, xs[0].tnObj);
+            Assert.AreEqual(s, xs[1].tnObj);
         }
 
         [TestMethod]
@@ -882,15 +882,15 @@ namespace RT_UT
         public void A_Spheres_default_transformation()
         {
             Sphere s = new Sphere();
-            Assert.AreEqual(Matrix.identity(), s.transform);
+            Assert.AreEqual(Matrix.identity(), s.Transform);
         }
         [TestMethod]
         public void Changing_a_spheres_transformation()
         {
             Sphere s = new Sphere();
             Matrix m = Matrix.translation(2, 3, 4);
-            s.set_transform(m);
-            Assert.AreEqual(m, s.transform);
+            s.Set_Transform(m);
+            Assert.AreEqual(m, s.Transform);
         }
 
         [TestMethod]
@@ -898,8 +898,8 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere sphere = new Sphere();
-            sphere.set_transform(Matrix.scaling(2, 2, 2));
-            Intersections xs = new Intersections(sphere.intersect(r));
+            sphere.Set_Transform(Matrix.scaling(2, 2, 2));
+            Intersections xs = new Intersections(sphere.Intersect(r));
             Assert.AreEqual(2, xs.count());
             Assert.AreEqual(3, xs[0].t);
             Assert.AreEqual(7, xs[1].t);
@@ -915,8 +915,8 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.point(0, 0, 1));
             Sphere s = new Sphere();
-            s.set_transform(Matrix.translation(5, 0, 0));
-            Intersections xs=new Intersections(s.intersect(r));
+            s.Set_Transform(Matrix.translation(5, 0, 0));
+            Intersections xs=new Intersections(s.Intersect(r));
             Assert.AreEqual(0,xs.count());
         }
     }
@@ -959,7 +959,7 @@ namespace RT_UT
         public void Compuuting_the_normal_on_a_translated_sphere()
         {
             Sphere s = new Sphere();
-            s.set_transform(Matrix.translation(0, 1, 0));
+            s.Set_Transform(Matrix.translation(0, 1, 0));
             csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0, 1.70711, -0.70711));
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0.70711, -0.70711),n);
         }
@@ -968,7 +968,7 @@ namespace RT_UT
         {
             Sphere s = new Sphere();
             Matrix m = Matrix.scaling(1, 0.5, 1) * Matrix.rotation_z(Math.PI / 5);
-            s.set_transform(m);
+            s.Set_Transform(m);
             csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(0, Math.Sqrt(2) / 2, -Math.Sqrt(2) / 2));
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0.97014, -0.24254), n);
         }
@@ -1013,7 +1013,7 @@ namespace RT_UT
         {
             Sphere s = new Sphere();
             Material m = new Material();
-            Material ms = s.material;
+            Material ms = s.Material;
             Assert.AreEqual(m,ms);
         }
         [TestMethod]
@@ -1022,8 +1022,8 @@ namespace RT_UT
             Sphere s = new Sphere();
             Material m = new Material();
             m.ambient=1;
-            s.material=m;
-            Assert.AreEqual(m,s.material);
+            s.Material=m;
+            Assert.AreEqual(m,s.Material);
         }
         [TestMethod]
         public void Lighting_with_the_eye_between_the_light_and_the_surface()
@@ -1101,16 +1101,16 @@ namespace RT_UT
         {
             World w = new World();
             Debug.Write("test write");
-            Assert.AreEqual(0, w.sphereList.Count);
+            Assert.AreEqual(0, w.shapeList.Count);
         }
         [TestMethod]
         public void the_default_world()
         {
             Light light = Light.point_light(csharp_rt.Tuple.point(-10,10,-10),new Color(1,1,1));
             Sphere s1 = new Sphere();
-            s1.material.color = new Color(0.8, 1.0, 0.6);
-            s1.material.diffuse = 0.7;
-            s1.material.specular = 0.2;
+            s1.Material.color = new Color(0.8, 1.0, 0.6);
+            s1.Material.diffuse = 0.7;
+            s1.Material.specular = 0.2;
             Sphere s2 =new Sphere();
             /* this is here so I can remember how to set scaling...
              * Matrix m = Matrix.scaling(1, 0.5, 1) * Matrix.rotation_z(Math.PI / 5);
@@ -1119,14 +1119,14 @@ namespace RT_UT
             //s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
             //correct way to set scaling... need to investigate to be sure...
             //s2.transform.scaling_ns(0.5, 0.5, 0.5);
-            s2.set_transform(Matrix.scaling(0.5, 0.5, 0.5));
+            s2.Set_Transform(Matrix.scaling(0.5, 0.5, 0.5));
             World w = new World();
             w=w.default_world();
             //Assert.IsTrue(w.light== light);
             Assert.AreEqual(w.light, light);
-            Assert.AreEqual(s1, w.sphereList[0]);
+            Assert.AreEqual(s1, (Sphere)w.shapeList[0]);
             //seems it doesn't like this one. the only one with a transform set...
-            Assert.AreEqual(s2, w.sphereList[1]);
+            Assert.AreEqual(s2, (Sphere)w.shapeList[1]);
         }
         [TestMethod]
         public void Intersect_a_world_with_a_ray()
@@ -1168,7 +1168,7 @@ namespace RT_UT
             //var = Computations struct
             var comps = i.prepare_computations(r);
             Assert.AreEqual(i.t, comps.t);
-            Assert.AreEqual(i.obj, comps.obj);
+            Assert.AreEqual(i.tnObj, comps.shapeObj);
             Assert.AreEqual(csharp_rt.Tuple.point(0, 0, -1), comps.point);
             //eyev is the on currently failing
             Assert.AreEqual(csharp_rt.Tuple.vector(0, 0, -1), comps.eyev);
@@ -1206,7 +1206,7 @@ namespace RT_UT
             World w = new World();
             w=w.default_world();
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
-            Sphere shape = w.sphereList[0];
+            Sphere shape = (Sphere)w.shapeList[0];
             Intersection i = new Intersection(4, shape);
             Computations comps = i.prepare_computations(r);
             Color c = w.shade_hit(comps);
@@ -1220,7 +1220,7 @@ namespace RT_UT
             w=w.default_world();
             w.light = Light.point_light(csharp_rt.Tuple.point(0, 0.25, 0), new Color(1, 1, 1));
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
-            Sphere shape = w.sphereList[1];
+            Sphere shape = (Sphere)w.shapeList[1];
             Intersection i = new Intersection(0.5d, shape);
             Computations comps = i.prepare_computations(r);
             Color c = w.shade_hit(comps);
@@ -1251,19 +1251,19 @@ namespace RT_UT
         {
             World w = new World();
             w=w.default_world();
-            Sphere outer = w.sphereList[0];
-            outer.material.ambient = 1;
+            Sphere outer = (Sphere)w.shapeList[0];
+            outer.Material.ambient = 1;
             //test
             //outer.material.ambient = 12;
-            Sphere inner = w.sphereList[1];
-            inner.material.ambient = 1;
+            Sphere inner = (Sphere)w.shapeList[1];
+            inner.Material.ambient = 1;
             //Assert.AreEqual(inner.material.ambient, 1);
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0.75), csharp_rt.Tuple.vector(0, 0, -1));
             Color c = w.color_at(r);
             //Assert.AreEqual(12.0d, w.sphereList[0].material.ambient);
             //Assert.AreEqual(1.0d, w.sphereList[0].material.ambient);
             //Assert.AreEqual(1.0d, w.sphereList[1].material.ambient);
-            Assert.AreEqual(inner.material.color, c);
+            Assert.AreEqual(inner.Material.color, c);
             //Assert.AreEqual(w.sphereList[1].material.color, c);
         }
         [TestMethod]
@@ -1450,8 +1450,8 @@ namespace RT_UT
             w.light = Light.point_light(csharp_rt.Tuple.point(0, 0, -10), Color.color(1, 1, 1));
             Sphere s1 = new Sphere();
             Sphere s2 = new Sphere();
-            s2.set_transform(Matrix.translation(0, 0, 10));
-            w.sphereList = [s2, s1];
+            s2.Set_Transform(Matrix.translation(0, 0, 10));
+            w.shapeList = [s2, s1];
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 5), csharp_rt.Tuple.vector(0, 0, 1));
             Intersection i = new Intersection(4, s2);
             Computations comps = i.prepare_computations(r);
@@ -1464,7 +1464,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere shape = new Sphere();
-            shape.set_transform(Matrix.translation(0, 0, 1));
+            shape.Set_Transform(Matrix.translation(0, 0, 1));
             Intersection i = new Intersection(5, shape);
             Computations comps = i.prepare_computations(r);
             Assert.IsTrue(comps.over_point.z < -0.00001 / 2);
@@ -1551,7 +1551,7 @@ namespace RT_UT
         public void Testing_New_Sphere_Before_changing_Sphere()
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
-            New_Sphere s = new New_Sphere();
+            Sphere s = new Sphere();
             //var xs = s.old_intersect(r);
             Intersections xs = new Intersections(s.Intersect(r));
             Assert.AreEqual(4.0d, xs[0].t);
@@ -1560,7 +1560,7 @@ namespace RT_UT
         [TestMethod]
         public void Testing_New_Sphere_normal_at()
         {
-            New_Sphere s = new New_Sphere();
+            Sphere s = new Sphere();
             csharp_rt.Tuple n = s.normal_at(csharp_rt.Tuple.point(1, 0, 0));
             Assert.AreEqual(csharp_rt.Tuple.vector(1, 0, 0), n);
         }

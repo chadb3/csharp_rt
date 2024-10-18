@@ -10,7 +10,7 @@ namespace csharp_rt
     public class Intersection
     {
         public Shape tnObj;
-        public Sphere obj;// shape;
+        public Old_Sphere old_obj;// shape;
         //public double[,] t;// intersect;
         // negative t means obj is behind ray
         // positive t means intersected
@@ -21,9 +21,9 @@ namespace csharp_rt
              this.obj = shape_in; 
              this.t = intersect_in;
          }*/
-        public Intersection(double intersect_in, Sphere shape_in)
+        public Intersection(double intersect_in, Old_Sphere shape_in)
         {
-            this.obj = shape_in;
+            this.old_obj = shape_in;
             this.t = intersect_in;
         }
 
@@ -37,7 +37,7 @@ namespace csharp_rt
         public Intersection()
         {
             this.t = Double.MinValue;
-            obj = null;
+            old_obj = null;
             nothing = true;
         }
 
@@ -137,7 +137,8 @@ namespace csharp_rt
 
         public override string ToString()
         {
-            return "Object: "+obj.ToString()+"\tHit value: "+t.ToString();
+            //updating this
+            return "Object: "+tnObj.ToString()+"\tHit value: "+t.ToString();
         }
         /// <summary>
         /// Called like:
@@ -148,7 +149,7 @@ namespace csharp_rt
         /// <returns>new Computations object/datastructore</returns>
         public Computations prepare_computations(Ray rayIn)
         {
-            Computations ret = new Computations(this.t, this.obj, rayIn.position(this.t), rayIn.direction);
+            Computations ret = new Computations(this.t, this.tnObj, rayIn.position(this.t), rayIn.direction);
             ret.over_point = ret.point + ret.normalv * 0.00001;
             return ret;
         }

@@ -27,10 +27,10 @@ namespace z_ray_cast_sphere
             Color color = new Color(1, 0, 0);
             // adding sphere shape
             Sphere shape= new Sphere();
-            shape.set_transform(Matrix.scaling(1,0.5,1));
-            shape.set_transform(Matrix.scaling(0.5, 1, 1));
-            shape.set_transform(Matrix.scaling(0.4, 1, 1).rotation_z_ns(Math.PI / 2));
-            shape.set_transform(Matrix.scaling(0.5, 1, 1).shearing_ns(1, 0, 0, 0, 0, 0));
+            shape.Set_Transform(Matrix.scaling(1,0.5,1));
+            shape.Set_Transform(Matrix.scaling(0.5, 1, 1));
+            shape.Set_Transform(Matrix.scaling(0.4, 1, 1).rotation_z_ns(Math.PI / 2));
+            shape.Set_Transform(Matrix.scaling(0.5, 1, 1).shearing_ns(1, 0, 0, 0, 0, 0));
             //ray casting loop.
             Console.WriteLine("starting loop");
             for(int y=0;y< canvas_pixels-1;y++)
@@ -46,7 +46,7 @@ namespace z_ray_cast_sphere
                     csharp_rt.Tuple position= csharp_rt.Tuple.point(world_x, world_y, wall_z);
                     Ray r = new Ray(ray_origin, (position-ray_origin).normalize());
                     //try to get the intersect method to return a new intersections. 
-                    Intersections xs = new Intersections(shape.intersect(r));
+                    Intersections xs = new Intersections(shape.Intersect(r));
                     Console.WriteLine("if:");
                     if (xs.canHit())
                     {

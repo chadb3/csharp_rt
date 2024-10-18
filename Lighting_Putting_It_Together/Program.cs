@@ -28,7 +28,7 @@ namespace Z_Lighting_Putting_It_Together
             Color color = new Color(1, 0, 0);
             // adding sphere shape
             Sphere shape = new Sphere();
-            shape.material.color = new Color(1, 0.2, 1);
+            shape.Material.color = new Color(1, 0.2, 1);
             csharp_rt.Tuple light_position = csharp_rt.Tuple.point(-10, 10, -10);
             csharp_rt.Color light_color = new csharp_rt.Color(1, 1, 1);
             Light light =new Light(light_position, light_color);
@@ -49,16 +49,16 @@ namespace Z_Lighting_Putting_It_Together
                     Ray r = new Ray(ray_origin, (position - ray_origin).normalize());
                     
                     //try to get the intersect method to return a new intersections. 
-                    Intersections xs = new Intersections(shape.intersect(r));
+                    Intersections xs = new Intersections(shape.Intersect(r));
                     //Console.WriteLine("if:");
                     if (xs.canHit())
                     {
                         //Console.WriteLine("{0}:{1}", x, y);
                         //New for chap 6 project
                         csharp_rt.Tuple point = r.position(xs.hit().t);
-                        csharp_rt.Tuple normal = xs.hit().obj.normal_at(point);
+                        csharp_rt.Tuple normal = xs.hit().tnObj.normal_at(point);
                         csharp_rt.Tuple eye = -r.direction;
-                        color = light.old_lighting_old(xs.hit().obj.material, point, eye, normal);
+                        color = light.old_lighting_old(xs.hit().tnObj.Material, point, eye, normal);
                         //New for chap 6 project
 
                         //reused from earlier chapter. no changes

@@ -10,19 +10,21 @@ namespace CSharpRayTracer
     public struct Computations
     {
         public double t { get; set; }
-        public Sphere obj { get; set; }
+        public Old_Sphere old_obj { get; set; }
         public csharp_rt.Tuple point { get; set; }
         public csharp_rt.Tuple eyev { get; set; }
         public csharp_rt.Tuple normalv { get; set; }
         public bool inside { get; set; }
         public csharp_rt.Tuple over_point { get; set; }
-        public Computations(double t_in, Sphere obj_in , csharp_rt.Tuple point_in, csharp_rt.Tuple eyev_in)
+
+        public Shape shapeObj { get; set; }
+        public Computations(double t_in, Old_Sphere obj_in , csharp_rt.Tuple point_in, csharp_rt.Tuple eyev_in)
         { 
             this.t = t_in;
-            this.obj = obj_in;
+            this.old_obj = obj_in;
             this.point = point_in;
             this.eyev = -eyev_in;
-            this.normalv = this.obj.normal_at(this.point);
+            this.normalv = this.old_obj.normal_at(this.point);
             if (this.normalv.dot(this.eyev) < 0)
             {
                 this.inside = true;
@@ -34,6 +36,23 @@ namespace CSharpRayTracer
             }
         }
 
-        
+        public Computations(double t_in, Shape obj_in, csharp_rt.Tuple point_in, csharp_rt.Tuple eyev_in)
+        {
+            this.t = t_in;
+            this.shapeObj = obj_in;
+            this.point = point_in;
+            this.eyev = -eyev_in;
+            this.normalv = this.shapeObj.normal_at(this.point);
+            if (this.normalv.dot(this.eyev) < 0)
+            {
+                this.inside = true;
+                this.normalv = -this.normalv;
+            }
+            else
+            {
+                this.inside = false;
+            }
+        }
+
     }
 }
