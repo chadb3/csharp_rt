@@ -1124,9 +1124,9 @@ namespace RT_UT
             w=w.default_world();
             //Assert.IsTrue(w.light== light);
             Assert.AreEqual(w.light, light);
-            Assert.AreEqual(s1, (Sphere)w.shapeList[0]);
+            Assert.AreEqual(s1, w.shapeList[0]);
             //seems it doesn't like this one. the only one with a transform set...
-            Assert.AreEqual(s2, (Sphere)w.shapeList[1]);
+            Assert.AreEqual(s2, w.shapeList[1]);
         }
         [TestMethod]
         public void Intersect_a_world_with_a_ray()

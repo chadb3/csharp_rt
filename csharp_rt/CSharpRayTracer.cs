@@ -19,6 +19,7 @@ namespace csharp_rt
             anotherSphereTest();
             testingAnotherFailingTest();
             testingAnotherFailingTest1();
+            testingFailingDefaultWorld();
             return 2989;
         }
 
@@ -130,6 +131,7 @@ namespace csharp_rt
             //Assert.AreEqual(i.t, comps.t);
             Console.WriteLine("{0} --- {1}", i.t, comps.t);
             Console.WriteLine("{0} <-> {1}", i.tnObj, comps.shapeObj);
+          
         }
 
         static void testingAnotherFailingTest1()
@@ -144,6 +146,24 @@ namespace csharp_rt
             //rest of test
             Canvas image = c.render(w);
             //Assert.AreEqual(Color.color(0.38066, 0.47583, 0.2855), image.pixel_at(5, 5));
+        }
+
+        static void testingFailingDefaultWorld()
+        {
+            Light light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
+            Sphere s1 = new Sphere();
+            s1.Material.color = new Color(0.8, 1.0, 0.6);
+            s1.Material.diffuse = 0.7;
+            s1.Material.specular = 0.2;
+            Sphere s2 = new Sphere();
+           
+            s2.Set_Transform(Matrix.scaling(0.5, 0.5, 0.5));
+            World w = new World();
+            w = w.default_world();
+
+            //Assert.AreEqual(w.light, light);
+            //Assert.AreEqual(s1, w.shapeList[0]);
+            Console.WriteLine(s1 == w.shapeList[0]);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace CSharpRayTracer
 {
     public abstract class Shape
     {
-       // public csharp_rt.Tuple Origin {  get; set; }
+        // public csharp_rt.Tuple Origin {  get; set; }
         public Matrix Transform { get; set; }
         public Material Material { get; set; }
 
@@ -28,7 +28,7 @@ namespace CSharpRayTracer
         {
             csharp_rt.Tuple local_point = Transform.inverse() * point_in;
             csharp_rt.Tuple local_normal = Local_Normal_At(local_point);
-            csharp_rt.Tuple world_normal=Transform.inverse().transpose()*local_normal;
+            csharp_rt.Tuple world_normal = Transform.inverse().transpose() * local_normal;
             world_normal.w = 0;
             return world_normal.normalize();
         }
@@ -39,8 +39,8 @@ namespace CSharpRayTracer
         {
             Ray ray2 = RayIn.transform(this.Transform.inverse());
             //List<Intersection> ret = new List<Intersection>();
-           List<Intersection> ret=Local_Intersect(ray2);
-            
+            List<Intersection> ret = Local_Intersect(ray2);
+
             return ret;
         }
 
@@ -61,6 +61,28 @@ namespace CSharpRayTracer
         {
             Material = new Material();
             Transform = Matrix.identity();
+        }
+
+        public static bool operator ==(Shape l, Shape r)
+        {
+            if(l.GetType()==r.GetType()&&l.Transform==r.Transform&&l.Material==r.Material)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator !=(Shape l, Shape r)
+        {
+            return !(l == r);
+        }
+        /// <summary>
+        /// This is needed to get "Assert.AreEqual" tests to pass.
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        public override bool Equals(object r)
+        { 
+            return this==(Shape)r; 
         }
 
     }
