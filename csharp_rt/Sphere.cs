@@ -176,11 +176,12 @@ namespace csharp_rt
 
         protected override csharp_rt.Tuple Local_Normal_At(csharp_rt.Tuple point_in)
         {
-            csharp_rt.Tuple object_point = Transform.inverse() * point_in;
+            /*csharp_rt.Tuple object_point = Transform.inverse() * point_in;
             csharp_rt.Tuple object_normal = object_point - csharp_rt.Tuple.point(0, 0, 0);
             csharp_rt.Tuple world_normal = Transform.inverse().transpose() * object_normal;
             world_normal.w = 0;
-            return world_normal.normalize();
+            return world_normal.normalize();*/
+            return csharp_rt.Tuple.vector(point_in.x, point_in.y, point_in.z);
         }
     }
 }
