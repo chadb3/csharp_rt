@@ -12,14 +12,14 @@ namespace csharp_rt
         {
             
             Console.WriteLine("Hello World!");
-            //imageTest();
+            imageTest();
             //imageTest2();
-            //testImageBook();
-            sphereShapeTest();
-            anotherSphereTest();
-            testingAnotherFailingTest();
-            testingAnotherFailingTest1();
-            testingFailingDefaultWorld();
+            testImageBook();
+            //sphereShapeTest();
+            //anotherSphereTest();
+            //testingAnotherFailingTest();
+            //testingAnotherFailingTest1();
+            //testingFailingDefaultWorld();
             return 2989;
         }
 
@@ -37,6 +37,7 @@ namespace csharp_rt
             c.transform = Matrix.view_transform(from, to, up);
             //rest of test
             Canvas image = c.render(world);
+            image.set_file_name("TestImage");
             image.canvas_to_P3_ppm();
             Console.WriteLine("ending imageTest()");
         }
@@ -98,10 +99,10 @@ namespace csharp_rt
             World world = new World();
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             world.shapeList = [left_wall, left, right_wall, right, middle, floor];
-            Camera c = new Camera(2050, 2050, Math.PI / 3);
+            Camera c = new Camera(500, 500, Math.PI / 3);
             c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             Canvas image = c.render(world);
-            image.set_file_name("book_image");
+            image.set_file_name("book_image_2");
             image.canvas_to_P3_ppm();
             Console.WriteLine("finished book image pg107");
         }

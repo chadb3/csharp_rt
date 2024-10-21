@@ -10,24 +10,14 @@ namespace csharp_rt
     public class Intersection
     {
         public Shape tnObj;
-        public Old_Sphere old_obj;// shape;
         //public double[,] t;// intersect;
         // negative t means obj is behind ray
         // positive t means intersected
         public double t;
         public bool nothing = false;
-        /* public Intersection(double[,] intersect_in,Sphere shape_in ) 
-         { 
-             this.obj = shape_in; 
-             this.t = intersect_in;
-         }*/
-        public Intersection(double intersect_in, Old_Sphere shape_in)
-        {
-            this.old_obj = shape_in;
-            this.t = intersect_in;
-        }
 
-        // comment out for now.
+
+  
         public Intersection(double intersect_in, Shape shape_in)
         {
             this.t=intersect_in;
@@ -37,7 +27,7 @@ namespace csharp_rt
         public Intersection()
         {
             this.t = Double.MinValue;
-            old_obj = null;
+            tnObj = null;
             nothing = true;
         }
 
