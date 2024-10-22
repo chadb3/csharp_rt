@@ -1566,4 +1566,33 @@ namespace RT_UT
         }
     }
 
+    [TestClass]
+    public class Chapter_9_Plane
+    {
+        [TestMethod]
+        public void The_Normal_of_the_plane_is_constant_everywhere()
+        {
+            Plane plane = new Plane();
+            csharp_rt.Tuple n1 = plane.zzzz_Test_Local_Normal_At(csharp_rt.Tuple.point(0, 0, 0));
+            csharp_rt.Tuple n2 = plane.zzzz_Test_Local_Normal_At(csharp_rt.Tuple.point(10, 0, -10));
+            csharp_rt.Tuple n3 = plane.zzzz_Test_Local_Normal_At(csharp_rt.Tuple.point(-5, 0, 150));
+            csharp_rt.Tuple ans = csharp_rt.Tuple.vector(0, 1, 0);
+            Assert.AreEqual(ans, n1);
+            Assert.AreEqual(ans, n2);
+            Assert.AreEqual(ans, n3);
+        }
+        [TestMethod]
+        public void Intersect_with_a_ray_parallel_to_the_plane()
+        {
+
+        }
+
+        [TestMethod]
+        public void Intersect_with_a_coplanar_ray()
+        {
+
+        }
+
+    }
+
 }
