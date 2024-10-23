@@ -26,7 +26,7 @@ namespace csharp_rt
         {
             t = new List<Intersection>();
             t = t_in;
-       
+
         }
         /// <summary>
         /// For use for unit tests. I am not sure how it is going to be used down the line. 
@@ -42,7 +42,7 @@ namespace csharp_rt
             t.Add(one);
             t.Add(two);
         }
-        public Intersections(Intersection one, Intersection two,Intersection three,Intersection four)
+        public Intersections(Intersection one, Intersection two, Intersection three, Intersection four)
         {
             t = new List<Intersection>();
             t.Add(one);
@@ -60,8 +60,10 @@ namespace csharp_rt
         /// </summary>
         /// <param name="intIn"></param>
         /// <returns></returns>
-        public  Intersection this[int intIn]
+        public Intersection this[int intIn]
         {
+            // need to check why this is getting called when plane returns a negative t
+            // "nothing" should be called and this shouldn't even be called.
             get { return t[intIn]; }
         }
 
@@ -123,15 +125,17 @@ namespace csharp_rt
         {
             // need to test
             int ret = -1;
-            for (int i = 0;i<t.Count();i++)
+            for (int i = 0; i < t.Count(); i++)
             {
-                if (t[i].t>0)
+                if (t[i].t > 0)
                 {
                     return i;
                 }
             }
             return ret;
         }
+
+        public bool is_empty() { return t.Count() == 0; } 
 
 
     }

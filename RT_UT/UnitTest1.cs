@@ -1584,13 +1584,44 @@ namespace RT_UT
         [TestMethod]
         public void Intersect_with_a_ray_parallel_to_the_plane()
         {
-
+            Plane p = new Plane();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 10, 0), csharp_rt.Tuple.vector(0, 0, 1));
+            Intersections xs = new Intersections(p.Intersect(r));
+            Assert.IsTrue(xs.is_empty());
         }
 
         [TestMethod]
         public void Intersect_with_a_coplanar_ray()
         {
+            Plane p = new Plane();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
+            Intersections xs = new Intersections(p.Intersect(r));
+            Assert.IsTrue(xs.is_empty());
+        }
 
+        [TestMethod]
+        public void A_ray_intersecting_a_plane_from_above()
+        {
+            Plane p = new Plane();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, -1, 0));
+            //Intersections xs = new Intersections(p.Intersect(r));
+            Intersections xs = new Intersections(p.zzzz_Test_Local_Intersect(r));
+            Assert.AreEqual(1, xs.count());
+            Assert.AreEqual(xs[0].t, 1);
+            Assert.AreEqual(xs[0].tnObj, p);
+        }
+
+        [TestMethod]
+        public void A_ray_intersecting_a_plane_from_below()
+        {
+            Plane p = new Plane();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, -1, 0), csharp_rt.Tuple.vector(0, 1, 0));
+            //Intersections xs = new Intersections(p.Intersect(r));
+            Intersections xs = new Intersections(p.zzzz_Test_Local_Intersect(r));
+            Assert.AreEqual(1, xs.count());
+            Assert.AreEqual(xs[0].t, 1);
+            Assert.AreEqual(xs[0].tnObj, p);
+            //Assert.IsTrue(1 == 0);
         }
 
     }

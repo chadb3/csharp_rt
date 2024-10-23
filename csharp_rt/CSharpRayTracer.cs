@@ -12,9 +12,10 @@ namespace csharp_rt
         {
             
             Console.WriteLine("Hello World!");
-            imageTest();
+            //imageTest();
             //imageTest2();
-            testImageBook();
+            //testImageBook();
+            testImageBook_plane();
             //sphereShapeTest();
             //anotherSphereTest();
             //testingAnotherFailingTest();
@@ -165,6 +166,63 @@ namespace csharp_rt
             //Assert.AreEqual(w.light, light);
             //Assert.AreEqual(s1, w.shapeList[0]);
             Console.WriteLine(s1 == w.shapeList[0]);
+        }
+
+        static void testImageBook_plane()
+        {
+            Console.WriteLine("This marks where I realized that I messed up when I previously (not uploaded) tried this project.\nBefore, I had hard coded the sphere intersect into Ray, so it treated everything like a sphere.\n When I had plane I would just have a flat sphere lol\n\n");
+            Console.WriteLine("starting book example Plane");
+            /*Sphere floor = new Sphere();
+            floor.Transform = Matrix.scaling(10, 0.01, 10);
+            floor.Material.color = new Color(1, 0.9, 0.9);
+            floor.Material.specular = 0;*/
+            Plane floor = new Plane();
+            //floor.Transform = Matrix.scaling(10, 0.01, 10);
+            floor.Material.color = new Color(1, 0.9, 0.9);
+            floor.Material.specular = 0;
+
+            Sphere left_wall = new Sphere();
+            left_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(-Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
+            left_wall.Material = floor.Material;
+
+            Sphere right_wall = new Sphere();
+            right_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
+            right_wall.Material = floor.Material;
+
+            Sphere middle = new Sphere();
+            middle.Transform = Matrix.translation(-0.5, 1, 0.5);
+            middle.Material = new Material();
+            //middle.Material.color = new Color(0.1, 1, 0.5);
+            middle.Material.color = new Color(1, 1, 1);
+            middle.Material.diffuse = 0.7;
+            middle.Material.specular = 0.3;
+
+            Sphere right = new Sphere();
+            right.Transform = Matrix.translation(1.5, 0.5, -0.5) * Matrix.scaling(0.5, 0.5, 0.5);
+            right.Material = new Material();
+            //right.Material.color = new Color(0.5, 1, 0.1);
+            right.Material.color = new Color(0, 0, 1);
+            right.Material.diffuse = 0.7;
+            right.Material.specular = 0.3;
+
+            Sphere left = new Sphere();
+            left.Transform = Matrix.translation(-1.5, 0.33, -0.75) * Matrix.scaling(0.33, 0.33, 0.33);
+            left.Material = new Material();
+            //left.Material.color = new Color(1, 0.8, 0.1);
+            left.Material.color = new Color(1, 0, 0);
+            left.Material.diffuse = 0.7;
+            left.Material.specular = 0.3;
+
+            World world = new World();
+            world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
+            //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
+            world.shapeList = [left, right, middle, floor];
+            Camera c = new Camera(500, 500, Math.PI / 3);
+            c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
+            Canvas image = c.render(world);
+            image.set_file_name("book_image_2_plane");
+            image.canvas_to_P3_ppm();
+            Console.WriteLine("finished book image pg107");
         }
     }
 }

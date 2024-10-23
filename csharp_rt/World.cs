@@ -83,8 +83,9 @@ namespace CSharpRayTracer
             Color ret = new Color();
             Intersections hits = new Intersections(this.intersect_world(ray_in));
             hits.sort();
-            //Console.WriteLine("Hits Count: {0}", hits.count());
-            if (hits.count() != 0)
+            // added hits.first_positive_index()!=-1
+            // because first_positive_index() returns -1 if it there is no positive indexes.
+            if (hits.count() != 0 && hits.first_positive_index()!=-1)
             {
                 Computations comp = hits[hits.first_positive_index()].prepare_computations(ray_in);
                 //foreach (Intersection ix in hits)
