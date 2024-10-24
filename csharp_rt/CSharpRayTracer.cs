@@ -170,7 +170,6 @@ namespace csharp_rt
 
         static void testImageBook_plane()
         {
-            Console.WriteLine("This marks where I realized that I messed up when I previously (not uploaded) tried this project.\nBefore, I had hard coded the sphere intersect into Ray, so it treated everything like a sphere.\n When I had plane I would just have a flat sphere lol\n\n");
             Console.WriteLine("starting book example Plane");
             /*Sphere floor = new Sphere();
             floor.Transform = Matrix.scaling(10, 0.01, 10);
@@ -193,7 +192,8 @@ namespace csharp_rt
             middle.Transform = Matrix.translation(-0.5, 1, 0.5);
             middle.Material = new Material();
             //middle.Material.color = new Color(0.1, 1, 0.5);
-            middle.Material.color = new Color(1, 1, 1);
+            //middle.Material.color = new Color(1, 1, 1); // Color
+            middle.Material.color = new Color(0, 0, 0);
             middle.Material.diffuse = 0.7;
             middle.Material.specular = 0.3;
 

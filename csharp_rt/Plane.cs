@@ -53,7 +53,6 @@ namespace CSharpRayTracer
         {
             return Local_Intersect(ray_in);
         }
-
-
     }
+
 }

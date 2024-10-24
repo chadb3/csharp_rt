@@ -1626,4 +1626,51 @@ namespace RT_UT
 
     }
 
+    [TestClass]
+    public class Chapter_10_Patterns
+    {
+        public Color white = new Color(1, 1, 1);
+        public Color black = new Color(0, 0, 0);
+        [TestMethod]
+        public void Creating_a_striped_pattern()
+        {
+            // background
+            // black = color(0,0,0)
+            // white = color(1,1,1)
+            // pattern seems to be set in material
+            Striped_Pattern pattern = new Striped_Pattern(new Color(1,1,1),new Color(0,0,0));
+            Assert.AreEqual(new Color(1, 1, 1), pattern.a);
+            Assert.AreEqual(new Color(0,0,0), pattern.b);
+        }
+        [TestMethod]
+        public void A_stripe_pattern_is_constant_in_y()
+        {
+            //Color white = new Color(1, 1, 1);
+            //Color black = new Color(0,0,0);
+            Striped_Pattern pattern = new Striped_Pattern(white, black);
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(0, 1, 0)));
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(0, 2, 0)));
+        }
+
+        [TestMethod]
+        public void A_Stripe_Pattern_is_constant_in_z()
+        {
+            Striped_Pattern pattern = new Striped_Pattern(white, black);
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(0, 0, 1)));
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(0, 0, 2)));
+        }
+        [TestMethod]
+        public void A_Stripe_Pattern_alternates_in_x()
+        {
+            Striped_Pattern pattern = new Striped_Pattern(white, black);
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(0.9, 0, 0)));
+            Assert.AreEqual(black, pattern.Stripe_At(csharp_rt.Tuple.point(1, 0, 0)));
+            Assert.AreEqual(black, pattern.Stripe_At(csharp_rt.Tuple.point(-0.1, 0, 0)));
+            Assert.AreEqual(black, pattern.Stripe_At(csharp_rt.Tuple.point(-1, 0, 0)));
+            Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(-1.1, 0, 0)));
+        }
+    }
 }

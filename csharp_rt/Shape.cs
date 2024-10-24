@@ -85,6 +85,11 @@ namespace CSharpRayTracer
             return this==(Shape)r; 
         }
 
+        public override int GetHashCode()
+        {
+            Console.WriteLine("Shape.GetHashCode() Called! Please review, and implement if needed.");
+            throw new NotImplementedException();
+        }
     }
 
     public class Test_shape : Shape

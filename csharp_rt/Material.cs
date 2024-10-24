@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpRayTracer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace csharp_rt
 {
     public class Material
     {
+        public Striped_Pattern pattern;
         public Color color;
         public double ambient;
         public double diffuse;
@@ -15,6 +17,7 @@ namespace csharp_rt
         public double shininess;
         public Material()
         {
+            pattern = new Striped_Pattern();
             color = new Color(1, 1, 1);
             ambient = 0.1d;
             diffuse = 0.9d;
@@ -82,6 +85,7 @@ namespace csharp_rt
         /// <returns></returns>
         public override int GetHashCode()
         {
+            Console.WriteLine("Material.GetHashCode() Called! \"not implemented!\"");
             return base.GetHashCode();
         }
     }
