@@ -1672,5 +1672,21 @@ namespace RT_UT
             Assert.AreEqual(black, pattern.Stripe_At(csharp_rt.Tuple.point(-1, 0, 0)));
             Assert.AreEqual(white, pattern.Stripe_At(csharp_rt.Tuple.point(-1.1, 0, 0)));
         }
+        [TestMethod]
+        public void Lighting_with_a_pattern_applied()
+        {
+            Material m = new Material();
+            m.pattern=new Striped_Pattern(white, black);
+            m.ambient = 1;
+            m.diffuse = 0;
+            m.specular = 0;
+            csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0, 0, -1);
+            csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
+            Light light = Light.point_light(csharp_rt.Tuple.point(0, 0, -10), Color.color(1, 1, 1));
+            Color c1 = light.lighting(m, csharp_rt.Tuple.point(0.9, 0, 0), eyev, normalv, false);
+            Color c2 = light.lighting(m, csharp_rt.Tuple.point(1.1, 0, 0), eyev, normalv,false);
+            Assert.AreEqual(Color.color(1,1,1), c1);
+            Assert.AreEqual(Color.color(0,0,0), c2);
+        }
     }
 }

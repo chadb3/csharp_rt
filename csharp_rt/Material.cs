@@ -53,6 +53,9 @@ namespace csharp_rt
         /// not clear if this should go to light or material.
         /// I went with material as the material gets the lighting and it was the first var used in the book
         /// so it made since to me to use it like material.lighting
+        /// Note: book uses a bool "in_shadow"
+        /// Note: I found that the one witn "in_shadow" is in lighting.
+        /// I will review this function for removal
         /// </summary>
         /// <param name="light"></param>
         /// <param name="point"></param>

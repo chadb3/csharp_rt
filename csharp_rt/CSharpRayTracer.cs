@@ -1,6 +1,8 @@
 ﻿using CSharpRayTracer;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text.Encodings.Web;
 
@@ -179,6 +181,7 @@ namespace csharp_rt
             //floor.Transform = Matrix.scaling(10, 0.01, 10);
             floor.Material.color = new Color(1, 0.9, 0.9);
             floor.Material.specular = 0;
+            floor.Material.pattern = new Striped_Pattern(new Color(1,1,1), new Color(1, 0, 0));
 
             Sphere left_wall = new Sphere();
             left_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(-Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
@@ -193,7 +196,7 @@ namespace csharp_rt
             middle.Material = new Material();
             //middle.Material.color = new Color(0.1, 1, 0.5);
             //middle.Material.color = new Color(1, 1, 1); // Color
-            middle.Material.color = new Color(0, 0, 0);
+            middle.Material.color = new Color(.23, .55, .09);
             middle.Material.diffuse = 0.7;
             middle.Material.specular = 0.3;
 

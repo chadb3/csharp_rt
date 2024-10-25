@@ -41,8 +41,17 @@ namespace csharp_rt
         /// <returns></returns>
         public Color lighting(Material m, csharp_rt.Tuple point, csharp_rt.Tuple eyev, csharp_rt.Tuple normalv, bool in_shadow_in)
         {
+            // ret appears to be unused. mark for deletion.
             Color ret = Color.BLACK();
-            Color effective_color = m.color * intensity;
+            Color effective_color = new Color();
+            if (m.pattern.Striped_Pattern_is_set)
+            {
+                effective_color = m.pattern.Stripe_At(point);
+            }
+            else
+            {
+                effective_color = m.color * intensity;
+            }            
             csharp_rt.Tuple lightv = (position - point).normalize();
             Color ambient = effective_color * m.ambient;
             double light_dot_normal = lightv.dot(normalv);
@@ -63,6 +72,7 @@ namespace csharp_rt
                 //csharp_rt.Tuple reflectV = -normalv.reflect(eyev);
                 csharp_rt.Tuple reflectV = -lightv.reflect(normalv);
                 double reflect_dot_eye = reflectV.dot(eyev);
+
                 if (reflect_dot_eye <= 0)
                 {
                     //csharp_rt.Color color_specular = Color.BLACK();
@@ -70,6 +80,7 @@ namespace csharp_rt
                 }
                 else
                 {
+                    
                     factor = Math.Pow(reflect_dot_eye, m.shininess);
                     color_specular = intensity * m.specular * factor;
                 }
