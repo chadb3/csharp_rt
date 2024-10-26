@@ -1688,5 +1688,36 @@ namespace RT_UT
             Assert.AreEqual(Color.color(1,1,1), c1);
             Assert.AreEqual(Color.color(0,0,0), c2);
         }
+
+        [TestMethod]
+        public void Stripes_with_an_object_transformation()
+        {
+            Sphere sobject = new Sphere();
+            sobject.Set_Transform(Matrix.scaling(2, 2, 2));
+            Striped_Pattern pattern = Striped_Pattern.default_pattern();
+            Color c = pattern.Stripe_at_Object(sobject, csharp_rt.Tuple.point(1.5, 0, 0));
+            Assert.AreEqual(white, c);
+        }
+
+        [TestMethod]
+        public void Stripes_with_a_pattern_transformation()
+        {
+            Sphere obj = new Sphere();
+            Striped_Pattern pattern = Striped_Pattern.default_pattern();
+            pattern.Set_Pattern_Transform(Matrix.scaling(2, 2, 2));
+            Color c = pattern.Stripe_at_Object(obj, csharp_rt.Tuple.point(1.5, 0, 0));
+            Assert.AreEqual(white, c);
+        }
+
+        [TestMethod]
+        public void Stripes_with_both_an_object_and_a_pattern_transformation()
+        {
+            Sphere obj = new Sphere();
+            obj.Set_Transform(Matrix.scaling(2, 2, 2));
+            Striped_Pattern pattern = Striped_Pattern.default_pattern();
+            pattern.Set_Pattern_Transform(Matrix.translation(0.5, 0, 0));
+            Color c = pattern.Stripe_at_Object(obj, csharp_rt.Tuple.point(2.5, 0, 0));
+            Assert.AreEqual(white, c);
+        }
     }
 }

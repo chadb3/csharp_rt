@@ -220,12 +220,17 @@ namespace csharp_rt
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
             world.shapeList = [left, right, middle, floor];
-            Camera c = new Camera(500, 500, Math.PI / 3);
-            c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
+            Camera c = new Camera(100, 100, Math.PI / 3);
+            // default camera
+            // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
+            c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 3, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             Canvas image = c.render(world);
-            image.set_file_name("book_image_2_plane");
+            image.set_file_name("book_image_4_plane");
             image.canvas_to_P3_ppm();
             Console.WriteLine("finished book image pg107");
+            // Camera notes to put somewhere
+            // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, 0), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
+            // csharp_rt.Tuple.point(0, 1.5, -5) = (0,0, "zoom")
         }
     }
 }
