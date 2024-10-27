@@ -223,14 +223,17 @@ namespace csharp_rt
             Camera c = new Camera(100, 100, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
-            for(int i=0;i<100;i++)
-            { 
-            c.transform = Matrix.view_transform(csharp_rt.Tuple.point((double)i/10, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
-            Canvas image = c.render(world);
-            //String filename= ("book_image_{0}_plane",(float)i / 10);
-            image.set_file_name("book_image_" + (float)i / 10 + "_plane");
-            image.canvas_to_P3_ppm();
-            }
+            int ic = 0;
+            //for(int i=0;i<500;i++)
+            //{
+                //c.transform = Matrix.view_transform(csharp_rt.Tuple.point((double)i/10, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
+                c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
+                Canvas image = c.render(world);
+                //String filename= ("book_image_{0}_plane",(float)i / 10);
+                image.set_file_name(ic+"book_image_plane");
+                image.canvas_to_P3_ppm();
+                ic++;
+            //}
             Console.WriteLine("finished book image pg107");
             // Camera notes to put somewhere
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, 0), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));

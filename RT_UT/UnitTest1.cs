@@ -1719,5 +1719,18 @@ namespace RT_UT
             Color c = pattern.Stripe_at_Object(obj, csharp_rt.Tuple.point(2.5, 0, 0));
             Assert.AreEqual(white, c);
         }
+        [TestMethod]
+        public void The_default_pattern_transformation()
+        {
+            Test_Pattern pattern = new Test_Pattern();
+            Assert.AreEqual(Matrix.identity(), pattern.Transform);
+        }
+        [TestMethod]
+        public void Assiging_a_transform()
+        {
+            Test_Pattern pattern = new Test_Pattern();
+            pattern.Set_Transform(Matrix.translation(1, 2, 3));
+            Assert.AreEqual(Matrix.translation(1,2,3), pattern.Transform);
+        }
     }
 }

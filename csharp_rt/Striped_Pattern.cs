@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSharpRayTracer
 {
-    public struct Striped_Pattern
+    public class Striped_Pattern
     {
         //Color a
         public Color a { get; set; }
