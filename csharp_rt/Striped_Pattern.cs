@@ -60,11 +60,19 @@ namespace CSharpRayTracer
             Transform = transformIn;
         }
 
-        public Color Stripe_at_Object(Shape s, csharp_rt.Tuple point_in)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shape_in"></param>
+        /// book calls what i call point_in "world_point"
+        /// <param name="point_in"></param>
+        /// <returns></returns>
+        public Color Stripe_at_Object(Shape shape_in, csharp_rt.Tuple point_in)
         {
             Color ret = new Color(1, 1, 1);
-
-            return ret;
+            csharp_rt.Tuple object_point = shape_in.Transform.inverse() * point_in;
+            csharp_rt.Tuple pattern_point = Transform.inverse() * object_point;
+            return Stripe_At(pattern_point);
         }
     }
 }

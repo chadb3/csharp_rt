@@ -1,4 +1,5 @@
 ﻿using csharp_rt;
+using CSharpRayTracer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,13 +40,14 @@ namespace csharp_rt
         /// <param name="eyev"></param>
         /// <param name="normalv"></param>
         /// <returns></returns>
-        public Color lighting(Material m, csharp_rt.Tuple point, csharp_rt.Tuple eyev, csharp_rt.Tuple normalv, bool in_shadow_in)
+        public Color lighting(Material m,Shape obj, csharp_rt.Tuple point, csharp_rt.Tuple eyev, csharp_rt.Tuple normalv, bool in_shadow_in)
         {
             // ret appears to be unused. mark for deletion.
             Color ret = Color.BLACK();
             Color effective_color = new Color();
             if (m.pattern.Striped_Pattern_is_set)
             {
+                //effective_color = m.pattern.Stripe_At(point);
                 effective_color = m.pattern.Stripe_At(point);
             }
             else

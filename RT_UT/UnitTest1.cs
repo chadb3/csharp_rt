@@ -1406,7 +1406,7 @@ namespace RT_UT
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
             Light light = Light.point_light(csharp_rt.Tuple.point(0, 0, -10), new Color(1, 1, 1));
             bool in_shadow = true;
-            Color result = light.lighting(m, position, eyev, normalv, in_shadow);
+            Color result = light.lighting(m,new Sphere(), position, eyev, normalv, in_shadow);
             Assert.AreEqual(Color.color(0.1, 0.1, 0.1), result);
         }
 
@@ -1683,8 +1683,8 @@ namespace RT_UT
             csharp_rt.Tuple eyev = csharp_rt.Tuple.vector(0, 0, -1);
             csharp_rt.Tuple normalv = csharp_rt.Tuple.vector(0, 0, -1);
             Light light = Light.point_light(csharp_rt.Tuple.point(0, 0, -10), Color.color(1, 1, 1));
-            Color c1 = light.lighting(m, csharp_rt.Tuple.point(0.9, 0, 0), eyev, normalv, false);
-            Color c2 = light.lighting(m, csharp_rt.Tuple.point(1.1, 0, 0), eyev, normalv,false);
+            Color c1 = light.lighting(m,new Sphere(), csharp_rt.Tuple.point(0.9, 0, 0), eyev, normalv, false);
+            Color c2 = light.lighting(m,new Sphere(), csharp_rt.Tuple.point(1.1, 0, 0), eyev, normalv,false);
             Assert.AreEqual(Color.color(1,1,1), c1);
             Assert.AreEqual(Color.color(0,0,0), c2);
         }
