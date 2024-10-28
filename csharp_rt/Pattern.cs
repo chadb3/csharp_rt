@@ -14,7 +14,7 @@ namespace CSharpRayTracer
         {
             Transform = Matrix.identity();
         }
-        public Color Pattern_At_Shape()
+        public Color Pattern_At_Shape(Shape shape_in,csharp_rt.Tuple point_in)
         {
             Color color = new Color();
 
@@ -25,7 +25,7 @@ namespace CSharpRayTracer
             Transform=Transform_in;
         }
 
-        public abstract Color Local_Pattern_At_Shape();
+        protected abstract Color Local_Pattern_At_Shape();
     }
 
     public class Test_Pattern:Pattern
@@ -34,7 +34,7 @@ namespace CSharpRayTracer
         {
 
         }
-        public override Color Local_Pattern_At_Shape()
+        protected override Color Local_Pattern_At_Shape()
         {
             throw new NotImplementedException();
         }

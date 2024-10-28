@@ -1732,5 +1732,34 @@ namespace RT_UT
             pattern.Set_Transform(Matrix.translation(1, 2, 3));
             Assert.AreEqual(Matrix.translation(1,2,3), pattern.Transform);
         }
+
+        [TestMethod]
+        public void A_Pattern_with_an_object_transformation()
+        {
+            Sphere shape = new Sphere();
+            shape.Set_Transform(Matrix.scaling(2, 2, 2));
+            Test_Pattern pattern = new Test_Pattern();
+            Color c = pattern.Pattern_At_Shape(shape, csharp_rt.Tuple.point(2, 3, 4));
+            Assert.AreEqual(new Color(1,1.5,2),c);
+        }
+        [TestMethod]
+        public void A_pattern_with_a_pattern_transformation()
+        {
+            Sphere shape = new Sphere();
+            Test_Pattern pattern = new Test_Pattern();
+            pattern.Set_Transform(Matrix.scaling(2, 2, 2));
+            Color c = pattern.Pattern_At_Shape(shape, csharp_rt.Tuple.point(2, 3, 4));
+            Assert.AreEqual(new Color(1, 1.5, 2), c);
+        }
+        [TestMethod]
+        public void A_pattern_with_both_an_object_and_a_pattern_transformation()
+        {
+            Sphere shape = new Sphere();
+            shape.Set_Transform(Matrix.scaling(2, 2, 2));
+            Test_Pattern pattern= new Test_Pattern();
+            pattern.Set_Transform(Matrix.translation(0.5, 1, 1.5));
+            Color c = pattern.Pattern_At_Shape(shape, csharp_rt.Tuple.point(2.5, 3, 3.5));
+            Assert.AreEqual(new Color(0.75, 0.5, 0.25), c);
+        }
     }
 }
