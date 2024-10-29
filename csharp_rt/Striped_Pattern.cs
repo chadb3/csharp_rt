@@ -69,7 +69,7 @@ namespace CSharpRayTracer
         /// <returns></returns>
         public Color Stripe_at_Object(Shape shape_in, csharp_rt.Tuple point_in)
         {
-            Color ret = new Color(1, 1, 1);
+            //Color ret = new Color(1, 1, 1);
             csharp_rt.Tuple object_point = shape_in.Transform.inverse() * point_in;
             csharp_rt.Tuple pattern_point = Transform.inverse() * object_point;
             return Stripe_At(pattern_point);

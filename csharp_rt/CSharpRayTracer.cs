@@ -227,7 +227,7 @@ namespace csharp_rt
             //for(int i=0;i<500;i++)
             //{
                 //c.transform = Matrix.view_transform(csharp_rt.Tuple.point((double)i/10, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
-                c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
+                c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0))*Matrix.rotation_y(.20);
                 Canvas image = c.render(world);
                 //String filename= ("book_image_{0}_plane",(float)i / 10);
                 image.set_file_name(ic+"book_image_plane");
