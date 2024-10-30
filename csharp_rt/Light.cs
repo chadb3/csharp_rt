@@ -48,7 +48,8 @@ namespace csharp_rt
             if (m.pattern.Striped_Pattern_is_set)
             {
                 //effective_color = m.pattern.Stripe_At(point);
-                effective_color = m.pattern.Stripe_At(point);
+                //effective_color = m.pattern.Stripe_At(point);
+                effective_color = m.pattern.Pattern_At_Shape(obj, point);
             }
             else
             {

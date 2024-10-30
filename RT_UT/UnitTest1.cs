@@ -1718,6 +1718,7 @@ namespace RT_UT
             pattern.Set_Pattern_Transform(Matrix.translation(0.5, 0, 0));
             Color c = pattern.Stripe_at_Object(obj, csharp_rt.Tuple.point(2.5, 0, 0));
             Assert.AreEqual(white, c);
+            // Test
         }
         [TestMethod]
         public void The_default_pattern_transformation()
@@ -1760,6 +1761,17 @@ namespace RT_UT
             pattern.Set_Transform(Matrix.translation(0.5, 1, 1.5));
             Color c = pattern.Pattern_At_Shape(shape, csharp_rt.Tuple.point(2.5, 3, 3.5));
             Assert.AreEqual(new Color(0.75, 0.5, 0.25), c);
+        }
+
+        [TestMethod]
+        public void Testing_New_Shape_Stripped_Pattern()
+        {
+            Sphere obj = new Sphere();
+            obj.Set_Transform(Matrix.scaling(2, 2, 2));
+            Striped_Pattern pattern = Striped_Pattern.default_pattern();
+            pattern.Set_Transform(Matrix.translation(0.5, 0, 0));
+            Color c = pattern.Stripe_at_Object(obj, csharp_rt.Tuple.point(2.5, 0, 0));
+            Assert.AreEqual(white, c);
         }
     }
 }

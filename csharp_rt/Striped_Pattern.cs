@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSharpRayTracer
 {
-    public class Striped_Pattern
+    public class Striped_Pattern:Pattern
     {
         //Color a
         public Color a { get; set; }
@@ -15,8 +15,8 @@ namespace CSharpRayTracer
         public Color b { get; set; }
         //bool if pattern is set
         public bool Striped_Pattern_is_set {  get; set; }
-        public Matrix Transform { get; set; }
-        public Striped_Pattern(Color a, Color b)
+       // public Matrix Transform { get; set; }
+        public Striped_Pattern(Color a, Color b):base()
         {
             this.a = a;
             this.b = b;
@@ -39,7 +39,8 @@ namespace CSharpRayTracer
             Transform = Matrix.identity();
         }
 
-        public Color Stripe_At(csharp_rt.Tuple pt)
+        //public Color Stripe_At(csharp_rt.Tuple pt)
+        protected override Color Pattern_At(csharp_rt.Tuple pt)
         {
             if(Math.Floor((double)pt.x)%2==0)
             {
@@ -72,7 +73,22 @@ namespace CSharpRayTracer
             //Color ret = new Color(1, 1, 1);
             csharp_rt.Tuple object_point = shape_in.Transform.inverse() * point_in;
             csharp_rt.Tuple pattern_point = Transform.inverse() * object_point;
-            return Stripe_At(pattern_point);
+            //return Stripe_At(pattern_point);
+            return Pattern_At(pattern_point);
+        }
+
+        /// <summary>
+        /// Kept this temp while I change unit tests
+        /// </summary>
+        /// <param name="pt"></param>
+        /// <returns></returns>
+        public Color Stripe_At(csharp_rt.Tuple pt)
+        {
+            if (Math.Floor((double)pt.x) % 2 == 0)
+            {
+                return a;
+            }
+            return b;
         }
     }
 }
