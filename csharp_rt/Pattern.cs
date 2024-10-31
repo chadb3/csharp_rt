@@ -32,6 +32,10 @@ namespace CSharpRayTracer
 
         protected abstract Color Pattern_At(csharp_rt.Tuple point_in);
     }
+
+
+    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------
     /// <summary>
     /// Test Pattern used for Unit Tests
     /// </summary>
