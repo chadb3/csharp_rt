@@ -14,13 +14,14 @@ namespace CSharpRayTracer
         //Color b
         public Color b { get; set; }
         //bool if pattern is set
-        public bool Striped_Pattern_is_set {  get; set; }
+        //public bool Striped_Pattern_is_set {  get; set; }
        // public Matrix Transform { get; set; }
         public Striped_Pattern(Color a, Color b):base()
         {
             this.a = a;
             this.b = b;
-            Striped_Pattern_is_set = true;
+            //Striped_Pattern_is_set = true;
+            Pattern_Is_Set = true;
             Transform = Matrix.identity();
         }
         /// <summary>
@@ -35,7 +36,8 @@ namespace CSharpRayTracer
         {
             a = new Color(0, 0, 0);
             b = new Color(0, 0, 0);
-            Striped_Pattern_is_set = false;
+            //Striped_Pattern_is_set = false;
+            Pattern_Is_Set= true;
             Transform = Matrix.identity();
         }
 

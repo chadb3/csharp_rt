@@ -45,7 +45,7 @@ namespace csharp_rt
             // ret appears to be unused. mark for deletion.
             Color ret = Color.BLACK();
             Color effective_color = new Color();
-            if (m.pattern.Striped_Pattern_is_set)
+            if (m.pattern.Pattern_Is_Set)
             {
                 //effective_color = m.pattern.Stripe_At(point);
                 //effective_color = m.pattern.Stripe_At(point);

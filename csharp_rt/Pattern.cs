@@ -10,15 +10,17 @@ namespace CSharpRayTracer
     public abstract class Pattern
     {
         public Matrix Transform { get; set; }
+        public bool Pattern_Is_Set { get; set; }
         /// <summary>
         /// Transform is set here
         /// color will be set in the child class
         /// </summary>
-        protected Pattern() 
+        protected Pattern()
         {
             Transform = Matrix.identity();
+            Pattern_Is_Set = true;
         }
-        public Color Pattern_At_Shape(Shape shape_in,csharp_rt.Tuple point_in)
+        public Color Pattern_At_Shape(Shape shape_in, csharp_rt.Tuple point_in)
         {
             csharp_rt.Tuple object_point = shape_in.Transform.inverse() * point_in;
             csharp_rt.Tuple pattern_point = Transform.inverse() * object_point;
@@ -26,7 +28,7 @@ namespace CSharpRayTracer
         }
         public void Set_Transform(Matrix Transform_in)
         {
-            Transform=Transform_in;
+            Transform = Transform_in;
         }
 
 
@@ -39,15 +41,15 @@ namespace CSharpRayTracer
     /// <summary>
     /// Test Pattern used for Unit Tests
     /// </summary>
-    public class Test_Pattern:Pattern
+    public class Test_Pattern : Pattern
     {
         /// <summary>
         /// Blank Construcor
         /// Matrix Transform is set in base class Pattern.
         /// </summary>
-        public Test_Pattern():base()
+        public Test_Pattern() : base()
         {
-
+            //Pattern_Is_Set = false;
         }
 
         /// <summary>
@@ -59,6 +61,20 @@ namespace CSharpRayTracer
         protected override Color Pattern_At(csharp_rt.Tuple point_in)
         {
             return new Color(point_in.x, point_in.y, point_in.z);
+        }
+    }
+
+    public class NO_PATTERN : Pattern
+    {
+        public NO_PATTERN() :base()
+        {
+            Pattern_Is_Set = false;
+        }
+
+        protected override Color Pattern_At(csharp_rt.Tuple point_in)
+        {
+            Console.WriteLine("Pattern NO_PATTER.Pattern_At called");
+            throw new NotImplementedException();
         }
     }
 }

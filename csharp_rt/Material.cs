@@ -9,16 +9,16 @@ namespace csharp_rt
 {
     public class Material
     {
-        public Striped_Pattern pattern;
-        public Color color;
-        public double ambient;
-        public double diffuse;
-        public double specular;
-        public double shininess;
+        public Pattern pattern { get; set; }
+        public Color color { get; set; }
+        public double ambient { get; set; }
+        public double diffuse { get; set; }
+        public double specular { get; set; }
+        public double shininess { get; set; }
         public Material()
         {
-            pattern = new Striped_Pattern();
-            color = new Color(1, 1, 1);
+            pattern = new NO_PATTERN();
+            color = new Color(1,1,1);
             ambient = 0.1d;
             diffuse = 0.9d;
             specular = 0.9d;

@@ -201,11 +201,12 @@ namespace csharp_rt
             middle.Material.specular = 0.3;
 
             Sphere z=new Sphere();
-            z.Set_Transform(Matrix.translation(0, 0, 0)*Matrix.scaling(25,25,25));
+            z.Set_Transform(Matrix.translation(0, 0, 0)*Matrix.scaling(26,26,26)*Matrix.rotation_y(-Math.PI/2)*Matrix.rotation_z(3*Math.PI-.6));
             z.Material = new Material();
             z.Material.color = new Color(.1, 1, 1);
             z.Material.diffuse = 1;
             z.Material.specular = 1;
+            z.Material.pattern = new Gradient_Pattern(new Color(254/255d,102/255d,7/255d), new Color(0, 0, .99d));
 
             Sphere right = new Sphere();
             right.Transform = Matrix.translation(1.5, 0.5, -0.5) * Matrix.scaling(0.5, 0.5, 0.5);
