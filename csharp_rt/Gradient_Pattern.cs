@@ -36,5 +36,15 @@ namespace CSharpRayTracer
             double fraction = point_in.x - Math.Floor(point_in.x);
             return A + distance * fraction;
         }
+        /// <summary>
+        /// Mainly used for unit tests. As the Parent class calls the one without the zzzz, and that one is protected.
+        /// I might be able to make it public though. to test later.
+        /// </summary>
+        /// <param name="pt"></param>
+        /// <returns></returns>
+        public Color zzzzTest_Pattern_At(csharp_rt.Tuple pt)
+        {
+            return Pattern_At(pt);
+        }
     }
 }

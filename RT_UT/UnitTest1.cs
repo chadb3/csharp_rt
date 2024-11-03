@@ -1773,5 +1773,15 @@ namespace RT_UT
             Color c = pattern.Stripe_at_Object(obj, csharp_rt.Tuple.point(2.5, 0, 0));
             Assert.AreEqual(white, c);
         }
+
+        [TestMethod]
+        public void A_gradient_linearly_interpolates_between_colors()
+        {
+            Gradient_Pattern pattern = new Gradient_Pattern(white,black);
+            Assert.AreEqual(white, pattern.zzzzTest_Pattern_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(new Color(0.75, 0.75, 0.75), pattern.zzzzTest_Pattern_At(csharp_rt.Tuple.point(0.25, 0, 0)));
+            Assert.AreEqual(new Color(0.5, 0.5, 0.5), pattern.zzzzTest_Pattern_At(csharp_rt.Tuple.point(0.5, 0, 0)));
+            Assert.AreEqual(new Color(0.25, 0.25, 0.25), pattern.zzzzTest_Pattern_At(csharp_rt.Tuple.point(0.75, 0, 0)));
+        }
     }
 }
