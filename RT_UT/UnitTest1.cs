@@ -1783,5 +1783,15 @@ namespace RT_UT
             Assert.AreEqual(new Color(0.5, 0.5, 0.5), pattern.zzzzTest_Pattern_At(csharp_rt.Tuple.point(0.5, 0, 0)));
             Assert.AreEqual(new Color(0.25, 0.25, 0.25), pattern.zzzzTest_Pattern_At(csharp_rt.Tuple.point(0.75, 0, 0)));
         }
+
+        [TestMethod]
+        public void a_ring_shold_extend_in_both_x_and_z()
+        {
+            Ring_Pattern pattern = new Ring_Pattern(white,black);
+            Assert.AreEqual(white, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(black, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(1, 0, 0)));
+            Assert.AreEqual(black, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0, 1)));
+            Assert.AreEqual(black, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0.708, 0, 0.708)));
+        }
     }
 }
