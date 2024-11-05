@@ -1793,5 +1793,31 @@ namespace RT_UT
             Assert.AreEqual(black, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0, 1)));
             Assert.AreEqual(black, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0.708, 0, 0.708)));
         }
+        [TestMethod]
+        public void Checkers_should_repeat_in_x()
+        {
+            Checker_Pattern pattern = new Checker_Pattern(white,black);
+            //csharp_rt.Tuple.point(0, 0, 0)
+            Assert.AreEqual(white, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(white, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0.99, 0, 0)));
+            Assert.AreEqual(black, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(1.01, 0, 0)));
+        }
+        [TestMethod]
+        public void Checkers_should_repeat_in_y()
+        {
+            Checker_Pattern pattern = new Checker_Pattern(white, black);
+            Assert.AreEqual(white, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(white, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0.99, 0)));
+            Assert.AreEqual(black, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point( 0, 1.01, 0)));
+        }
+
+        [TestMethod]
+        public void Checkers_should_repeat_in_z()
+        {
+            Checker_Pattern pattern = new Checker_Pattern(white, black);
+            Assert.AreEqual(white, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(white, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0, 0.99)));
+            Assert.AreEqual(black, pattern.zzzz_Test_Pattern_At(csharp_rt.Tuple.point(0, 0, 1.01)));
+        }
     }
 }
