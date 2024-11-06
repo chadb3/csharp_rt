@@ -42,7 +42,7 @@ namespace CSharpRayTracer
         }
 
         //public Color Stripe_At(csharp_rt.Tuple pt)
-        protected override Color Pattern_At(csharp_rt.Tuple pt)
+        public override Color Pattern_At(csharp_rt.Tuple pt)
         {
             if(Math.Floor((double)pt.x)%2==0)
             {

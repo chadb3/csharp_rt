@@ -23,7 +23,7 @@ namespace CSharpRayTracer
             this.color_b = color_b;
         }
 
-        protected override Color Pattern_At(csharp_rt.Tuple point_in)
+        public override Color Pattern_At(csharp_rt.Tuple point_in)
         {
             if(Math.Floor(Math.Sqrt(Math.Pow(point_in.x,2)+Math.Pow(point_in.z,2)))%2==0)
             {

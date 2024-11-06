@@ -23,7 +23,7 @@ namespace CSharpRayTracer
             this.Color_B = Color_B;
         }
 
-        protected override Color Pattern_At(csharp_rt.Tuple point_in)
+        public override Color Pattern_At(csharp_rt.Tuple point_in)
         {
             
             if((Math.Floor(point_in.x) + Math.Floor(point_in.y) + Math.Floor(point_in.z)) %2==0)
@@ -36,6 +36,15 @@ namespace CSharpRayTracer
             }
         }
 
+
+        /// <summary>
+        /// ended up making the Pattern_At public so I could call it from a child class like
+        /// Pattern pattern=new Checker_Pattern()...
+        /// Color x=pattern.Pattern_At(examplePoint);
+        /// as of this point, the zzzz methods can be deleted (following changing unit tests).
+        /// </summary>
+        /// <param name="point_in"></param>
+        /// <returns></returns>
         public Color zzzz_Test_Pattern_At(csharp_rt.Tuple point_in)
         {
             return Pattern_At(point_in);

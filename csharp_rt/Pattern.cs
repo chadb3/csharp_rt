@@ -32,7 +32,7 @@ namespace CSharpRayTracer
         }
 
 
-        protected abstract Color Pattern_At(csharp_rt.Tuple point_in);
+        public abstract Color Pattern_At(csharp_rt.Tuple point_in);
     }
 
 
@@ -58,7 +58,7 @@ namespace CSharpRayTracer
         /// </summary>
         /// <param name="point_in"></param>
         /// <returns></returns>
-        protected override Color Pattern_At(csharp_rt.Tuple point_in)
+        public override Color Pattern_At(csharp_rt.Tuple point_in)
         {
             return new Color(point_in.x, point_in.y, point_in.z);
         }
@@ -71,7 +71,7 @@ namespace CSharpRayTracer
             Pattern_Is_Set = false;
         }
 
-        protected override Color Pattern_At(csharp_rt.Tuple point_in)
+        public override Color Pattern_At(csharp_rt.Tuple point_in)
         {
             Console.WriteLine("Pattern NO_PATTER.Pattern_At called");
             throw new NotImplementedException();

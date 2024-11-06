@@ -30,7 +30,7 @@ namespace CSharpRayTracer
             this.B = B;
         }
 
-        protected override Color Pattern_At(csharp_rt.Tuple point_in)
+        public override Color Pattern_At(csharp_rt.Tuple point_in)
         {
             Color distance = B - A;
             double fraction = point_in.x - Math.Floor(point_in.x);

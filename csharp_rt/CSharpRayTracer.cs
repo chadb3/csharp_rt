@@ -187,6 +187,7 @@ namespace csharp_rt
             left_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(-Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
             left_wall.Material = floor.Material;
 
+
             Sphere right_wall = new Sphere();
             right_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
             right_wall.Material = floor.Material;
@@ -226,12 +227,14 @@ namespace csharp_rt
             left.Material.color = new Color(1, 0, 0);
             left.Material.diffuse = 0.7;
             left.Material.specular = 0.3;
+            left.Material.pattern = new Blended_Pattern();
+            left.Material.pattern.Transform = Matrix.scaling(0.125, 0.25, 0.125);
 
             World world = new World();
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
             world.shapeList = [left, right, middle, floor,z];
-            Camera c = new Camera(400, 400, Math.PI / 3);
+            Camera c = new Camera(2000, 2000, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             int ic = 0;
