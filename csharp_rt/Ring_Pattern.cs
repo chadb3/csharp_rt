@@ -34,16 +34,6 @@ namespace CSharpRayTracer
                 return color_b;
             }
         }
-        /// <summary>
-        /// Mark for deletion 
-        /// Mark for deletion 
-        /// Mark for deletion 
-        /// </summary>
-        /// <param name="point_in"></param>
-        /// <returns></returns>
-        public Color zzzz_Test_Pattern_At(csharp_rt.Tuple point_in)
-        {
-            return Pattern_At(point_in);
-        }
+
     }
 }
