@@ -10,16 +10,16 @@ namespace CSharpRayTracer
     public class Striped_Pattern:Pattern
     {
         //Color a
-        public Color a { get; set; }
+        public Pattern a { get; set; }
         //Color b
-        public Color b { get; set; }
+        public Pattern b { get; set; }
         //bool if pattern is set
         //public bool Striped_Pattern_is_set {  get; set; }
        // public Matrix Transform { get; set; }
         public Striped_Pattern(Color a, Color b):base()
         {
-            this.a = a;
-            this.b = b;
+            this.a = new Solid_Pattern(a);
+            this.b = new Solid_Pattern(b);
             //Striped_Pattern_is_set = true;
             Pattern_Is_Set = true;
             Transform = Matrix.identity();
@@ -34,10 +34,10 @@ namespace CSharpRayTracer
         /// </summary>
         public Striped_Pattern()
         {
-            a = new Color(0, 0, 0);
-            b = new Color(0, 0, 0);
+            a = new Solid_Pattern(new Color(0, 0, 0));
+            b = new Solid_Pattern(new Color(0, 0, 0));
             //Striped_Pattern_is_set = false;
-            Pattern_Is_Set= true;
+            Pattern_Is_Set = true;
             Transform = Matrix.identity();
         }
 
@@ -46,9 +46,9 @@ namespace CSharpRayTracer
         {
             if(Math.Floor((double)pt.x)%2==0)
             {
-                return a;
+                return a.Pattern_At(pt);
             }
-            return b;
+            return b.Pattern_At(pt); ;
         }
         /// <summary>
         /// Striped_Pattern(White,Black)
@@ -88,9 +88,9 @@ namespace CSharpRayTracer
         {
             if (Math.Floor((double)pt.x) % 2 == 0)
             {
-                return a;
+                return a.Pattern_At(pt);
             }
-            return b;
+            return b.Pattern_At(pt);
         }
     }
 }

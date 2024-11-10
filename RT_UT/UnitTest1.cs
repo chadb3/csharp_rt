@@ -1639,8 +1639,8 @@ namespace RT_UT
             // white = color(1,1,1)
             // pattern seems to be set in material
             Striped_Pattern pattern = new Striped_Pattern(new Color(1,1,1),new Color(0,0,0));
-            Assert.AreEqual(new Color(1, 1, 1), pattern.a);
-            Assert.AreEqual(new Color(0,0,0), pattern.b);
+            Assert.AreEqual(new Solid_Pattern(new Color(1, 1, 1)), pattern.a);
+            Assert.AreEqual(new Solid_Pattern(new Color(0,0,0)), pattern.b);
         }
         [TestMethod]
         public void A_stripe_pattern_is_constant_in_y()
@@ -1778,7 +1778,7 @@ namespace RT_UT
         public void A_gradient_linearly_interpolates_between_colors()
         {
             Gradient_Pattern pattern = new Gradient_Pattern(white,black);
-            Assert.AreEqual(white, pattern.zzzzTest_Pattern_At(csharp_rt.Tuple.point(0, 0, 0)));
+            Assert.AreEqual(white, pattern.Pattern_At(csharp_rt.Tuple.point(0, 0, 0)));
             Assert.AreEqual(new Color(0.75, 0.75, 0.75), pattern.Pattern_At(csharp_rt.Tuple.point(0.25, 0, 0)));
             Assert.AreEqual(new Color(0.5, 0.5, 0.5), pattern.Pattern_At(csharp_rt.Tuple.point(0.5, 0, 0)));
             Assert.AreEqual(new Color(0.25, 0.25, 0.25), pattern.Pattern_At(csharp_rt.Tuple.point(0.75, 0, 0)));
@@ -1818,6 +1818,18 @@ namespace RT_UT
             Assert.AreEqual(white, pattern.Pattern_At(csharp_rt.Tuple.point(0, 0, 0)));
             Assert.AreEqual(white, pattern.Pattern_At(csharp_rt.Tuple.point(0, 0, 0.99)));
             Assert.AreEqual(black, pattern.Pattern_At(csharp_rt.Tuple.point(0, 0, 1.01)));
+        }
+
+        [TestMethod]
+        public void testing_solid_pattern()
+        {
+            Solid_Pattern solid_color1 = new Solid_Pattern(new Color(1, 0, 0));
+            //assert color is (red) at all points for a solid patten.
+            Assert.AreEqual(new Color(1, 0, 0), solid_color1.Pattern_At(csharp_rt.Tuple.point(1, 0, 0)));
+            Assert.AreEqual(new Color(1, 0, 0), solid_color1.Pattern_At(csharp_rt.Tuple.point(1, 1, 0)));
+            Assert.AreEqual(new Color(1, 0, 0), solid_color1.Pattern_At(csharp_rt.Tuple.point(5, 1, 0)));
+            Assert.AreEqual(new Color(1, 0, 0), solid_color1.Pattern_At(csharp_rt.Tuple.point(1, 5, 0)));
+            Assert.AreEqual(new Color(1, 0, 0), solid_color1.Pattern_At(csharp_rt.Tuple.point(11, 5, 0)));
         }
     }
 }

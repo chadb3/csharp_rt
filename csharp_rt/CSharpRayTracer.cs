@@ -17,7 +17,11 @@ namespace csharp_rt
             //imageTest();
             //imageTest2();
             //testImageBook();
+
             testImageBook_plane();
+
+            test_solid_pattern();
+
             //sphereShapeTest();
             //anotherSphereTest();
             //testingAnotherFailingTest();
@@ -234,10 +238,10 @@ namespace csharp_rt
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
             world.shapeList = [left, right, middle, floor,z];
-            Camera c = new Camera(2000, 2000, Math.PI / 3);
+            Camera c = new Camera(1000, 1000, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
-            int ic = 0;
+            int ic = 2;
             //for(int i=0;i<500;i++)
             //{
                 //c.transform = Matrix.view_transform(csharp_rt.Tuple.point((double)i/10, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
@@ -252,6 +256,17 @@ namespace csharp_rt
             // Camera notes to put somewhere
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, 0), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             // csharp_rt.Tuple.point(0, 1.5, -5) = (0,0, "zoom")
+        }
+
+        static void test_solid_pattern()
+        {
+            Striped_Pattern pattern = new Striped_Pattern(new Color(1, 1, 1), new Color(0, 0, 0));
+            Solid_Pattern comp = new Solid_Pattern(new Color(1, 1, 1));
+            Console.WriteLine("Pattern A: {0}\nTest: {1}", pattern.a, comp);
+            Console.WriteLine(pattern.a == comp);
+            //Assert.AreEqual(new Solid_Pattern(new Color(1, 1, 1)), pattern.a);
+            //Assert.AreEqual(new Solid_Pattern(new Color(0, 0, 0)), pattern.b);
+
         }
     }
 }

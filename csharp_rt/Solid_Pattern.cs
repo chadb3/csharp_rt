@@ -26,5 +26,19 @@ namespace CSharpRayTracer
             return Color;
         }
 
+        public override string ToString()
+        {
+            return Color.ToString();
+        }
+        /// <summary>
+        /// Hope this doesn't break
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            Solid_Pattern right = obj as Solid_Pattern;
+            return this.Color == right.Color;
+        }
     }
 }
