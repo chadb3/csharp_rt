@@ -16,13 +16,46 @@ namespace CSharpRayTracer
         //bool if pattern is set
         //public bool Striped_Pattern_is_set {  get; set; }
        // public Matrix Transform { get; set; }
+       /// <summary>
+       /// takes in 2 solid colors 
+       /// and sets them each as solid patterns.
+       /// </summary>
+       /// <param name="a"></param>
+       /// <param name="b"></param>
         public Striped_Pattern(Color a, Color b):base()
         {
             this.a = new Solid_Pattern(a);
             this.b = new Solid_Pattern(b);
-            //Striped_Pattern_is_set = true;
-            Pattern_Is_Set = true;
-            Transform = Matrix.identity();
+        }
+        /// <summary>
+        /// sets a to any pattern you want, and takes in a solid color for the solid pattern. 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        public Striped_Pattern(Pattern a, Color b) : base()
+        {
+            this.a = a;
+            this.b = new Solid_Pattern(b);
+        }
+        /// <summary>
+        /// sets a color as a solid pattern and can set the other to any pattern you want.
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        public Striped_Pattern(Color a, Pattern b) : base()
+        {
+            this.a = new Solid_Pattern(a);
+            this.b = b;
+        }
+        /// <summary>
+        /// Setting 2 different (non-solid, but still can set as solid if you want) Patterns. 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        public Striped_Pattern(Pattern a, Pattern b) : base()
+        {
+            this.a = a;
+            this.b = b;
         }
         /// <summary>
         /// Empty Constructor

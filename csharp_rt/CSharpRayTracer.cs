@@ -185,7 +185,8 @@ namespace csharp_rt
             //floor.Transform = Matrix.scaling(10, 0.01, 10);
             floor.Material.color = new Color(1, 0.9, 0.9);
             floor.Material.specular = 0;
-            floor.Material.pattern = new Striped_Pattern(new Color(1,1,1), new Color(1, 0, 0));
+            //floor.Material.pattern = new Striped_Pattern(new Checker_Pattern(new Color(1,1,1),new Color(0,1,0)), new Color(1, 0, 0));
+            floor.Material.pattern = new Checker_Pattern(new Color(1, 1, 1), new Color(0, 1, 0));
 
             Sphere left_wall = new Sphere();
             left_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(-Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
@@ -263,7 +264,7 @@ namespace csharp_rt
             Striped_Pattern pattern = new Striped_Pattern(new Color(1, 1, 1), new Color(0, 0, 0));
             Solid_Pattern comp = new Solid_Pattern(new Color(1, 1, 1));
             Console.WriteLine("Pattern A: {0}\nTest: {1}", pattern.a, comp);
-            Console.WriteLine(pattern.a == comp);
+            Console.WriteLine(pattern.a.Equals(comp));
             //Assert.AreEqual(new Solid_Pattern(new Color(1, 1, 1)), pattern.a);
             //Assert.AreEqual(new Solid_Pattern(new Color(0, 0, 0)), pattern.b);
 
