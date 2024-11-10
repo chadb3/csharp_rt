@@ -25,9 +25,9 @@ namespace CSharpRayTracer
 
         public override Color Pattern_At(csharp_rt.Tuple point_in)
         {
-            int x = Math.Abs((int)Math.Floor(point_in.x));
-            int y = Math.Abs((int)Math.Floor(point_in.y));
-            int z = Math.Abs((int)Math.Floor(point_in.z));
+            int x = (int)Math.Floor(point_in.x);
+            int y = (int)Math.Floor(point_in.y);
+            int z = (int)Math.Floor(point_in.z);
 
             if ((x + y + z) % 2 == 0)
             {

@@ -18,8 +18,8 @@ namespace csharp_rt
             //imageTest2();
             //testImageBook();
 
-            testImageBook_plane();
-
+            //testImageBook_plane();
+            test_checker_pattern_on_transformed_plane();
             test_solid_pattern();
 
             //sphereShapeTest();
@@ -158,7 +158,7 @@ namespace csharp_rt
 
         static void testingFailingDefaultWorld()
         {
-            Light light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
+            Light light = Light.point_light(csharp_rt.Tuple.point(-25, 10, -25), new Color(1, 1, 1));
             Sphere s1 = new Sphere();
             s1.Material.color = new Color(0.8, 1.0, 0.6);
             s1.Material.diffuse = 0.7;
@@ -186,7 +186,7 @@ namespace csharp_rt
             floor.Material.color = new Color(1, 0.9, 0.9);
             floor.Material.specular = 0;
             //floor.Material.pattern = new Striped_Pattern(new Checker_Pattern(new Color(1,1,1),new Color(0,1,0)), new Color(1, 0, 0));
-            floor.Material.pattern = new Checker_Pattern(new Color(1, 0, 0), new Color(0, 0, 1));
+            floor.Material.pattern = new Checker_Pattern(new Color(1, 0, 0), new Color(0, 0, 0));
             //floor.Material.pattern = new Ring_Pattern(new Color(1, 0, 0), new Color(0, 0, 1));
 
             Sphere left_wall = new Sphere();
@@ -269,6 +269,31 @@ namespace csharp_rt
             //Assert.AreEqual(new Solid_Pattern(new Color(1, 1, 1)), pattern.a);
             //Assert.AreEqual(new Solid_Pattern(new Color(0, 0, 0)), pattern.b);
 
+        }
+
+        static void test_checker_pattern_on_transformed_plane()
+        {
+            World world = new World();
+            world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
+            Plane plane = new Plane();
+            plane.Material.specular = 0.0;
+            plane.Material.diffuse = 0.0;
+            plane.Material.pattern = new Checker_Pattern(new Color(1, 1, 1), new Color(1, 0, 0.02));
+            plane.Set_Transform(Matrix.rotation_y((Math.PI / 2.0d))*Matrix.rotation_z(Math.PI/2.0d));
+
+            Plane plane2 = new Plane();
+            plane2.Material.specular = 0.5;
+            plane2.Material.diffuse = 1.0;
+            plane2.Material.pattern = new Checker_Pattern(new Color(1, 0, 0), new Color(0, 0, 1));
+            plane2.Material.pattern.Set_Transform(Matrix.translation(0, 0.00001d, 0));
+
+            Camera c = new Camera(320, 320, Math.PI / 3);
+            c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));// * Matrix.rotation_x(-Math.PI / 2.0d);// * Matrix.rotation_y(.20);
+
+            world.shapeList = [plane2];
+           Canvas image = c.render(world);
+            image.set_file_name("ring_test_Checker_Plane_test");
+            image.canvas_to_P3_ppm();
         }
     }
 }

@@ -77,7 +77,7 @@ namespace CSharpRayTracer
             double world_y=half_height - yoffset;
 
             //notes
-            csharp_rt.Tuple pixle = transform.inverse() * csharp_rt.Tuple.point(world_x, world_y, -1);
+            csharp_rt.Tuple pixle = transform.inverse() * csharp_rt.Tuple.point(world_x, world_y, -1.0d);
             csharp_rt.Tuple origin =transform.inverse() * csharp_rt.Tuple.point(0, 0, 0);
             csharp_rt.Tuple direction =(pixle - origin).normalize();
 

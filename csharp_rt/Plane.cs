@@ -32,7 +32,7 @@ namespace CSharpRayTracer
         protected override csharp_rt.Tuple Local_Normal_At(csharp_rt.Tuple point_in)
         {
             //return csharp_rt.Tuple.vector(point_in.x, point_in.y, point_in.z);
-            return csharp_rt.Tuple.vector(0, 1, 0);
+            return csharp_rt.Tuple.vector(0, 1.0d, 0);
         }
         /// <summary>
         /// Only used for Unit Testing.
