@@ -16,11 +16,15 @@ namespace CSharpRayTracer
         {
             Color_A = new Color(1, 1, 1);
             Color_B = new Color(0, 0, 0);
+            Set_Transform(Matrix.translation(0, 0.000001d, 0));
+            //Source: https://forum.raytracerchallenge.com/thread/290/bands-noise
         }
         public Checker_Pattern(Color Color_A, Color Color_B) : base()
         {
             this.Color_A = Color_A;
             this.Color_B = Color_B;
+            Set_Transform(Matrix.translation(0, 0.0001d, 0));
+            //Source: https://forum.raytracerchallenge.com/thread/290/bands-noise
         }
 
         public override Color Pattern_At(csharp_rt.Tuple point_in)
