@@ -1,4 +1,4 @@
-// cc = Current Capabilities
+// cc = Current Capabilities (of the my ray tracer)
 // this will be updated (along with the image) as more features are implemented  
 Console.WriteLine("starting Current Capabilities ");
 Plane floor = new Plane();
@@ -48,6 +48,6 @@ world.shapeList = [left, right, middle, floor,z];
 Camera c = new Camera(3088, 3088, Math.PI / 3); 
 c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0))*Matrix.rotation_y(.20);
 Canvas image = c.render(world);
-image.set_file_name("CC");
+image.set_file_name("cc");
 image.canvas_to_P3_ppm();
 Console.WriteLine("Current Capabilities - Chapter 10");
