@@ -73,8 +73,11 @@ namespace CSharpRayTracer
             Color ret = new Color();
             //Light light_to_call_lighting = new Light();
             //ret = light.old_lighting_old(comps_in.obj.material, comps_in.point, comps_in.eyev, comps_in.normalv);
-            //ret = light.lighting(comps_in.old_obj.Material, comps_in.point, comps_in.eyev, comps_in.normalv,is_shadowed(comps_in.over_point));
-            ret = light.lighting(comps_in.shapeObj.Material,comps_in.shapeObj, comps_in.point, comps_in.eyev, comps_in.normalv, is_shadowed(comps_in.over_point));
+            //ret = light.lighting(comps_in.old_obj.Material, comps_in.point, comps_in.eyev, comps_in.normalv,is_shadowed(comps_in.over_point)); <-------- Original
+            //https://forum.raytracerchallenge.com/thread/204/avoid-noise-checkers-pattern-planes
+            // pass in over_point instead of point. now I don't need epsilon but the image changed slightly
+            // 
+            ret = light.lighting(comps_in.shapeObj.Material,comps_in.shapeObj, comps_in.over_point, comps_in.eyev, comps_in.normalv, is_shadowed(comps_in.over_point));
             return ret;
         }
         

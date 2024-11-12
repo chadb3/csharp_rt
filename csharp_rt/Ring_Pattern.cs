@@ -11,6 +11,8 @@ namespace CSharpRayTracer
     {
         public Color color_a;
         public Color color_b;
+        public Pattern pattern_a;
+        public Pattern pattern_b;
         public Ring_Pattern():base()
         { 
             color_a=new Color(1,1,1);

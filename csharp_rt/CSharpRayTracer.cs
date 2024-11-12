@@ -20,7 +20,7 @@ namespace csharp_rt
             //testImageBook();
 
             testImageBook_plane();
-            ////test_checker_pattern_on_transformed_plane();
+            //test_checker_pattern_on_transformed_plane();
             test_solid_pattern();
 
             //sphereShapeTest();
@@ -189,7 +189,7 @@ namespace csharp_rt
             floor.Material.pattern = new Striped_Pattern(new Checker_Pattern(new Color(1,1,1),new Color(0,1,0)), new Color(1, 0, 0));
             //floor.Material.pattern = new Checker_Pattern(new Color(1, 0, 0), new Color(0, 0, 0));
             //floor.Material.pattern = new Ring_Pattern(new Color(1, 0, 0), new Color(0, 0, 1));
-            floor.Material.pattern.Set_Transform(Matrix.translation(0, 0.00001d, 0));
+            //floor.Material.pattern.Set_Transform(Matrix.translation(0, 0.00001d, 0));
 
             Sphere left_wall = new Sphere();
             left_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(-Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
@@ -242,7 +242,7 @@ namespace csharp_rt
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
             world.shapeList = [left, right, middle, floor,z];
-            Camera c = new Camera(3088, 3088, Math.PI / 3);
+            Camera c = new Camera(4000, 4000, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             int ic = 2;
