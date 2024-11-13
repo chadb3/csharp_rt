@@ -17,12 +17,36 @@ namespace CSharpRayTracer
         { 
             color_a=new Color(1,1,1);
             color_b=new Color(1,1,1);
+
+            double frac = 1 / 2.0d;
+            pattern_a = new Solid_Pattern(new Color(1, 1, 1));
+            pattern_b = new Solid_Pattern(new Color(frac, frac, frac));
         }
 
         public Ring_Pattern(Color color_a, Color color_b):base()
         {
             this.color_a = color_a;
             this.color_b = color_b;
+            pattern_a = new Solid_Pattern(color_a);
+            pattern_b = new Solid_Pattern(color_b);
+        }
+
+        public Ring_Pattern(Pattern pattern_a,Color color_b):base()
+        {
+            this.pattern_a= pattern_a;
+            this.pattern_b=new Solid_Pattern(color_b);
+        }
+
+        public Ring_Pattern(Color color_a,Pattern pattern_b):base()
+        {
+            pattern_a=new Solid_Pattern(color_a);
+            this.pattern_b = pattern_b;
+        }
+
+        public Ring_Pattern(Pattern pattern_a,Pattern pattern_b):base()
+        {
+            this.pattern_a = pattern_a;
+            this.pattern_b=pattern_b;
         }
 
         public override Color Pattern_At(csharp_rt.Tuple point_in)
