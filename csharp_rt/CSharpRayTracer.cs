@@ -243,7 +243,7 @@ namespace csharp_rt
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
             world.shapeList = [left, right, middle, floor,z];
-            Camera c = new Camera(400, 400, Math.PI / 3);
+            Camera c = new Camera(1000, 1000, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             int ic = 2;
