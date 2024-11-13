@@ -53,11 +53,13 @@ namespace CSharpRayTracer
         {
             if(Math.Floor(Math.Sqrt(Math.Pow(point_in.x,2)+Math.Pow(point_in.z,2)))%2==0)
             {
-                return color_a;
+                //return color_a;
+                return pattern_a.Pattern_At(point_in);
             }
             else
             {
-                return color_b;
+                //return color_b;
+                return pattern_b.Pattern_At(point_in);
             }
         }
 

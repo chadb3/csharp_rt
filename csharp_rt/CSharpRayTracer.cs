@@ -19,8 +19,8 @@ namespace csharp_rt
             //imageTest2();
             //testImageBook();
 
-            //testImageBook_plane();
-            test_checker_pattern_on_transformed_plane();
+            testImageBook_plane();
+            //test_checker_pattern_on_transformed_plane();
             test_solid_pattern();
 
             //sphereShapeTest();
@@ -208,7 +208,8 @@ namespace csharp_rt
             middle.Material.color = new Color(.23, .55, .09);
             middle.Material.diffuse = 0.7;
             middle.Material.specular = 0.3;
-            middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Color(0, 0, 1));
+            //middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Color(0, 0, 1));
+            middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(new Color(0, 0, 1),new Color(1,0,1)));
             middle.Material.pattern.Transform = Matrix.scaling(.25, .25, .005);
 
             Sphere z=new Sphere();
