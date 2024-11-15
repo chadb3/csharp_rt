@@ -62,11 +62,13 @@ namespace CSharpRayTracer
 
             if ((x + y + z) % 2 == 0)
             {
-                return Color_A;
+                //return Color_A;
+                return Pattern_A.Pattern_At(point_in);
             }
             else
             {
-                return Color_B;
+                //return Color_B;
+                return Pattern_B.Pattern_At(point_in);
             }
         }
 
