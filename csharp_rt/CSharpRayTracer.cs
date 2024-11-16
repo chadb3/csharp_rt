@@ -208,8 +208,11 @@ namespace csharp_rt
             middle.Material.color = new Color(.23, .55, .09);
             middle.Material.diffuse = 0.7;
             middle.Material.specular = 0.3;
-            //middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Color(0, 0, 1));
-            middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(new Color(0, 0, 1),new Color(1,0,1)));
+            //middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Color(0, 0, 1));//new Ring_Pattern(new Color(0, 0, 1)
+            //middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(new Color(0, 0, 1),new Color(1,0,1)));
+            Ring_Pattern aet = new Ring_Pattern(new Color(0, 0, 1), new Color(0, 1, 0));
+            aet.Set_Transform(Matrix.scaling(555, 5555, 55555)*Matrix.translation(0.5,2.1,8200));
+            middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(aet, new Color(1, 0, 1)));
             middle.Material.pattern.Transform = Matrix.scaling(.25, .25, .005);
 
             Sphere z=new Sphere();
@@ -243,7 +246,7 @@ namespace csharp_rt
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
             world.shapeList = [left, right, middle, floor,z];
-            Camera c = new Camera(1000, 1000, Math.PI / 3);
+            Camera c = new Camera(2560, 2560, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             int ic = 2;
