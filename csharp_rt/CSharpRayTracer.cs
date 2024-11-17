@@ -211,7 +211,7 @@ namespace csharp_rt
             //middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Color(0, 0, 1));//new Ring_Pattern(new Color(0, 0, 1)
             //middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(new Color(0, 0, 1),new Color(1,0,1)));
             Ring_Pattern aet = new Ring_Pattern(new Color(0, 0, 1), new Color(0, 1, 0));
-            aet.Set_Transform(Matrix.scaling(555, 5555, 55555)*Matrix.translation(0.5,2.1,8200));
+            aet.Set_Transform(Matrix.scaling(2, 2, 2) *Matrix.rotation_z(5)*Matrix.rotation_x(Math.PI/2));
             middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(aet, new Color(1, 0, 1)));
             middle.Material.pattern.Transform = Matrix.scaling(.25, .25, .005);
 
@@ -246,7 +246,7 @@ namespace csharp_rt
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
             world.shapeList = [left, right, middle, floor,z];
-            Camera c = new Camera(2560, 2560, Math.PI / 3);
+            Camera c = new Camera(500, 500, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             int ic = 2;
@@ -256,7 +256,7 @@ namespace csharp_rt
                 c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0))*Matrix.rotation_y(.20);
                 Canvas image = c.render(world);
                 //String filename= ("book_image_{0}_plane",(float)i / 10);
-                image.set_file_name(ic+"book_image_planex");
+                image.set_file_name(ic+"book_image_plane2");
                 image.canvas_to_P3_ppm();
                 ic++;
             //}
