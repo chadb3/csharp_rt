@@ -57,7 +57,8 @@ namespace CSharpRayTracer
         public override Color Pattern_At(csharp_rt.Tuple point_in)
         {
             //returns a Color Tuplle
-            Color distance = B - A;
+            //Color distance = B - A;
+            Color distance = Pattern_B.Pattern_At(point_in) - Pattern_A.Pattern_At(point_in);
             double fraction = point_in.x - Math.Floor(point_in.x);
             return A + distance * fraction;
         }
