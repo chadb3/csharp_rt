@@ -186,7 +186,9 @@ namespace csharp_rt
             //floor.Transform = Matrix.scaling(10, 0.01, 10);
             floor.Material.color = new Color(1, 0.9, 0.9);
             floor.Material.specular = 0;
-            floor.Material.pattern = new Striped_Pattern(new Checker_Pattern(new Color(1,1,1),new Color(0,1,0)), new Color(1, 0, 0));
+            Gradient_Pattern org_red = new Gradient_Pattern(new Color(0.0d,.09d,0), new Color(1, 0, 0));
+            org_red.Set_Transform(Matrix.rotation_x(2));
+            floor.Material.pattern = new Striped_Pattern(new Checker_Pattern(new Color(1,1,1),org_red), new Color(1,0,0));
             //floor.Material.pattern = new Checker_Pattern(new Color(1, 0, 0), new Color(0, 0, 0));
             //floor.Material.pattern = new Ring_Pattern(new Color(1, 0, 0), new Color(0, 0, 1));
             floor.Material.pattern.Set_Transform(Matrix.translation(0, 0.00001d, 0));
@@ -211,8 +213,9 @@ namespace csharp_rt
             //middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Color(0, 0, 1));//new Ring_Pattern(new Color(0, 0, 1)
             //middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(new Color(0, 0, 1),new Color(1,0,1)));
             Gradient_Pattern aet = new Gradient_Pattern(new Color(0, 0, 1), new Color(0, 1, 0));
+            Gradient_Pattern aet2 = new Gradient_Pattern(new Color(0, 0, 0), new Color(1, 0, 1));
             aet.Set_Transform(Matrix.scaling(2, 2, 2) *Matrix.rotation_z(5)*Matrix.rotation_x(Math.PI/2));
-            middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(aet, new Color(1, 0, 1)));
+            middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(aet, aet2));
             middle.Material.pattern.Transform = Matrix.scaling(.25, .25, .005);
 
             Sphere z=new Sphere();
@@ -246,7 +249,7 @@ namespace csharp_rt
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
             world.shapeList = [left, right, middle, floor,z];
-            Camera c = new Camera(1250, 1250, Math.PI / 3);
+            Camera c = new Camera(1550, 1550, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));
             int ic = 2;
