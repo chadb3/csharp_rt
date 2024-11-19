@@ -9,14 +9,14 @@ namespace CSharpRayTracer
 {
     public class Ring_Pattern : Pattern
     {
-        public Color color_a;
-        public Color color_b;
-        public Pattern pattern_a;
-        public Pattern pattern_b;
+        //public Color color_a;
+        //public Color color_b;
+        public Pattern pattern_a { get; set; } 
+        public Pattern pattern_b { get; set; }
         public Ring_Pattern():base()
         { 
-            color_a=new Color(1,1,1);
-            color_b=new Color(1,1,1);
+            //color_a=new Color(1,1,1);
+           // color_b=new Color(1,1,1);
 
             double frac = 1 / 2.0d;
             pattern_a = new Solid_Pattern(new Color(1, 1, 1));
@@ -25,8 +25,8 @@ namespace CSharpRayTracer
 
         public Ring_Pattern(Color color_a, Color color_b):base()
         {
-            this.color_a = color_a;
-            this.color_b = color_b;
+           //this.color_a = color_a;
+            //this.color_b = color_b;
             pattern_a = new Solid_Pattern(color_a);
             pattern_b = new Solid_Pattern(color_b);
         }

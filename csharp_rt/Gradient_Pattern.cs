@@ -9,8 +9,8 @@ namespace CSharpRayTracer
 {
     public class Gradient_Pattern : Pattern
     {
-        public Color A { get; set; }
-        public Color B { get; set; }
+        //public Color A { get; set; }
+       // public Color B { get; set; }
         public Pattern Pattern_A { get; set; }
         public Pattern Pattern_B { get; set; }
 
@@ -21,8 +21,8 @@ namespace CSharpRayTracer
         public Gradient_Pattern(): base() 
         {
             //Pattern_Is_Set = true;
-            A = new Color(1, 1, 1);
-            B = new Color(0, 0, 0);
+            //A = new Color(1, 1, 1);
+            //B = new Color(0, 0, 0);
             Pattern_A = new Solid_Pattern(new Color(1, 1, 1));
             Pattern_B = new Solid_Pattern(new Color(0, 0, 0));
         }
@@ -30,8 +30,8 @@ namespace CSharpRayTracer
         public Gradient_Pattern(Color A, Color B) : base()
         {
             //Pattern_Is_Set = true;
-            this.A = A;
-            this.B = B;
+            //this.A = A;
+            //this.B = B;
             Pattern_A = new Solid_Pattern(A);
             Pattern_B = new Solid_Pattern(B);
         }
@@ -60,7 +60,7 @@ namespace CSharpRayTracer
             //Color distance = B - A;
             Color distance = Pattern_B.Pattern_At(point_in) - Pattern_A.Pattern_At(point_in);
             double fraction = point_in.x - Math.Floor(point_in.x);
-            return A + distance * fraction;
+            return Pattern_A.Pattern_At(point_in) + distance * fraction;
         }
 
     }
