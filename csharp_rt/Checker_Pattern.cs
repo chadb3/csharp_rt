@@ -9,29 +9,31 @@ namespace CSharpRayTracer
 {
     public class Checker_Pattern:Pattern
     {
-        public Color Color_A {  get; set; }
-        public Color Color_B { get; set; }
+        //public Color Color_A {  get; set; }
+        //public Color Color_B { get; set; }
 
         public Pattern Pattern_A { get; set; }
         public Pattern Pattern_B { get; set; }
 
         public Checker_Pattern():base()
         {
-            Color_A = new Color(1, 1, 1);
-            Color_B = new Color(0, 0, 0);
+            //Color_A = new Color(1, 1, 1);
+            //Color_B = new Color(0, 0, 0);
             // note below doesn't seem to work, and I still need to set this manually in Material.Pattern.Set_Transform(...below);
-            Set_Transform(Matrix.translation(0, 0.000001d, 0));
+            ////Set_Transform(Matrix.translation(0, 0.000001d, 0));
             //Source: https://forum.raytracerchallenge.com/thread/290/bands-noise
+            // note that this started to work randomly at some point. I am not sure why.
             this.Pattern_A = new Solid_Pattern(new Color(1, 1, 1));
             this.Pattern_B = new Solid_Pattern(new Color(0.01, 0.02, 0.03));
         }
         public Checker_Pattern(Color Color_A, Color Color_B) : base()
         {
-            this.Color_A = Color_A;
-            this.Color_B = Color_B;
+            //this.Color_A = Color_A;
+            //this.Color_B = Color_B;
             // note below doesn't seem to work, and I still need to set this manually in Material.Pattern.Set_Transform(...below);
-            Set_Transform(Matrix.translation(0, 0.0001d, 0));
+            ////Set_Transform(Matrix.translation(0, 0.0001d, 0));
             //Source: https://forum.raytracerchallenge.com/thread/290/bands-noise
+            // note that this started to work randomly at some point. I am not sure why.
             this.Pattern_A=new Solid_Pattern(Color_A);
             this.Pattern_B = new Solid_Pattern(Color_B);
         }
