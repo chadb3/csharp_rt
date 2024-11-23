@@ -1832,4 +1832,16 @@ namespace RT_UT
             Assert.AreEqual(new Color(1, 0, 0), solid_color1.Pattern_At(csharp_rt.Tuple.point(11, 5, 0)));
         }
     }
+
+    [TestClass]
+    public class Chapter_11_Reflections
+    {
+        [TestMethod]
+        public void Reflectivty_for_the_default_material()
+        {
+            Material m = new Material();
+            //Assert.AreEqual(0.0d,m.reflective);
+        }
+
+    }
 }
