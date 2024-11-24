@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Reflection.Metadata;
 using System.Net.Http.Headers;
+using System.Threading;
 // when did System.Drawing get added? it broke all my tests using my Color.
 //using System.Drawing;
 
@@ -1840,7 +1841,16 @@ namespace RT_UT
         public void Reflectivty_for_the_default_material()
         {
             Material m = new Material();
-            //Assert.AreEqual(0.0d,m.reflective);
+            Assert.AreEqual(0.0d,m.reflective);
+        }
+        [TestMethod]
+        public void Precompute_the_reflection_vector()
+        {
+            Plane shape = new Plane();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 1, -1), csharp_rt.Tuple.vector(0, -Math.Sqrt(2) / 2, Math.Sqrt(2) / 2));
+            Intersection i = new Intersection(Math.Sqrt(2), shape);
+            Computations computations = i.prepare_computations(r);
+            
         }
 
     }

@@ -15,6 +15,7 @@ namespace csharp_rt
         public double diffuse { get; set; }
         public double specular { get; set; }
         public double shininess { get; set; }
+        public double reflective { get; set; }
         public Material()
         {
             pattern = new NO_PATTERN();
@@ -23,6 +24,7 @@ namespace csharp_rt
             diffuse = 0.9d;
             specular = 0.9d;
             shininess = 200.0d;
+            reflective = 0.0;
         }
         public static bool operator ==(Material lhs, Material rhs)
         {
