@@ -16,6 +16,8 @@ namespace CSharpRayTracer
         public bool inside { get; set; }
         public csharp_rt.Tuple over_point { get; set; }
 
+        public csharp_rt.Tuple reflectv { get; set; }
+
         public Shape shapeObj { get; set; }
 
 
