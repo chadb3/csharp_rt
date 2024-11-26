@@ -1849,8 +1849,8 @@ namespace RT_UT
             Plane shape = new Plane();
             Ray r = new Ray(csharp_rt.Tuple.point(0, 1, -1), csharp_rt.Tuple.vector(0, -Math.Sqrt(2) / 2, Math.Sqrt(2) / 2));
             Intersection i = new Intersection(Math.Sqrt(2), shape);
-            Computations computations = i.prepare_computations(r);
-            
+            Computations comps = i.prepare_computations(r);
+            Assert.AreEqual(csharp_rt.Tuple.vector(0, Math.Sqrt(2) / 2, Math.Sqrt(2) / 2), comps.reflectv);
         }
 
     }
