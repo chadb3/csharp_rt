@@ -123,5 +123,11 @@ namespace CSharpRayTracer
             }
             
         }
+
+        public Color reflected_color(Computations comps_in)
+        {
+            Color ret_color = new Color(0.5,0.75,1);
+            return ret_color;
+        }
     }
 }

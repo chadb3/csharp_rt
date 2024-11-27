@@ -1852,6 +1852,34 @@ namespace RT_UT
             Computations comps = i.prepare_computations(r);
             Assert.AreEqual(csharp_rt.Tuple.vector(0, Math.Sqrt(2) / 2, Math.Sqrt(2) / 2), comps.reflectv);
         }
+        [TestMethod]
+        public void The_reflected_color_for_a_nonreflective_matieral()
+        {
+            World w = new World();
+            w=w.default_world();
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 0, 1));
+            Sphere shape = (Sphere)w.shapeList[1];//i know in default world this is a sphere...
+            shape.Material.ambient = 1;
+            Intersection i = new Intersection(1, shape);
+            Computations comps = i.prepare_computations(r);
+            Color color = new Color(1, 1, 1);//w.reflected_color(comps);
+            Assert.AreEqual(new Color(0, 0, 0), color);
+        }
 
+        [TestMethod]
+        public void The_reflected_color_for_a_reflective_material()
+        {
+            World w = new World();
+            w= w.default_world();
+            Plane shape = new Plane();
+            shape.Material.reflective = 0.5;
+            shape.Set_Transform(Matrix.translation(0, -1, 0));
+            w.shapeList.Append(shape);
+            Ray r = new Ray(csharp_rt.Tuple.point(0,0,-3),csharp_rt.Tuple.vector(0,-Math.Sqrt(2)/2,Math.Sqrt(2)/2));
+            Intersection i = new Intersection(Math.Sqrt(2), shape);
+            Computations comps = i.prepare_computations(r);
+            Color color = new Color(1, 0, 0);//w.reflected_color(comps);
+            Assert.AreEqual(new Color(0.19032, 0.2379, 0.14274), color);
+        }
     }
 }
