@@ -1862,7 +1862,7 @@ namespace RT_UT
             shape.Material.ambient = 1;
             Intersection i = new Intersection(1, shape);
             Computations comps = i.prepare_computations(r);
-            Color color = new Color(1, 1, 1);//w.reflected_color(comps);
+            Color color = w.reflected_color(comps);
             Assert.AreEqual(new Color(0, 0, 0), color);
         }
 
@@ -1878,7 +1878,7 @@ namespace RT_UT
             Ray r = new Ray(csharp_rt.Tuple.point(0,0,-3),csharp_rt.Tuple.vector(0,-Math.Sqrt(2)/2,Math.Sqrt(2)/2));
             Intersection i = new Intersection(Math.Sqrt(2), shape);
             Computations comps = i.prepare_computations(r);
-            Color color = new Color(1, 0, 0);//w.reflected_color(comps);
+            Color color = w.reflected_color(comps);
             Assert.AreEqual(new Color(0.19032, 0.2379, 0.14274), color);
         }
     }

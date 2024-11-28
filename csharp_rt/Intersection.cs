@@ -141,6 +141,8 @@ namespace csharp_rt
         {
             Computations ret = new Computations(this.t, this.tnObj, rayIn.position(this.t), rayIn.direction);
             ret.over_point = ret.point + ret.normalv * 0.00001;
+            //ret.reflectv = new Ray(rayIn.direction, ret.normalv);
+            ret.reflectv = rayIn.direction.reflect(ret.normalv);
             return ret;
         }
     }

@@ -126,8 +126,18 @@ namespace CSharpRayTracer
 
         public Color reflected_color(Computations comps_in)
         {
-            Color ret_color = new Color(0.5,0.75,1);
-            return ret_color;
+            Ray reflect_ray;// = new Ray(csharp_rt.Tuple.point(0,0,0),csharp_rt.Tuple.vector()
+            Color ret_color = new Color(0, 0, 0);
+            if(comps_in.shapeObj.Material.reflective==0)
+            {
+                return ret_color;
+            }
+            else
+            {
+                reflect_ray = new Ray(comps_in.over_point, comps_in.reflectv);
+                ret_color = this.color_at(reflect_ray);
+            }
+            return ret_color * comps_in.shapeObj.Material.reflective;
         }
     }
 }
