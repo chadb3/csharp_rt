@@ -1881,5 +1881,21 @@ namespace RT_UT
             Color color = w.reflected_color(comps);
             Assert.AreEqual(new Color(0.19032, 0.2379, 0.14274), color);
         }
+
+        [TestMethod]
+        public void Shade_hit_with_a_reflective_materal()
+        {
+            World world = new World();
+            world=world.default_world();
+            Plane shape = new Plane();
+            shape.Material.reflective = 0.5;
+            shape.Set_Transform(Matrix.translation(0, -1, 0));
+            world.shapeList.Append(shape);
+            Ray r = new Ray(csharp_rt.Tuple.point(0,0,-3),csharp_rt.Tuple.vector(0,-Math.Sqrt(2)/2, Math.Sqrt(2)/2));
+            Intersection i = new Intersection(Math.Sqrt(2), shape);
+            Computations comps =i.prepare_computations(r);
+            Color color = world.shade_hit(comps);
+            Assert.AreEqual(new Color(0.87677, 0.92436, 0.82918), color);
+        }
     }
 }
