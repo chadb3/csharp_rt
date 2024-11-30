@@ -70,15 +70,16 @@ namespace CSharpRayTracer
 
         public Color shade_hit(Computations comps_in)
         {
-            Color ret = new Color();
+            //Color surface = new Color();
             //Light light_to_call_lighting = new Light();
             //ret = light.old_lighting_old(comps_in.obj.material, comps_in.point, comps_in.eyev, comps_in.normalv);
             //ret = light.lighting(comps_in.old_obj.Material, comps_in.point, comps_in.eyev, comps_in.normalv,is_shadowed(comps_in.over_point)); <-------- Original
             //https://forum.raytracerchallenge.com/thread/204/avoid-noise-checkers-pattern-planes
             // pass in over_point instead of point. now I don't need epsilon but the image changed slightly
             // Note: there was some acne that was appearing again in my checker floor. I changed it back to point and it works without issues now go figure :/
-            ret = light.lighting(comps_in.shapeObj.Material,comps_in.shapeObj, comps_in.point, comps_in.eyev, comps_in.normalv, is_shadowed(comps_in.over_point));
-            return ret;
+            Color surface = light.lighting(comps_in.shapeObj.Material,comps_in.shapeObj, comps_in.point, comps_in.eyev, comps_in.normalv, is_shadowed(comps_in.over_point));
+            Color reflected = reflected_color(comps_in);
+            return surface+reflected;
         }
         
         public Color color_at(Ray ray_in)
