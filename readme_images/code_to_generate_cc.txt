@@ -1,6 +1,6 @@
 // cc = Current Capabilities (of the my ray tracer)
 // this will be updated (along with the image) as more features are implemented  
-Console.WriteLine("starting book example Plane");
+Console.WriteLine("starting Current Capabilities");
 Plane floor = new Plane();
 floor.Material.color = new Color(1, 0.9, 0.9);
 floor.Material.specular = 0;
@@ -59,4 +59,4 @@ Canvas image = c.render(world);
 image.set_file_name(ic+"book_image_plane2");
 image.canvas_to_P3_ppm();
 ic++;
-Console.WriteLine("finished book image pg107");
+Console.WriteLine("finished book image - Chapter 11 - Reflection and Refraction");
