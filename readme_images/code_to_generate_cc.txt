@@ -1,6 +1,6 @@
 // cc = Current Capabilities (of the my ray tracer)
 // this will be updated (along with the image) as more features are implemented  
-Console.WriteLine("starting Current Capabilities ");
+Console.WriteLine("starting book example Plane");
 Plane floor = new Plane();
 floor.Material.color = new Color(1, 0.9, 0.9);
 floor.Material.specular = 0;
@@ -8,6 +8,7 @@ Gradient_Pattern org_red = new Gradient_Pattern(new Color(0.0d,.09d,0), new Colo
 org_red.Set_Transform(Matrix.rotation_x(2));
 floor.Material.pattern = new Striped_Pattern(new Checker_Pattern(new Color(1,1,1),org_red), new Color(1,0,0));
 floor.Material.pattern.Set_Transform(Matrix.translation(0, 0.00001d, 0));
+floor.Material.reflective = .12;
 Sphere left_wall = new Sphere();
 left_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(-Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
 left_wall.Material = floor.Material;
@@ -39,6 +40,7 @@ right.Material.color = new Color(0, 0, 1);
 right.Material.diffuse = 0.7;
 right.Material.specular = 0.3;
 right.Material.pattern = new Checker_Pattern(new Color(0, 0, 1), new Color(0.01, 0.02, 0.03));
+right.Material.reflective = 0.5;
 Sphere left = new Sphere();
 left.Transform = Matrix.translation(-1.5, 0.33, -0.75) * Matrix.scaling(0.33, 0.33, 0.33);
 left.Material = new Material();
@@ -50,11 +52,11 @@ left.Material.pattern.Transform = Matrix.scaling(0.125, 0.25, 0.125);
 World world = new World();
 world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
 world.shapeList = [left, right, middle, floor,z];
-Camera c = new Camera(1550, 1550, Math.PI / 3);
+Camera c = new Camera(1024, 1024, Math.PI / 3);
 int ic = 2;
 c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0))*Matrix.rotation_y(.20);
 Canvas image = c.render(world);
 image.set_file_name(ic+"book_image_plane2");
 image.canvas_to_P3_ppm();
 ic++;
-Console.WriteLine("finished book image - Chapter 10 - Patterns");
+Console.WriteLine("finished book image pg107");
