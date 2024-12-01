@@ -19,9 +19,10 @@ namespace csharp_rt
             //imageTest2();
             //testImageBook();
 
-            testImageBook_plane();
+            ////testImageBook_plane();
             //test_checker_pattern_on_transformed_plane();
-            test_solid_pattern();
+            //test_solid_pattern();
+            generate_image_from_code_to_generate();
 
             //sphereShapeTest();
             //anotherSphereTest();
@@ -306,6 +307,73 @@ namespace csharp_rt
            Canvas image = c.render(world);
             image.set_file_name("ring_test_Checker_Plane_test");
             image.canvas_to_P3_ppm();
+        }
+
+        static void generate_image_from_code_to_generate()
+        {
+            // cc = Current Capabilities (of the my ray tracer)
+            // this will be updated (along with the image) as more features are implemented  
+            Console.WriteLine("starting Current Capabilities");
+            Plane floor = new Plane();
+            floor.Material.color = new Color(1, 0.9, 0.9);
+            floor.Material.specular = 0;
+            Gradient_Pattern org_red = new Gradient_Pattern(new Color(0.0d, .09d, 0), new Color(1, 0, 0));
+            org_red.Set_Transform(Matrix.rotation_x(2));
+            floor.Material.pattern = new Striped_Pattern(new Checker_Pattern(new Color(1, 1, 1), org_red), new Color(1, 0, 0));
+            floor.Material.pattern.Set_Transform(Matrix.translation(0, 0.00001d, 0));
+            floor.Material.reflective = .12;
+            Sphere left_wall = new Sphere();
+            left_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(-Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
+            left_wall.Material = floor.Material;
+            Sphere right_wall = new Sphere();
+            right_wall.Transform = Matrix.translation(0, 0, 5) * Matrix.rotation_y(Math.PI / 4) * Matrix.rotation_x(Math.PI / 2) * Matrix.scaling(10, 0.01, 10);
+            right_wall.Material = floor.Material;
+            Sphere middle = new Sphere();
+            middle.Transform = Matrix.translation(-0.5, 1, 0.5);
+            middle.Material = new Material();
+            middle.Material.color = new Color(.23, .55, .09);
+            middle.Material.diffuse = 0.7;
+            middle.Material.specular = 0.3;
+            Gradient_Pattern aet = new Gradient_Pattern(new Color(0, 0, 1), new Color(0, 1, 0));
+            Gradient_Pattern aet2 = new Gradient_Pattern(new Color(0, 0, 0), new Color(1, 0, 1));
+            aet.Set_Transform(Matrix.scaling(2, 2, 2) * Matrix.rotation_z(5) * Matrix.rotation_x(Math.PI / 2));
+            middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(aet, aet2));
+            middle.Material.pattern.Transform = Matrix.scaling(.25, .25, .005);
+            Sphere z = new Sphere();
+            z.Set_Transform(Matrix.translation(0, 0, 0) * Matrix.scaling(26, 26, 26) * Matrix.rotation_y(-Math.PI / 2) * Matrix.rotation_z(3 * Math.PI - .6));
+            z.Material = new Material();
+            z.Material.color = new Color(.1, 1, 1);
+            z.Material.diffuse = 1;
+            z.Material.specular = 1;
+            z.Material.pattern = new Gradient_Pattern(new Color(254 / 255d, 102 / 255d, 7 / 255d), new Color(0, 0, .99d));
+            Sphere right = new Sphere();
+            right.Transform = Matrix.translation(1.5, 0.5, -0.5) * Matrix.scaling(0.5, 0.5, 0.5);
+            right.Material = new Material();
+            right.Material.color = new Color(0, 0, 1);
+            right.Material.diffuse = 0.7;
+            right.Material.specular = 0.3;
+            right.Material.pattern = new Checker_Pattern(new Color(0, 0, 1), new Color(0.01, 0.02, 0.03));
+            right.Material.reflective = 0.5;
+            Sphere left = new Sphere();
+            left.Transform = Matrix.translation(-1.5, 0.33, -0.75) * Matrix.scaling(0.33, 0.33, 0.33);
+            left.Material = new Material();
+            left.Material.color = new Color(1, 0, 0);
+            left.Material.diffuse = 0.7;
+            left.Material.specular = 0.3;
+            left.Material.pattern = new Blended_Pattern();
+            left.Material.pattern.Transform = Matrix.scaling(0.125, 0.25, 0.125);
+            World world = new World();
+            world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
+            world.shapeList = [left, right, middle, floor, z];
+            Camera c = new Camera(1024, 1024, Math.PI / 3);
+            int ic = 11;
+            c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0)) * Matrix.rotation_y(.20);
+            Canvas image = c.render(world);
+            image.set_file_name(ic + "cc");
+            image.canvas_to_P3_ppm();
+            ic++;
+            Console.WriteLine("finished book image - Chapter 11 - Reflection and Refraction");
+
         }
     }
 }
