@@ -22,7 +22,8 @@ namespace csharp_rt
             ////testImageBook_plane();
             //test_checker_pattern_on_transformed_plane();
             //test_solid_pattern();
-            generate_image_from_code_to_generate();
+            ////generate_image_from_code_to_generate();
+            getColorForTest();
 
             //sphereShapeTest();
             //anotherSphereTest();
@@ -373,6 +374,25 @@ namespace csharp_rt
             image.canvas_to_P3_ppm();
             ic++;
             Console.WriteLine("finished book image - Chapter 11 - Reflection and Refraction");
+
+        }
+
+        static void getColorForTest()
+        {
+            World w = new World();
+            w.light = Light.point_light(csharp_rt.Tuple.point(0, 0, 0), new Color(1, 1, 1));
+            Plane upper = new Plane();
+            Plane lower = new Plane();
+            lower.Material.reflective = 1;
+            upper.Material.reflective = 1;
+            lower.Set_Transform(Matrix.translation(0, -1, 0));
+            upper.Set_Transform(Matrix.translation(0, 1, 0));
+            //need to add method to add shapes easier...
+            w.shapeList = [upper, lower];
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 1, 0));
+            //Console.WriteLine(w.color_at(r));
+            //Color c = w.color_at(r);  //this causes a stack overflow at the time of writing - do not uncomment until there is a limit on recursion. 
+            //Console.WriteLine(c);
 
         }
     }

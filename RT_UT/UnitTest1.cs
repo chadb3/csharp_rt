@@ -1897,5 +1897,21 @@ namespace RT_UT
             Color color = world.shade_hit(comps);
             Assert.AreEqual(new Color(0.87677, 0.92436, 0.82918), color);
         }
+        //starting tests to avoid infinite recursion
+        public void color_at_with_mutaually_reflective_surfaces()
+        {
+            World w = new World();
+            w.light = Light.point_light(csharp_rt.Tuple.point(0, 0, 0), new Color(1, 1, 1));
+            Plane upper = new Plane();
+            Plane lower = new Plane();
+            lower.Material.reflective = 1;
+            upper.Material.reflective = 1;
+            lower.Set_Transform(Matrix.translation(0, -1, 0));
+            upper.Set_Transform(Matrix.translation(0, 1, 0));
+            //need to add method to add shapes easier...
+            w.shapeList = [upper, lower];
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 1, 0));
+            w.color_at(r);
+        }
     }
 }
