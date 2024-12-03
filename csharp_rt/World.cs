@@ -124,8 +124,13 @@ namespace CSharpRayTracer
             }
             
         }
-
-        public Color reflected_color(Computations comps_in)
+        /// <summary>
+        /// calculates the reflected color
+        /// </summary>
+        /// <param name="comps_in">Takes in a computation</param>
+        /// <param name="remaining">Takes in an int. default value of 0 to not break past tests.</param>
+        /// <returns></returns>
+        public Color reflected_color(Computations comps_in, int remaining=0)
         {
             Ray reflect_ray;// = new Ray(csharp_rt.Tuple.point(0,0,0),csharp_rt.Tuple.vector()
             Color ret_color = new Color(0, 0, 0);

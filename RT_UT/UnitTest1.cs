@@ -1898,6 +1898,7 @@ namespace RT_UT
             Assert.AreEqual(new Color(0.87677, 0.92436, 0.82918), color);
         }
         //starting tests to avoid infinite recursion
+        [TestMethod]
         public void color_at_with_mutaually_reflective_surfaces()
         {
             World w = new World();
@@ -1912,6 +1913,22 @@ namespace RT_UT
             w.shapeList = [upper, lower];
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, 0), csharp_rt.Tuple.vector(0, 1, 0));
             w.color_at(r);
+            // note above currently doesn't fail. - but it causes issues...   
+        }
+        [TestMethod]
+        public void The_reflected_color_at_the_maximum_recursive_depth()
+        {
+            World w = new World();
+            w = w.default_world();
+            Plane shape = new Plane();
+            shape.Material.reflective = 0.5;
+            shape.Set_Transform(Matrix.translation(0, -1, 0));
+            w.shapeList.Append(shape);
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -3), csharp_rt.Tuple.vector(0, -Math.Sqrt(2) / 2, Math.Sqrt(2) / 2));
+            Intersection i = new Intersection(Math.Sqrt(2), shape);
+            Computations comps = i.prepare_computations(r);
+            Color color = w.reflected_color(comps);//needs to look like w.reflected_color(comps,0)//int represents recursion depth remaining.
+            Assert.AreEqual(color, new Color(0, 0, 0));
         }
     }
 }
