@@ -81,8 +81,14 @@ namespace CSharpRayTracer
             Color reflected = reflected_color(comps_in);
             return surface+reflected;
         }
-        
-        public Color color_at(Ray ray_in)
+        /// <summary>
+        /// returns color at ray
+        /// takes in a ray and an int remaining (for recursion) that is default is still 0 so you can still run it like world.color_at(ray_in)
+        /// </summary>
+        /// <param name="ray_in"></param>
+        /// <param name="remaining"></param>
+        /// <returns></returns>
+        public Color color_at(Ray ray_in, int remaining = 0)
         {
             Color ret = new Color();
             Intersections hits = new Intersections(this.intersect_world(ray_in));
