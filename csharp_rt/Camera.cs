@@ -27,8 +27,14 @@ namespace CSharpRayTracer
         public Matrix transform;
         //pixel size
         public double pixel_size;
+        /// <summary>
+        /// MaxDepth = Max recursion depth.
+        /// default value = 6;
+        /// </summary>
+        public int maxDepth;
         public Camera(int hsize, int vsize, double fov)
         {
+            maxDepth = 6;
             this.hsize = hsize;
             this.vsize = vsize;
             this.fov = fov;
@@ -92,7 +98,9 @@ namespace CSharpRayTracer
                 for (int x = 0; x < hsize; x++)
                 {
                     Ray ray=ray_for_pixel(x,y);
-                    Color color = world_in.color_at(ray);
+                    // testing where to put the maxDepth
+                    //forgot book had color_at take it in as a param.
+                    Color color = world_in.color_at(ray, maxDepth);
                     image.write_pixel(x,y,color);
                 }
             }

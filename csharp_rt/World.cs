@@ -14,13 +14,16 @@ namespace CSharpRayTracer
         //Sphere
         public List<Shape> shapeList;// = new List<Shape>();
         public List<Sphere> oldSphereList;
-        public Light light;
         //Light
+        public Light light;
+        // Recursion Depth;
+        //int maxDepth;
         public World() 
         { 
             light= new Light();
             oldSphereList = new List<Sphere>();
             shapeList= new List<Shape>();
+            //maxDepth = 6;
         }
 
         public World default_world()
@@ -67,8 +70,13 @@ namespace CSharpRayTracer
             
             return results;
         }
-
-        public Color shade_hit(Computations comps_in)
+        /// <summary>
+        /// computes shade
+        /// </summary>
+        /// <param name="comps_in"></param>
+        /// <param name="remaining"></param>
+        /// <returns>color</returns>
+        public Color shade_hit(Computations comps_in, int remaining = 0)
         {
             //Color surface = new Color();
             //Light light_to_call_lighting = new Light();
@@ -78,7 +86,7 @@ namespace CSharpRayTracer
             // pass in over_point instead of point. now I don't need epsilon but the image changed slightly
             // Note: there was some acne that was appearing again in my checker floor. I changed it back to point and it works without issues now go figure :/
             Color surface = light.lighting(comps_in.shapeObj.Material,comps_in.shapeObj, comps_in.point, comps_in.eyev, comps_in.normalv, is_shadowed(comps_in.over_point));
-            Color reflected = reflected_color(comps_in);
+            Color reflected = reflected_color(comps_in, remaining);
             return surface+reflected;
         }
         /// <summary>
@@ -107,7 +115,7 @@ namespace CSharpRayTracer
                 Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[2].prepare_computations(ray_in)), hits[2]);
                 Console.WriteLine("color: {0}    t:{1}", this.shade_hit(hits[3].prepare_computations(ray_in)), hits[3]);*/
                 //}
-                ret = this.shade_hit(comp);
+                ret = this.shade_hit(comp,remaining);
             }
             return ret;
         }
@@ -146,8 +154,12 @@ namespace CSharpRayTracer
             }
             else
             {
+                if( remaining<=0)
+                {
+                    return new Color(0, 0, 0);
+                }
                 reflect_ray = new Ray(comps_in.over_point, comps_in.reflectv);
-                ret_color = this.color_at(reflect_ray);
+                ret_color = this.color_at(reflect_ray, remaining-1);
             }
             return ret_color * comps_in.shapeObj.Material.reflective;
         }
