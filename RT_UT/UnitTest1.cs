@@ -1930,5 +1930,14 @@ namespace RT_UT
             Color color = w.reflected_color(comps);//needs to look like w.reflected_color(comps,0)//int represents recursion depth remaining.
             Assert.AreEqual(color, new Color(0, 0, 0));
         }
+
+        // Starting tests for refraction.
+        [TestMethod]
+        public void Transparency_and_Refractive_index_for_the_default_material()
+        {
+            Material m = new Material();
+            Assert.AreEqual(0.0d, m.transparency);
+            Assert.AreEqual(1.0d, m.reflective_index);
+        }
     }
 }

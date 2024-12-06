@@ -10,28 +10,28 @@ namespace CSharpRayTracer
     public class Camera
     {
         // The horizontal size (pixles) of the canvas that the picture will be rendered to.
-        public int hsize;
+        public int hsize { get; set; }
         // Canvas's vertical size in pixles.
-        public int vsize;
+        public int vsize { get; set; }
         // is an angle that describes how much the camera can see. When the field of view is small, the view will be zoomed in, magnifying a smaller area of the scene
-        public double fov;
+        public double fov { get; set; }
         // half view
-        public double half_view;
+        public double half_view { get; set; }
         // aspect
-        public double aspect;
+        public double aspect { get; set; }
         // half width
-        public double half_width;
+        public double half_width { get; set; }
         // half height
-        public double half_height;
+        public double half_height { get; set; }
         //transform
-        public Matrix transform;
+        public Matrix transform { get; set; }
         //pixel size
-        public double pixel_size;
+        public double pixel_size { get; set; }
         /// <summary>
         /// MaxDepth = Max recursion depth.
         /// default value = 6;
         /// </summary>
-        public int maxDepth;
+        public int maxDepth {  get; set; }
         public Camera(int hsize, int vsize, double fov)
         {
             maxDepth = 6;
