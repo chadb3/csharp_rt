@@ -221,6 +221,9 @@ namespace csharp_rt
             middle.Material.pattern = new Ring_Pattern(new Color(1, 1, 1), new Checker_Pattern(aet, aet2));
             middle.Material.pattern.Transform = Matrix.scaling(.25, .25, .005);
 
+            Sphere glass_sphere = Sphere.Glass_Sphere();
+            glass_sphere.Transform= Matrix.translation(-0.5, 2, 0.5);
+
             Sphere z=new Sphere();
             z.Set_Transform(Matrix.translation(0, 0, 0)*Matrix.scaling(26,26,26)*Matrix.rotation_y(-Math.PI/2)*Matrix.rotation_z(3*Math.PI-.6));
             z.Material = new Material();
@@ -252,7 +255,7 @@ namespace csharp_rt
             World world = new World();
             world.light = Light.point_light(csharp_rt.Tuple.point(-10, 10, -10), new Color(1, 1, 1));
             //world.shapeList = [left_wall, left, right_wall, right, middle, floor];
-            world.shapeList = [left, right, middle, floor,z];
+            world.shapeList = [left, right, middle, floor,z, glass_sphere];
             Camera c = new Camera(1024/2, 1024/2, Math.PI / 3);
             // default camera
             // c.transform = Matrix.view_transform(csharp_rt.Tuple.point(0, 1.5, -5), csharp_rt.Tuple.point(0, 1, 0), csharp_rt.Tuple.vector(0, 1, 0));

@@ -1937,7 +1937,15 @@ namespace RT_UT
         {
             Material m = new Material();
             Assert.AreEqual(0.0d, m.transparency);
-            Assert.AreEqual(1.0d, m.reflective_index);
+            Assert.AreEqual(1.0d, m.refractive_index);
+        }
+        [TestMethod]
+        public void a_helper_for_producing_a_sphere_with_a_glassy_material()
+        {
+            Sphere s = Sphere.Glass_Sphere();
+            Assert.AreEqual(Matrix.identity(), s.Transform);
+            Assert.AreEqual(1.0d, s.Material.transparency);
+            Assert.AreEqual(1.5d, s.Material.refractive_index);
         }
     }
 }

@@ -50,5 +50,19 @@ namespace csharp_rt
             return world_normal.normalize();*/
             return csharp_rt.Tuple.vector(point_in.x, point_in.y, point_in.z);
         }
+        /// <summary>
+        /// "helper" to get a glass_sphere
+        /// call like Sphere my_glass_Sphere = Sphere.Glass_Sphere();
+        /// </summary>
+        /// <returns></returns>
+        public static Sphere Glass_Sphere()
+        {
+            Sphere glass_sphere = new Sphere();
+            // book has the the transform set to the identity matrix here, but it gets set above when i initialize a new sphere.
+            // additionally the identity matrix is set for all "shapes" in the "Shape" parent class.
+            glass_sphere.Material.transparency = 1.0d;
+            glass_sphere.Material.refractive_index = 1.5d;
+            return glass_sphere;
+        }
     }
 }
