@@ -1947,5 +1947,11 @@ namespace RT_UT
             Assert.AreEqual(1.0d, s.Material.transparency);
             Assert.AreEqual(1.5d, s.Material.refractive_index);
         }
+
+        [TestMethod]
+        public void Finding_n1_and_n2_at_various_intersections()
+        {
+            Sphere A = Sphere.Glass_Sphere();
+        }
     }
 }
