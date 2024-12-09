@@ -1952,6 +1952,15 @@ namespace RT_UT
         public void Finding_n1_and_n2_at_various_intersections()
         {
             Sphere A = Sphere.Glass_Sphere();
+            A.Set_Transform(Matrix.scaling(2, 2, 2));
+            A.Material.refractive_index = 1.5;
+            Sphere B = Sphere.Glass_Sphere();
+            B.Set_Transform(Matrix.translation(0, 0, -0.25));
+            B.Material.refractive_index = 2.5;
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -4), csharp_rt.Tuple.vector(0, 0, 1));
+            Intersections xs = new Intersections();//new Intersections(2:A,2.75:B,3.25:C,4.75:B,5.25:C,6:A)
+            //Computations comps = xs.prepare_computations(...)
+
         }
     }
 }
