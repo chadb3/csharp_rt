@@ -51,6 +51,18 @@ namespace csharp_rt
             t.Add(four);
         }
 
+        //researching variable amount of parameteres in methods
+        //public Intersections(params Intersection[] intersections_in)....
+        public Intersections(params Intersection[] intersections)
+        {
+            int len = intersections.Length;
+            t = new List<Intersection>();
+            for (int i = 0; i < len; i++)
+            {
+                t.Add(intersections[i]);
+            }
+        }
+
         public int count()
         {
             return t.Count();

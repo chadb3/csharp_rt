@@ -805,6 +805,7 @@ namespace RT_UT
         {
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
             Sphere s = new Sphere();
+            // Check this
             Intersections xs = new Intersections(/*s.intersect(r);*/);
             Assert.AreEqual(2, xs.count());
             Assert.AreEqual(s, xs[0].tnObj);
