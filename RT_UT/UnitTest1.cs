@@ -1952,14 +1952,26 @@ namespace RT_UT
         [TestMethod]
         public void Finding_n1_and_n2_at_various_intersections()
         {
+            /*
+             *   
+            public void Aggregating_intersections()        {
+            Sphere s = new Sphere();
+            Intersection i1 = new Intersection(1, s);
+            Intersection i2 = new Intersection(2, s);
+             */
             Sphere A = Sphere.Glass_Sphere();
             A.Set_Transform(Matrix.scaling(2, 2, 2));
             A.Material.refractive_index = 1.5;
             Sphere B = Sphere.Glass_Sphere();
             B.Set_Transform(Matrix.translation(0, 0, -0.25));
-            B.Material.refractive_index = 2.5;
+            B.Material.refractive_index = 2.0;
+            Sphere C = Sphere.Glass_Sphere();
+            C.Set_Transform(Matrix.translation(0, 0, 0.25));
+            C.Material.refractive_index = 2.5;
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -4), csharp_rt.Tuple.vector(0, 0, 1));
-            Intersections xs = new Intersections();//new Intersections(2:A,2.75:B,3.25:C,4.75:B,5.25:C,6:A)
+            //lots of my trouble with this was trying to remember how intersections was called...
+            Intersections xs = new Intersections(new Intersection(2, A), new Intersection(2.75, B), new Intersection(3.25, C),new Intersection(4.75,B),new Intersection(5.25,C),new Intersection(6,A));
+            //Intersections xs = new Intersections();//new Intersections(2:A,2.75:B,3.25:C,4.75:B,5.25:C,6:A)
             //Computations comps = xs.prepare_computations(...)
 
         }

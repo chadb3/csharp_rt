@@ -19,12 +19,12 @@ namespace csharp_rt
             //imageTest2();
             //testImageBook();
 
-            testImageBook_plane();
+            ////////testImageBook_plane();
             //test_checker_pattern_on_transformed_plane();
             //test_solid_pattern();
             ////generate_image_from_code_to_generate();
             //getColorForTest();
-
+            testWhichIntersectionsIsCalled();
             //sphereShapeTest();
             //anotherSphereTest();
             //testingAnotherFailingTest();
@@ -397,6 +397,24 @@ namespace csharp_rt
             //Color c = w.color_at(r);  //this causes a stack overflow at the time of writing - do not uncomment until there is a limit on recursion. 
             //Console.WriteLine(c);
 
+        }
+
+        static void testWhichIntersectionsIsCalled()
+        {
+            Sphere s = Sphere.Glass_Sphere();
+            Intersections xs = new Intersections(new Intersection(1, s));// looks like this one called the params method...
+            Intersections xs2 = new Intersections(new Intersection(1, s), new Intersection(2, s));//looks like this one called " public Intersections(Intersection one, Intersection two)"
+            Intersections xs3 = new Intersections(new Intersection(1, s), new Intersection(2, s), new Intersection(3, s));//looks like this one called public Intersections(params Intersection[] intersections)
+            Intersections xs4 = new Intersections(new Intersection(1, s), new Intersection(2, s), new Intersection(3, s), new Intersection(4, s));//looks like this one called "public Intersections(Intersection one, Intersection two, Intersection three, Intersection four)"
+            Intersections xs5 = new Intersections(new Intersection(1, s), new Intersection(2, s), new Intersection(3, s), new Intersection(4, s), new Intersection(5, s)); //this one called "public Intersections(params Intersection[] intersections)"
+            /*
+             * 1: calls params
+             * 2: calls the one (1,2)
+             * 3: calls params
+             * 4: calls the one (1,2,3,4)
+             * 5: calls params.
+             *  
+             */
         }
     }
 }
