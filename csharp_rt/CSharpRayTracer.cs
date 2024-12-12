@@ -413,7 +413,7 @@ namespace csharp_rt
              * 3: calls params
              * 4: calls the one (1,2,3,4)
              * 5: calls params.
-             *  
+             *  Maybe I will try to comment out the other methods at some point to use the params one.
              */
         }
     }
