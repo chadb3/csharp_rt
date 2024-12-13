@@ -1973,6 +1973,12 @@ namespace RT_UT
             Intersections xs = new Intersections(new Intersection(2, A), new Intersection(2.75, B), new Intersection(3.25, C),new Intersection(4.75,B),new Intersection(5.25,C),new Intersection(6,A));
             //Intersections xs = new Intersections();//new Intersections(2:A,2.75:B,3.25:C,4.75:B,5.25:C,6:A)
             //Computations comps = xs.prepare_computations(...)
+            double[] n1 = { 1.0, 1.5, 2.0, 2.5, 2.5, 1.5 };
+            double[] n2 = { 1.5, 2.0, 2.5, 2.5, 1.5, 1.0 };
+            for (int i = 0;i< n1.Length; i++)
+            {
+                Computations comps = xs[i].prepare_computations(r);//need to write xs to be something like xs[i].prepare_computations(r,xs);
+            }
 
         }
     }
