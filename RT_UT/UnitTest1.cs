@@ -1948,6 +1948,23 @@ namespace RT_UT
             Assert.AreEqual(1.0d, s.Material.transparency);
             Assert.AreEqual(1.5d, s.Material.refractive_index);
         }
+        [TestMethod]
+        public void test_looping_assert_areEqual()
+        {
+            int[] ans = { 1, 2, 3 };
+            int[] test = { 1, 2, 4 };
+            for (int i = 0; i < ans.Length; i++)
+            {
+                if(i<2)
+                {
+                    Assert.AreEqual(ans[i], test[i]);
+                }
+                else
+                {
+                    Assert.AreNotEqual(ans[i], test[i]);
+                }
+            }
+        }
 
         [TestMethod]
         public void Finding_n1_and_n2_at_various_intersections()
@@ -1975,9 +1992,12 @@ namespace RT_UT
             //Computations comps = xs.prepare_computations(...)
             double[] n1 = { 1.0, 1.5, 2.0, 2.5, 2.5, 1.5 };
             double[] n2 = { 1.5, 2.0, 2.5, 2.5, 1.5, 1.0 };
+            //from test_looping_assert_areEqual() I know I can do the below.
             for (int i = 0;i< n1.Length; i++)
             {
                 Computations comps = xs[i].prepare_computations(r);//need to write xs to be something like xs[i].prepare_computations(r,xs);
+                Assert.AreEqual(n1[i], comps);//comps.n1
+                Assert.AreEqual(n2[i], comps);//comps.n2
             }
 
         }
