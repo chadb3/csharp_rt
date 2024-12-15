@@ -137,7 +137,7 @@ namespace csharp_rt
         /// </summary>
         /// <param name="rayIn"></param>
         /// <returns>new Computations object/datastructore</returns>
-        public Computations prepare_computations(Ray rayIn)
+        public Computations prepare_computations(Ray rayIn, Intersections xs = null)
         {
             Computations ret = new Computations(this.t, this.tnObj, rayIn.position(this.t), rayIn.direction);
             ret.over_point = ret.point + ret.normalv * 0.00001;
