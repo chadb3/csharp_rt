@@ -10,7 +10,9 @@ namespace csharp_rt
     /// Aggergate of intersections (stores intersect)
     /// Not sure how this is going to be used with more objects as simple tests were provided.
     /// </summary>
-    public class Intersections
+     
+    //research IEnumerable
+    public class Intersections 
     {
         public List<Intersection> t;
         public Intersections()
@@ -151,4 +153,6 @@ namespace csharp_rt
 
 
     }
+
+
 }
