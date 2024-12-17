@@ -19,7 +19,7 @@ namespace csharp_rt
             //imageTest2();
             //testImageBook();
 
-            testImageBook_plane();
+            ////////////////testImageBook_plane();
             //test_checker_pattern_on_transformed_plane();
             //test_solid_pattern();
             ////generate_image_from_code_to_generate();
@@ -30,6 +30,7 @@ namespace csharp_rt
             //testingAnotherFailingTest();
             //testingAnotherFailingTest1();
             //testingFailingDefaultWorld();
+            testRefractionUnitTestdebug();
             return 2989;
         }
 
@@ -415,6 +416,43 @@ namespace csharp_rt
              * 5: calls params.
              *  Maybe I will try to comment out the other methods at some point to use the params one.
              */
+        }
+
+        static void testRefractionUnitTestdebug()
+        {
+            /*
+             *   
+            public void Aggregating_intersections()        {
+            Sphere s = new Sphere();
+            Intersection i1 = new Intersection(1, s);
+            Intersection i2 = new Intersection(2, s);
+             */
+            Sphere A = Sphere.Glass_Sphere();
+            A.Set_Transform(Matrix.scaling(2, 2, 2));
+            A.Material.refractive_index = 1.5;
+            Sphere B = Sphere.Glass_Sphere();
+            B.Set_Transform(Matrix.translation(0, 0, -0.25));
+            B.Material.refractive_index = 2.0;
+            Sphere C = Sphere.Glass_Sphere();
+            C.Set_Transform(Matrix.translation(0, 0, 0.25));
+            C.Material.refractive_index = 2.5;
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -4), csharp_rt.Tuple.vector(0, 0, 1));
+            //lots of my trouble with this was trying to remember how intersections was called...
+            Intersections xs = new Intersections(new Intersection(2, A), new Intersection(2.75, B), new Intersection(3.25, C), new Intersection(4.75, B), new Intersection(5.25, C), new Intersection(6, A));
+            //Intersections xs = new Intersections();//new Intersections(2:A,2.75:B,3.25:C,4.75:B,5.25:C,6:A)
+            //Computations comps = xs.prepare_computations(...)
+
+            double[] n1 = { 1.0, 1.5, 2.0, 2.5, 2.5, 1.5 };
+            double[] n2 = { 1.5, 2.0, 2.5, 2.5, 1.5, 1.0 };
+            //from test_looping_assert_areEqual() I know I can do the below.
+            for (int i = 0; i < n1.Length; i++)
+            {
+                Computations comps = xs[i].prepare_computations(r, xs);//need to write xs to be something like xs[i].prepare_computations(r,xs);
+                Console.WriteLine($"n1: {comps.n1}\nn2: {comps.n2}\n");
+                //Assert.AreEqual(n1[i], comps.n1);//comps.n1
+                //Assert.AreEqual(n2[i], comps.n2);//comps.n2
+            }
+            Console.WriteLine("asdf");
         }
     }
 }

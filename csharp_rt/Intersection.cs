@@ -144,16 +144,25 @@ namespace csharp_rt
             double n2 = 0.0d;*/
             List<Shape> containers = new List<Shape>();
             Computations ret = new Computations(this.t, this.tnObj, rayIn.position(this.t), rayIn.direction);
+            ret.over_point = ret.point + ret.normalv * 0.00001;
+            //ret.reflectv = new Ray(rayIn.direction, ret.normalv);
+            ret.reflectv = rayIn.direction.reflect(ret.normalv);
             if (xs != null )//needed for to make xs optional 
             {
                 // || xs.count()>0
                 // need to make Intersections IEnumerable to use foreach...
                 // I will need to test with at test Project first but will use a normal loop as a workaround.
-                for (int i = 0;i<containers.Count;i++)
+                //see what is going on here I am counting containers which is empty... I need to count intersection xs
+                
+                for (int i = 0;i<xs.count();i++)
                 {
-                    if (!xs[i].nothing)
+                    //Console.WriteLine($"Reflective Index: {xs[i].tnObj.Material.refractive_index}");
+                    // first if
+                    //************************************************************************
+                    if (xs[i]==this)//xs.hit().nothing==false
                     {
-                        if(containers.Count==0)
+                        //Console.WriteLine("hit1");
+                        if (containers.Count==0)
                         {
                             ret.n1 = 1.0d;
                         } //end if
@@ -162,6 +171,10 @@ namespace csharp_rt
                             ret.n1 = containers.Last().Material.refractive_index;
                         } //end else
                     } // end if
+                    //************************************************************************
+                    //************************************************************************
+                    // Second if
+                    //************************************************************************
                     if (containers.Contains(xs[i].tnObj))
                     {
                         // remove object
@@ -169,12 +182,18 @@ namespace csharp_rt
                     }// end if remove 
                     else
                     {
-                        containers.Append(xs[i].tnObj);
+                        containers.Add(xs[i].tnObj);
                     }// end else add
+                    //************************************************************************
+                    //************************************************************************
                     // this next part is a repeat?
                     // with no changes
-                    if(!xs[i].nothing)
+                    // debug print
+                    //Console.WriteLine($"{containers.Count}");
+                    //************************************************************************
+                    if (xs[i] == this) // if it is not nothing then it is hit.!xs[i].nothing
                     {
+                        //Console.WriteLine("hit2");
                         if (containers.Count == 0)
                         {
                             ret.n2 = 1.0d;
@@ -184,14 +203,15 @@ namespace csharp_rt
                             ret.n2=containers.Last().Material.refractive_index;
                         }// end else
                         break;
-                    }
+                    }// end if
+                    //************************************************************************
+                    //************************************************************************
+                    //Console.WriteLine("if skipped");
 
                 }
             }
-            
-            ret.over_point = ret.point + ret.normalv * 0.00001;
-            //ret.reflectv = new Ray(rayIn.direction, ret.normalv);
-            ret.reflectv = rayIn.direction.reflect(ret.normalv);
+            //looks like the first index is correct
+
             return ret;
         }
     }

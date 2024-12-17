@@ -1976,15 +1976,19 @@ namespace RT_UT
             Intersection i1 = new Intersection(1, s);
             Intersection i2 = new Intersection(2, s);
              */
+            // A
             Sphere A = Sphere.Glass_Sphere();
             A.Set_Transform(Matrix.scaling(2, 2, 2));
             A.Material.refractive_index = 1.5;
+            // B
             Sphere B = Sphere.Glass_Sphere();
             B.Set_Transform(Matrix.translation(0, 0, -0.25));
             B.Material.refractive_index = 2.0;
+            // C
             Sphere C = Sphere.Glass_Sphere();
             C.Set_Transform(Matrix.translation(0, 0, 0.25));
             C.Material.refractive_index = 2.5;
+
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -4), csharp_rt.Tuple.vector(0, 0, 1));
             //lots of my trouble with this was trying to remember how intersections was called...
             Intersections xs = new Intersections(new Intersection(2, A), new Intersection(2.75, B), new Intersection(3.25, C),new Intersection(4.75,B),new Intersection(5.25,C),new Intersection(6,A));
@@ -1999,6 +2003,7 @@ namespace RT_UT
                 Computations comps = xs[i].prepare_computations(r,xs);//need to write xs to be something like xs[i].prepare_computations(r,xs);
                 Assert.AreEqual(n1[i], comps.n1);//comps.n1
                 Assert.AreEqual(n2[i], comps.n2);//comps.n2
+                
             }
 
         }
