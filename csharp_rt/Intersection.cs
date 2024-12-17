@@ -140,20 +140,55 @@ namespace csharp_rt
         /// <returns>new Computations object/datastructore</returns>
         public Computations prepare_computations(Ray rayIn, Intersections xs = null)
         {
+            /*double n1 = 0.0d;
+            double n2 = 0.0d;*/
             List<Shape> containers = new List<Shape>();
-            if (xs != null || xs.count()>0)//needed for to make xs optional 
+            Computations ret = new Computations(this.t, this.tnObj, rayIn.position(this.t), rayIn.direction);
+            if (xs != null )//needed for to make xs optional 
             {
+                // || xs.count()>0
                 // need to make Intersections IEnumerable to use foreach...
                 // I will need to test with at test Project first but will use a normal loop as a workaround.
-                for(int i = 0;i<containers.Count;i++)
+                for (int i = 0;i<containers.Count;i++)
                 {
-                    if (xs[i] == xs[i])
+                    if (!xs[i].nothing)
                     {
-
+                        if(containers.Count==0)
+                        {
+                            ret.n1 = 1.0d;
+                        } //end if
+                        else
+                        {
+                            ret.n1 = containers.Last().Material.refractive_index;
+                        } //end else
+                    } // end if
+                    if (containers.Contains(xs[i].tnObj))
+                    {
+                        // remove object
+                        containers.Remove(xs[i].tnObj);
+                    }// end if remove 
+                    else
+                    {
+                        containers.Append(xs[i].tnObj);
+                    }// end else add
+                    // this next part is a repeat?
+                    // with no changes
+                    if(!xs[i].nothing)
+                    {
+                        if (containers.Count == 0)
+                        {
+                            ret.n2 = 1.0d;
+                        } // end if
+                        else
+                        {
+                            ret.n2=containers.Last().Material.refractive_index;
+                        }// end else
+                        break;
                     }
+
                 }
             }
-            Computations ret = new Computations(this.t, this.tnObj, rayIn.position(this.t), rayIn.direction);
+            
             ret.over_point = ret.point + ret.normalv * 0.00001;
             //ret.reflectv = new Ray(rayIn.direction, ret.normalv);
             ret.reflectv = rayIn.direction.reflect(ret.normalv);

@@ -19,7 +19,7 @@ namespace csharp_rt
             //imageTest2();
             //testImageBook();
 
-            ////////testImageBook_plane();
+            testImageBook_plane();
             //test_checker_pattern_on_transformed_plane();
             //test_solid_pattern();
             ////generate_image_from_code_to_generate();

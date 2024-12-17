@@ -20,6 +20,9 @@ namespace CSharpRayTracer
 
         public Shape shapeObj { get; set; }
 
+        public double n1 { get; set; }
+        public double n2 { get; set; }
+
 
         public Computations(double t_in, Shape obj_in, csharp_rt.Tuple point_in, csharp_rt.Tuple eyev_in)
         {
