@@ -106,7 +106,7 @@ namespace CSharpRayTracer
             //if (hits.count() != 0 && hits.first_positive_index()!=-1)
             if (hits.count() != 0 && hits.first_positive_index()>=0)
             {
-                Computations comp = hits[hits.first_positive_index()].prepare_computations(ray_in);
+                Computations comp = hits[hits.first_positive_index()].prepare_computations(ray_in,hits);
                 //foreach (Intersection ix in hits)
                 //{
                 // Test Prints

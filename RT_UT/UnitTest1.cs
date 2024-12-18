@@ -2007,5 +2007,10 @@ namespace RT_UT
             }
 
         }
+        [TestMethod]
+        public void The_refracted_color_with_an_opaque_surface()
+        {
+
+        }
     }
 }
