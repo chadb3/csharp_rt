@@ -2010,7 +2010,10 @@ namespace RT_UT
         [TestMethod]
         public void The_refracted_color_with_an_opaque_surface()
         {
-
+            World w = new World();
+            w = w.default_world();
+            Sphere shape = (Sphere)w.shapeList[0];//I know this is a Sphere
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
         }
     }
 }
