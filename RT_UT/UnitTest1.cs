@@ -2014,6 +2014,11 @@ namespace RT_UT
             w = w.default_world();
             Sphere shape = (Sphere)w.shapeList[0];//I know this is a Sphere
             Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Intersections xs = new Intersections(new Intersection(4,shape),new Intersection(6,shape));
+            for(int i =0;i<2;i++)
+            {
+                Computations comps = xs[i].prepare_computations(r, xs);
+            }
         }
     }
 }
