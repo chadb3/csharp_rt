@@ -2018,6 +2018,8 @@ namespace RT_UT
             for(int i =0;i<2;i++)
             {
                 Computations comps = xs[i].prepare_computations(r, xs);
+                Color c = w.refracted_color(comps, 5);
+                Assert.AreEqual(new Color(0,0,0), c);
             }
         }
     }

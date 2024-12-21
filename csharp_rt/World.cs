@@ -163,5 +163,16 @@ namespace CSharpRayTracer
             }
             return ret_color * comps_in.shapeObj.Material.reflective;
         }
+
+        public Color refracted_color(Computations comps_in, int remaining=0)
+        {
+            //Color ret_color = new Color(1, 1, 1);
+            if (comps_in.shapeObj.Material.transparency == 0)
+            {
+                return new Color(0, 0, 0);
+            }
+            //new Color(1, 1, 1); is a temp value. 
+            return new Color(1, 1, 1);
+        }
     }
 }
