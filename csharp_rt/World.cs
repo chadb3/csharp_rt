@@ -174,5 +174,7 @@ namespace CSharpRayTracer
             //new Color(1, 1, 1); is a temp value. 
             return new Color(1, 1, 1);
         }
+
+        
     }
 }

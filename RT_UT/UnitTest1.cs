@@ -2022,5 +2022,21 @@ namespace RT_UT
                 Assert.AreEqual(new Color(0,0,0), c);
             }
         }
+
+        [TestMethod]
+        public void The_refracted_color_at_the_maximum_recursive_depth()
+        {
+            World w = new World();
+            w = w.default_world();
+            w.shapeList[0].Material.transparency = 1;
+            w.shapeList[1].Material.refractive_index = 0;
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, -5), csharp_rt.Tuple.vector(0, 0, 1));
+            Intersection shape4 = new Intersection(4, w.shapeList[0]);
+            Intersection shape6 = new Intersection(6, w.shapeList[0]);
+            Intersections xs = new Intersections(shape4, shape6);
+            Computations comps = xs[0].prepare_computations(r, xs);
+            Color c = w.refracted_color(comps, 0);
+            Assert.AreEqual(new Color(0,0,0), c);
+        }
     }
 }
