@@ -2038,5 +2038,18 @@ namespace RT_UT
             Color c = w.refracted_color(comps, 0);
             Assert.AreEqual(new Color(0,0,0), c);
         }
+
+        [TestMethod]
+        public void The_refracted_color_under_total_internal_reflection()
+        {
+            World w = new World();
+            w = w.default_world();
+            w.shapeList[0].Material.transparency = 1;
+            w.shapeList[1].Material.refractive_index = 1.5;
+            Ray r = new Ray(csharp_rt.Tuple.point(0, 0, Math.Sqrt(2)/2), csharp_rt.Tuple.vector(0, 1, 0));
+            Intersections xs = new Intersections(new Intersection(-Math.Sqrt(2) / 2, w.shapeList[0]), new Intersection(Math.Sqrt(2) / 2, w.shapeList[0]));
+            Computations comps = xs[1].prepare_computations(r, xs);
+            Assert.AreEqual(new Color(0, 0, 0), w.refracted_color(comps, 5));
+        }
     }
 }
