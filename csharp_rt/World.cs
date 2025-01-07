@@ -166,6 +166,8 @@ namespace CSharpRayTracer
 
         public Color refracted_color(Computations comps_in, int remaining=0)
         {
+            var n_ratio=comps_in.n1+comps_in.n2;
+            var cos_i = comps_in.eyev.dot(comps_in.normalv);
             //Color ret_color = new Color(1, 1, 1);
             if (comps_in.shapeObj.Material.transparency == 0)
             {
