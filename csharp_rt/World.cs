@@ -168,6 +168,7 @@ namespace CSharpRayTracer
         {
             var n_ratio=comps_in.n1+comps_in.n2;
             var cos_i = comps_in.eyev.dot(comps_in.normalv);
+            var sin2_testc = Math.Pow(n_ratio,2)*(1-Math.Pow(cos_i,2));
             //Color ret_color = new Color(1, 1, 1);
             if (comps_in.shapeObj.Material.transparency == 0)
             {
