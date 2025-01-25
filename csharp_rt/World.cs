@@ -170,10 +170,14 @@ namespace CSharpRayTracer
             var cos_i = comps_in.eyev.dot(comps_in.normalv);
             var sin2_testc = Math.Pow(n_ratio,2)*(1-Math.Pow(cos_i,2));
             //Color ret_color = new Color(1, 1, 1);
-            if (comps_in.shapeObj.Material.transparency == 0)
+            if (comps_in.shapeObj.Material.transparency == 0|| sin2_testc > 1||remaining==0)
             {
                 return new Color(0, 0, 0);
             }
+           // else if(sin2_testc>1)
+            //{
+                //return new Color(0, 0, 0);
+           // }
             //new Color(1, 1, 1); is a temp value. 
             return new Color(1, 1, 1);
         }
